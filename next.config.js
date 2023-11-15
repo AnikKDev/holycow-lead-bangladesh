@@ -3,12 +3,10 @@
 
 // module.exports = nextConfig
 
-
 /* eslint-disable import/no-extraneous-dependencies */
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
 	enabled: process.env.ANALYZE === 'true',
-});
-
+})
 
 module.exports = withBundleAnalyzer({
 	typescript: {
@@ -29,9 +27,10 @@ module.exports = withBundleAnalyzer({
 		// 	{
 		// 		protocol: 'https',
 		// 		hostname: 'd1s1i0e6ao95bj.cloudfront.net',
-    //     port: '',
+		//     port: '',
 		// 	},
 		// ],
+		domains: ['images.unsplash.com/'],
 	},
 	poweredByHeader: false,
 	trailingSlash: true,

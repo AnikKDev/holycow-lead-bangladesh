@@ -7,6 +7,7 @@ import '@/styles/globals.css'
 import { IBM_Plex_Sans } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
+import TopNav from '@/components/shared/TopNav'
 
 const fontIbmPlexSans = IBM_Plex_Sans({
 	subsets: ['latin'],
@@ -70,6 +71,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
 			<head />
 			<body className={cn('min-h-screen bg-background antialiased')}>
 				<ReduxProvider>
+					{/* navbar / topbar */}
+					<TopNav />
 					<main>{children}</main>
 				</ReduxProvider>
 			</body>
