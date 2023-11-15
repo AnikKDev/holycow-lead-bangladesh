@@ -40,6 +40,10 @@ module.exports = {
 			},
 			'_desktop-md': {
 				min: '1281px',
+				max: '1920px',
+			},
+			'_desktop-lg': {
+				min: '1921px',
 			},
 		},
 		fontSize: {

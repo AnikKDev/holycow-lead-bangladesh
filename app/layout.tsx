@@ -74,7 +74,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				<ReduxProvider>
 					{/* navbar / topbar */}
 					<TopNav />
-					<main>{children}</main>
+					<main className='_desktop-lg:max-w-7xl mx-auto'>{children}</main>
 					<Footer />
 				</ReduxProvider>
 			</body>
