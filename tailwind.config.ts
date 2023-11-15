@@ -38,6 +38,9 @@ module.exports = {
 				min: '1025px',
 				max: '1280px',
 			},
+			'_desktop-md': {
+				min: '1281px',
+			},
 		},
 		fontSize: {
 			xs: '0.75rem',

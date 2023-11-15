@@ -7,6 +7,7 @@ import '@/styles/globals.css'
 import { IBM_Plex_Sans } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
+import Footer from '@/components/shared/Footer'
 import TopNav from '@/components/shared/TopNav'
 
 const fontIbmPlexSans = IBM_Plex_Sans({
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 					{/* navbar / topbar */}
 					<TopNav />
 					<main>{children}</main>
+					<Footer />
 				</ReduxProvider>
 			</body>
 		</html>
