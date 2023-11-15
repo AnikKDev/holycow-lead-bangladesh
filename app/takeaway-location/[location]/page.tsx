@@ -1,5 +1,11 @@
+import CoverPhoto from '@/components/menu-page/cover-photo'
+
 const TakeawayLocationMenuPage = () => {
-	return <div>TakeawayLocationMenuPage</div>
+	return (
+		<>
+			<CoverPhoto />
+		</>
+	)
 }
 
 export default TakeawayLocationMenuPage
