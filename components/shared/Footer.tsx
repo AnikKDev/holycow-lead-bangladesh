@@ -1,6 +1,7 @@
 import React from 'react'
 
 import FooterAbout from './FooterComponents/FooterAbout'
+import FooterCopyrights from './FooterComponents/FooterCopyrights'
 import FooterInsta from './FooterComponents/FooterInsta'
 import FooterLocations from './FooterComponents/FooterLocations'
 import FooterLogoSection from './FooterComponents/FooterLogoSection'
@@ -16,6 +17,9 @@ export default function Footer({}: Props) {
 				<FooterAbout />
 				<FooterInsta />
 			</div>
+			{/* copyrights */}
+
+			<FooterCopyrights />
 		</footer>
 	)
 }
