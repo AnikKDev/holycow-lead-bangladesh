@@ -1,9 +1,6 @@
 import AboutLocation from '@/components/menu-page/about-location'
 import CoverPhoto from '@/components/menu-page/cover-photo'
-import InformationSection from '@/components/menu-page/location-detail/information-section'
-import MenuContainer from '@/components/menu-page/main-menu/menu-container'
-import MenuNavbar from '@/components/menu-page/menu-navbar'
-import AllReviews from '@/components/menu-page/reviews/all-reviews'
+import MenuAndAllBottomSections from '@/components/menu-page/menu-and-bottom-sections'
 
 const TakeawayLocationMenuPage = () => {
 	return (
@@ -14,20 +11,7 @@ const TakeawayLocationMenuPage = () => {
 			<div className='mx-auto max-w-[1200px]'>
 				<AboutLocation />
 			</div>
-			<div className='w-full border-b border-border'>
-				<div className='mx-auto max-w-[1200px] '>
-					<MenuNavbar />
-				</div>
-			</div>
-			<div className='mx-auto max-w-[1200px]'>
-				<MenuContainer />
-			</div>
-			<div className='mx-auto max-w-[1200px]'>
-				<InformationSection />
-			</div>
-			<div className='mx-auto max-w-[1200px]'>
-				<AllReviews />
-			</div>
+			<MenuAndAllBottomSections />
 		</div>
 	)
 }
