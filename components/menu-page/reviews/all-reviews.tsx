@@ -1,10 +1,12 @@
+import { Button } from '@/components/ui/button'
+
 import { allReview } from './data'
 import ReviewItem from './review-item'
 import ReviewStars from './review-stars'
 
 const AllReviews = () => {
 	return (
-		<div className='container px-7 py-7'>
+		<div className='container px-7 py-7' id='reviews'>
 			<div className='flex flex-col gap-7'>
 				<div className='border-b border-border pb-4'>
 					<div className='mx-auto flex max-w-[956px] flex-col  gap-2.5'>
@@ -17,6 +19,11 @@ const AllReviews = () => {
 					{allReview.map((review) => (
 						<ReviewItem review={review} />
 					))}
+				</div>
+				<div className='self-center'>
+					<Button variant='outline' className='rounded-full text-sm'>
+						View all reviews
+					</Button>
 				</div>
 			</div>
 		</div>

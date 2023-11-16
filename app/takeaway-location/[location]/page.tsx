@@ -7,7 +7,7 @@ import AllReviews from '@/components/menu-page/reviews/all-reviews'
 
 const TakeawayLocationMenuPage = () => {
 	return (
-		<div className=''>
+		<div id='menu'>
 			<div className='mx-auto max-w-[1200px]'>
 				<CoverPhoto />
 			</div>
