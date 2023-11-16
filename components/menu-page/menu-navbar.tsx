@@ -24,7 +24,7 @@ export const menuNavItems = [
 const MenuNavbar = () => {
 	const [activeMenu, setActiveMenu] = useState('menu')
 	return (
-		<div className='mt-5 w-full border-b border-border pb-2.5'>
+		<div className='w-full py-3'>
 			<div className='container flex items-center justify-between'>
 				<nav className='flex items-center gap-5'>
 					{menuNavItems.map((item) => {
@@ -34,6 +34,7 @@ const MenuNavbar = () => {
 									onClick={() => setActiveMenu(item.name.toLowerCase())}
 									href={`#${item.name.toLowerCase()}`}
 									className={cn(
+										'text-base font-medium',
 										activeMenu == item.name.toLowerCase()
 											? 'font-medium underline decoration-primary decoration-2 underline-offset-4'
 											: ''

@@ -53,13 +53,24 @@ module.exports = {
 		},
 		container: {
 			center: true,
-			padding: '2rem',
+			padding: {
+				DEFAULT: '1rem',
+				sm: '2rem',
+				lg: '2rem',
+				xl: '2rem',
+				'2xl': '2rem',
+			},
 			screens: {
+				xl: '1350px',
 				'2xl': '1400px',
 			},
 		},
 
 		extend: {
+			gridTemplateColumns: {
+				// Simple 16 column grid
+				16: 'repeat(16, minmax(0, 1fr))',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -115,7 +126,7 @@ module.exports = {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 			},
 			fontFamily: {
-				ibm_plex_sans: ['var(--font-ibm_plex_sans)'],
+				open_sans: ['var(--font-open_sans)'],
 			},
 		},
 	},

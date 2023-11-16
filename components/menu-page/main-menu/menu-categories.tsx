@@ -32,9 +32,9 @@ const CategoryItem = ({ idx, category, activeCategory, setActiveCategory }) => {
 				<button
 					onClick={() => setActiveCategory(category)}
 					className={cn(
-						'-ml-2 block w-full items-center justify-center whitespace-nowrap  rounded-md px-1 py-1.5 pl-2   text-left  ring-offset-background transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+						'-ml-2 block w-full items-center justify-center whitespace-nowrap rounded-md  px-1 py-1.5 pl-2 text-left text-base  text-[#6b6b83] ring-offset-background transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
 						activeCategory === category
-							? 'rounded-sm bg-primary/25 font-medium'
+							? 'rounded-sm bg-primary/25 font-medium text-foreground'
 							: ''
 					)}
 				>

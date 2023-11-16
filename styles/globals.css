@@ -42,7 +42,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-ibm_plex_sans;
+    @apply bg-background text-foreground font-open_sans;
   }
 }
 
