@@ -12,3 +12,8 @@
   width: 100%;
   padding-top: 35px;
 }
+
+.translateZ-class {
+  /* transform: translateZ(0); */
+  -webkit-transform: translateZ(0);
+}

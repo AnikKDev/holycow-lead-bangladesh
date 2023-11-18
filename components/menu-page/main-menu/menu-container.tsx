@@ -34,7 +34,7 @@ const MenuContainer = ({
 	}, [isInformationVisible, sidebarRef])
 
 	return (
-		<div className=' container'>
+		<div className='container'>
 			<div className='flex flex-row'>
 				{/* menu categories */}
 				<div className='relative z-[unset] -ml-2 mr-4 flex min-w-[190px] flex-1'>
