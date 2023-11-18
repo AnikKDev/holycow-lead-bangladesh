@@ -43,19 +43,7 @@ export function MenuItemModal({
 							<DialogDescription>
 								Homemade cottage cheese marinated with our own special spices,
 								slowly cooked with green peppers and onions in the tandoor and
-								cooled in a special medium spicy sauce. (Recommended)Homemade
-								cottage cheese marinated with our own special spices, slowly
-								cooked with green peppers and onions in the tandoor and cooled
-								in a special medium spicy sauce. (Recommended)Homemade cottage
-								cheese marinated with our own special spices, slowly cooked with
-								green peppers and onions in the tandoor and cooled in a special
-								medium spicy sauce. (Recommended)Homemade cottage cheese
-								marinated with our own special spices, slowly cooked with green
-								peppers and onions in the tandoor and cooled in a special medium
-								spicy sauce. (Recommended)Homemade cottage cheese marinated with
-								our own special spices, slowly cooked with green peppers and
-								onions in the tandoor and cooled in a special medium spicy
-								sauce. (Recommended)
+								cooled in a special medium spicy sauce. (Recommended)
 							</DialogDescription>
 						</div>
 					</DialogHeader>
