@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from 'react'
+import { useParams, useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 import {
 	Sheet,
-	SheetClose,
 	SheetContent,
 	SheetFooter,
 	SheetHeader,
@@ -19,6 +19,9 @@ const CartSidebar = ({
 	showCartSidebar: boolean
 	setShowCartSidebar: Dispatch<SetStateAction<boolean>>
 }) => {
+	const router = useRouter()
+	const params = useParams()
+
 	return (
 		<Sheet open={showCartSidebar} onOpenChange={setShowCartSidebar}>
 			<SheetContent className='flex h-full w-[420px] flex-col flex-nowrap gap-0 px-0 py-3 mobile-sm:w-full '>
@@ -37,15 +40,18 @@ const CartSidebar = ({
 						<h3 className='text-base font-semibold'>Subtotal:</h3>
 						<h3 className='text-base font-semibold'>32.09</h3>
 					</div>
-					<SheetClose asChild>
+					<div className='w-full'>
 						<Button
 							size='default'
 							type='button'
-							className=' font-medium uppercase'
+							className=' w-full font-medium uppercase'
+							onClick={() => {
+								router.push(`/takeaway-location/${params.location}/checkout`)
+							}}
 						>
 							Go to checkout
 						</Button>
-					</SheetClose>
+					</div>
 				</SheetFooter>
 			</SheetContent>
 		</Sheet>

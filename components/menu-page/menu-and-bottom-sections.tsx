@@ -64,6 +64,7 @@ const MenuAndAllBottomSections = () => {
 				</div>
 				{!targetItemEntry?.isIntersecting && (
 					<div className='opacity-0'>
+						{/* navbar placeholder */}
 						<MenuNavbar />
 					</div>
 				)}
