@@ -1,7 +1,11 @@
+'use client'
+
+import DeliveryTab from './delivery/delivery-tab'
+
 const CheckoutRightSide = () => {
 	return (
-		<div>
-			<h1>right</h1>
+		<div className='pt-6'>
+			<DeliveryTab />
 		</div>
 	)
 }
