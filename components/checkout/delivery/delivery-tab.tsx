@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 let tabs = [
@@ -6,24 +5,22 @@ let tabs = [
 	{ id: 'collection', label: 'Collection' },
 ]
 
-function DeliveryTab() {
-	let [activeTab, setActiveTab] = useState(tabs[0].id)
-
+function DeliveryTab({ currentTab, setCurrentTab }) {
 	return (
 		<div className='flex items-center justify-center'>
 			<div className='flex w-max flex-row items-center space-x-1 rounded-full bg-[#E9E2D2] p-1.5 '>
 				{tabs.map((tab) => (
 					<button
 						key={tab.id}
-						onClick={() => setActiveTab(tab.id)}
+						onClick={() => setCurrentTab(tab.id)}
 						className={`${
-							activeTab === tab.id ? '' : 'hover:text-black'
+							currentTab === tab.id ? '' : 'hover:text-black'
 						} relative rounded-full px-10 py-1.5 text-[15px] font-medium text-foreground outline-black transition focus-visible:outline-4`}
 						style={{
 							WebkitTapHighlightColor: 'transparent',
 						}}
 					>
-						{activeTab === tab.id && (
+						{currentTab === tab.id && (
 							<motion.span
 								layoutId='bubble'
 								className='absolute inset-0 z-10 bg-foreground mix-blend-difference'
