@@ -19,7 +19,7 @@ const DeliveryTimeArea = () => {
 						<fieldset className='flex flex-row items-center gap-4'>
 							<legend className='sr-only'>Delivery</legend>
 
-							<div className='basis-2/5'>
+							<div className='basis-[35%]'>
 								<input
 									type='radio'
 									name='DeliveryOption'
@@ -37,7 +37,7 @@ const DeliveryTimeArea = () => {
 									className='block cursor-pointer rounded-lg border border-border bg-white px-2.5 py-2 text-sm font-medium shadow-sm hover:border-gray-400 peer-checked:border-foreground peer-checked:ring-1 peer-checked:ring-foreground'
 								>
 									<div className='flex items-center justify-between'>
-										<p className='whitespace-nowrap text-base font-semibold text-foreground'>
+										<p className='whitespace-nowrap text-sm font-semibold text-foreground'>
 											Standard
 										</p>
 
@@ -55,13 +55,13 @@ const DeliveryTimeArea = () => {
 										</svg>
 									</div>
 
-									<p className='mt-1 text-sm text-foreground'>
+									<p className='mt-1 text-xs font-medium text-foreground'>
 										As soon as possible
 									</p>
 								</label>
 							</div>
 
-							<div className='basis-[45%]'>
+							<div className='basis-[40%]'>
 								<input
 									type='radio'
 									name='DeliveryOption'
@@ -79,7 +79,7 @@ const DeliveryTimeArea = () => {
 									className='block cursor-pointer rounded-lg border border-border bg-white px-2.5 py-2 text-sm font-medium shadow-sm hover:border-gray-400 peer-checked:border-foreground  peer-checked:ring-1 peer-checked:ring-foreground'
 								>
 									<div className='flex items-center justify-between'>
-										<p className='whitespace-nowrap text-base font-semibold text-foreground'>
+										<p className='whitespace-nowrap text-sm font-semibold text-foreground'>
 											Schedule for later
 										</p>
 
@@ -97,7 +97,9 @@ const DeliveryTimeArea = () => {
 										</svg>
 									</div>
 
-									<p className='mt-1 text-sm text-foreground'>Choose a time</p>
+									<p className='mt-1 text-xs font-medium text-foreground'>
+										Choose a time
+									</p>
 								</label>
 							</div>
 						</fieldset>
