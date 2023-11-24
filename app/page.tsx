@@ -1,6 +1,6 @@
 import React from 'react'
 
-import HomeBanner from '../components/home-components/HomeBanner'
+import HomeBanner from '../components/home-components/home-banner'
 
 type Props = {}
 

@@ -1,6 +1,10 @@
 import React from 'react'
+import home_banner from '@/assets/homepage/home_banner.png'
 
 import { Button } from '@/components/ui/button'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
+
+import RestaurantsDialogContents from './restaurant-dialog-contents'
 
 type Props = {}
 
@@ -16,13 +20,19 @@ export default function HomeBanner({}: Props) {
 					>
 						Takeway
 					</Button>
-					<Button
-						size='lg'
-						className='mx-3 w-72 rounded-3xl text-xl transition-all hover:bg-white hover:text-primary'
-						variant='default'
-					>
-						Restaurants
-					</Button>
+					<Dialog>
+						<DialogTrigger asChild>
+							<Button
+								size='lg'
+								className='mx-3 w-72 rounded-3xl text-xl transition-all hover:bg-white hover:text-primary'
+								variant='default'
+							>
+								Restaurants
+							</Button>
+						</DialogTrigger>
+						{/* restaurant dialog contents */}
+						<RestaurantsDialogContents />
+					</Dialog>
 				</div>
 			</div>
 		</div>
