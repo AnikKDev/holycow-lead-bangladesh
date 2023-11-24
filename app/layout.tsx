@@ -4,15 +4,15 @@ import { siteConfig } from '@/config/site'
 
 import '@/styles/globals.css'
 
-import { IBM_Plex_Sans } from 'next/font/google'
+import { Open_Sans } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
 
-const fontIbmPlexSans = IBM_Plex_Sans({
+const fontOpenSans = Open_Sans({
 	subsets: ['latin'],
 	display: 'swap',
-	variable: '--font-ibm_plex_sans',
-	weight: ['100', '300', '400', '500', '700'],
+	variable: '--font-open_sans',
+	weight: ['300', '400', '500', '600', '700', '800'],
 })
 
 export const metadata = {
@@ -63,7 +63,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html
-			className={cn(fontIbmPlexSans.variable)}
+			className={cn(fontOpenSans.variable)}
 			lang='en'
 			suppressHydrationWarning
 		>
