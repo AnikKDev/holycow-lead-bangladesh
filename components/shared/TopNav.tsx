@@ -10,9 +10,9 @@ type Props = {}
 
 export default function TopNav({}: Props) {
 	return (
-		<nav className='flex items-center justify-between px-20 py-5'>
+		<nav className='container flex items-center justify-between py-5'>
 			<div>
-				<Image src={nav_logo} height={150} width={150} alt='holy cow logo' />
+				<Image src={nav_logo} className='h-auto w-24' alt='holy cow logo' />
 			</div>
 			{/* nav options */}
 			<div className='flex items-center'>
