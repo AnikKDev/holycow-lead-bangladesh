@@ -42,7 +42,7 @@ const PromoCodeApply = () => {
 					) : (
 						<div className=''>
 							<Badge variant='outline' className='h-[40px] px-4 py-2 text-sm'>
-								Applied "SAVE%"
+								Applied "SAVE5"
 							</Badge>
 						</div>
 					)}
