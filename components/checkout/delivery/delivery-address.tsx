@@ -4,9 +4,12 @@ import { GoHome } from 'react-icons/go'
 import { Button } from '@/components/ui/button'
 import { CreateAddressModal } from '@/components/addresses/create-address-modal'
 
+import { ShowAddressesModal } from './show-addresses-modal'
+
 const DeliveryAddressArea = () => {
 	const [isSelected, setIsSelected] = useState(false)
 	const [showModal, setShowModal] = useState(false)
+	const [showAddressModal, setShowAddressModal] = useState(false)
 	return (
 		<>
 			<div className='flex items-center justify-between'>
@@ -37,15 +40,23 @@ const DeliveryAddressArea = () => {
 						className='h-7 rounded-full px-5'
 						size='sm'
 						onClick={() => {
-							setShowModal(true)
+							if (isSelected) {
+								setShowAddressModal(true)
+							} else {
+								setShowModal(true)
+							}
 						}}
 					>
-						Add
+						{isSelected ? 'Edit' : 'Add'}
 					</Button>
 				</div>
 			</div>
 
 			<CreateAddressModal showModal={showModal} setShowModal={setShowModal} />
+			<ShowAddressesModal
+				showModal={showAddressModal}
+				setShowModal={setShowAddressModal}
+			/>
 		</>
 	)
 }
