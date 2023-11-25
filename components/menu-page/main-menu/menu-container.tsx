@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 
 import MenuCategories from './menu-categories'
 import MenuItems from './menu-items'
@@ -14,24 +14,24 @@ const MenuContainer = ({
 }) => {
 	const sidebarRef = useRef<HTMLDivElement>(null)
 
-	useEffect(() => {
-		if (!isTargetItemVisible && sidebarRef?.current) {
-			sidebarRef.current.classList.remove('absolute__sidebar')
-			sidebarRef.current.classList.add('fixed__sidebar')
-		} else {
-			sidebarRef.current.classList.remove('fixed__sidebar')
-		}
-	}, [isTargetItemVisible, sidebarRef])
+	// useEffect(() => {
+	// 	if (!isTargetItemVisible && sidebarRef?.current) {
+	// 		sidebarRef.current.classList.remove('absolute__sidebar')
+	// 		sidebarRef.current.classList.add('fixed__sidebar')
+	// 	} else {
+	// 		sidebarRef.current.classList.remove('fixed__sidebar')
+	// 	}
+	// }, [isTargetItemVisible, sidebarRef])
 
-	useEffect(() => {
-		if (isInformationVisible && sidebarRef?.current) {
-			sidebarRef.current.classList.remove('fixed__sidebar')
-			sidebarRef.current.classList.add('absolute__sidebar')
-		} else {
-			sidebarRef.current.classList.remove('absolute__sidebar')
-			sidebarRef.current.classList.add('fixed__sidebar')
-		}
-	}, [isInformationVisible, sidebarRef])
+	// useEffect(() => {
+	// 	if (isInformationVisible && sidebarRef?.current) {
+	// 		sidebarRef.current.classList.remove('fixed__sidebar')
+	// 		sidebarRef.current.classList.add('absolute__sidebar')
+	// 	} else {
+	// 		sidebarRef.current.classList.remove('absolute__sidebar')
+	// 		sidebarRef.current.classList.add('fixed__sidebar')
+	// 	}
+	// }, [isInformationVisible, sidebarRef])
 
 	return (
 		<div className='container'>
@@ -40,7 +40,7 @@ const MenuContainer = ({
 				<div className='relative z-[unset] -ml-2 mr-4 flex min-w-[190px] flex-1'>
 					<div
 						ref={sidebarRef}
-						className='relative flex h-[calc(100vh-65px)] flex-1 items-start overflow-y-auto overflow-x-hidden bg-transparent p-0 shadow-none'
+						className='sticky__sidebar flex h-[calc(100vh-65px)] flex-1 items-start overflow-y-auto overflow-x-hidden bg-transparent p-0 shadow-none'
 					>
 						<MenuCategories />
 					</div>

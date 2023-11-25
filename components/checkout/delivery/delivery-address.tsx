@@ -22,7 +22,9 @@ const DeliveryAddressArea = () => {
 								<h3 className='text-base font-medium'>
 									Home
 									<br />
-									London N6 5BA, UK
+									<span className='text-sm text-[#494949]'>
+										London N6 5BA, UK
+									</span>
 								</h3>
 							</div>
 						) : (

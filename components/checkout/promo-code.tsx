@@ -6,7 +6,7 @@ import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 
 const PromoCodeApply = () => {
-	const [isApplied, setIsApplied] = useState(true)
+	const [isApplied, setIsApplied] = useState(false)
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		setIsApplied(true)

@@ -1,8 +1,15 @@
+'use-client'
+
 import { useState } from 'react'
+import DatePicker from 'react-datepicker'
 import { GoClock } from 'react-icons/go'
+
+import 'react-datepicker/dist/react-datepicker.css'
 
 const DeliveryTimeArea = () => {
 	const [selectedTime, setSelectedTime] = useState('As soon as possible')
+	const [selectedDateTime, setSelectedDateTime] = useState(null)
+
 	return (
 		<div>
 			<div className='grid grid-cols-[auto,1fr] gap-2.5'>
@@ -37,7 +44,7 @@ const DeliveryTimeArea = () => {
 									className='block cursor-pointer rounded-lg border border-border bg-white px-2.5 py-2 text-sm font-medium shadow-sm hover:border-gray-400 peer-checked:border-foreground peer-checked:ring-1 peer-checked:ring-foreground'
 								>
 									<div className='flex items-center justify-between'>
-										<p className='whitespace-nowrap text-sm font-semibold text-foreground'>
+										<p className='whitespace-nowrap text-base font-semibold text-foreground'>
 											Standard
 										</p>
 
@@ -55,13 +62,19 @@ const DeliveryTimeArea = () => {
 										</svg>
 									</div>
 
-									<p className='mt-1 text-xs font-medium text-foreground'>
+									<p className='mt-1 text-sm font-medium text-foreground'>
 										As soon as possible
 									</p>
 								</label>
 							</div>
 
-							<div className='basis-[40%]'>
+							<div className='relative basis-[43%]'>
+								<DatePicker
+									selected={selectedDateTime}
+									onChange={(date) => setSelectedDateTime(date)}
+									showTimeSelect
+									dateFormat='Pp'
+								/>
 								<input
 									type='radio'
 									name='DeliveryOption'
@@ -79,7 +92,7 @@ const DeliveryTimeArea = () => {
 									className='block cursor-pointer rounded-lg border border-border bg-white px-2.5 py-2 text-sm font-medium shadow-sm hover:border-gray-400 peer-checked:border-foreground  peer-checked:ring-1 peer-checked:ring-foreground'
 								>
 									<div className='flex items-center justify-between'>
-										<p className='whitespace-nowrap text-sm font-semibold text-foreground'>
+										<p className='whitespace-nowrap text-base font-semibold text-foreground'>
 											Schedule for later
 										</p>
 
@@ -97,7 +110,7 @@ const DeliveryTimeArea = () => {
 										</svg>
 									</div>
 
-									<p className='mt-1 text-xs font-medium text-foreground'>
+									<p className='mt-1 text-sm font-medium text-foreground'>
 										Choose a time
 									</p>
 								</label>
