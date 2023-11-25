@@ -1,4 +1,3 @@
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	darkMode: ['class'],
@@ -38,6 +37,9 @@ module.exports = {
 			'_desktop-sm': {
 				min: '1025px',
 				max: '1280px',
+			},
+			'_desktop-md': {
+				min: '1280px',
 			},
 		},
 		fontSize: {
