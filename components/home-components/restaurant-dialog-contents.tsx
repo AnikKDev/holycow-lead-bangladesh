@@ -49,43 +49,34 @@ export default function RestaurantsDialogContents({}: Props) {
 		console.log(data)
 	}
 	return (
-		<DialogContent className='sm:max-w-[425px]'>
-			{/* dropdown selector */}
-			<Form {...form}>
-				<form
-					onSubmit={form.handleSubmit(onSubmit)}
-					className='w-full space-y-6'
-				>
-					<FormField
-						control={form.control}
-						name='locations'
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel className='text-2xl'>
-									Select the nearest takeaway location
-								</FormLabel>
-								<Select
-									onValueChange={field.onChange}
-									defaultValue={field.value}
-								>
-									<FormControl>
-										<SelectTrigger>
-											<SelectValue placeholder='Select takeaway location' />
-										</SelectTrigger>
-									</FormControl>
-									<SelectContent>
-										<SelectItem value='angel'>Angel</SelectItem>
-										<SelectItem value='archway'>Archway</SelectItem>
-										<SelectItem value='balham'>Balham</SelectItem>
-										<SelectItem value='battersea'>Battersea</SelectItem>
-									</SelectContent>
-								</Select>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-				</form>
-			</Form>
-		</DialogContent>
+		<Form {...form}>
+			<form onSubmit={form.handleSubmit(onSubmit)} className='w-full space-y-6'>
+				<FormField
+					control={form.control}
+					name='locations'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel className='text-2xl'>
+								Select the nearest takeaway location
+							</FormLabel>
+							<Select onValueChange={field.onChange} defaultValue={field.value}>
+								<FormControl>
+									<SelectTrigger>
+										<SelectValue placeholder='Select takeaway location' />
+									</SelectTrigger>
+								</FormControl>
+								<SelectContent>
+									<SelectItem value='angel'>Angel</SelectItem>
+									<SelectItem value='archway'>Archway</SelectItem>
+									<SelectItem value='balham'>Balham</SelectItem>
+									<SelectItem value='battersea'>Battersea</SelectItem>
+								</SelectContent>
+							</Select>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+			</form>
+		</Form>
 	)
 }

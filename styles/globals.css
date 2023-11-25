@@ -110,3 +110,7 @@ select:focus::ms-value {
 select::ms-expand {
 	opacity: 0;
 }
+
+.home-banner_background {
+	background-image: url('../assets/homepage/home_banner.png');
+}

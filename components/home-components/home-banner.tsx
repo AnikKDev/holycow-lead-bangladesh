@@ -2,8 +2,27 @@ import React from 'react'
 import home_banner from '@/assets/homepage/home_banner.png'
 
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogTrigger } from '@/components/ui/dialog'
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectLabel,
+	SelectTrigger,
+	SelectValue,
+} from '../ui/select'
 import RestaurantsDialogContents from './restaurant-dialog-contents'
 
 type Props = {}
@@ -11,7 +30,7 @@ type Props = {}
 export default function HomeBanner({}: Props) {
 	return (
 		<div className='flex h-screen flex-col items-center justify-center'>
-			<div className="h-screen w-full bg-[url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center">
+			<div className='home-banner_background h-screen w-full  bg-cover bg-center'>
 				<div className='flex h-full w-full items-center justify-center  backdrop-blur-sm backdrop-brightness-50 mobile-sm:flex-col'>
 					<Button
 						size='lg'
@@ -31,7 +50,9 @@ export default function HomeBanner({}: Props) {
 							</Button>
 						</DialogTrigger>
 						{/* restaurant dialog contents */}
-						<RestaurantsDialogContents />
+						<DialogContent className='sm:max-w-[425px]'>
+							<RestaurantsDialogContents />
+						</DialogContent>
 					</Dialog>
 				</div>
 			</div>
