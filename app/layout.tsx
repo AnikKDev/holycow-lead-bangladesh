@@ -4,15 +4,17 @@ import { siteConfig } from '@/config/site'
 
 import '@/styles/globals.css'
 
-import { Open_Sans } from 'next/font/google'
+import { IBM_Plex_Sans } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
+import Footer from '@/components/shared/Footer'
+import TopNav from '@/components/shared/TopNav'
 
-const fontOpenSans = Open_Sans({
+const fontIbmPlexSans = IBM_Plex_Sans({
 	subsets: ['latin'],
 	display: 'swap',
-	variable: '--font-open_sans',
-	weight: ['300', '400', '500', '600', '700', '800'],
+	variable: '--font-ibm_plex_sans',
+	weight: ['100', '300', '400', '500', '700'],
 })
 
 export const metadata = {
@@ -63,14 +65,17 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html
-			className={cn(fontOpenSans.variable)}
+			className={cn(fontIbmPlexSans.variable)}
 			lang='en'
 			suppressHydrationWarning
 		>
 			<head />
 			<body className={cn('min-h-screen bg-background antialiased')}>
 				<ReduxProvider>
-					<main>{children}</main>
+					{/* navbar / topbar */}
+					<TopNav />
+					<main className='_desktop-lg:max-w-7xl mx-auto'>{children}</main>
+					<Footer />
 				</ReduxProvider>
 			</body>
 		</html>
