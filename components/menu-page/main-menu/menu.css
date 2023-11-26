@@ -1,0 +1,27 @@
+.fixed__sidebar {
+  position: fixed;
+  top: 65px;
+  z-index: 1039;
+  width: 190px;
+  height: calc(100vh - 65px);
+}
+
+.sticky__sidebar {
+  position: sticky;
+  top: 65px;
+  z-index: 1039;
+  width: 190px;
+  height: calc(100vh - 65px);
+}
+
+.absolute__sidebar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 35px;
+}
+
+.translateZ-class {
+  /* transform: translateZ(0); */
+  -webkit-transform: translateZ(0);
+}
