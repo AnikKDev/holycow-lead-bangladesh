@@ -33,14 +33,16 @@ const MenuAndAllBottomSections = () => {
 		) {
 			console.log('intersection false', targetItemEntry)
 
-			menuRef.current.style.position = 'fixed'
-			menuRef.current.style.zIndex = '1039'
+			// menuRef.current.style.position = 'fixed'
+			menuRef.current.style.zIndex = '1060'
 			menuRef.current.style.top = '0'
+			menuRef.current.style.opacity = '1'
 		} else {
 			if (targetItemEntry?.isIntersecting && menuRef?.current) {
-				menuRef.current.style.position = 'relative'
+				// menuRef.current.style.position = 'relative'
 				menuRef.current.style.zIndex = '10'
-				menuRef.current.style.top = 'unset'
+				menuRef.current.style.top = '-65'
+				menuRef.current.style.opacity = '0'
 			}
 		}
 	}, [targetRef, menuRef, targetItemEntry])
@@ -59,11 +61,17 @@ const MenuAndAllBottomSections = () => {
 				className='m-0 w-full border-b-2 border-transparent p-0'
 			></div>
 			<div>
-				<div ref={menuRef} className='translateZ-class w-full bg-background'>
+				<div
+					// ref={menuRef}
+					className='translateZ-class h-[65px] w-full bg-background'
+				>
 					<MenuNavbar />
 				</div>
 				{!targetItemEntry?.isIntersecting && (
-					<div className='opacity-0'>
+					<div
+						ref={menuRef}
+						className='fixed -top-[65] z-[99999999999] h-[65px] w-full bg-background opacity-0'
+					>
 						{/* navbar placeholder */}
 						<MenuNavbar />
 					</div>

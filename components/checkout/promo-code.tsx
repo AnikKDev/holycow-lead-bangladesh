@@ -6,7 +6,7 @@ import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 
 const PromoCodeApply = () => {
-	const [isApplied, setIsApplied] = useState(true)
+	const [isApplied, setIsApplied] = useState(false)
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		setIsApplied(true)
@@ -42,7 +42,7 @@ const PromoCodeApply = () => {
 					) : (
 						<div className=''>
 							<Badge variant='outline' className='h-[40px] px-4 py-2 text-sm'>
-								Applied "SAVE%"
+								Applied "SAVE5"
 							</Badge>
 						</div>
 					)}
