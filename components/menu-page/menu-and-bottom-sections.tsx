@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 
 import useIntersectionObserver from '@/hooks/useIntersectionObserer'
 
@@ -8,6 +8,8 @@ import InformationSection from './location-detail/information-section'
 import MenuContainer from './main-menu/menu-container'
 
 import './main-menu/menu.css'
+
+import { cn } from '@/lib/utils'
 
 import GalleryPhotos from './gallery-lightbox/gallery-photos'
 import MenuNavbar from './menu-navbar'
@@ -58,7 +60,12 @@ const MenuAndAllBottomSections = ({
 
 	const isTargetItemVisible = !!targetItemEntry?.isIntersecting
 	const isInformationVisible = !!informationEntry?.isIntersecting
-
+	const sectionsRef = useRef<HTMLDivElement[]>([])
+	const refCallback = useCallback((element) => {
+		if (element) {
+			sectionsRef.current.push(element)
+		}
+	}, [])
 	return (
 		<div>
 			<div
@@ -68,9 +75,9 @@ const MenuAndAllBottomSections = ({
 			<div>
 				<div
 					// ref={menuRef}
-					className='translateZ-class h-[65px] w-full bg-background'
+					className={cn('translateZ-class h-[65px] w-full bg-background')}
 				>
-					<MenuNavbar isRestaurant={isRestaurant} />
+					<MenuNavbar sectionsRef={sectionsRef} isRestaurant={isRestaurant} />
 				</div>
 				{!targetItemEntry?.isIntersecting && (
 					<div
@@ -78,12 +85,12 @@ const MenuAndAllBottomSections = ({
 						className='fixed -top-[65] z-[99999999999] h-[65px] w-full bg-background opacity-0'
 					>
 						{/* navbar placeholder */}
-						<MenuNavbar isRestaurant={isRestaurant} />
+						<MenuNavbar sectionsRef={sectionsRef} isRestaurant={isRestaurant} />
 					</div>
 				)}
 			</div>
 
-			<div className='mx-auto max-w-[1200px]'>
+			<div className='mx-auto max-w-[1200px]' ref={refCallback} id='menu'>
 				<MenuContainer
 					isRestaurant={isRestaurant}
 					isTargetItemVisible={isTargetItemVisible}
@@ -92,13 +99,23 @@ const MenuAndAllBottomSections = ({
 			</div>
 
 			<div ref={informationRef}>
-				<div className='mx-auto max-w-[1200px]'>
+				<div
+					className='mx-auto max-w-[1200px]'
+					id='information'
+					ref={refCallback}
+				>
 					<InformationSection />
 				</div>
-				<div className='mx-auto max-w-[1200px]'>
-					<GalleryPhotos />
-				</div>
-				<div className='mx-auto max-w-[1200px]'>
+				{isRestaurant && (
+					<div
+						className='mx-auto max-w-[1200px]'
+						id='gallery'
+						ref={refCallback}
+					>
+						<GalleryPhotos />
+					</div>
+				)}
+				<div className='mx-auto max-w-[1200px]' id='reviews' ref={refCallback}>
 					<AllReviews />
 				</div>
 			</div>

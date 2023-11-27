@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect } from 'react'
+import { MutableRefObject, useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import { cn } from '@/lib/utils'
 
@@ -53,10 +53,21 @@ export const getMenuItems = (isRestaurant = false) => {
 	}
 }
 
-const MenuNavbar = ({ isRestaurant }: { isRestaurant?: boolean }) => {
+const MenuNavbar = ({
+	isRestaurant,
+	sectionsRef,
+}: {
+	isRestaurant?: boolean
+	sectionsRef: MutableRefObject<HTMLDivElement[]>
+}) => {
+	const pathname = usePathname()
 	const searchParams = useSearchParams()
+	const router = useRouter()
+	const [visibleSection, setVisibleSection] = useState()
+
 	const currentTab = searchParams?.get('tab')
 	useEffect(() => {
+		console.log(currentTab)
 		if (currentTab) {
 			const elem = document.getElementById(currentTab)
 			if (elem) {
@@ -64,6 +75,51 @@ const MenuNavbar = ({ isRestaurant }: { isRestaurant?: boolean }) => {
 			}
 		}
 	}, [currentTab])
+
+	useEffect(() => {
+		const options = {
+			threshold: 0.1,
+		}
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					// searchParams.set()
+					const visibleSection = entry.target.getAttribute('id')
+					console.log({ currentTab, visibleSection })
+					if (currentTab === visibleSection) {
+						// router.push(`?tab=${visibleSection}`, {
+						// 	scroll: false,
+						// })
+					}
+				}
+			})
+		}, options)
+
+		// const targetSections = document.querySelectorAll("section");
+		sectionsRef?.current.forEach((section) => {
+			console.log({ section })
+			observer.observe(section)
+		})
+
+		// To disable the entire IntersectionObserver
+		return () => {
+			observer.disconnect()
+		}
+	}, [])
+
+	// Get a new searchParams string by merging the current
+	// searchParams with a provided key/value pair
+	const createQueryString = useCallback(
+		(name: string, value: string) => {
+			const params = new URLSearchParams(searchParams)
+			params.set(name, value)
+
+			return params.toString()
+		},
+		[searchParams]
+	)
+
 	return (
 		<div className='w-full border-b border-border'>
 			<div className='mx-auto max-w-[1200px] '>
@@ -74,7 +130,10 @@ const MenuNavbar = ({ isRestaurant }: { isRestaurant?: boolean }) => {
 								return (
 									<div key={item.id}>
 										<Link
-											href={{ query: { tab: `${item.tab}` } }}
+											href={
+												// <pathname>?sort=desc
+												pathname + '?' + createQueryString('tab', `${item.tab}`)
+											}
 											scroll={false}
 											// onClick={() => {
 											// 	setActiveMenu(item.name.toLowerCase())
