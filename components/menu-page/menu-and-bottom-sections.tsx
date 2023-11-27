@@ -9,10 +9,15 @@ import MenuContainer from './main-menu/menu-container'
 
 import './main-menu/menu.css'
 
+import GalleryPhotos from './gallery-lightbox/gallery-photos'
 import MenuNavbar from './menu-navbar'
 import AllReviews from './reviews/all-reviews'
 
-const MenuAndAllBottomSections = () => {
+const MenuAndAllBottomSections = ({
+	isRestaurant = false,
+}: {
+	isRestaurant?: boolean
+}) => {
 	const targetRef = useRef<HTMLDivElement>(null)
 	const informationRef = useRef<HTMLDivElement>(null)
 	const menuRef = useRef<HTMLDivElement>(null)
@@ -65,7 +70,7 @@ const MenuAndAllBottomSections = () => {
 					// ref={menuRef}
 					className='translateZ-class h-[65px] w-full bg-background'
 				>
-					<MenuNavbar />
+					<MenuNavbar isRestaurant={isRestaurant} />
 				</div>
 				{!targetItemEntry?.isIntersecting && (
 					<div
@@ -73,13 +78,14 @@ const MenuAndAllBottomSections = () => {
 						className='fixed -top-[65] z-[99999999999] h-[65px] w-full bg-background opacity-0'
 					>
 						{/* navbar placeholder */}
-						<MenuNavbar />
+						<MenuNavbar isRestaurant={isRestaurant} />
 					</div>
 				)}
 			</div>
 
 			<div className='mx-auto max-w-[1200px]'>
 				<MenuContainer
+					isRestaurant={isRestaurant}
 					isTargetItemVisible={isTargetItemVisible}
 					isInformationVisible={isInformationVisible}
 				/>
@@ -88,6 +94,9 @@ const MenuAndAllBottomSections = () => {
 			<div ref={informationRef}>
 				<div className='mx-auto max-w-[1200px]'>
 					<InformationSection />
+				</div>
+				<div className='mx-auto max-w-[1200px]'>
+					<GalleryPhotos />
 				</div>
 				<div className='mx-auto max-w-[1200px]'>
 					<AllReviews />

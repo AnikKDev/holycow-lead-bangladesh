@@ -4,7 +4,10 @@ import LocationOpeningHours from './location-opening-hours'
 
 const InformationSection = () => {
 	return (
-		<div id='information' className='container mt-7 flex flex-col gap-4 py-5'>
+		<div
+			id='information'
+			className='container mt-7 flex scroll-m-16 flex-col gap-4  py-5'
+		>
 			<h1 className='text-2xl font-bold'>
 				Holycow - Archway, Fine Indian Food - Indian Takeaway in Archway, London
 			</h1>
