@@ -8,7 +8,7 @@ export type GalleryImageItem = {
 export const slides: GalleryImageItem[] = [
 	{
 		id: 1,
-		src: '/gallery1.jpg',
+		src: '/gallery1.jpeg',
 		title: 'Slide Title One',
 		description: 'Slide Description One\n\nthis is new line',
 	},
