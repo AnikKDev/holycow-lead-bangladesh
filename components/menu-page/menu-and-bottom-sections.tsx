@@ -11,7 +11,7 @@ import './main-menu/menu.css'
 
 import { cn } from '@/lib/utils'
 
-import GalleryPhotos from './gallery-lightbox/gallery-photos'
+import LightboxComp from './gallery-lightbox/lightbox'
 import MenuNavbar from './menu-navbar'
 import AllReviews from './reviews/all-reviews'
 
@@ -100,7 +100,7 @@ const MenuAndAllBottomSections = ({
 
 			<div ref={informationRef}>
 				<div
-					className='mx-auto max-w-[1200px]'
+					className='mx-auto max-w-[1200px] scroll-m-16 '
 					id='information'
 					ref={refCallback}
 				>
@@ -108,14 +108,18 @@ const MenuAndAllBottomSections = ({
 				</div>
 				{isRestaurant && (
 					<div
-						className='mx-auto max-w-[1200px]'
+						className='mx-auto max-w-[1200px] scroll-m-16 '
 						id='gallery'
 						ref={refCallback}
 					>
-						<GalleryPhotos />
+						<LightboxComp />
 					</div>
 				)}
-				<div className='mx-auto max-w-[1200px]' id='reviews' ref={refCallback}>
+				<div
+					className='mx-auto max-w-[1200px] scroll-m-16 '
+					id='reviews'
+					ref={refCallback}
+				>
 					<AllReviews />
 				</div>
 			</div>
