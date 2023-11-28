@@ -73,7 +73,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
 			<body className={cn('min-h-screen bg-background antialiased')}>
 				<ReduxProvider>
 					{/* navbar / topbar */}
-					<TopNav />
+					<div className='border border-gray-300'>
+						<TopNav />
+					</div>
 					<main className='_desktop-lg:max-w-7xl mx-auto'>{children}</main>
 					<Footer />
 				</ReduxProvider>
