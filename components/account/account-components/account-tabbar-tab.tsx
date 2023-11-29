@@ -10,29 +10,24 @@ type Props = {
 	tab: AccountTab
 }
 
-export default function AccountSidebarTab({
+export default function AccountTabbarTab({
 	tab: { name, navigateTo, info, icon },
 }: Props) {
 	const pathname = usePathname()
 	const router = useRouter()
 	return (
-		<div
+		<button
 			onClick={() => router.push(`/account${navigateTo}`)}
-			className={`flex cursor-pointer items-center space-x-4 rounded-md border p-2 ${
+			className={`me-3 flex cursor-pointer items-center justify-between  rounded-full border bg-primary p-1 px-3 text-white${
 				pathname.includes(navigateTo)
 					? 'border-primary bg-primary/20'
 					: 'border-gray-400 bg-white'
 			}`}
 		>
 			{/* icon */}
-			<div className='flex h-12 w-12 items-center justify-center rounded-md border bg-primary text-white'>
-				{/* <CgProfile className='text-3xl' /> */}
-				{icon}
-			</div>
-			<div className='capitalize'>
-				<h6 className='mb-1 text-lg font-semibold'>{name}</h6>
-				<span>{info}</span>
-			</div>
-		</div>
+			{/* <CgProfile className='me-1 text-xl' /> */}
+			{icon}
+			<h6 className='text-lg font-semibold capitalize'>{name}</h6>
+		</button>
 	)
 }
