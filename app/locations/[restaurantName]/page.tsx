@@ -9,7 +9,7 @@ const RestaurantHomePage = () => {
 				<CoverPhoto />
 			</div>
 			<div className='mx-auto max-w-[1200px]'>
-				<AboutLocation />
+				<AboutLocation isRestaurant />
 			</div>
 			<MenuAndAllBottomSections isRestaurant />
 		</div>
