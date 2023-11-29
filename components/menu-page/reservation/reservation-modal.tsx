@@ -31,11 +31,7 @@ export function ReservationModal({
 					<DialogFooter className='mt-2 flex-col gap-2 pb-4 pt-4'>
 						<div className='px-5'>
 							<div className='flex w-full items-center gap-2.5'>
-								<Button
-									variant='default'
-									size='lg'
-									className='w-full rounded-full'
-								>
+								<Button variant='default' size='lg' className='w-full'>
 									Submit
 								</Button>
 							</div>
