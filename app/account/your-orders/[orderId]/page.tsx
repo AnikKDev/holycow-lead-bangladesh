@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { Separator } from '@/components/ui/separator'
 import OrderDetailsAddress from '@/components/account/orders/order-details/order-details-address'
 import OrderDetailsEstimation from '@/components/account/orders/order-details/order-details-eta'
 import OrderDetailsPricing from '@/components/account/orders/order-details/order-details-pricing'
@@ -14,6 +15,7 @@ export default function OrderDetails({}: Props) {
 			<OrderDetailsEstimation />
 			<OrderDetailsStatus />
 			<OrderDetailsSummary />
+			<Separator orientation='horizontal' />
 			<OrderDetailsPricing />
 			<OrderDetailsAddress />
 		</section>
