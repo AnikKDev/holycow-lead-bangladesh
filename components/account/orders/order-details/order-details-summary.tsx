@@ -7,7 +7,7 @@ type Props = {}
 export default function OrderDetailsSummary({}: Props) {
 	return (
 		<div>
-			<h3 className='my-8 text-xl font-semibold'>Order Summary</h3>
+			<h3 className='my-8 text-2xl font-semibold'>Order Summary</h3>
 			<OrderDetailsSummaryItems />
 			<OrderDetailsSummaryItems />
 			<OrderDetailsSummaryItems />

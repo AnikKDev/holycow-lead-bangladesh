@@ -17,6 +17,7 @@ export default function OrderDetails({}: Props) {
 			<OrderDetailsSummary />
 			<Separator orientation='horizontal' />
 			<OrderDetailsPricing />
+			<Separator orientation='horizontal' className='my-10' />
 			<OrderDetailsAddress />
 		</section>
 	)
