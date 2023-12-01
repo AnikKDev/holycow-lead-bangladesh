@@ -6,6 +6,18 @@ type Props = {
 	status: string
 }
 
-export default function CustomBadge({}: Props) {
-	return <Badge variant='default'>Badge</Badge>
+export default function CustomBadge({ status }: Props) {
+	return (
+		<Badge
+			variant={
+				status === 'In Progress'
+					? 'inProgress'
+					: status === 'Completed'
+					  ? 'completed'
+					  : 'cancelled'
+			}
+		>
+			{status}
+		</Badge>
+	)
 }

@@ -1,15 +1,10 @@
 'use client'
 
 import React from 'react'
-import {
-	ColumnDef,
-	flexRender,
-	getCoreRowModel,
-	getPaginationRowModel,
-	useReactTable,
-} from '@tanstack/react-table'
 
+import { OrderTableColumns } from '@/types/account/account.types'
 import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 import {
 	Table,
 	TableBody,
@@ -18,94 +13,54 @@ import {
 	TableHeader,
 	TableRow,
 } from '@/components/ui/table'
+import { DUMMY_ORDERS } from '@/app/account/your-orders/page'
 
-type Props = {}
+import DatatablePagination from './data-table-pagination'
+import DataTableRow from './data-table-row'
 
-interface DataTableProps<TData, TValue> {
-	columns: ColumnDef<TData, TValue>[]
-	data: TData[]
+type Props = {
+	data: OrderTableColumns[]
 }
 
-export default function OrderDataTable<TData, TValue>({
-	columns,
-	data,
-}: DataTableProps<TData, TValue>) {
-	const table = useReactTable({
-		data,
-		columns,
-		getCoreRowModel: getCoreRowModel(),
-		getPaginationRowModel: getPaginationRowModel(),
-	})
-	console.log(data)
+export default function OrderDataTable({}: Props) {
 	return (
 		<div>
 			<div className='mt-8 rounded-md border'>
-				<Table>
+				<Table className='text-base'>
 					<TableHeader>
-						{table.getHeaderGroups().map((headerGroup) => (
-							<TableRow key={headerGroup.id}>
-								{headerGroup.headers.map((header) => {
-									return (
-										<TableHead key={header.id}>
-											{header.isPlaceholder
-												? null
-												: flexRender(
-														header.column.columnDef.header,
-														header.getContext()
-												  )}
-										</TableHead>
-									)
-								})}
-							</TableRow>
-						))}
+						<TableRow className='capitalize'>
+							<TableHead className=''>Order Number</TableHead>
+							<TableHead>Items</TableHead>
+							<TableHead>Order Date</TableHead>
+							<TableHead className=''>Status</TableHead>
+							<TableHead className=''>total</TableHead>
+							<TableHead className=''></TableHead>
+						</TableRow>
 					</TableHeader>
-					<TableBody>
-						{table.getRowModel().rows?.length ? (
-							table.getRowModel().rows.map((row) => (
-								<TableRow
-									key={row.id}
-									data-state={row.getIsSelected() && 'selected'}
-								>
-									{row.getVisibleCells().map((cell) => (
-										<TableCell key={cell.id}>
-											{flexRender(
-												cell.column.columnDef.cell,
-												cell.getContext()
-											)}
-										</TableCell>
-									))}
-								</TableRow>
-							))
-						) : (
-							<TableRow>
-								<TableCell
-									colSpan={columns.length}
-									className='h-24 text-center'
-								>
-									No results.
-								</TableCell>
-							</TableRow>
+					<TableBody className='text-muted-foreground'>
+						{DUMMY_ORDERS.map(
+							({ orderNumber, items, orderDate, status, total }) => (
+								<DataTableRow
+									items={items}
+									orderDate={orderDate}
+									status={status}
+									orderNumber={orderNumber}
+									total={total}
+								/>
+							)
 						)}
 					</TableBody>
 				</Table>
 			</div>
-			<div className='flex items-center justify-end space-x-2 py-4'>
-				<Button
-					variant='outline'
-					size='sm'
-					onClick={() => table.previousPage()}
-					disabled={!table.getCanPreviousPage()}
-				>
-					Previous
-				</Button>
-				<Button
-					variant='outline'
-					size='sm'
-					onClick={() => table.nextPage()}
-					disabled={!table.getCanNextPage()}
-				>
-					Next
-				</Button>
+			{/* separators and paginations */}
+			<Separator orientation='horizontal' className='my-6' />
+			<div className='flex items-center justify-between space-x-2'>
+				<div>
+					<h6>Showing 1 to 10 of 11 results</h6>
+				</div>
+				<div>
+					<DatatablePagination />
+				</div>
 			</div>
 		</div>
 	)
