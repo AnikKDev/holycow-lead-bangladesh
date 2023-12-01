@@ -147,7 +147,4 @@ export const availableReservationTimes = [
 	{
 		time: '11:30 pm',
 	},
-	{
-		time: '12:00 pm',
-	},
 ]
