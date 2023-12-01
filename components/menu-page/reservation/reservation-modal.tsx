@@ -21,7 +21,7 @@ export function ReservationModal({
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
-				<DialogContent className='sm:max-w-[425px] max-w-2xl overflow-hidden p-0'>
+				<DialogContent className='sm:max-w-[425px] max-w-2xl p-0 '>
 					<DialogHeader className='px-5 pt-5 text-left'>
 						<DialogTitle className='pt-4 text-2xl'>
 							Booking at Holycow - Putney

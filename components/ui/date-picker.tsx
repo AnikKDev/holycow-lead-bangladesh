@@ -2,7 +2,7 @@
 
 import { forwardRef } from 'react'
 import { format } from 'date-fns'
-import { Calendar as CalendarIcon } from 'lucide-react'
+import { Calendar as CalendarIcon, ChevronDown } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -18,20 +18,44 @@ export const DatePicker = forwardRef<
 	{
 		date?: Date
 		setDate: (date?: Date) => void
+		showIcon?: boolean
+		formatOption?: string
+		showDropDownArrow?: boolean
+		className?: string
 	}
->(function DatePickerCmp({ date, setDate }, ref) {
+>(function DatePickerCmp(
+	{
+		date,
+		setDate,
+		showIcon = true,
+		formatOption = 'PPP',
+		showDropDownArrow = false,
+		className = '',
+	},
+	ref
+) {
 	return (
 		<Popover>
 			<PopoverTrigger asChild>
 				<Button
 					variant={'outline'}
 					className={cn(
-						'w-full justify-start text-left font-normal',
-						!date && 'text-muted-foreground'
+						'h-12 w-full justify-start text-left font-normal',
+						!date && 'text-muted-foreground',
+						className
 					)}
 				>
-					<CalendarIcon className='mr-2 h-4 w-4' />
-					{date ? format(date, 'PPP') : <span>Pick a date</span>}
+					{showIcon && <CalendarIcon className='mr-2 h-4 w-4' />}
+					<div className='flex w-full items-center justify-between gap-2'>
+						{date ? (
+							<span>{format(date, formatOption)}</span>
+						) : (
+							<span>Pick a date</span>
+						)}
+						{showDropDownArrow && (
+							<ChevronDown className='h-4 w-4 opacity-50' />
+						)}
+					</div>
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className='w-auto p-0' ref={ref}>
