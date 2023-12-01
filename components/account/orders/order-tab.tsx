@@ -14,6 +14,9 @@ export default function OrderTab({}: Props) {
 				{ORDERS_TAB.map((tab) => (
 					<div key={tab.name} className='me-7 text-lg capitalize'>
 						<span>{tab.name}</span>
+						{tab.name === 'current orders' && (
+							<div className='mt-0.5 h-0.5 w-full bg-primary' />
+						)}
 					</div>
 				))}
 			</div>
