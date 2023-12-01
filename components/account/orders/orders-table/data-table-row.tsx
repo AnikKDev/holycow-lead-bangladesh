@@ -1,4 +1,7 @@
+'use client'
+
 import React from 'react'
+import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 import { TableCell, TableRow } from '@/components/ui/table'
@@ -18,8 +21,13 @@ export default function DataTableRow({
 	status,
 	total,
 }: Props) {
+	const router = useRouter()
 	return (
-		<TableRow key={orderNumber}>
+		<TableRow
+			key={orderNumber}
+			className='cursor-pointer duration-150'
+			onClick={() => router.push(`/account/your-orders/1`)}
+		>
 			<TableCell className='font-medium'>{orderNumber}</TableCell>
 			<TableCell>{items}</TableCell>
 			<TableCell>{orderDate}</TableCell>
