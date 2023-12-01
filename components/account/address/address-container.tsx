@@ -5,11 +5,13 @@ import { HiOutlinePencil } from 'react-icons/hi'
 import { RiDeleteBinLine } from 'react-icons/ri'
 
 import { CreateAddressModal } from '@/components/addresses/create-address-modal'
+import { ShowAddressesModal } from '@/components/checkout/delivery/show-addresses-modal'
 
 type Props = {}
 
 export default function AddressContainer({}: Props) {
 	const [showAddAddressModal, setShowAddAddressModal] = useState<boolean>(false)
+	const [editAddressModal, setEditAddressModal] = useState<boolean>(false)
 	return (
 		<div className='rounded-lg border border-[#D1D5DB] bg-white'>
 			{/* seactions */}
@@ -28,7 +30,10 @@ export default function AddressContainer({}: Props) {
 							<RiDeleteBinLine className='mr-2' />
 							<span>Delete</span>
 						</div>
-						<div className='flex cursor-pointer items-center transition-all duration-200 hover:text-primary'>
+						<div
+							onClick={() => setEditAddressModal(true)}
+							className='flex cursor-pointer items-center transition-all duration-200 hover:text-primary'
+						>
 							<HiOutlinePencil className='mr-2' />
 							<span>Edit</span>
 						</div>
@@ -48,7 +53,10 @@ export default function AddressContainer({}: Props) {
 							<RiDeleteBinLine className='mr-2' />
 							<span>Delete</span>
 						</div>
-						<div className='flex cursor-pointer items-center transition-all duration-200 hover:text-primary'>
+						<div
+							onClick={() => setEditAddressModal(true)}
+							className='flex cursor-pointer items-center transition-all duration-200 hover:text-primary'
+						>
 							<HiOutlinePencil className='mr-2' />
 							<span>Edit</span>
 						</div>
@@ -69,6 +77,12 @@ export default function AddressContainer({}: Props) {
 			<CreateAddressModal
 				showModal={showAddAddressModal}
 				setShowModal={setShowAddAddressModal}
+			/>
+			{/* for editing address */}
+			{/* todo: we can reuse this very modal for editing the existing address */}
+			<CreateAddressModal
+				showModal={editAddressModal}
+				setShowModal={setEditAddressModal}
 			/>
 		</div>
 	)
