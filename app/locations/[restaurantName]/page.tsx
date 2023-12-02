@@ -2,18 +2,18 @@ import AboutLocation from '@/components/menu-page/about-location'
 import CoverPhoto from '@/components/menu-page/cover-photo'
 import MenuAndAllBottomSections from '@/components/menu-page/menu-and-bottom-sections'
 
-const TakeawayLocationMenuPage = () => {
+const RestaurantHomePage = () => {
 	return (
-		<div>
+		<div id='menu'>
 			<div className='mx-auto max-w-[1200px]'>
 				<CoverPhoto />
 			</div>
 			<div className='mx-auto max-w-[1200px]'>
-				<AboutLocation />
+				<AboutLocation isRestaurant />
 			</div>
-			<MenuAndAllBottomSections />
+			<MenuAndAllBottomSections isRestaurant />
 		</div>
 	)
 }
 
-export default TakeawayLocationMenuPage
+export default RestaurantHomePage

@@ -6,7 +6,7 @@ import ReviewStars from './review-stars'
 
 const AllReviews = () => {
 	return (
-		<div className='container px-7 py-7' id='reviews'>
+		<div className='container px-7  py-7'>
 			<div className='flex flex-col gap-7'>
 				<div className='border-b border-border pb-4'>
 					<div className='mx-auto flex max-w-[956px] flex-col  gap-2.5'>

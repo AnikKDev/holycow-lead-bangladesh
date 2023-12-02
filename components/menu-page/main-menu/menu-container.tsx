@@ -6,9 +6,11 @@ import MenuItems from './menu-items'
 import './menu.css'
 
 const MenuContainer = ({
+	isRestaurant,
 	isTargetItemVisible,
 	isInformationVisible,
 }: {
+	isRestaurant: boolean
 	isTargetItemVisible: boolean
 	isInformationVisible: boolean
 }) => {
@@ -46,7 +48,7 @@ const MenuContainer = ({
 					</div>
 				</div>
 				{/* menu items */}
-				<MenuItems />
+				<MenuItems isRestaurant={isRestaurant} />
 			</div>
 		</div>
 	)

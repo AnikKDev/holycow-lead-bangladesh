@@ -22,7 +22,7 @@
 		--muted: 210 40% 96.1%;
 		--muted-foreground: 215.4 16.3% 46.9%;
 
-		--accent: 210 40% 96.1%;
+		--accent: 42 34% 87%;
 		--accent-foreground: 42 35% 51%;
 
 		--destructive: 0 84.2% 60.2%;
@@ -51,6 +51,7 @@
 }
 
 @layer utilities {
+
 	/* Chrome, Safari and Opera */
 	.no-scrollbar::-webkit-scrollbar {
 		display: none;
@@ -82,9 +83,7 @@ a {
 select {
 	width: 100%;
 	vertical-align: middle;
-	background: #fff
-		url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E")
-		no-repeat right 12px center;
+	background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 12px center;
 	background-size: 8px 10px;
 	-webkit-appearance: none;
 	-moz-appearance: none;

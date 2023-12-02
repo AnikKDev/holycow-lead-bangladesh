@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 
 import useIntersectionObserver from '@/hooks/useIntersectionObserer'
 
@@ -9,10 +9,17 @@ import MenuContainer from './main-menu/menu-container'
 
 import './main-menu/menu.css'
 
+import { cn } from '@/lib/utils'
+
+import LightboxComp from './gallery-lightbox/lightbox'
 import MenuNavbar from './menu-navbar'
 import AllReviews from './reviews/all-reviews'
 
-const MenuAndAllBottomSections = () => {
+const MenuAndAllBottomSections = ({
+	isRestaurant = false,
+}: {
+	isRestaurant?: boolean
+}) => {
 	const targetRef = useRef<HTMLDivElement>(null)
 	const informationRef = useRef<HTMLDivElement>(null)
 	const menuRef = useRef<HTMLDivElement>(null)
@@ -53,7 +60,12 @@ const MenuAndAllBottomSections = () => {
 
 	const isTargetItemVisible = !!targetItemEntry?.isIntersecting
 	const isInformationVisible = !!informationEntry?.isIntersecting
-
+	const sectionsRef = useRef<HTMLDivElement[]>([])
+	const refCallback = useCallback((element) => {
+		if (element) {
+			sectionsRef.current.push(element)
+		}
+	}, [])
 	return (
 		<div>
 			<div
@@ -63,9 +75,9 @@ const MenuAndAllBottomSections = () => {
 			<div>
 				<div
 					// ref={menuRef}
-					className='translateZ-class h-[65px] w-full bg-background'
+					className={cn('translateZ-class h-[65px] w-full bg-background')}
 				>
-					<MenuNavbar />
+					<MenuNavbar sectionsRef={sectionsRef} isRestaurant={isRestaurant} />
 				</div>
 				{!targetItemEntry?.isIntersecting && (
 					<div
@@ -73,23 +85,41 @@ const MenuAndAllBottomSections = () => {
 						className='fixed -top-[65] z-[99999999999] h-[65px] w-full bg-background opacity-0'
 					>
 						{/* navbar placeholder */}
-						<MenuNavbar />
+						<MenuNavbar sectionsRef={sectionsRef} isRestaurant={isRestaurant} />
 					</div>
 				)}
 			</div>
 
-			<div className='mx-auto max-w-[1200px]'>
+			<div className='mx-auto max-w-[1200px]' ref={refCallback} id='menu'>
 				<MenuContainer
+					isRestaurant={isRestaurant}
 					isTargetItemVisible={isTargetItemVisible}
 					isInformationVisible={isInformationVisible}
 				/>
 			</div>
 
 			<div ref={informationRef}>
-				<div className='mx-auto max-w-[1200px]'>
+				<div
+					className='mx-auto max-w-[1200px] scroll-m-16 '
+					id='information'
+					ref={refCallback}
+				>
 					<InformationSection />
 				</div>
-				<div className='mx-auto max-w-[1200px]'>
+				{isRestaurant && (
+					<div
+						className='mx-auto max-w-[1200px] scroll-m-16 '
+						id='gallery'
+						ref={refCallback}
+					>
+						<LightboxComp />
+					</div>
+				)}
+				<div
+					className='mx-auto max-w-[1200px] scroll-m-16 '
+					id='reviews'
+					ref={refCallback}
+				>
 					<AllReviews />
 				</div>
 			</div>
