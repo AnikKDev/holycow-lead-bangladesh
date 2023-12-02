@@ -1,20 +1,14 @@
-import { useState } from 'react'
-
 import { cn } from '@/lib/utils'
 
-import ContactInformationTab from './contact-info-tab'
-import FindATableTab from './find-table-tab'
-import PaymentTab from './payment-tab'
+import { ReservationTab } from './reservation-modal'
 
-export type ReservationTab = 'find_table' | 'contact_info' | 'payment'
-
-const ReservationTabContainer = () => {
-	const [tab, setTab] = useState<ReservationTab>('find_table')
-
-	const onTabChange = (value) => {
-		setTab(value)
-	}
-
+const ReservationTabContainer = ({
+	tab,
+	setTab,
+}: {
+	tab: ReservationTab
+	setTab: React.Dispatch<React.SetStateAction<ReservationTab>>
+}) => {
 	return (
 		<div>
 			<div className='flex w-full items-center space-x-7 shadow-[rgb(204,204,204)_0px_-1px_0px_inset]'>
@@ -57,15 +51,6 @@ const ReservationTabContainer = () => {
 				>
 					Payment
 				</button>
-			</div>
-			<div className='pb-5 pt-4'>
-				{tab === 'find_table' ? (
-					<FindATableTab setTab={setTab} />
-				) : tab === 'contact_info' ? (
-					<ContactInformationTab />
-				) : (
-					tab === 'payment' && <PaymentTab />
-				)}
 			</div>
 		</div>
 	)

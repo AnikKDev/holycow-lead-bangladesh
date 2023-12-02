@@ -20,7 +20,7 @@ import {
 	availableTime,
 	tablePeopleCounts,
 } from './data'
-import { ReservationTab } from './reservation-tab'
+import { ReservationTab } from './reservation-modal'
 
 const FindATableTab = ({
 	setTab,
