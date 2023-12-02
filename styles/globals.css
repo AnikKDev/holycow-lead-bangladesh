@@ -16,8 +16,8 @@
 		--primary: 42 35% 51%;
 		--primary-foreground: 210 40% 98%;
 
-		--secondary: 210 40% 96.1%;
-		--secondary-foreground: 42 35% 51%;
+		--secondary: 0 0% 84%;
+		--secondary-foreground: 0 0% 10%;
 
 		--muted: 210 40% 96.1%;
 		--muted-foreground: 215.4 16.3% 46.9%;
@@ -139,6 +139,7 @@ select::ms-expand {
 	margin: 1rem auto 0;
 	background-color: #d0d5dd;
 }
+
 .c-stepper__item__completed:before {
 	background-color: #191919;
 }
@@ -148,18 +149,21 @@ c-stepper__item:not(:last-child):after {
 	height: 2px;
 	background-color: #e0e0e0;
 }
+
 .c-stepper__item:not(:last-child):after {
 	content: '';
 	height: 2px;
 	background-color: #e0e0e0;
 	order: -1;
 }
+
 .c-stepper__item__completed:before {
 	background-color: #191919;
 	content: '\2713';
 	color: #fff;
 	font-size: 1.5rem;
 }
+
 .c-stepper__item:not(:last-child):after {
 	content: '';
 	position: relative;

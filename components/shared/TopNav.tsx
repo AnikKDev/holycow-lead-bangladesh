@@ -1,34 +1,29 @@
 import Image from 'next/image'
 import nav_logo from '@/assets/nav_logo.png'
-import { FaShoppingCart } from 'react-icons/fa'
-import { GoDotFill } from 'react-icons/go'
 
 import { Button } from '../ui/button'
+import TopCartBtn from './top-cart-btn'
 
 type Props = {}
 
 export default function TopNav({}: Props) {
 	return (
-		<nav className='container flex items-center justify-between py-2'>
+		<nav className='container flex items-center justify-between'>
 			<div>
 				<Image src={nav_logo} className='h-auto w-24' alt='holy cow logo' />
 			</div>
 			{/* nav options */}
-			<div className='flex items-center'>
+			<div className='flex items-center space-x-2.5'>
+				<TopCartBtn />
 				<Button
-					className='mx-1 flex items-center rounded-full px-6'
-					variant='default'
+					size='sm'
+					className='rounded-3xl bg-transparent px-4'
+					variant='secondary'
 				>
-					<FaShoppingCart className='me-3 text-lg' />
-					<span className='me-1'>Cart</span>
-					<GoDotFill className='me-1 text-lg' />
-					<span>0</span>
+					Sign In
 				</Button>
-				<Button className='mx-1 rounded-3xl px-6' variant='ghost'>
-					Signin
-				</Button>
-				<Button className='mx-1 rounded-3xl px-6' variant='secondary'>
-					Signup
+				<Button size='sm' className='rounded-3xl px-4' variant='secondary'>
+					Sign Up
 				</Button>
 			</div>
 		</nav>

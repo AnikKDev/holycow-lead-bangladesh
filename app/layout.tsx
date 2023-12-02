@@ -75,7 +75,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				<ReduxProvider>
 					{/* navbar / topbar */}
 					<TopInformationBar />
-					<div className='sticky top-0 z-[1030] border-b border-border bg-white'>
+					<div className='sticky top-0 z-[1030] flex h-16 items-center justify-center border-b border-border bg-white'>
 						<TopNav />
 					</div>
 					<main className='_desktop-lg:max-w-7xl mx-auto'>{children}</main>
