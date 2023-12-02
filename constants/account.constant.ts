@@ -1,3 +1,5 @@
+import { OrderTableColumns, YourOrdersTab } from '@/types/account/account.types'
+
 export const ACCOUNT_TABS = [
 	{
 		name: 'profile',
@@ -13,5 +15,14 @@ export const ACCOUNT_TABS = [
 		name: 'view address',
 		navigateTo: '/view-address',
 		info: 'delivery addresses',
+	},
+]
+
+export const ORDERS_TAB: YourOrdersTab[] = [
+	{
+		name: 'current orders',
+	},
+	{
+		name: 'order history',
 	},
 ]
