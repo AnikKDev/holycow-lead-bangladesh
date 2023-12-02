@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { CiPhone } from 'react-icons/ci'
 import { MdOutlineEmail } from 'react-icons/md'
 
@@ -6,6 +9,12 @@ import { Button } from '../ui/button'
 import { getSocialIcons } from './FooterComponents/FooterLogoSection'
 
 const TopInformationBar = () => {
+	const pathname = usePathname()
+
+	if (pathname.includes('/checkout')) {
+		return null
+	}
+
 	return (
 		<div className='w-full bg-primary py-[6px] text-primary-foreground'>
 			<div className='container flex items-center justify-between'>

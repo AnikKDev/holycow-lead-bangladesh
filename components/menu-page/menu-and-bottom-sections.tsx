@@ -74,13 +74,13 @@ const MenuAndAllBottomSections = ({
 				ref={targetRef}
 				className='m-0 w-full border-b-2 border-transparent p-0'
 			></div>
-			<div>
-				<div
-					ref={menuRef}
-					className={cn(
-						'translateZ-class sticky top-[64px] z-[1038] w-full bg-background transition'
-					)}
-				>
+			<div
+				ref={menuRef}
+				className={cn(
+					'translateZ-class  sticky top-[64px] z-[1035]  w-full bg-background transition'
+				)}
+			>
+				<div>
 					<MenuNavbar sectionsRef={sectionsRef} isRestaurant={isRestaurant} />
 				</div>
 				{/* {!targetItemEntry?.isIntersecting && (
@@ -107,7 +107,7 @@ const MenuAndAllBottomSections = ({
 
 			<div ref={informationRef}>
 				<div
-					className='mx-auto max-w-[1200px] scroll-m-24 '
+					className='mx-auto max-w-[1200px] scroll-m-28 '
 					id='information'
 					ref={refCallback}
 				>
@@ -115,7 +115,7 @@ const MenuAndAllBottomSections = ({
 				</div>
 				{isRestaurant && (
 					<div
-						className='mx-auto max-w-[1200px] scroll-m-24 '
+						className='mx-auto max-w-[1200px] scroll-m-28 '
 						id='gallery'
 						ref={refCallback}
 					>
@@ -123,7 +123,7 @@ const MenuAndAllBottomSections = ({
 					</div>
 				)}
 				<div
-					className='mx-auto max-w-[1200px] scroll-m-24'
+					className='scroll-m2scroll-m-28 mx-auto max-w-[1200px]'
 					id='reviews'
 					ref={refCallback}
 				>

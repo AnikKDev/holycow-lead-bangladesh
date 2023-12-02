@@ -15,7 +15,7 @@ const GalleryPhotos: FC<ImagesProps> = (props) => {
 	}
 
 	return (
-		<div className='container my-7 flex flex-col gap-3'>
+		<div className='container flex flex-col gap-3 py-10'>
 			<h1 className='mb-5 mt-2 text-center text-2xl font-bold'>Gallery</h1>
 			<div className='grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-5'>
 				{data.map((slide, index) => {
