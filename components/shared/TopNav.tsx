@@ -1,4 +1,3 @@
-import React from 'react'
 import Image from 'next/image'
 import nav_logo from '@/assets/nav_logo.png'
 import { FaShoppingCart } from 'react-icons/fa'
@@ -10,7 +9,7 @@ type Props = {}
 
 export default function TopNav({}: Props) {
 	return (
-		<nav className='container flex items-center justify-between py-5'>
+		<nav className='container flex items-center justify-between py-2'>
 			<div>
 				<Image src={nav_logo} className='h-auto w-24' alt='holy cow logo' />
 			</div>

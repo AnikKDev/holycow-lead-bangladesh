@@ -8,6 +8,7 @@ import { IBM_Plex_Sans } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
 import Footer from '@/components/shared/Footer'
+import TopInformationBar from '@/components/shared/top-information-bar'
 import TopNav from '@/components/shared/TopNav'
 
 const fontIbmPlexSans = IBM_Plex_Sans({
@@ -73,7 +74,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
 			<body className={cn('min-h-screen bg-background antialiased')}>
 				<ReduxProvider>
 					{/* navbar / topbar */}
-					<div className='border border-gray-300'>
+					<TopInformationBar />
+					<div className='sticky top-0 z-[1030] border-b border-border bg-white'>
 						<TopNav />
 					</div>
 					<main className='_desktop-lg:max-w-7xl mx-auto'>{children}</main>

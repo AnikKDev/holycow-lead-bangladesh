@@ -17,7 +17,7 @@ export default function HomeBanner({}: Props) {
 		<>
 			<div className='flex h-screen flex-col items-center justify-center'>
 				<div className='home-banner_background h-screen w-full  bg-cover bg-center'>
-					<div className='flex h-full w-full items-center justify-center  backdrop-blur-sm backdrop-brightness-50 mobile-sm:flex-col'>
+					<div className='flex h-full w-full items-center justify-center  backdrop-brightness-50 backdrop-opacity-50 mobile-sm:flex-col'>
 						<Button
 							onClick={() => {
 								setShowTakeawayLocations(true)
