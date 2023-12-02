@@ -6,6 +6,8 @@ import { ukPhoneRegex } from '@/lib/validations/string'
 import AutoForm from '@/components/ui/auto-form'
 import { Button } from '@/components/ui/button'
 
+import { ReservationTab } from './reservation-modal'
+
 // Define your form schema using zod
 const formSchema = z.object({
 	firstName: z
@@ -64,10 +66,18 @@ const formSchema = z.object({
 		.optional(),
 })
 
-const BookingContactForm = () => {
+const BookingContactForm = ({
+	setTab,
+}: {
+	setTab: React.Dispatch<React.SetStateAction<ReservationTab>>
+}) => {
+	const handleFormSubmit = () => {
+		setTab('payment')
+	}
 	return (
 		<div className='pt-3.5'>
 			<AutoForm
+				onSubmit={handleFormSubmit}
 				formSchema={formSchema}
 				containerClassName='grid grid-cols-2 items-baseline space-y-0 gap-x-4 gap-y-3'
 				className='gap-x-4 gap-y-3'

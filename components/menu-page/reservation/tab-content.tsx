@@ -16,7 +16,7 @@ const TabContent = ({
 				{tab === 'find_table' ? (
 					<FindATableTab setTab={setTab} />
 				) : tab === 'contact_info' ? (
-					<ContactInformationTab />
+					<ContactInformationTab setTab={setTab} />
 				) : (
 					tab === 'payment' && <PaymentTab />
 				)}
