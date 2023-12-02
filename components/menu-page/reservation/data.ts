@@ -148,3 +148,26 @@ export const availableReservationTimes = [
 		time: '11:30 pm',
 	},
 ]
+
+export const availableTime = [
+	{
+		time: '6:30 pm',
+		available: true,
+	},
+	{
+		time: '6:45 pm',
+		available: true,
+	},
+	{
+		time: '7:00 pm',
+		available: false,
+	},
+	{
+		time: '7:30 pm',
+		available: true,
+	},
+	{
+		time: '7:45 pm',
+		available: true,
+	},
+]

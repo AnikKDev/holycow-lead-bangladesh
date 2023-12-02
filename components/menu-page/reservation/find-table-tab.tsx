@@ -15,18 +15,27 @@ import {
 	SelectValue,
 } from '@/components/ui/select'
 
-import { availableReservationTimes, tablePeopleCounts } from './data'
+import {
+	availableReservationTimes,
+	availableTime,
+	tablePeopleCounts,
+} from './data'
+import { ReservationTab } from './reservation-tab'
 
-const FindATableTab = () => {
+const FindATableTab = ({
+	setTab,
+}: {
+	setTab: React.Dispatch<React.SetStateAction<ReservationTab>>
+}) => {
 	const [peopleCountSelect, setPeopleCountSelect] = useState('1')
 	const [date, setDate] = useState(new Date())
-	const [time, setTime] = useState<string>('12:00 am')
+	const [time, setTime] = useState<string>('7:00 pm')
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 	}
 
 	return (
-		<div>
+		<div className='pb-8 pt-1'>
 			<form
 				onSubmit={(e) => handleSubmit(e)}
 				className='grid grid-cols-[repeat(12,1fr)] items-center'
@@ -77,6 +86,22 @@ const FindATableTab = () => {
 					Find a Table
 				</Button>
 			</form>
+
+			<div className='flex w-full items-center justify-between space-x-4 pt-6'>
+				{availableTime.map((time) => {
+					return (
+						<Button
+							onClick={() => {
+								setTab('contact_info')
+							}}
+							className='w-full'
+							disabled={!time.available}
+						>
+							{time.time}
+						</Button>
+					)
+				})}
+			</div>
 		</div>
 	)
 }

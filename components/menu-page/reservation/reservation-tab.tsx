@@ -6,10 +6,10 @@ import ContactInformationTab from './contact-info-tab'
 import FindATableTab from './find-table-tab'
 import PaymentTab from './payment-tab'
 
+export type ReservationTab = 'find_table' | 'contact_info' | 'payment'
+
 const ReservationTabContainer = () => {
-	const [tab, setTab] = useState<'find_table' | 'contact_info' | 'payment'>(
-		'find_table'
-	)
+	const [tab, setTab] = useState<ReservationTab>('find_table')
 
 	const onTabChange = (value) => {
 		setTab(value)
@@ -60,7 +60,7 @@ const ReservationTabContainer = () => {
 			</div>
 			<div className='pb-5 pt-4'>
 				{tab === 'find_table' ? (
-					<FindATableTab />
+					<FindATableTab setTab={setTab} />
 				) : tab === 'contact_info' ? (
 					<ContactInformationTab />
 				) : (
