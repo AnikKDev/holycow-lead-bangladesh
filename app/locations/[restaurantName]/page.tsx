@@ -4,7 +4,7 @@ import MenuAndAllBottomSections from '@/components/menu-page/menu-and-bottom-sec
 
 const RestaurantHomePage = () => {
 	return (
-		<div id='menu'>
+		<div>
 			<div className='mx-auto max-w-[1200px]'>
 				<CoverPhoto />
 			</div>

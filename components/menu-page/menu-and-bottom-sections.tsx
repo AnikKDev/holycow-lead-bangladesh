@@ -41,15 +41,17 @@ const MenuAndAllBottomSections = ({
 			console.log('intersection false', targetItemEntry)
 
 			// menuRef.current.style.position = 'fixed'
-			menuRef.current.style.zIndex = '1060'
-			menuRef.current.style.top = '0'
-			menuRef.current.style.opacity = '1'
+			// menuRef.current.style.zIndex = '1038'
+			// menuRef.current.style.top = '64px'
+			// menuRef.current.style.opacity = '1'
+			menuRef.current.style.backgroundColor = 'white'
 		} else {
 			if (targetItemEntry?.isIntersecting && menuRef?.current) {
 				// menuRef.current.style.position = 'relative'
-				menuRef.current.style.zIndex = '10'
-				menuRef.current.style.top = '-65'
-				menuRef.current.style.opacity = '0'
+				// menuRef.current.style.zIndex = '10'
+				// menuRef.current.style.top = '-65'
+				// menuRef.current.style.opacity = '0'
+				menuRef.current.style.backgroundColor = '#FDFCF7'
 			}
 		}
 	}, [targetRef, menuRef, targetItemEntry])
@@ -74,23 +76,28 @@ const MenuAndAllBottomSections = ({
 			></div>
 			<div>
 				<div
-					// ref={menuRef}
-					className={cn('translateZ-class h-[65px] w-full bg-background')}
+					ref={menuRef}
+					className={cn(
+						'translateZ-class sticky top-[64px] z-[1038] w-full bg-background transition'
+					)}
 				>
 					<MenuNavbar sectionsRef={sectionsRef} isRestaurant={isRestaurant} />
 				</div>
-				{!targetItemEntry?.isIntersecting && (
+				{/* {!targetItemEntry?.isIntersecting && (
 					<div
 						ref={menuRef}
-						className='fixed -top-[65] z-[99999999999] h-[65px] w-full bg-background opacity-0'
+						className='fixed -top-[65] z-[1038] w-full bg-background opacity-0 transition'
 					>
-						{/* navbar placeholder */}
 						<MenuNavbar sectionsRef={sectionsRef} isRestaurant={isRestaurant} />
 					</div>
-				)}
+				)} */}
 			</div>
 
-			<div className='mx-auto max-w-[1200px]' ref={refCallback} id='menu'>
+			<div
+				className='mx-auto max-w-[1200px] scroll-mt-[100vh]'
+				ref={refCallback}
+				id='menu'
+			>
 				<MenuContainer
 					isRestaurant={isRestaurant}
 					isTargetItemVisible={isTargetItemVisible}
@@ -100,7 +107,7 @@ const MenuAndAllBottomSections = ({
 
 			<div ref={informationRef}>
 				<div
-					className='mx-auto max-w-[1200px] scroll-m-16 '
+					className='mx-auto max-w-[1200px] scroll-m-24 '
 					id='information'
 					ref={refCallback}
 				>
@@ -108,7 +115,7 @@ const MenuAndAllBottomSections = ({
 				</div>
 				{isRestaurant && (
 					<div
-						className='mx-auto max-w-[1200px] scroll-m-16 '
+						className='mx-auto max-w-[1200px] scroll-m-24 '
 						id='gallery'
 						ref={refCallback}
 					>
@@ -116,7 +123,7 @@ const MenuAndAllBottomSections = ({
 					</div>
 				)}
 				<div
-					className='mx-auto max-w-[1200px] scroll-m-16 '
+					className='mx-auto max-w-[1200px] scroll-m-24'
 					id='reviews'
 					ref={refCallback}
 				>

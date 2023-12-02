@@ -122,8 +122,8 @@ const MenuNavbar = ({
 
 	return (
 		<div className='w-full border-b border-border'>
-			<div className='mx-auto max-w-[1200px] '>
-				<div className='w-full py-3'>
+			<div className='mx-auto flex h-12 max-w-[1200px] items-center justify-center'>
+				<div className='w-full'>
 					<div className='container flex items-center justify-between'>
 						<nav className='flex items-center gap-5'>
 							{getMenuItems(isRestaurant).map((item) => {

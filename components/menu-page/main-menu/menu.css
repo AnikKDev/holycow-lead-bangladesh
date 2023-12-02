@@ -8,8 +8,8 @@
 
 .sticky__sidebar {
   position: sticky;
-  top: 65px;
-  z-index: 1039;
+  top: calc(64px + 48px);
+  z-index: -1;
   width: 190px;
   height: calc(100vh - 65px);
 }

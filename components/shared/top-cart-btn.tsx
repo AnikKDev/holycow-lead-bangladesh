@@ -12,6 +12,9 @@ const TopCartBtn = () => {
 	return (
 		<>
 			<Button
+				onClick={() => {
+					setShowCartSidebar(true)
+				}}
 				className='flex items-center space-x-1.5 rounded-full px-4 text-primary-foreground'
 				variant='default'
 				size='sm'
