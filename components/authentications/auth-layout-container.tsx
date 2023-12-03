@@ -34,7 +34,9 @@ const AuthLayoutContainer = (props: IMainProps) => {
 					</div>
 				</nav>
 			</div>
-			<div className='container m-auto  max-w-md'>{props.children}</div>
+			<div className='container m-auto grid h-[calc(100vh-64px)] max-w-md'>
+				{props.children}
+			</div>
 		</section>
 	)
 }

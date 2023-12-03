@@ -6,6 +6,7 @@ import { RegisterStep } from '@/app/(auth)/register/page'
 
 import AutoForm from '../ui/auto-form'
 import { Button } from '../ui/button'
+import AuthLayoutContainer from './auth-layout-container'
 
 // Define your form schema using zod
 const formSchema = z.object({
@@ -59,47 +60,49 @@ const RegisterPage = ({
 		setCurrentStep('register-verify')
 	}
 	return (
-		<div className='mt-10 flex flex-col space-y-3.5 rounded-lg bg-white px-7  py-6 drop-shadow-lg mobile-sm:bg-transparent mobile-sm:px-0 mobile-sm:drop-shadow-none '>
-			<h1 className='text-2xl font-bold'>Create Your Account</h1>
-			<div>
-				<AutoForm
-					onSubmit={handleFormSubmit}
-					formSchema={formSchema}
-					containerClassName='grid space-y-2.5'
-					// className='space-y-0 gap-x-4 gap-y-3'
-					fieldConfig={{
-						fullName: {
-							inputProps: {},
-						},
-						phone_number: {
-							inputProps: {
-								type: 'number',
+		<AuthLayoutContainer hideBackBtn>
+			<div className='flex w-full flex-col space-y-3.5 place-self-center rounded-lg bg-white px-7  py-6 drop-shadow-lg mobile-sm:bg-transparent mobile-sm:px-0 mobile-sm:drop-shadow-none '>
+				<h1 className='text-2xl font-bold'>Create Your Account</h1>
+				<div>
+					<AutoForm
+						onSubmit={handleFormSubmit}
+						formSchema={formSchema}
+						containerClassName='grid space-y-2.5'
+						// className='space-y-0 gap-x-4 gap-y-3'
+						fieldConfig={{
+							fullName: {
+								inputProps: {},
 							},
-						},
-						email: {
-							inputProps: {
-								type: 'email',
+							phone_number: {
+								inputProps: {
+									type: 'number',
+								},
 							},
-						},
-						password: {
-							inputProps: {
-								type: 'password',
+							email: {
+								inputProps: {
+									type: 'email',
+								},
 							},
-						},
-					}}
-				>
-					<Button type='submit' className='w-full' size='default'>
-						Register
-					</Button>
-				</AutoForm>
+							password: {
+								inputProps: {
+									type: 'password',
+								},
+							},
+						}}
+					>
+						<Button type='submit' className='w-full' size='default'>
+							Register
+						</Button>
+					</AutoForm>
+				</div>
+				<p className='text-center text-sm font-medium'>
+					Already have an account ?{' '}
+					<Link className='text-primary' href={'/login/'}>
+						Login
+					</Link>
+				</p>
 			</div>
-			<p className='text-center text-sm font-medium'>
-				Already have an account ?{' '}
-				<Link className='text-primary' href={'/login/'}>
-					Login
-				</Link>
-			</p>
-		</div>
+		</AuthLayoutContainer>
 	)
 }
 
