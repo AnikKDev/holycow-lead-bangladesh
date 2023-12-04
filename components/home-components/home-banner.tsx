@@ -15,7 +15,7 @@ export default function HomeBanner({}: Props) {
 
 	return (
 		<>
-			<div className='flex h-screen flex-col items-center justify-center'>
+			<div className='flex h-[calc(100vh-108px)] flex-col items-center justify-center'>
 				<div className='home-banner_background h-screen w-full  bg-cover bg-center'>
 					<div className='flex h-full w-full items-center justify-center  backdrop-brightness-50 backdrop-opacity-50 mobile-sm:flex-col'>
 						<Button
