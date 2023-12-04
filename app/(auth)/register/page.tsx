@@ -5,11 +5,11 @@ import { useState } from 'react'
 import RegisterPage from '@/components/authentications/register-page'
 import RegisterVerifyPage from '@/components/authentications/register-verify'
 
-export const metadata = {
+/* export const metadata = {
 	title: 'Register',
 	description: 'Register Page',
 }
-
+ */
 export type RegisterStep = 'register' | 'register-verify'
 
 const Register = () => {
