@@ -18,16 +18,20 @@ export default function TopNav({}: Props) {
 			{/* nav options */}
 			<div className='flex items-center space-x-2.5'>
 				<TopCartBtn />
-				<Button
-					size='sm'
-					className='rounded-3xl bg-transparent px-4'
-					variant='secondary'
-				>
-					Sign In
-				</Button>
-				<Button size='sm' className='rounded-3xl px-4' variant='secondary'>
-					Sign Up
-				</Button>
+				<Link href={'/login'}>
+					<Button
+						size='sm'
+						className='rounded-3xl bg-transparent px-4'
+						variant='secondary'
+					>
+						Sign In
+					</Button>
+				</Link>
+				<Link href={'/register'}>
+					<Button size='sm' className='rounded-3xl px-4' variant='secondary'>
+						Sign Up
+					</Button>
+				</Link>
 			</div>
 		</nav>
 	)
