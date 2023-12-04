@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { CgProfile } from 'react-icons/cg'
-import { MdLocationOn } from 'react-icons/md'
+import { FaRegCircleUser } from 'react-icons/fa6'
+import { MdOutlineLocationOn } from 'react-icons/md'
+import { RxDashboard } from 'react-icons/rx'
 
 import AccountSidebarTab from '../account-components/account-sidebar-tab'
 
@@ -10,19 +10,19 @@ export const ACCOUNT_TABS = [
 		name: 'profile',
 		navigateTo: '/your-profile',
 		info: 'account information',
-		icon: <CgProfile className='text-3xl' />,
+		icon: <FaRegCircleUser className='text-3xl' />,
 	},
 	{
 		name: 'your orders',
 		navigateTo: '/your-orders',
 		info: 'your orders',
-		icon: <CgProfile className='text-3xl' />,
+		icon: <RxDashboard className='text-3xl' />,
 	},
 	{
 		name: 'view address',
 		navigateTo: '/view-address',
 		info: 'delivery addresses',
-		icon: <MdLocationOn className='text-3xl' />,
+		icon: <MdOutlineLocationOn className='text-3xl' />,
 	},
 ]
 export default function AccountSidebar({}: Props) {
