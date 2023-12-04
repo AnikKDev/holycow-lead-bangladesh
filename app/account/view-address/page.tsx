@@ -1,13 +1,11 @@
-import React from 'react'
-
 import AddressContainer from '@/components/account/address/address-container'
-import ProfileContainer from '@/components/account/profile/profile-container'
 
 type Props = {}
 
 export default function ViewAddress({}: Props) {
 	return (
-		<div>
+		<div className='flex flex-col gap-4'>
+			<h2 className='text-xl font-medium'>Addresses</h2>
 			<AddressContainer />
 		</div>
 	)

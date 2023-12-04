@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { OrderTableColumns } from '@/types/account/account.types'
 import CustomBadge from '@/components/ui/custom-ui/custom-badge'
 import OrderTab from '@/components/account/orders/order-tab'
@@ -31,10 +29,13 @@ export const DUMMY_ORDERS: OrderTableColumns[] = [
 ]
 export default function Orders({}: Props) {
 	return (
-		<div>
+		<div className='flex flex-col gap-4'>
+			<h2 className='text-xl font-medium'>Your Orders</h2>
 			{/* tab section */}
-			<OrderTab />
-			<OrderDataTable data={DUMMY_ORDERS} />
+			<div>
+				<OrderTab />
+				<OrderDataTable data={DUMMY_ORDERS} />
+			</div>
 		</div>
 	)
 }
