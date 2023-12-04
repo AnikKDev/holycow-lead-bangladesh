@@ -1,5 +1,5 @@
 export const useIsLoggedIn = () => {
-	const isLoggedIn = true
+	const isLoggedIn = false
 
 	return { isLoggedIn }
 }
