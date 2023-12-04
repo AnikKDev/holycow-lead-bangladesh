@@ -1,5 +1,6 @@
 import { z } from 'zod'
 
+import { LoginPageStep } from '@/app/(auth)/login/page'
 import { RegisterStep } from '@/app/(auth)/register/page'
 
 import AutoForm from '../ui/auto-form'
@@ -19,12 +20,20 @@ const formSchema = z.object({
 		}),
 })
 const RegisterVerifyPage = ({
+	currentStep,
 	setCurrentStep,
 }: {
-	setCurrentStep: React.Dispatch<React.SetStateAction<RegisterStep>>
+	// todo: discussion about registerstep or login step
+	currentStep?: RegisterStep | LoginPageStep
+	setCurrentStep: React.Dispatch<
+		React.SetStateAction<RegisterStep | LoginPageStep>
+	>
 }) => {
+	console.log(currentStep)
 	const handleFormSubmit = () => {
-		setCurrentStep('register')
+		// ? added conditional setState
+		if (currentStep === 'register-verify') setCurrentStep('register')
+		else if (currentStep === 'forgot-verify') setCurrentStep('reset-password')
 	}
 	return (
 		<AuthLayoutContainer
