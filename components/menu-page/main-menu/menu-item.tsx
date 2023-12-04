@@ -10,9 +10,10 @@ import { MenuItemType } from './menu-items'
 
 interface IMenuItem {
 	item: MenuItemType
+	isRestaurant?: boolean
 }
 
-const MenuItem = ({ item }: IMenuItem) => {
+const MenuItem = ({ item, isRestaurant }: IMenuItem) => {
 	const [showModal, setShowModal] = useState(false)
 	const router = useRouter()
 	return (
@@ -20,6 +21,9 @@ const MenuItem = ({ item }: IMenuItem) => {
 			<div
 				tabIndex={0}
 				onClick={() => {
+					if (isRestaurant) {
+						return
+					}
 					setShowModal(!showModal)
 				}}
 				className='cursor-pointer overflow-hidden rounded-md border border-border/75 bg-white transition hover:border-border/100 hover:shadow-[0px_10px_36px_0px_rgba(0,0,0,0.16)]'
@@ -45,7 +49,9 @@ const MenuItem = ({ item }: IMenuItem) => {
 					</div>
 				</div>
 			</div>
-			<MenuItemModal showModal={showModal} setShowModal={setShowModal} />
+			{!isRestaurant && (
+				<MenuItemModal showModal={showModal} setShowModal={setShowModal} />
+			)}
 		</>
 	)
 }

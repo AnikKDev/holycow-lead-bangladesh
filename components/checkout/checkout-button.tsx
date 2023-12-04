@@ -1,6 +1,9 @@
+import { useRouter } from 'next/navigation'
+
 import { Button } from '../ui/button'
 
 const CheckoutButton = () => {
+	const router = useRouter()
 	return (
 		<div className='flex shrink-0 flex-col gap-2.5 border-t border-border pt-3'>
 			<div className='flex items-center justify-between '>
@@ -14,7 +17,9 @@ const CheckoutButton = () => {
 					size='lg'
 					type='button'
 					className=' w-full font-semibold uppercase'
-					onClick={() => {}}
+					onClick={() => {
+						router.push('/account/your-profile')
+					}}
 				>
 					Place Order
 				</Button>
