@@ -53,3 +53,8 @@ export function formatPrice(
 export type Extend<T extends { [key: string]: any }> = T & {
 	[key: string]: any
 }
+
+// capitalize first letter of a word
+export function capitalizeFirstLetter(word: string) {
+	return word.charAt(0).toUpperCase() + word.slice(1)
+}

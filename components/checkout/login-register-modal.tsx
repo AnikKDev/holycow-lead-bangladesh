@@ -1,7 +1,5 @@
-'use client'
-
 import { Dispatch, SetStateAction } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -19,8 +17,6 @@ export function LoginRegisterModal({
 	showModal: boolean
 	setShowModal: Dispatch<SetStateAction<boolean>>
 }) {
-	const router = useRouter()
-	const params = useParams()
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
@@ -32,28 +28,32 @@ export function LoginRegisterModal({
 					<DialogFooter className='mx-auto mt-2 w-[320px] min-w-fit  flex-col gap-4 px-1.5 pb-3 pt-2.5'>
 						<div className='flex flex-col gap-[2px]'>
 							<h3>Already have an account?</h3>
-							<Button
-								type='submit'
-								className=' w-full rounded-full'
-								variant='default'
-								size='lg'
-								onClick={() => {
-									router.push(`/takeaway-location/${params.location}/checkout`)
-								}}
-							>
-								Login
-							</Button>
+							<Link href={'/login'}>
+								<Button
+									type='submit'
+									className=' w-full rounded-full'
+									variant='default'
+									size='lg'
+									// onClick={() => {
+									// 	router.push(`/takeaway-location/${params.location}/checkout`)
+									// }}
+								>
+									Login
+								</Button>
+							</Link>
 						</div>
 						<div className='flex flex-col gap-[2px]'>
 							<h3>Don’t have an account?</h3>
-							<Button
-								type='submit'
-								className=' w-full rounded-full'
-								variant='default'
-								size='lg'
-							>
-								Register
-							</Button>
+							<Link href={'/register'}>
+								<Button
+									type='submit'
+									className=' w-full rounded-full'
+									variant='default'
+									size='lg'
+								>
+									Register
+								</Button>
+							</Link>
 						</div>
 						<div className='flex flex-col gap-[2px]'>
 							<h3>Or</h3>

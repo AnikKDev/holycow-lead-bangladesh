@@ -24,10 +24,7 @@ export default function AccountLayout({ children }: Props) {
 				</div>
 				{/* right children here */}
 				<div className='flex min-h-screen flex-1 flex-col items-center px-2 pb-10 _desktop-md:px-6 '>
-					<div className='w-full'>
-						<h4 className='mb-8 text-xl'>Profile</h4>
-						{children}
-					</div>
+					<div className='w-full'>{children}</div>
 				</div>
 			</div>
 		</section>
