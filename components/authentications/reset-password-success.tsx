@@ -10,7 +10,7 @@ const ResetPasswordSuccessPage = () => {
 	const router = useRouter()
 	useEffect(() => {
 		setTimeout(() => {
-			router.push('/')
+			router.push('/login/')
 		}, 2000)
 	}, [])
 	return (
