@@ -2,8 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import nav_logo from '@/assets/nav_logo.png'
 
-import { Button } from '../ui/button'
 import TopCartBtn from './top-cart-btn'
+import TopNavRightSide from './top-nav-rightside'
 
 type Props = {}
 
@@ -18,20 +18,7 @@ export default function TopNav({}: Props) {
 			{/* nav options */}
 			<div className='flex items-center space-x-2.5'>
 				<TopCartBtn />
-				<Link href={'/login'}>
-					<Button
-						size='sm'
-						className='rounded-3xl bg-transparent px-4'
-						variant='secondary'
-					>
-						Sign In
-					</Button>
-				</Link>
-				<Link href={'/register'}>
-					<Button size='sm' className='rounded-3xl px-4' variant='secondary'>
-						Sign Up
-					</Button>
-				</Link>
+				<TopNavRightSide />
 			</div>
 		</nav>
 	)
