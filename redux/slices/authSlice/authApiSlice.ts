@@ -1,24 +1,26 @@
 import { apiSlice } from '@/redux/services/apiSlice'
 
+import { UserType } from './authSlice'
+
 export const authApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		login: builder.mutation({
 			query: (credentials) => ({
-				url: '/user/login/',
+				url: '/auth/login/',
 				method: 'POST',
 				body: credentials,
 			}),
 		}),
 		register: builder.mutation({
-			query: (credentials) => ({
-				url: '/user/register/',
+			query: (credentials: UserType) => ({
+				url: '/auth/register/',
 				method: 'POST',
 				body: { ...credentials },
 			}),
 		}),
 		verifyRegisterOtp: builder.mutation({
 			query: (credentials: { phone_number: string; otp: number }) => ({
-				url: '/user/verify-otp/',
+				url: '/auth/verify-otp/',
 				method: 'POST',
 				body: { ...credentials },
 			}),
@@ -26,23 +28,23 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
 		sendPhoneForgotPasswordOtp: builder.mutation({
 			query: (credentials: { phone_number: string }) => ({
-				url: '/user/forgot-password-otp-request/',
+				url: '/auth/forgot_passwd/',
 				method: 'POST',
 				body: { ...credentials },
 			}),
 		}),
 
 		checkForgotPasswordOtp: builder.mutation({
-			query: (credentials: { phone_number: string; otp: number }) => ({
-				url: '/user/forgot-password-otp-verify/',
+			query: (credentials: { phone_number: string; otp: string }) => ({
+				url: '/auth/verify-otp/',
 				method: 'POST',
 				body: { ...credentials },
 			}),
 		}),
 
 		resetForgotPassword: builder.mutation({
-			query: (credentials) => ({
-				url: '/user/forgot-password-reset/',
+			query: (credentials: { new_password: string }) => ({
+				url: '/auth/reset-password/',
 				method: 'POST',
 				body: { ...credentials },
 			}),
@@ -50,7 +52,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
 		verifyToken: builder.mutation({
 			query: (credentials) => ({
-				url: '/user/token-verify/',
+				url: '/auth/token-verify/',
 				method: 'POST',
 				body: { ...credentials },
 			}),
@@ -58,7 +60,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
 		resendOTP: builder.mutation<any, { phone_number: string }>({
 			query: (credentials) => ({
-				url: '/user/resend-otp/',
+				url: '/auth/resend-otp/',
 				body: { ...credentials },
 				method: 'POST',
 			}),
@@ -66,13 +68,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
 		// user/profile apis
 		getUserProfileData: builder.query({
-			query: (id) => ({
-				url: `/profiles/view-profile/${id}/`,
-				method: 'GET',
-			}),
-			providesTags: (result, error, arg) => [{ type: 'Profile', id: arg }],
-		}),
-		getOtherUserProfileData: builder.query({
 			query: (id) => ({
 				url: `/profiles/view-profile/${id}/`,
 				method: 'GET',
@@ -90,27 +85,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
 				{ type: 'Post', id: 'LIST' },
 			],
 		}),
-		addProfilePicture: builder.mutation({
-			query: ({ pictureFormData, id }) => ({
-				url: '/user/profile-picture/',
-				body: pictureFormData,
-				method: 'POST',
-			}),
-			invalidatesTags: (result, error, arg) => [
-				{ type: 'Profile', id: arg.id },
-				{ type: 'Post', id: 'LIST' },
-			],
-		}),
-		addCoverPhoto: builder.mutation({
-			query: ({ pictureFormData, id }) => ({
-				url: '/profiles/cover-photo/',
-				body: pictureFormData,
-				method: 'POST',
-			}),
-			invalidatesTags: (result, error, arg) => [
-				{ type: 'Profile', id: arg.id },
-			],
-		}),
 	}),
 })
 
@@ -126,8 +100,5 @@ export const {
 	useCheckForgotPasswordOtpMutation,
 	useVerifyTokenMutation,
 	useGetUserProfileDataQuery,
-	useGetOtherUserProfileDataQuery,
-	useAddProfilePictureMutation,
 	useEditUserProfileMutation,
-	useAddCoverPhotoMutation,
 } = authApiSlice

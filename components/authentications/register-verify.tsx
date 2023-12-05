@@ -20,20 +20,15 @@ const formSchema = z.object({
 		}),
 })
 const RegisterVerifyPage = ({
-	currentStep,
 	setCurrentStep,
 }: {
 	// todo: discussion about registerstep or login step
-	currentStep?: RegisterStep | LoginPageStep
 	setCurrentStep: React.Dispatch<
 		React.SetStateAction<RegisterStep | LoginPageStep>
 	>
 }) => {
-	console.log(currentStep)
 	const handleFormSubmit = () => {
-		// ? added conditional setState
-		if (currentStep === 'register-verify') setCurrentStep('register')
-		else if (currentStep === 'forgot-verify') setCurrentStep('reset-password')
+		setCurrentStep('reset-password')
 	}
 	return (
 		<AuthLayoutContainer
