@@ -1,10 +1,10 @@
 import { apiSlice } from '@/redux/services/apiSlice'
 
-import { UserType } from './authSlice'
+import { LoginResponseType, UserType } from './authSlice'
 
 export const authApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
-		login: builder.mutation({
+		login: builder.mutation<LoginResponseType, UserType>({
 			query: (credentials) => ({
 				url: '/auth/login/',
 				method: 'POST',
@@ -19,7 +19,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 			}),
 		}),
 		verifyRegisterOtp: builder.mutation({
-			query: (credentials: { phone_number: string; otp: number }) => ({
+			query: (credentials: { phone_number: string; otp: string }) => ({
 				url: '/auth/verify-otp/',
 				method: 'POST',
 				body: { ...credentials },
@@ -27,6 +27,13 @@ export const authApiSlice = apiSlice.injectEndpoints({
 		}),
 
 		sendPhoneForgotPasswordOtp: builder.mutation({
+			query: (credentials: { phone_number: string }) => ({
+				url: '/auth/forgot_passwd/',
+				method: 'POST',
+				body: { ...credentials },
+			}),
+		}),
+		sendPhoneForgotPasswordOtpAsResendOtp: builder.mutation({
 			query: (credentials: { phone_number: string }) => ({
 				url: '/auth/forgot_passwd/',
 				method: 'POST',
@@ -97,6 +104,7 @@ export const {
 	useResetForgotPasswordMutation,
 	useVerifyRegisterOtpMutation,
 	useSendPhoneForgotPasswordOtpMutation,
+	useSendPhoneForgotPasswordOtpAsResendOtpMutation,
 	useCheckForgotPasswordOtpMutation,
 	useVerifyTokenMutation,
 	useGetUserProfileDataQuery,

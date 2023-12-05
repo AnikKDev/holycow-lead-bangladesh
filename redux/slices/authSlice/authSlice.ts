@@ -5,6 +5,13 @@ import { Extend } from '@/lib/utils'
 
 import { authApiSlice } from './authApiSlice'
 
+export type LoginResponseType = Extend<
+	Partial<{
+		access: string
+		refresh: string
+	}>
+>
+
 export type UserType = Extend<
 	Partial<{
 		full_name: string
@@ -13,18 +20,19 @@ export type UserType = Extend<
 		password: string
 	}>
 >
+
 export type AuthStateType = Extend<
 	Partial<{
 		id: number
+		access: string
 		refresh: string
-		token: string
 		user: UserType
 	}>
 >
 
 const initialState: AuthStateType = {
 	refresh: '',
-	token: '',
+	access: '',
 	id: null,
 	user: {},
 }
@@ -38,7 +46,8 @@ const authSlice = createSlice({
 			state.token = token
 		},
 		logOut: (state) => {
-			state.token = ''
+			state.access = ''
+			state.refresh = ''
 			state.id = null
 			state.user = {}
 		},
@@ -46,11 +55,10 @@ const authSlice = createSlice({
 	extraReducers: (builder) => {
 		builder.addMatcher(
 			authApiSlice.endpoints.login.matchFulfilled,
-			(state, action: PayloadAction<AuthStateType>) => {
+			(state, action: PayloadAction<LoginResponseType>) => {
 				console.log('fulfilled login')
-				const { id, access, refresh } = action.payload
-				state.id = id
-				state.token = access
+				const { access, refresh } = action.payload
+				state.access = access
 				state.refresh = refresh
 			}
 		)

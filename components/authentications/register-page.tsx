@@ -1,16 +1,21 @@
-import Link from 'next/link'
-import { useRegisterMutation } from '@/redux/slices/authSlice/authApiSlice'
-import { Loader2 } from 'lucide-react'
-import toast from 'react-hot-toast'
-import { z } from 'zod'
+import { useRegisterMutation } from '@/redux/slices/authSlice/authApiSlice';
+import { Loader2 } from 'lucide-react';
+import Link from 'next/link';
+import toast from 'react-hot-toast';
+import { z } from 'zod';
 
-import { capitalizeFirstLetter } from '@/lib/utils'
-import { ukPhoneRegex } from '@/lib/validations/string'
-import { RegisterStep } from '@/app/(auth)/register/page'
 
-import AutoForm from '../ui/auto-form'
-import { Button } from '../ui/button'
-import AuthLayoutContainer from './auth-layout-container'
+
+import { RegisterStep } from '@/app/(auth)/register/page';
+import { capitalizeFirstLetter } from '@/lib/utils';
+import { ukPhoneRegex } from '@/lib/validations/string';
+
+
+
+import AutoForm from '../ui/auto-form';
+import { Button } from '../ui/button';
+import AuthLayoutContainer from './auth-layout-container';
+
 
 // Define your form schema using zod
 const formSchema = z.object({
@@ -58,11 +63,13 @@ const formSchema = z.object({
 const RegisterPage = ({
 	setCurrentStep,
 	setPhoneNumber,
+	setPassword
 }: {
 	setCurrentStep: React.Dispatch<React.SetStateAction<RegisterStep>>
-	setPhoneNumber: (e: string) => void
+	setPhoneNumber: (e: string) => void,
+	setPassword: (e: string) => void,
 }) => {
-	const [registerUser, { isLoading, isError, error }] = useRegisterMutation()
+	const [registerUser, { isLoading, isError, error }] = useRegisterMutation();
 	const handleFormSubmit = async (
 		data: Partial<z.infer<typeof formSchema>>
 	) => {
@@ -72,6 +79,7 @@ const RegisterPage = ({
 				phone_number: `+88${data.phone_number}`,
 			}).unwrap()
 			setPhoneNumber(`+88${data.phone_number}`)
+			setPassword(data.password)
 			setCurrentStep('register-verify')
 		} catch (e) {
 			console.log(e)
