@@ -30,7 +30,6 @@ module.exports = withBundleAnalyzer({
 		//     port: '',
 		// 	},
 		// ],
-		domains: ['images.unsplash.com/'],
 	},
 	poweredByHeader: false,
 	trailingSlash: true,
