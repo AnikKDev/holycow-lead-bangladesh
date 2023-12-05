@@ -1,6 +1,9 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
+import { useAppDispatch } from '@/redux/hooks'
+import { logOut } from '@/redux/slices/authSlice/authSlice'
+import { useCookies } from 'react-cookie'
 import { FaRegCircleUser } from 'react-icons/fa6'
 import { MdLogout, MdOutlineLocationOn } from 'react-icons/md'
 import { RxDashboard } from 'react-icons/rx'
@@ -26,6 +29,15 @@ const AccountSidebarModal = ({
 	const router = useRouter()
 	const params = useParams()
 	const [showModal, setShowModal] = useState(false)
+	const [cookies, setCookie, removeCookie] = useCookies(['access', 'refresh'])
+	const dispatch = useAppDispatch()
+	const handleLogout = () => {
+		removeCookie('access')
+		removeCookie('refresh')
+		dispatch(logOut())
+		setShowModal(false)
+		router.replace('/')
+	}
 
 	return (
 		<>
@@ -70,16 +82,15 @@ const AccountSidebarModal = ({
 					</div>
 					<SheetFooter className='shrink-0 flex-col gap-3 border-t border-border'>
 						<div className='w-full'>
-							<Link href={'/login'}>
-								<Button
-									size='lg'
-									className='flex w-full items-center justify-start gap-4 rounded-none border-none bg-transparent px-5 py-7'
-									variant='secondary'
-								>
-									<MdLogout size={18} className='rotate-180' />
-									Log Out
-								</Button>
-							</Link>
+							<Button
+								size='lg'
+								className='flex w-full items-center justify-start gap-4 rounded-none border-none bg-transparent px-5 py-7'
+								variant='secondary'
+								onClick={handleLogout}
+							>
+								<MdLogout size={18} className='rotate-180' />
+								Log Out
+							</Button>
 						</div>
 					</SheetFooter>
 				</SheetContent>
