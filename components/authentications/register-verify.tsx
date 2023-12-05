@@ -21,11 +21,13 @@ const formSchema = z.object({
 })
 const RegisterVerifyPage = ({
 	setCurrentStep,
+	phoneNumber,
 }: {
 	// todo: discussion about registerstep or login step
 	setCurrentStep: React.Dispatch<
 		React.SetStateAction<RegisterStep | LoginPageStep>
 	>
+	phoneNumber: string
 }) => {
 	const handleFormSubmit = () => {
 		setCurrentStep('reset-password')
@@ -40,8 +42,8 @@ const RegisterVerifyPage = ({
 				<div className='flex flex-col gap-2.5'>
 					<h1 className='text-2xl font-bold text-foreground'>Enter Code</h1>
 					<p className='text-sm text-foreground/70'>
-						We’ve sent an SMS with an activation code to your phone +88
-						01849528992
+						We’ve sent an SMS with an activation code to your phone{' '}
+						{phoneNumber}
 					</p>
 				</div>
 				<div>

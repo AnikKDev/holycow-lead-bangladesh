@@ -1,6 +1,10 @@
 import Link from 'next/link'
+import { useRegisterMutation } from '@/redux/slices/authSlice/authApiSlice'
+import { Loader2 } from 'lucide-react'
+import toast from 'react-hot-toast'
 import { z } from 'zod'
 
+import { capitalizeFirstLetter } from '@/lib/utils'
 import { ukPhoneRegex } from '@/lib/validations/string'
 import { RegisterStep } from '@/app/(auth)/register/page'
 
@@ -10,7 +14,7 @@ import AuthLayoutContainer from './auth-layout-container'
 
 // Define your form schema using zod
 const formSchema = z.object({
-	fullName: z
+	full_name: z
 		.string({
 			required_error: 'Full name is required.',
 		})
@@ -53,11 +57,31 @@ const formSchema = z.object({
 })
 const RegisterPage = ({
 	setCurrentStep,
+	setPhoneNumber,
 }: {
 	setCurrentStep: React.Dispatch<React.SetStateAction<RegisterStep>>
+	setPhoneNumber: (e: string) => void
 }) => {
-	const handleFormSubmit = () => {
-		setCurrentStep('register-verify')
+	const [registerUser, { isLoading, isError, error }] = useRegisterMutation()
+	const handleFormSubmit = async (
+		data: Partial<z.infer<typeof formSchema>>
+	) => {
+		try {
+			await registerUser({
+				...data,
+				phone_number: `+88${data.phone_number}`,
+			}).unwrap()
+			setPhoneNumber(`+88${data.phone_number}`)
+			setCurrentStep('register-verify')
+		} catch (e) {
+			console.log(e)
+			if ('status' in e) {
+				Object.values(e?.data).forEach((err) => {
+					console.log(err)
+					toast.error(capitalizeFirstLetter(err?.[0]))
+				})
+			}
+		}
 	}
 	return (
 		<AuthLayoutContainer hideBackBtn>
@@ -65,12 +89,14 @@ const RegisterPage = ({
 				<h1 className='text-2xl font-bold'>Create Your Account</h1>
 				<div>
 					<AutoForm
-						onSubmit={handleFormSubmit}
+						onSubmit={(data) => {
+							handleFormSubmit(data)
+						}}
 						formSchema={formSchema}
 						containerClassName='grid space-y-2.5'
 						// className='space-y-0 gap-x-4 gap-y-3'
 						fieldConfig={{
-							fullName: {
+							full_name: {
 								inputProps: {},
 							},
 							phone_number: {
@@ -90,7 +116,13 @@ const RegisterPage = ({
 							},
 						}}
 					>
-						<Button type='submit' className='w-full' size='default'>
+						<Button
+							type='submit'
+							className='w-full'
+							size='default'
+							disabled={isLoading}
+						>
+							{isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
 							Register
 						</Button>
 					</AutoForm>
