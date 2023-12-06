@@ -29,6 +29,7 @@ export function MenuItemModal({
 	item: MenuItemType
 }) {
 	const [showCartSidebar, setShowCartSidebar] = useState(false)
+	const [quantity, setQuantity] = useState(1)
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
@@ -55,6 +56,11 @@ export function MenuItemModal({
 					<DialogFooter className='mt-2 flex-col gap-2 border-t border-border px-3 pb-3 pt-2.5'>
 						<div className='flex items-center justify-center gap-4'>
 							<Button
+								onClick={() => {
+									if (quantity > 1) {
+										setQuantity(quantity - 1)
+									}
+								}}
 								variant='outline'
 								className='border-none p-0 hover:bg-transparent hover:text-foreground'
 							>
@@ -66,8 +72,20 @@ export function MenuItemModal({
 								id='quantity'
 								defaultValue='1'
 								min={1}
+								value={quantity}
+								onChange={(e) => {
+									setQuantity(e.target.valueAsNumber)
+								}}
+								onBlur={() => {
+									if (!quantity) {
+										setQuantity(1)
+									}
+								}}
 							/>
 							<Button
+								onClick={() => {
+									setQuantity(quantity + 1)
+								}}
 								variant='outline'
 								className='border-none p-0 hover:bg-transparent hover:bg-none hover:text-foreground'
 							>
