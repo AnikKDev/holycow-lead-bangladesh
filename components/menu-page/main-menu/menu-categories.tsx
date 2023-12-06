@@ -1,18 +1,23 @@
 'use client'
 
 import { useState } from 'react'
+import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 
 import { cn } from '@/lib/utils'
 
 import { allCategory } from './data'
 
-const MenuCategories = () => {
+const MenuCategories = ({
+	menuItemsByCategory,
+}: {
+	menuItemsByCategory: { [key: string]: MenuItemType }
+}) => {
 	const [activeCategory, setActiveCategory] = useState(allCategory[0])
 
 	return (
 		<div className='pt-5'>
 			<ul className='flex flex-col gap-1.5'>
-				{allCategory.map((category, idx) => (
+				{Object.keys(menuItemsByCategory).map((category, idx) => (
 					<CategoryItem
 						idx={idx}
 						category={category}

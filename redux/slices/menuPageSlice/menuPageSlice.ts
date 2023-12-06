@@ -1,6 +1,9 @@
+import { RootState } from '@/redux/store'
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { Extend } from '@/lib/utils'
 
-import { UserType } from '../authSlice/authSlice'
+import { menuPageApiSlice } from './menuPageApiSlice'
 
 export type OpeningHoursType = Extend<
 	Partial<{
@@ -40,8 +43,53 @@ export type AllMenuType = Extend<
 
 export type LocationReviewItemType = Extend<
 	Partial<{
-		reviewer: UserType
+		reviewer: string
 		review: string
 		rating: string
+		created_at: string
 	}>
 >
+
+type InitialStateType = {
+	allMenuItems: AllMenuType[]
+}
+
+const initialState: InitialStateType = {
+	allMenuItems: [],
+}
+
+const menuPageSlice = createSlice({
+	name: 'menuPage',
+	initialState,
+	reducers: {},
+	extraReducers: (builder) => {
+		builder.addMatcher(
+			menuPageApiSlice.endpoints.getFullMenu.matchFulfilled,
+			(state, action: PayloadAction<AllMenuType[]>) => {
+				state.allMenuItems = action.payload
+			}
+		)
+	},
+})
+export default menuPageSlice.reducer
+export const selectAllMenuitems = (state: RootState) =>
+	state.menuPage.allMenuItems
+
+export const selectMenuItemsByCategory = createSelector(
+	selectAllMenuitems,
+	(allMenu) => {
+		console.log(allMenu)
+		if (!allMenu.length) {
+			return {}
+		}
+		return allMenu.reduce(
+			(acc: { [key: string]: MenuItemType[] }, currentMenu) => {
+				return {
+					...acc,
+					[currentMenu.name]: currentMenu.items,
+				}
+			},
+			{}
+		)
+	}
+)

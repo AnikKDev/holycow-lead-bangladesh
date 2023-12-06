@@ -13,15 +13,15 @@ const AllReviews = ({
 	locationInformation?: LocationInfoType
 }) => {
 	const { data, isLoading, isError } = useGetTakeawayReviewsQuery(
-		locationInformation?.name,
+		locationInformation?.name.toLowerCase(),
 		{
 			skip: !locationInformation?.name,
 		}
 	)
 
-	const averageRating = calculateAverageRating(
-		data?.map((r) => Number(r.rating))
-	)
+	const averageRating = data?.length
+		? calculateAverageRating(data?.map((r) => Number(r.rating)))
+		: 0
 	return (
 		<div className='container px-7 py-10'>
 			<div className='flex flex-col gap-7'>
@@ -30,9 +30,7 @@ const AllReviews = ({
 						<h1 className='text-xl font-bold'>
 							Reviews for Holycow - {locationInformation?.name}
 						</h1>
-						<ReviewStars
-							count={data?.length ? Number(averageRating.toFixed(1)) : 0}
-						/>
+						<ReviewStars count={Number(averageRating.toFixed(1))} />
 						<h2 className='text-lg font-semibold'>
 							{data?.length > 0 ? (
 								<>
@@ -49,7 +47,7 @@ const AllReviews = ({
 						<p>Loading reviews...</p>
 					) : isError ? (
 						<p>Couldn't fetch reviews</p>
-					) : data && data.length > 0 ? (
+					) : data && data?.length > 0 ? (
 						data.map((review) => <ReviewItem review={review} />)
 					) : (
 						<p>It has no reviews yet!</p>

@@ -14,11 +14,11 @@ const ReviewItem = ({ review }: { review: LocationReviewItemType }) => {
 					<Avatar>
 						<AvatarImage src='' alt='Reviewer profile photo' />
 						<AvatarFallback className='text-sm text-primary-foreground'>
-							{getInitials(review?.reviewer?.full_name || 'Alex')}
+							{getInitials(String(review?.reviewer) || 'Alex')}
 						</AvatarFallback>
 					</Avatar>
 					<h3 className='text-base font-medium'>
-						{review?.reviewer?.full_name || 'Alex'}
+						{review?.reviewer || 'Alex'}
 					</h3>
 				</div>
 				<span className='text-sm text-foreground/70'>

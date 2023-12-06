@@ -24,11 +24,12 @@ export const menuPageApiSlice = apiSlice.injectEndpoints({
 			transformResponse: (response: { reviews: LocationReviewItemType[] }) =>
 				response?.reviews,
 		}),
-		getFullMenu: builder.query<AllMenuType, void>({
+		getFullMenu: builder.query<AllMenuType[], void>({
 			query: () => ({
 				url: '/order/get_menu/',
 				method: 'GET',
 			}),
+			transformResponse: (response: { menu: AllMenuType[] }) => response?.menu,
 		}),
 	}),
 })

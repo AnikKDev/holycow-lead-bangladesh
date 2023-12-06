@@ -9,6 +9,7 @@ import MenuContainer from './main-menu/menu-container'
 
 import './main-menu/menu.css'
 
+import { useGetFullMenuQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
 import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 
 import { cn } from '@/lib/utils'
@@ -24,6 +25,8 @@ const MenuAndAllBottomSections = ({
 	isRestaurant?: boolean
 	locationInformation?: LocationInfoType
 }) => {
+	const { data, isLoading, isError } = useGetFullMenuQuery()
+
 	const targetRef = useRef<HTMLDivElement>(null)
 	const informationRef = useRef<HTMLDivElement>(null)
 	const menuRef = useRef<HTMLDivElement>(null)
@@ -102,11 +105,17 @@ const MenuAndAllBottomSections = ({
 				ref={refCallback}
 				id='menu'
 			>
-				<MenuContainer
-					isRestaurant={isRestaurant}
-					isTargetItemVisible={isTargetItemVisible}
-					isInformationVisible={isInformationVisible}
-				/>
+				{isLoading
+					? 'getting menu'
+					: isError
+					  ? 'error fetching menu'
+					  : data.length > 0 && (
+								<MenuContainer
+									isRestaurant={isRestaurant}
+									isTargetItemVisible={isTargetItemVisible}
+									isInformationVisible={isInformationVisible}
+								/>
+					    )}
 			</div>
 
 			<div ref={informationRef}>

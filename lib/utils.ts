@@ -61,7 +61,7 @@ export function capitalizeFirstLetter(word: string) {
 
 // calculate average rating
 export function calculateAverageRating(ratings: number[]): number {
-	if (ratings.length === 0) {
+	if (ratings?.length === 0) {
 		return 0 // Return 0 if there are no ratings
 	}
 
