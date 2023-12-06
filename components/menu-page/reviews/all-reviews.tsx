@@ -1,8 +1,13 @@
+import { useState } from 'react'
 import { useGetTakeawayReviewsQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
-import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
+import {
+	LocationInfoType,
+	LocationReviewItemType,
+} from '@/redux/slices/menuPageSlice/menuPageSlice'
+import ReactPaginate from 'react-paginate'
 
 import { calculateAverageRating } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 
 import ReviewItem from './review-item'
 import ReviewStars from './review-stars'
@@ -44,22 +49,91 @@ const AllReviews = ({
 				</div>
 				<div className='mx-auto flex max-w-[956px] flex-col gap-10'>
 					{isLoading ? (
-						<p>Loading reviews...</p>
+						[1, 2, 3, 4, 5].map((i) => (
+							<div key={i} className='w-[956px] min-w-fit'>
+								<div className='mb-1.5 flex items-center justify-between'>
+									<div className='flex items-center gap-2.5'>
+										<Skeleton className='h-8 w-8 rounded-full' />
+										<Skeleton className='h-4 w-[150px]' />
+									</div>
+									<Skeleton className='h-4 w-[80px]' />
+								</div>
+								<div className='flex flex-col gap-1.5'>
+									<Skeleton className='h-5 w-[80px]' />
+									<Skeleton className='h-10 w-full' />
+								</div>
+							</div>
+						))
 					) : isError ? (
 						<p>Couldn't fetch reviews</p>
 					) : data && data?.length > 0 ? (
-						data.map((review) => <ReviewItem review={review} />)
+						<PaginatedReviewItems reviews={data} itemsPerPage={10} />
 					) : (
 						<p>It has no reviews yet!</p>
 					)}
 				</div>
-				<div className='self-center'>
-					<Button variant='outline' className='rounded-full text-sm'>
-						View all reviews
-					</Button>
-				</div>
 			</div>
 		</div>
+	)
+}
+
+const PaginatedReviewItems = ({
+	itemsPerPage,
+	reviews,
+}: {
+	itemsPerPage: number
+	reviews: LocationReviewItemType[]
+}) => {
+	const [itemOffset, setItemOffset] = useState(0)
+
+	// Simulate fetching items from another resources.
+	// (This could be items from props; or items loaded in a local state
+	// from an API endpoint with useEffect and useState)
+	const endOffset = itemOffset + itemsPerPage
+	console.log(`Loading items from ${itemOffset} to ${endOffset}`)
+	const currentItems = reviews.slice(itemOffset, endOffset)
+	const pageCount = Math.ceil(reviews.length / itemsPerPage)
+
+	// Invoke when user click to request another page.
+	const handlePageClick = (event) => {
+		const newOffset = (event.selected * itemsPerPage) % reviews.length
+		console.log(
+			`User requested page number ${event.selected}, which is offset ${newOffset}`
+		)
+		setItemOffset(newOffset)
+	}
+
+	return (
+		<>
+			<ReviewContainer reviews={currentItems} />
+			<div className='self-center'>
+				<ReactPaginate
+					breakLabel='...'
+					nextLabel='>'
+					onPageChange={handlePageClick}
+					pageRangeDisplayed={3}
+					marginPagesDisplayed={2}
+					pageCount={pageCount}
+					previousLabel='<'
+					renderOnZeroPageCount={null}
+					className='flex flex-row items-center gap-1.5 transition-all'
+					pageClassName='bg-white border border-border rounded px-2.5 h-8  flex items-center justify-center'
+					activeClassName='bg-[#AE9456] text-primary-foreground'
+					previousClassName='bg-white border border-border rounded px-2.5 h-8 flex items-center justify-center'
+					nextClassName='bg-white border border-border rounded px-2.5 h-8  flex items-center justify-center'
+				/>
+			</div>
+		</>
+	)
+}
+
+const ReviewContainer = ({ reviews }: { reviews: LocationReviewItemType }) => {
+	return (
+		<>
+			{reviews.map((review) => (
+				<ReviewItem review={review} />
+			))}
+		</>
 	)
 }
 
