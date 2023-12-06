@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useGetTakeawayReviewsQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
 import {
 	LocationInfoType,
@@ -17,6 +17,7 @@ const AllReviews = ({
 }: {
 	locationInformation?: LocationInfoType
 }) => {
+	const ref = useRef<HTMLHeadingElement>(null)
 	const { data, isLoading, isError } = useGetTakeawayReviewsQuery(
 		locationInformation?.name.toLowerCase(),
 		{
@@ -27,12 +28,16 @@ const AllReviews = ({
 	const averageRating = data?.length
 		? calculateAverageRating(data?.map((r) => Number(r.rating)))
 		: 0
+
+	const handlePageChange = () => {
+		ref.current.scrollIntoView()
+	}
 	return (
 		<div className='container px-7 py-10'>
 			<div className='flex flex-col gap-7'>
 				<div className='border-b border-border pb-4'>
 					<div className='mx-auto flex max-w-[956px] flex-col  gap-2.5'>
-						<h1 className='text-xl font-bold'>
+						<h1 ref={ref} className='text-xl font-bold'>
 							Reviews for Holycow - {locationInformation?.name}
 						</h1>
 						<ReviewStars count={Number(averageRating.toFixed(1))} />
@@ -67,7 +72,11 @@ const AllReviews = ({
 					) : isError ? (
 						<p>Couldn't fetch reviews</p>
 					) : data && data?.length > 0 ? (
-						<PaginatedReviewItems reviews={data} itemsPerPage={10} />
+						<PaginatedReviewItems
+							reviews={data}
+							itemsPerPage={10}
+							handlePageChange={handlePageChange}
+						/>
 					) : (
 						<p>It has no reviews yet!</p>
 					)}
@@ -80,9 +89,11 @@ const AllReviews = ({
 const PaginatedReviewItems = ({
 	itemsPerPage,
 	reviews,
+	handlePageChange,
 }: {
 	itemsPerPage: number
 	reviews: LocationReviewItemType[]
+	handlePageChange: () => void
 }) => {
 	const [itemOffset, setItemOffset] = useState(0)
 
@@ -108,6 +119,7 @@ const PaginatedReviewItems = ({
 			<ReviewContainer reviews={currentItems} />
 			<div className='self-center'>
 				<ReactPaginate
+					onClick={handlePageChange}
 					breakLabel='...'
 					nextLabel='>'
 					onPageChange={handlePageClick}
