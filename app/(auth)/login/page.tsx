@@ -1,11 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { Metadata } from 'next'
 
-import ForgotPasswordPage from '@/components/authentications/forgot-password'
+import {
+	default as ForgotPasswordPage,
+	default as ForgotVerify,
+} from '@/components/authentications/forgot-password'
 import LoginPage from '@/components/authentications/login-page'
-import RegisterVerifyPage from '@/components/authentications/register-verify'
 import RegisterPasswordPage from '@/components/authentications/reset-password'
 import ResetPasswordSuccessPage from '@/components/authentications/reset-password-success'
 
@@ -28,12 +29,7 @@ const Login = () => {
 	if (currentStep === 'forgot-password')
 		displayableIteim = <ForgotPasswordPage setCurrentStep={setCurrentStep} />
 	else if (currentStep === 'forgot-verify')
-		displayableIteim = (
-			<RegisterVerifyPage
-				currentStep={currentStep}
-				setCurrentStep={setCurrentStep}
-			/>
-		)
+		displayableIteim = <ForgotVerify setCurrentStep={setCurrentStep} />
 	else if (currentStep === 'reset-password')
 		displayableIteim = <RegisterPasswordPage setCurrentStep={setCurrentStep} />
 	else if (currentStep === 'reset-success')

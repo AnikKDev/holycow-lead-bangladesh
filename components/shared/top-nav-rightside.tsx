@@ -4,17 +4,17 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { FaRegCircleUser } from 'react-icons/fa6'
 
-import { useIsLoggedIn } from '@/hooks/useIsLoggedIn'
+import { useAuthState } from '@/hooks/useAuthState'
 
 import AccountSidebarModal from '../account/account-sidebar-modal'
 import { Button } from '../ui/button'
 
 const TopNavRightSide = () => {
-	const { isLoggedIn } = useIsLoggedIn()
+	const { auth } = useAuthState()
 	const [showAccountSidebar, setShowAccountSidebar] = useState(false)
 	return (
 		<>
-			{isLoggedIn ? (
+			{auth.access ? (
 				<>
 					<Button
 						size='sm'
