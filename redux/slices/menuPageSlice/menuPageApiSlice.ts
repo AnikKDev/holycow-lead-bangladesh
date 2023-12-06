@@ -8,23 +8,21 @@ import {
 
 export const menuPageApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
-		getTakeawayInformation: builder.query<
-			LocationInfoType,
-			{ takeawayName: string }
-		>({
+		getTakeawayInformation: builder.query<LocationInfoType, string>({
 			query: (takeawayName) => ({
 				url: `/takeout/info?takeout=${takeawayName}`,
 				method: 'GET',
 			}),
+			transformResponse: (response: { takeout_info: LocationInfoType }) =>
+				response?.takeout_info,
 		}),
-		getTakeawayReviews: builder.query<
-			LocationReviewItemType[],
-			{ takeawayName: string }
-		>({
+		getTakeawayReviews: builder.query<LocationReviewItemType[], string>({
 			query: (takeawayName) => ({
 				url: `/takeout/reviews?takeout=${takeawayName}`,
 				method: 'GET',
 			}),
+			transformResponse: (response: { reviews: LocationReviewItemType[] }) =>
+				response?.reviews,
 		}),
 		getFullMenu: builder.query<AllMenuType, void>({
 			query: () => ({

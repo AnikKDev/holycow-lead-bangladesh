@@ -9,6 +9,8 @@ import MenuContainer from './main-menu/menu-container'
 
 import './main-menu/menu.css'
 
+import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
+
 import { cn } from '@/lib/utils'
 
 import LightboxComp from './gallery-lightbox/lightbox'
@@ -17,8 +19,10 @@ import AllReviews from './reviews/all-reviews'
 
 const MenuAndAllBottomSections = ({
 	isRestaurant = false,
+	locationInformation,
 }: {
 	isRestaurant?: boolean
+	locationInformation?: LocationInfoType
 }) => {
 	const targetRef = useRef<HTMLDivElement>(null)
 	const informationRef = useRef<HTMLDivElement>(null)
@@ -111,7 +115,7 @@ const MenuAndAllBottomSections = ({
 					id='information'
 					ref={refCallback}
 				>
-					<InformationSection />
+					<InformationSection locationInformation={locationInformation} />
 				</div>
 				{isRestaurant && (
 					<div
@@ -127,7 +131,7 @@ const MenuAndAllBottomSections = ({
 					id='reviews'
 					ref={refCallback}
 				>
-					<AllReviews />
+					<AllReviews locationInformation={locationInformation} />
 				</div>
 			</div>
 		</div>

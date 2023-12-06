@@ -23,13 +23,15 @@ module.exports = withBundleAnalyzer({
 		ignoreDuringBuilds: true,
 	},
 	images: {
-		// remotePatterns: [
-		// 	{
-		// 		protocol: 'https',
-		// 		hostname: 'd1s1i0e6ao95bj.cloudfront.net',
-		//     port: '',
-		// 	},
-		// ],
+		remotePatterns: [
+			{
+				// protocol: 'http',
+				// hostname: 'ec2-15-168-142-203.ap-northeast-3.compute.amazonaws.com',
+		    // port: '',
+				protocol: 'http',
+        hostname: '**.amazonaws.com',
+			},
+		],
 	},
 	poweredByHeader: false,
 	trailingSlash: true,

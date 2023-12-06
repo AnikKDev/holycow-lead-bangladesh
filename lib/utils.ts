@@ -58,3 +58,14 @@ export type Extend<T extends { [key: string]: any }> = T & {
 export function capitalizeFirstLetter(word: string) {
 	return word.charAt(0).toUpperCase() + word.slice(1)
 }
+
+// calculate average rating
+export function calculateAverageRating(ratings: number[]): number {
+	if (ratings.length === 0) {
+		return 0 // Return 0 if there are no ratings
+	}
+
+	const totalRatings = ratings.reduce((acc, rating) => acc + rating, 0)
+	const averageRating = totalRatings / ratings.length
+	return averageRating
+}
