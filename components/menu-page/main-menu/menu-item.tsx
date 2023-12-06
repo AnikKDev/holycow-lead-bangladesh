@@ -17,6 +17,7 @@ interface IMenuItem {
 const MenuItem = ({ item, isRestaurant }: IMenuItem) => {
 	const [showModal, setShowModal] = useState(false)
 	const router = useRouter()
+	const [selectedItem, setSelectedItem] = useState<MenuItemType>(null)
 	return (
 		<>
 			<div
@@ -25,6 +26,7 @@ const MenuItem = ({ item, isRestaurant }: IMenuItem) => {
 					if (isRestaurant) {
 						return
 					}
+					setSelectedItem(item)
 					setShowModal(!showModal)
 				}}
 				className='cursor-pointer overflow-hidden rounded-md border border-border/75 bg-white transition hover:border-border/100 hover:shadow-[0px_10px_36px_0px_rgba(0,0,0,0.16)]'
@@ -52,8 +54,12 @@ const MenuItem = ({ item, isRestaurant }: IMenuItem) => {
 					</div>
 				</div>
 			</div>
-			{!isRestaurant && (
-				<MenuItemModal showModal={showModal} setShowModal={setShowModal} />
+			{!isRestaurant && selectedItem && (
+				<MenuItemModal
+					item={selectedItem}
+					showModal={showModal}
+					setShowModal={setShowModal}
+				/>
 			)}
 		</>
 	)

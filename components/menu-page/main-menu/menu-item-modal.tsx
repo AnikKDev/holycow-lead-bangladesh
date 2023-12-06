@@ -2,9 +2,11 @@
 
 import { Dispatch, SetStateAction, useState } from 'react'
 import Image from 'next/image'
-import itemImg from '@/public/menu-item.jpg'
+import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import { FiMinusCircle, FiPlusCircle } from 'react-icons/fi'
 
+import { apiUrl } from '@/lib/constatns'
+import { formatPrice } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
 	Dialog,
@@ -20,9 +22,11 @@ import CartSidebar from '@/components/cart/cart-sidebar'
 export function MenuItemModal({
 	showModal,
 	setShowModal,
+	item,
 }: {
 	showModal: boolean
 	setShowModal: Dispatch<SetStateAction<boolean>>
+	item: MenuItemType
 }) {
 	const [showCartSidebar, setShowCartSidebar] = useState(false)
 	return (
@@ -32,19 +36,19 @@ export function MenuItemModal({
 					<DialogHeader className='text-left'>
 						<div>
 							<Image
-								src={itemImg}
+								src={`${apiUrl}${item?.image}`}
 								alt='Menu item image'
 								className='max-h-[300px] w-full object-cover'
+								height={300}
+								width={500}
 							/>
 						</div>
 						<div className='flex flex-col justify-center gap-2.5 px-3 py-2.5 text-foreground'>
-							<DialogTitle className=''>PANEER NAWABI</DialogTitle>
-							<DialogTitle className='text-base'>10.69</DialogTitle>
-							<DialogDescription>
-								Homemade cottage cheese marinated with our own special spices,
-								slowly cooked with green peppers and onions in the tandoor and
-								cooled in a special medium spicy sauce. (Recommended)
-							</DialogDescription>
+							<DialogTitle className=''>{item?.item_name}</DialogTitle>
+							<DialogTitle className='text-base'>
+								{formatPrice(item?.price)}
+							</DialogTitle>
+							<DialogDescription>{item?.description}</DialogDescription>
 						</div>
 					</DialogHeader>
 
