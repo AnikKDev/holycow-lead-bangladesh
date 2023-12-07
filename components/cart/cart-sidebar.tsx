@@ -7,6 +7,7 @@ import {
 } from '@/redux/slices/orderSlice/orderSlice'
 
 import { formatPrice } from '@/lib/utils'
+import { useAuthState } from '@/hooks/useAuthState'
 import { Button } from '@/components/ui/button'
 import {
 	Sheet,
@@ -31,6 +32,7 @@ const CartSidebar = ({
 	const [showModal, setShowModal] = useState(false)
 	const cartItems = useAppSelector(selectAllCartItems)
 	const cartTotals = useAppSelector(getCartTotals)
+	const { auth } = useAuthState()
 
 	return (
 		<>
@@ -64,8 +66,13 @@ const CartSidebar = ({
 								className=' w-full font-medium uppercase'
 								onClick={() => {
 									setShowCartSidebar(false)
-									setShowModal(true)
-									// router.push(`/takeaway-location/${params.location}/checkout`)
+									if (auth.access) {
+										router.push(
+											`/takeaway-location/${params.location}/checkout`
+										)
+									} else {
+										setShowModal(true)
+									}
 								}}
 							>
 								Go to checkout

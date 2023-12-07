@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import itemImg from '@/public/menu-item.jpg'
 import { useAppDispatch } from '@/redux/hooks'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
@@ -11,6 +10,7 @@ import {
 import { FiMinus, FiPlus } from 'react-icons/fi'
 import { GoTrash } from 'react-icons/go'
 
+import { apiUrl } from '@/lib/constatns'
 import { formatPrice } from '@/lib/utils'
 
 import { Button } from '../ui/button'
@@ -35,9 +35,11 @@ const CartItem = ({ item }: { item: MenuItemType }) => {
 		<div className='grid grid-cols-[auto,1fr] items-start gap-4'>
 			<div>
 				<Image
-					src={itemImg}
+					src={`${apiUrl}${item.image}`}
 					alt='Cart product'
 					className='h-14 w-14 rounded-sm object-cover'
+					height={100}
+					width={100}
 				/>
 			</div>
 			<div className='flex flex-col gap-3'>

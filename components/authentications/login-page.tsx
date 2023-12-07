@@ -1,20 +1,18 @@
-import { useLoginMutation } from '@/redux/slices/authSlice/authApiSlice';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useCookies } from 'react-cookie';
-import toast from 'react-hot-toast';
-import { z } from 'zod';
+'use client'
 
+import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useLoginMutation } from '@/redux/slices/authSlice/authApiSlice'
+import { Loader2 } from 'lucide-react'
+import { useCookies } from 'react-cookie'
+import toast from 'react-hot-toast'
+import { z } from 'zod'
 
+import { LoginPageStep } from '@/app/(auth)/login/page'
 
-import { LoginPageStep } from '@/app/(auth)/login/page';
-
-
-
-import AutoForm from '../ui/auto-form';
-import { Button } from '../ui/button';
-import AuthLayoutContainer from './auth-layout-container';
-
+import AutoForm from '../ui/auto-form'
+import { Button } from '../ui/button'
+import AuthLayoutContainer from './auth-layout-container'
 
 // Define your form schema using zod
 const formSchema = z.object({
@@ -54,6 +52,8 @@ const LoginPage = ({
 }: {
 	setCurrentStep: React.Dispatch<React.SetStateAction<LoginPageStep>>
 }) => {
+	const searchParams = useSearchParams()
+	const callBackRoute = searchParams.get('callback-url')
 	const [loginUser, { isLoading: verifiedUserLoginLoading }] =
 		useLoginMutation()
 
@@ -79,7 +79,9 @@ const LoginPage = ({
 				path: '/',
 				expires,
 			})
-			router.replace('/')
+
+			// window.location.href = callBackRoute
+			router.push(callBackRoute)
 		} catch (e) {
 			console.log(e)
 			toast.error('Phone number or password is incorrect')
@@ -111,7 +113,15 @@ const LoginPage = ({
 							},
 						}}
 					>
-						<Button type='submit' className='w-full' size='default'>
+						<Button
+							disabled={verifiedUserLoginLoading}
+							type='submit'
+							className='w-full'
+							size='default'
+						>
+							{verifiedUserLoginLoading && (
+								<Loader2 className='mr-2 h-4 w-4 animate-spin' />
+							)}
 							Login
 						</Button>
 					</AutoForm>
