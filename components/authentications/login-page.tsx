@@ -1,20 +1,15 @@
-import { useLoginMutation } from '@/redux/slices/authSlice/authApiSlice';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useCookies } from 'react-cookie';
-import toast from 'react-hot-toast';
-import { z } from 'zod';
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useLoginMutation } from '@/redux/slices/authSlice/authApiSlice'
+import { useCookies } from 'react-cookie'
+import toast from 'react-hot-toast'
+import { z } from 'zod'
 
+import { LoginPageStep } from '@/app/(auth)/login/page'
 
-
-import { LoginPageStep } from '@/app/(auth)/login/page';
-
-
-
-import AutoForm from '../ui/auto-form';
-import { Button } from '../ui/button';
-import AuthLayoutContainer from './auth-layout-container';
-
+import AutoForm from '../ui/auto-form'
+import { Button } from '../ui/button'
+import AuthLayoutContainer from './auth-layout-container'
 
 // Define your form schema using zod
 const formSchema = z.object({
@@ -66,6 +61,7 @@ const LoginPage = ({
 			const res = await loginUser({
 				...data,
 				phone_number: `+88${data.phone_number}`,
+				// phone_number: `${data.phone_number}`,
 			}).unwrap()
 			const { access, refresh } = await res
 			// const refresh = await res.refresh

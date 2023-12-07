@@ -1,5 +1,9 @@
+import { useEffect } from 'react'
+import { useCheckForgotPasswordOtpMutation } from '@/redux/slices/authSlice/authApiSlice'
+import toast from 'react-hot-toast'
 import { z } from 'zod'
 
+import { ReduxErrorType } from '@/types/auth/auth.types'
 import { LoginPageStep } from '@/app/(auth)/login/page'
 import { RegisterStep } from '@/app/(auth)/register/page'
 
@@ -21,15 +25,39 @@ const formSchema = z.object({
 })
 const ForgotVerifyPage = ({
 	setCurrentStep,
+	phoneNumber,
 }: {
 	// todo: discussion about registerstep or login step
 	setCurrentStep: React.Dispatch<
 		React.SetStateAction<RegisterStep | LoginPageStep>
 	>
+	phoneNumber: string
 }) => {
-	const handleFormSubmit = () => {
-		setCurrentStep('reset-password')
+	const [
+		checkForgotPasswordOtp,
+		{
+			isLoading: checkForgotPasswordOtpLoading,
+			isSuccess: checkForgotPasswordOtpSuccess,
+			isError: isCheckForgotPasswordOtpError,
+			error: checkForgotPasswordOtpError,
+		},
+	] = useCheckForgotPasswordOtpMutation()
+	// sendPhoneForgotPasswordOtpAsResendOtp
+	const handleFormSubmit = (data: Partial<z.infer<typeof formSchema>>) => {
+		checkForgotPasswordOtp({
+			phone_number: phoneNumber,
+			otp: data.otp,
+		})
 	}
+
+	useEffect(() => {
+		if (isCheckForgotPasswordOtpError) {
+			toast.error((checkForgotPasswordOtpError as ReduxErrorType).data?.message)
+		} else if (checkForgotPasswordOtpSuccess) {
+			toast.success('OTP verified successfully.')
+			setCurrentStep('reset-password')
+		}
+	}, [isCheckForgotPasswordOtpError, checkForgotPasswordOtpSuccess])
 	return (
 		<AuthLayoutContainer
 			handleBackBtn={() => {
@@ -41,7 +69,7 @@ const ForgotVerifyPage = ({
 					<h1 className='text-2xl font-bold text-foreground'>Enter Code</h1>
 					<p className='text-sm text-foreground/70'>
 						We’ve sent an SMS with an activation code to your phone +88
-						01849528992
+						{phoneNumber}
 					</p>
 				</div>
 				<div>
@@ -65,7 +93,12 @@ const ForgotVerifyPage = ({
 									Resend
 								</strong>
 							</p>
-							<Button type='submit' className='w-full' size='default'>
+							<Button
+								disabled={checkForgotPasswordOtpLoading}
+								type='submit'
+								className='w-full'
+								size='default'
+							>
 								Submit
 							</Button>
 						</div>
