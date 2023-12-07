@@ -12,25 +12,34 @@ type OrderInitialState = Extend<
 	Partial<{
 		cartItems: MenuItemType[]
 		discount: number
+		promo_code: string
 		delivery_charge: number
 		fulfillment_type: FulfillmentType
+		delivery_address: object
+		delivery_time: 'As soon as possible' | Date | null
+		collection_address: string
+		collection_time: 'As soon as possible' | Date | null
 	}>
 >
 
 const initialState: OrderInitialState = {
 	cartItems: [],
 	discount: null,
+	promo_code: '',
 	delivery_charge: DELIVERY_CHARGE,
 	fulfillment_type: 'Delivery',
+	delivery_address: {},
+	delivery_time: 'As soon as possible',
+	collection_address: '',
+	collection_time: 'As soon as possible',
 }
 
 const orderSlice = createSlice({
 	name: 'order',
 	initialState,
 	reducers: {
-		setOrderState: (state, action: PayloadAction<OrderInitialState>) => {
-			state = action.payload
-		},
+		setOrderState: (state, action: PayloadAction<OrderInitialState>) =>
+			action.payload,
 		setOrderDiscount: (state, action: PayloadAction<number>) => {
 			state.discount = action.payload
 		},

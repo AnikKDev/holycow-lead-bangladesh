@@ -43,7 +43,7 @@ const CollectionTimeSection = () => {
 
 const CustomCollectionTimeBtn = React.forwardRef(
 	({ value, onClick }: { value: any; onClick: any }, ref: any) => {
-		console.log('value from custom', value)
+		// console.log('value from custom', value)
 		return (
 			<div onClick={onClick} ref={ref}>
 				<Button variant='link' className='h-7 rounded-full px-5' size='sm'>

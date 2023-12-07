@@ -165,7 +165,7 @@ const CustomDatePicker = React.forwardRef(
 		}: { value: any; onClick: any; setSelectedTime: any },
 		ref: any
 	) => {
-		console.log('value from custom', value)
+		// console.log('value from custom', value)
 		return (
 			<div className='w-full' onClick={onClick} ref={ref}>
 				<input
