@@ -55,8 +55,8 @@ const AllReviews = ({
 				<div className='mx-auto flex max-w-[956px] flex-col gap-10'>
 					{isLoading ? (
 						[1, 2, 3, 4, 5].map((i) => (
-							<div key={i} className='w-[956px] min-w-fit'>
-								<div className='mb-1.5 flex items-center justify-between'>
+							<div key={i} className='w-[956px] min-w-fit '>
+								<div className='mb-1.5 flex items-center justify-between '>
 									<div className='flex items-center gap-2.5'>
 										<Skeleton className='h-8 w-8 rounded-full' />
 										<Skeleton className='h-4 w-[150px]' />
@@ -129,10 +129,14 @@ const PaginatedReviewItems = ({
 					previousLabel='<'
 					renderOnZeroPageCount={null}
 					className='flex flex-row items-center gap-1.5 transition-all'
-					pageClassName='bg-white border border-border rounded px-2.5 h-8  flex items-center justify-center'
-					activeClassName='bg-[#AE9456] text-primary-foreground'
-					previousClassName='bg-white border border-border rounded px-2.5 h-8 flex items-center justify-center'
-					nextClassName='bg-white border border-border rounded px-2.5 h-8  flex items-center justify-center'
+					pageClassName='bg-white border border-border rounded px-2.5 h-8  flex items-center justify-center cursor-pointer'
+					pageLinkClassName='cursor-pointer'
+					activeClassName='!bg-[#AE9456]'
+					activeLinkClassName='bg-[#AE9456]'
+					previousClassName='bg-white border border-border rounded px-2.5 h-8 flex items-center justify-center cursor-pointer'
+					nextClassName='bg-white border border-border rounded px-2.5 h-8  flex items-center justify-center cursor-pointer'
+					disabledClassName='bg-gray-300 pointer-events-none cursor-not-allowed '
+					disabledLinkClassName='pointer-events-none cursor-not-allowed '
 				/>
 			</div>
 		</>
