@@ -12,12 +12,13 @@ export const apiSlice = createApi({
 			// By default, if we have a token in the store, let's use that for authenticated requests
 			const token = (getState() as RootState).auth.token
 			if (token) {
-				headers.set('Authorization', `Token ${token}`)
+				// headers.set('Authorization', `Token ${token}`)
+				headers.set('Authorization', `Bearer ${token}`)
 			}
 			return headers
 		},
 	}),
-	tagTypes: [],
+	tagTypes: ['Address', 'Profile', 'Post'],
 	// This setting allows you to control whether RTK Query will try to refetch all subscribed queries after regaining a network connection.
 	refetchOnReconnect: true,
 	// This is how long RTK Query will keep the data cached for after the last component unsubscribes.(seconds)

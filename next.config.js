@@ -32,6 +32,7 @@ module.exports = withBundleAnalyzer({
 		// ],
 	},
 	poweredByHeader: false,
+	// !update
 	trailingSlash: true,
 	basePath: '',
 	// The starter code load resources from `public` folder with `router.basePath` in React components.

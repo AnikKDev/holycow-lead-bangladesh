@@ -1,5 +1,10 @@
+import { useEffect } from 'react'
+import { useSendPhoneForgotPasswordOtpMutation } from '@/redux/slices/authSlice/authApiSlice'
+import toast from 'react-hot-toast'
 import { z } from 'zod'
 
+import { ReduxErrorType } from '@/types/auth/auth.types'
+import { capitalizeFirstLetter } from '@/lib/utils'
 import { LoginPageStep } from '@/app/(auth)/login/page'
 
 import AutoForm from '../ui/auto-form'
@@ -19,13 +24,38 @@ const formSchema = z.object({
 })
 const ForgotPasswordPage = ({
 	setCurrentStep,
+	setPhoneNumber,
 }: {
 	setCurrentStep: React.Dispatch<React.SetStateAction<LoginPageStep>>
+	setPhoneNumber: (e: string) => void
 }) => {
-	const handleFormSubmit = () => {
-		setCurrentStep('forgot-verify')
+	const [
+		sendPhoneForgotPasswordOtp,
+		{
+			isLoading: sendPhoneForgotPasswordOtpLoading,
+			isSuccess: sendPhoneForgotPasswordOtpSuccess,
+			isError: isSendPhoneForgotPasswordOtpError,
+			error: sendPhoneForgotPasswordOtpError,
+		},
+	] = useSendPhoneForgotPasswordOtpMutation()
+	// forgot password hook
+	const handleFormSubmit = (data: Partial<z.infer<typeof formSchema>>) => {
+		setPhoneNumber(data.email_or_phone)
+		sendPhoneForgotPasswordOtp({
+			phone_number: data.email_or_phone,
+		})
 	}
-
+	// error and success case
+	useEffect(() => {
+		if (isSendPhoneForgotPasswordOtpError) {
+			toast.error(
+				(sendPhoneForgotPasswordOtpError as ReduxErrorType).data?.message
+			)
+		} else if (sendPhoneForgotPasswordOtpSuccess) {
+			toast.success('OTP has been sent to your phone number.')
+			setCurrentStep('forgot-verify')
+		}
+	}, [isSendPhoneForgotPasswordOtpError, sendPhoneForgotPasswordOtpSuccess])
 	return (
 		<AuthLayoutContainer
 			handleBackBtn={() => {
@@ -63,7 +93,12 @@ const ForgotPasswordPage = ({
 									Resend
 								</strong>
 							</p> */}
-							<Button type='submit' className='w-full' size='default'>
+							<Button
+								disabled={sendPhoneForgotPasswordOtpLoading}
+								type='submit'
+								className='w-full'
+								size='default'
+							>
 								Submit
 							</Button>
 						</div>
