@@ -1,5 +1,12 @@
+import { useEffect } from 'react'
+import {
+	useResetForgotPasswordMutation,
+	useSendPhoneForgotPasswordOtpMutation,
+} from '@/redux/slices/authSlice/authApiSlice'
+import toast from 'react-hot-toast'
 import { z } from 'zod'
 
+import { ReduxErrorType } from '@/types/auth/auth.types'
 import { LoginPageStep } from '@/app/(auth)/login/page'
 
 import AutoForm from '../ui/auto-form'
@@ -25,9 +32,34 @@ const RegisterPasswordPage = ({
 }: {
 	setCurrentStep: React.Dispatch<React.SetStateAction<LoginPageStep>>
 }) => {
-	const handleFormSubmit = () => {
-		setCurrentStep('reset-success')
+	const [
+		resetForgotPassword,
+		{
+			isLoading: resetForgotPasswordLoading,
+			isSuccess: resetForgotPasswordSuccess,
+			isError: isresetForgotPasswordError,
+			error: resetForgotPasswordError,
+		},
+	] = useSendPhoneForgotPasswordOtpMutation()
+	const handleFormSubmit = (data: Partial<z.infer<typeof formSchema>>) => {
+		resetForgotPassword({
+			// todo: have to update thos code here
+			phone_number: data.phone_number,
+			// new_password: data.new_password,
+		})
 	}
+
+	// error and success case
+	useEffect(() => {
+		if (isresetForgotPasswordError) {
+			toast.error((resetForgotPasswordError as ReduxErrorType).data?.message)
+		} else if (resetForgotPasswordSuccess) {
+			toast.success('New password has been set.')
+			setCurrentStep('reset-success')
+
+			// setCurrentStep('forgot-verify')
+		}
+	}, [isresetForgotPasswordError, resetForgotPasswordSuccess])
 	return (
 		<AuthLayoutContainer
 			handleBackBtn={() => {
@@ -56,7 +88,12 @@ const RegisterPasswordPage = ({
 						}}
 					>
 						<div className='flex flex-col gap-2'>
-							<Button type='submit' className='w-full' size='default'>
+							<Button
+								disabled={resetForgotPasswordLoading}
+								type='submit'
+								className='w-full'
+								size='default'
+							>
 								Submit
 							</Button>
 						</div>
