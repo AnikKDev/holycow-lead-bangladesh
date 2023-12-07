@@ -41,9 +41,16 @@ const Login = () => {
 			/>
 		)
 	else if (currentStep === 'reset-password')
-		displayableIteim = <RegisterPasswordPage setCurrentStep={setCurrentStep} />
+		displayableIteim = (
+			<RegisterPasswordPage
+				phoneNumber={phoneNumber}
+				setCurrentStep={setCurrentStep}
+			/>
+		)
 	else if (currentStep === 'reset-success')
-		displayableIteim = <ResetPasswordSuccessPage />
+		displayableIteim = (
+			<ResetPasswordSuccessPage setCurrentStep={setCurrentStep} />
+		)
 
 	console.log(currentStep, 'curent step')
 	return <>{displayableIteim}</>

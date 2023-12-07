@@ -29,8 +29,10 @@ const formSchema = z.object({
 })
 const RegisterPasswordPage = ({
 	setCurrentStep,
+	phoneNumber,
 }: {
 	setCurrentStep: React.Dispatch<React.SetStateAction<LoginPageStep>>
+	phoneNumber: string
 }) => {
 	const [
 		resetForgotPassword,
@@ -40,12 +42,12 @@ const RegisterPasswordPage = ({
 			isError: isresetForgotPasswordError,
 			error: resetForgotPasswordError,
 		},
-	] = useSendPhoneForgotPasswordOtpMutation()
+	] = useResetForgotPasswordMutation()
 	const handleFormSubmit = (data: Partial<z.infer<typeof formSchema>>) => {
 		resetForgotPassword({
-			// todo: have to update thos code here
-			phone_number: data.phone_number,
-			// new_password: data.new_password,
+			// todo: have to update those code here
+			phone_number: phoneNumber,
+			new_password: data.new_password,
 		})
 	}
 
