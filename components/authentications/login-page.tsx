@@ -1,23 +1,31 @@
-import Link from 'next/link'
-import { z } from 'zod'
+import { useLoginMutation } from '@/redux/slices/authSlice/authApiSlice';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useCookies } from 'react-cookie';
+import toast from 'react-hot-toast';
+import { z } from 'zod';
 
-import { ukPhoneRegex } from '@/lib/validations/string'
-import { LoginPageStep } from '@/app/(auth)/login/page'
 
-import AutoForm from '../ui/auto-form'
-import { Button } from '../ui/button'
-import AuthLayoutContainer from './auth-layout-container'
+
+import { LoginPageStep } from '@/app/(auth)/login/page';
+
+
+
+import AutoForm from '../ui/auto-form';
+import { Button } from '../ui/button';
+import AuthLayoutContainer from './auth-layout-container';
+
 
 // Define your form schema using zod
 const formSchema = z.object({
-	phone_number_or_email: z
+	phone_number: z
 		.string({
-			required_error: 'Field can not be empty.',
+			required_error: 'Phone number can not be empty.',
 		})
 		// Use the "describe" method to set the label
 		// If no label is set, the field name will be used
 		// and un-camel-cased
-		.describe('Email / Number'),
+		.describe('Phone number'),
 	// .regex(ukPhoneRegex, {
 	// 	message: 'Invalid phone number.',
 	// })
@@ -46,8 +54,36 @@ const LoginPage = ({
 }: {
 	setCurrentStep: React.Dispatch<React.SetStateAction<LoginPageStep>>
 }) => {
-	const handleFormSubmit = () => {
-		setCurrentStep('')
+	const [loginUser, { isLoading: verifiedUserLoginLoading }] =
+		useLoginMutation()
+
+	const [cookie, setCookie] = useCookies(['access', 'refresh'])
+	const router = useRouter()
+	const handleFormSubmit = async (
+		data: Partial<z.infer<typeof formSchema>>
+	) => {
+		try {
+			const res = await loginUser({
+				...data,
+				phone_number: `+88${data.phone_number}`,
+			}).unwrap()
+			const { access, refresh } = await res
+			// const refresh = await res.refresh
+			let expires = new Date()
+			expires.setTime(expires.getTime() + 1000 * 60 * 60 * 24 * 365)
+			setCookie('access', access, {
+				path: '/',
+				expires,
+			})
+			setCookie('refresh', refresh, {
+				path: '/',
+				expires,
+			})
+			router.replace('/')
+		} catch (e) {
+			console.log(e)
+			toast.error('Phone number or password is incorrect')
+		}
 	}
 	return (
 		<AuthLayoutContainer hideBackBtn>
@@ -62,17 +98,12 @@ const LoginPage = ({
 						containerClassName='grid space-y-2.5'
 						// className='space-y-0 gap-x-4 gap-y-3'
 						fieldConfig={{
-							phone_number_or_email: {
+							phone_number: {
 								inputProps: {
 									// todo: regex for email or phone check
-									type: 'text',
+									type: 'number',
 								},
 							},
-							/* email: {
-								inputProps: {
-									type: 'email',
-								},
-							}, */
 							password: {
 								inputProps: {
 									type: 'password',

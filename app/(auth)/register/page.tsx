@@ -14,13 +14,24 @@ export type RegisterStep = 'register' | 'register-verify'
 
 const Register = () => {
 	const [currentStep, setCurrentStep] = useState<RegisterStep>('register')
+	const [phoneNumber, setPhoneNumber] = useState('')
+	const [password, setPassword] = useState('')
+
 	return (
 		<>
 			{currentStep === 'register' ? (
-				<RegisterPage setCurrentStep={setCurrentStep} />
+				<RegisterPage
+					setPhoneNumber={setPhoneNumber}
+					setCurrentStep={setCurrentStep}
+					setPassword={setPassword}
+				/>
 			) : (
 				currentStep === 'register-verify' && (
-					<RegisterVerifyPage setCurrentStep={setCurrentStep} />
+					<RegisterVerifyPage
+						phoneNumber={phoneNumber}
+						setCurrentStep={setCurrentStep}
+						password={password}
+					/>
 				)
 			)}
 		</>
