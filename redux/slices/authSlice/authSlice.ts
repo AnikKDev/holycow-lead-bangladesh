@@ -30,7 +30,7 @@ export type AuthStateType = Extend<
 	}>
 >
 
-const initialState: AuthStateType = {
+export const authInitialState: AuthStateType = {
 	refresh: '',
 	access: '',
 	id: null,
@@ -39,7 +39,7 @@ const initialState: AuthStateType = {
 
 const authSlice = createSlice({
 	name: 'auth',
-	initialState,
+	initialState: authInitialState,
 	reducers: {
 		logOut: (state) => {
 			state.access = ''
@@ -47,6 +47,8 @@ const authSlice = createSlice({
 			state.id = null
 			state.user = {}
 		},
+		setAuthState: (state, action: PayloadAction<AuthStateType>) =>
+			action.payload,
 	},
 	extraReducers: (builder) => {
 		builder.addMatcher(
@@ -68,5 +70,5 @@ const authSlice = createSlice({
 })
 export default authSlice.reducer
 
-export const { logOut } = authSlice.actions
+export const { logOut, setAuthState } = authSlice.actions
 export const selectAuthUser = (state: RootState) => state.auth

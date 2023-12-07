@@ -1,9 +1,14 @@
 import Image from 'next/image'
 import mapImg from '@/public/map.png'
+import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import { HiMail } from 'react-icons/hi'
 import { MdCall, MdOutlineLocationOn } from 'react-icons/md'
 
-const LocationInfo = () => {
+const LocationInfo = ({
+	locationInformation,
+}: {
+	locationInformation: LocationInfoType
+}) => {
 	return (
 		<div className='flex flex-col gap-2.5'>
 			<h2 className='pb-2 text-lg font-semibold'>Where to find us</h2>
@@ -13,15 +18,15 @@ const LocationInfo = () => {
 			<div className='flex flex-col'>
 				<div className='flex items-center gap-2 border-b border-border py-4'>
 					<MdOutlineLocationOn size={18} />
-					<p>87 Junction Road Archway London N19 5QU</p>
+					<p>{locationInformation?.address}</p>
 				</div>
 				<div className='flex items-center gap-2 border-b border-border py-4'>
 					<MdCall size={18} />
-					<p>+44 20 72637007</p>
+					<p>{locationInformation?.phone_number}</p>
 				</div>
 				<div className='flex items-center gap-2 border-b border-border py-4'>
 					<HiMail size={18} />
-					<p>info@holycowonline.com</p>
+					<p>{locationInformation?.email}</p>
 				</div>
 			</div>
 		</div>
