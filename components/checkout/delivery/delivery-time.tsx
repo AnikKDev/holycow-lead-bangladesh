@@ -19,11 +19,9 @@ import {
 import { ASAP } from '@/lib/constatns'
 
 const DeliveryTimeArea = () => {
-	const orderState = useAppSelector(selectOrderState)
-	const [selectedTime, setSelectedTime] = useState('As soon as possible')
 	const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(null)
 	const pickerRef = useRef<HTMLInputElement>(null)
-	console.log({ selectedDateTime, selectedTime })
+	const orderState = useAppSelector(selectOrderState)
 	const dispatch = useAppDispatch()
 	return (
 		<div>
