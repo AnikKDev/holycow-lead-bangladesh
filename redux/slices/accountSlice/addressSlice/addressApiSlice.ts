@@ -32,6 +32,13 @@ export const addressApiSlice = apiSlice.injectEndpoints({
 				'Address',
 			],
 		}),
+		deleteAddress: builder.mutation({
+			query: (addressId) => ({
+				url: `/user/address/${addressId}`,
+				method: 'DELETE',
+			}),
+			invalidatesTags: (result, error, arg) => ['Address'],
+		}),
 	}),
 })
 
@@ -41,4 +48,5 @@ export const {
 	useGetAllAddressesQuery,
 	useCreateAddressMutation,
 	useUpdateAddressMutation,
+	useDeleteAddressMutation,
 } = addressApiSlice

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDeleteAddressMutation } from '@/redux/slices/accountSlice/addressSlice/addressApiSlice'
 import { HiOutlinePencil } from 'react-icons/hi'
 import { RiDeleteBinLine } from 'react-icons/ri'
 
@@ -26,6 +27,15 @@ export default function AddressRow({
 		id,
 		postal_code,
 	} = userAddress || {}
+	const [
+		deleteAddress,
+		{
+			isLoading: deleteAddressLoading,
+			isSuccess: deleteAddressSuccess,
+			isError: isDeleteAddressError,
+			error: deleteAddressError,
+		},
+	] = useDeleteAddressMutation()
 	return (
 		<div className='border-b border-[#D1D5DB]'>
 			<div className='flex items-center justify-between p-6'>
@@ -36,7 +46,10 @@ export default function AddressRow({
 				</div>
 				{/* icon */}
 				<div className='flex items-center space-x-6'>
-					<div className='flex cursor-pointer items-center transition-all duration-200 hover:text-primary'>
+					<div
+						onClick={() => deleteAddress(id)}
+						className='flex cursor-pointer items-center transition-all duration-200 hover:text-primary'
+					>
 						<RiDeleteBinLine className='mr-2' />
 						<span>Delete</span>
 					</div>
