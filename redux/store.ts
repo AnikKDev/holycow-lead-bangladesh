@@ -39,7 +39,7 @@ const persistConfig = {
 	key: 'root',
 	storage,
 	transforms: [encryptor],
-	whitelist: ['counter', 'auth', 'message'], // Things u want to persist
+	whitelist: ['counter', 'auth', 'order'], // Things u want to persist
 	blacklist: [], // Things u dont
 	stateReconciler: autoMergeLevel2,
 }

@@ -2,7 +2,13 @@
 
 import { Dispatch, SetStateAction, useState } from 'react'
 import Image from 'next/image'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
+import {
+	addItemToCart,
+	selectOrderState,
+	setOrderState,
+} from '@/redux/slices/orderSlice/orderSlice'
 import { FiMinusCircle, FiPlusCircle } from 'react-icons/fi'
 
 import { apiUrl } from '@/lib/constatns'
@@ -30,6 +36,35 @@ export function MenuItemModal({
 }) {
 	const [showCartSidebar, setShowCartSidebar] = useState(false)
 	const [quantity, setQuantity] = useState(1)
+	const orderState = useAppSelector(selectOrderState)
+	const dispatch = useAppDispatch()
+	const handleAddItemToCart = () => {
+		dispatch(
+			addItemToCart({
+				...item,
+				quantity: quantity,
+			})
+		)
+		// if already discount added and user tries to change the cart quantity then reset the discount
+		if (orderState.discount) {
+			dispatch(
+				setOrderState({
+					...orderState,
+					discount: 0,
+				})
+			)
+		}
+
+		setShowModal(false)
+		setShowCartSidebar(true)
+	}
+
+	// useEffect(() => {
+	// 	if (!quantity) {
+	// 		setQuantity(1)
+	// 	}
+	// }, [quantity])
+
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
@@ -76,6 +111,7 @@ export function MenuItemModal({
 								onChange={(e) => {
 									setQuantity(e.target.valueAsNumber)
 								}}
+								placeholder='1'
 								onBlur={() => {
 									if (!quantity) {
 										setQuantity(1)
@@ -96,8 +132,7 @@ export function MenuItemModal({
 							type='submit'
 							className='text-base'
 							onClick={() => {
-								setShowModal(false)
-								setShowCartSidebar(true)
+								handleAddItemToCart()
 							}}
 						>
 							Add to cart

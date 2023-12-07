@@ -28,6 +28,12 @@ const orderSlice = createSlice({
 	name: 'order',
 	initialState,
 	reducers: {
+		setOrderState: (state, action: PayloadAction<OrderInitialState>) => {
+			state = action.payload
+		},
+		setOrderDiscount: (state, action: PayloadAction<number>) => {
+			state.discount = action.payload
+		},
 		addItemToCart: (state, action: PayloadAction<MenuItemType>) => {
 			const existingIndex = state.cartItems.findIndex(
 				(prod) => prod.id == action.payload.id
@@ -76,8 +82,13 @@ const orderSlice = createSlice({
 	},
 })
 
-export const { addItemToCart, increaseItemQuantity, decreaseItemQuantity } =
-	orderSlice.actions
+export const {
+	setOrderState,
+	setOrderDiscount,
+	addItemToCart,
+	increaseItemQuantity,
+	decreaseItemQuantity,
+} = orderSlice.actions
 export default orderSlice.reducer
 
 export const selectAllCartItems = (state: RootState) => state.order.cartItems

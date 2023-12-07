@@ -1,12 +1,15 @@
 import Image from 'next/image'
 import itemImg from '@/public/menu-item.jpg'
+import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import { FiMinus, FiPlus } from 'react-icons/fi'
 import { GoTrash } from 'react-icons/go'
+
+import { formatPrice } from '@/lib/utils'
 
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 
-const CartItem = () => {
+const CartItem = ({ item }: { item: MenuItemType }) => {
 	return (
 		<div className='grid grid-cols-[auto,1fr] items-start gap-4'>
 			<div>
@@ -18,14 +21,17 @@ const CartItem = () => {
 			</div>
 			<div className='flex flex-col gap-3'>
 				<div className='flex flex-col gap-1'>
-					<h1 className='text-base font-medium'>VEGETABLE PAKORA</h1>
-					<p className='text-sm font-medium text-[#767676]'>
-						Seasonal vegetable mixed with fresh chopped ginger, garlic, spices.
-						Deep fried...
+					<h1 className='line-clamp-1 text-base font-medium'>
+						{item.item_name}
+					</h1>
+					<p className='line-clamp-2 text-sm font-medium text-[#767676]'>
+						{item.description}
 					</p>
 				</div>
 				<div className='flex items-center justify-between'>
-					<span className='text-base font-medium'>£10.69</span>
+					<span className='text-base font-medium'>
+						{formatPrice(item.price)}
+					</span>
 					<div className='flex items-center gap-3'>
 						<Button
 							variant='outline'
@@ -46,6 +52,7 @@ const CartItem = () => {
 								id='quantity'
 								defaultValue='1'
 								min={1}
+								value={item.quantity}
 							/>
 							<Button
 								variant='outline'
