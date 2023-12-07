@@ -8,7 +8,7 @@ import ReviewStars from './review-stars'
 
 const ReviewItem = ({ review }: { review: LocationReviewItemType }) => {
 	return (
-		<div>
+		<div className=' w-[956px] min-w-min'>
 			<div className='mb-3 flex items-center justify-between'>
 				<div className='flex items-center gap-2.5'>
 					<Avatar>

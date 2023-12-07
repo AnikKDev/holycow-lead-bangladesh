@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
 import { selectTotalCartItems } from '@/redux/slices/orderSlice/orderSlice'
 import { FaShoppingCart } from 'react-icons/fa'
@@ -12,6 +13,10 @@ import { Button } from '../ui/button'
 const TopCartBtn = () => {
 	const [showCartSidebar, setShowCartSidebar] = useState(false)
 	const totalCartItems = useAppSelector(selectTotalCartItems)
+	const pathname = usePathname()
+	if (pathname.includes('/locations/')) {
+		return null
+	}
 	return (
 		<>
 			<Button
