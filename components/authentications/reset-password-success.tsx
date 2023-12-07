@@ -4,13 +4,19 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { FaRegCheckCircle } from 'react-icons/fa'
 
+import { LoginPageStep } from '@/app/(auth)/login/page'
+
 import AuthLayoutContainer from './auth-layout-container'
 
-const ResetPasswordSuccessPage = () => {
+const ResetPasswordSuccessPage = ({
+	setCurrentStep,
+}: {
+	setCurrentStep: React.Dispatch<React.SetStateAction<LoginPageStep>>
+}) => {
 	const router = useRouter()
 	useEffect(() => {
 		setTimeout(() => {
-			router.push('/login/')
+			setCurrentStep('login')
 		}, 2000)
 	}, [])
 	return (
