@@ -93,6 +93,8 @@ export default orderSlice.reducer
 
 export const selectAllCartItems = (state: RootState) => state.order.cartItems
 export const selectOrderState = (state: RootState) => state.order
+export const selectTotalCartItems = (state: RootState) =>
+	state.order.cartItems.length
 
 export const getCartTotals = createSelector(
 	selectAllCartItems,

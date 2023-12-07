@@ -1,6 +1,11 @@
 import Image from 'next/image'
 import itemImg from '@/public/menu-item.jpg'
+import { useAppDispatch } from '@/redux/hooks'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
+import {
+	decreaseItemQuantity,
+	increaseItemQuantity,
+} from '@/redux/slices/orderSlice/orderSlice'
 import { FiMinus, FiPlus } from 'react-icons/fi'
 import { GoTrash } from 'react-icons/go'
 
@@ -10,6 +15,16 @@ import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 
 const CartItem = ({ item }: { item: MenuItemType }) => {
+	const dispatch = useAppDispatch()
+
+	const handleIncreaseQuantity = () => {
+		dispatch(increaseItemQuantity(item))
+	}
+
+	const handleDecreaseQuantity = () => {
+		dispatch(decreaseItemQuantity(item))
+	}
+
 	return (
 		<div className='grid grid-cols-[auto,1fr] items-start gap-4'>
 			<div>
@@ -43,6 +58,7 @@ const CartItem = ({ item }: { item: MenuItemType }) => {
 							<Button
 								variant='outline'
 								className='border-none bg-transparent p-0 hover:bg-transparent hover:text-foreground'
+								onClick={handleDecreaseQuantity}
 							>
 								<FiMinus className='h-[18px] w-[18px]' />
 							</Button>
@@ -57,6 +73,7 @@ const CartItem = ({ item }: { item: MenuItemType }) => {
 							<Button
 								variant='outline'
 								className='border-none bg-transparent p-0 hover:bg-transparent hover:text-foreground'
+								onClick={handleIncreaseQuantity}
 							>
 								<FiPlus className='h-[20px] w-[20px]' />
 							</Button>

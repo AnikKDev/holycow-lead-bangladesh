@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import { useAppSelector } from '@/redux/hooks'
+import { selectTotalCartItems } from '@/redux/slices/orderSlice/orderSlice'
 import { FaShoppingCart } from 'react-icons/fa'
 import { GoDotFill } from 'react-icons/go'
 
@@ -9,6 +11,7 @@ import { Button } from '../ui/button'
 
 const TopCartBtn = () => {
 	const [showCartSidebar, setShowCartSidebar] = useState(false)
+	const totalCartItems = useAppSelector(selectTotalCartItems)
 	return (
 		<>
 			<Button
@@ -22,7 +25,7 @@ const TopCartBtn = () => {
 				<FaShoppingCart className='text-sm' />
 				<span className='text-sm'>Cart</span>
 				<GoDotFill className='text-sm' />
-				<span>3</span>
+				<span>{totalCartItems}</span>
 			</Button>
 
 			<CartSidebar
