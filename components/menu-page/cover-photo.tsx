@@ -1,6 +1,5 @@
 import Image from 'next/image'
-
-import coverImg from '/public/menu-cover.jpg'
+import coverImg from '@/public/menu-cover.jpg'
 
 const CoverPhoto = () => {
 	return (

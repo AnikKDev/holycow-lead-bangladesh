@@ -30,9 +30,9 @@ module.exports = withBundleAnalyzer({
 		//     port: '',
 		// 	},
 		// ],
-		domains: ['images.unsplash.com/'],
 	},
 	poweredByHeader: false,
+	// !update
 	trailingSlash: true,
 	basePath: '',
 	// The starter code load resources from `public` folder with `router.basePath` in React components.
