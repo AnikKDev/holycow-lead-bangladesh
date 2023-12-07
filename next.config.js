@@ -27,9 +27,10 @@ module.exports = withBundleAnalyzer({
 			{
 				// protocol: 'http',
 				// hostname: 'ec2-15-168-142-203.ap-northeast-3.compute.amazonaws.com',
-		    // port: '',
+		    // port: '',(http:/13.43.227.150:8000/media
 				protocol: 'http',
-        hostname: '**.amazonaws.com',
+        hostname: '13.43.227.150',
+				port: '8000',
 			},
 		],
 	},

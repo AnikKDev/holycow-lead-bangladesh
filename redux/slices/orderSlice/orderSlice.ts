@@ -1,6 +1,7 @@
 import { RootState } from '@/redux/store'
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+import { AccountAddress } from '@/types/account/account.types'
 import { DELIVERY_CHARGE } from '@/lib/constatns'
 import { decimalFormatter } from '@/lib/formatter'
 import { Extend } from '@/lib/utils'
@@ -15,7 +16,7 @@ type OrderInitialState = Extend<
 		promo_code: string
 		delivery_charge: number
 		fulfillment_type: FulfillmentType
-		delivery_address: object
+		delivery_address: AccountAddress
 		delivery_time: 'As soon as possible' | Date | null
 		collection_address: string
 		collection_time: 'As soon as possible' | Date | null

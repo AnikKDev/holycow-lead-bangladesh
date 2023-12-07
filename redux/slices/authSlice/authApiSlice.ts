@@ -20,7 +20,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 		}),
 		verifyRegisterOtp: builder.mutation({
 			query: (credentials: { phone_number: string; otp: string }) => ({
-				url: '/auth/verify-otp/',
+				url: '/auth/verify_otp/',
 				method: 'POST',
 				body: { ...credentials },
 			}),
