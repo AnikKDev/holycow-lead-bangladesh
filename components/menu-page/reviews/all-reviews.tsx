@@ -1,5 +1,8 @@
 import { useRef, useState } from 'react'
-import { useGetTakeawayReviewsQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
+import {
+	useGetRestaurantReviewsQuery,
+	useGetTakeawayReviewsQuery,
+} from '@/redux/slices/menuPageSlice/menuPageApiSlice'
 import {
 	LocationInfoType,
 	LocationReviewItemType,
@@ -14,24 +17,63 @@ import ReviewStars from './review-stars'
 
 const AllReviews = ({
 	locationInformation,
+	isRestaurant = false,
 }: {
 	locationInformation?: LocationInfoType
+	isRestaurant?: boolean
 }) => {
 	const ref = useRef<HTMLHeadingElement>(null)
 	const { data, isLoading, isError } = useGetTakeawayReviewsQuery(
 		locationInformation?.name.toLowerCase(),
 		{
-			skip: !locationInformation?.name,
+			skip: isRestaurant,
 		}
 	)
+	const {
+		data: restaurantReviews,
+		isLoading: isRestaurantReviewLoading,
+		isError: isRestaurantReviewError,
+	} = useGetRestaurantReviewsQuery(locationInformation?.name.toLowerCase(), {
+		skip: !isRestaurant,
+	})
 
-	const averageRating = data?.length
-		? calculateAverageRating(data?.map((r) => Number(r.rating)))
-		: 0
+	const averageRating = !isRestaurant
+		? data?.length
+			? calculateAverageRating(data?.map((r) => Number(r.rating)))
+			: 0
+		: restaurantReviews?.length
+		  ? calculateAverageRating(restaurantReviews?.map((r) => Number(r.rating)))
+		  : 0
 
 	const handlePageChange = () => {
 		ref.current.scrollIntoView()
 	}
+
+	let content
+	if (isRestaurant) {
+		content =
+			restaurantReviews && restaurantReviews?.length > 0 ? (
+				<PaginatedReviewItems
+					reviews={restaurantReviews}
+					itemsPerPage={10}
+					handlePageChange={handlePageChange}
+				/>
+			) : (
+				<p>No reviews found!</p>
+			)
+	} else {
+		content =
+			data && data?.length > 0 ? (
+				<PaginatedReviewItems
+					reviews={data}
+					itemsPerPage={10}
+					handlePageChange={handlePageChange}
+				/>
+			) : (
+				<p>No reviews found!</p>
+			)
+	}
+
 	return (
 		<div className='container px-7 py-10'>
 			<div className='flex flex-col gap-7'>
@@ -42,9 +84,11 @@ const AllReviews = ({
 						</h1>
 						<ReviewStars count={Number(averageRating.toFixed(1))} />
 						<h2 className='text-lg font-semibold'>
-							{data?.length > 0 ? (
+							{data?.length > 0 || restaurantReviews?.length > 0 ? (
 								<>
-									{averageRating.toFixed(1)}/5 • {data?.length} ratings
+									{averageRating.toFixed(1)}/5 •{' '}
+									{isRestaurant ? restaurantReviews?.length : data?.length}{' '}
+									ratings
 								</>
 							) : (
 								'No ratings'
@@ -53,7 +97,7 @@ const AllReviews = ({
 					</div>
 				</div>
 				<div className='mx-auto flex max-w-[956px] flex-col gap-10'>
-					{isLoading ? (
+					{isLoading || isRestaurantReviewLoading ? (
 						[1, 2, 3, 4, 5].map((i) => (
 							<div key={i} className='w-[956px] min-w-fit '>
 								<div className='mb-1.5 flex items-center justify-between '>
@@ -69,16 +113,19 @@ const AllReviews = ({
 								</div>
 							</div>
 						))
-					) : isError ? (
+					) : isError || isRestaurantReviewError ? (
 						<p>Couldn't fetch reviews</p>
-					) : data && data?.length > 0 ? (
-						<PaginatedReviewItems
-							reviews={data}
-							itemsPerPage={10}
-							handlePageChange={handlePageChange}
-						/>
+					) : isRestaurant ? (
+						restaurantReviews &&
+						restaurantReviews?.length > 0 && (
+							<PaginatedReviewItems
+								reviews={restaurantReviews}
+								itemsPerPage={10}
+								handlePageChange={handlePageChange}
+							/>
+						)
 					) : (
-						<p>It has no reviews yet!</p>
+						content
 					)}
 				</div>
 			</div>

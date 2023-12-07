@@ -11,7 +11,7 @@ type ParamsType = {
 }
 
 const getLocationInfo = async (location: string): Promise<LocationInfoType> => {
-	const res = await fetch(`${apiUrl}/takeout/info?takeout=${location}`, {
+	const res = await fetch(`${apiUrl}/takeaway/info?takeaway=${location}`, {
 		method: 'GET',
 		headers: {
 			'Content-type': 'application/json',
@@ -22,9 +22,9 @@ const getLocationInfo = async (location: string): Promise<LocationInfoType> => {
 	// console.log(data)
 	if (!res.ok) {
 		// This will activate the closest `error.js` Error Boundary
-		throw new Error('Failed to fetch takeaway information')
+		throw new Error('Takeaway information not found')
 	}
-	return data?.takeout_info
+	return data?.takeaway_info
 }
 
 export const generateMetadata = async ({

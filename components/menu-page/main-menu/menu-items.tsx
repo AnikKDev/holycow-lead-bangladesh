@@ -10,7 +10,7 @@ const MenuItems = ({
 	menuItemsByCategory: { [key: string]: MenuItemType }
 }) => {
 	return (
-		<div className='flex flex-col justify-center  gap-6 pt-5'>
+		<div className='flex flex-col justify-start  gap-6 pt-5'>
 			{Object.keys(menuItemsByCategory).map((category) => {
 				return (
 					<div className='flex flex-col justify-center gap-2.5'>

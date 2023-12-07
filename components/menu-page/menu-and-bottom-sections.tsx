@@ -146,7 +146,10 @@ const MenuAndAllBottomSections = ({
 					id='reviews'
 					ref={refCallback}
 				>
-					<AllReviews locationInformation={locationInformation} />
+					<AllReviews
+						locationInformation={locationInformation}
+						isRestaurant={isRestaurant}
+					/>
 				</div>
 			</div>
 		</div>

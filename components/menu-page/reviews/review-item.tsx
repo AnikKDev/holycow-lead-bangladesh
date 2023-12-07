@@ -14,7 +14,7 @@ const ReviewItem = ({ review }: { review: LocationReviewItemType }) => {
 					<Avatar>
 						<AvatarImage src='' alt='Reviewer profile photo' />
 						<AvatarFallback className='text-sm text-primary-foreground'>
-							{getInitials(String(review?.reviewer) || 'Alex')}
+							{getInitials(String(review?.reviewer))}
 						</AvatarFallback>
 					</Avatar>
 					<h3 className='text-base font-medium'>
@@ -22,7 +22,7 @@ const ReviewItem = ({ review }: { review: LocationReviewItemType }) => {
 					</h3>
 				</div>
 				<span className='text-sm text-foreground/70'>
-					{review?.created_at || format(new Date(), 'MM/dd/yyyy')}
+					{format(new Date(review?.created_at), 'MM/dd/yyyy')}
 				</span>
 			</div>
 			<ReviewStars count={Number(review.rating)} />

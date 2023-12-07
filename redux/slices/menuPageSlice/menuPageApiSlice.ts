@@ -24,6 +24,22 @@ export const menuPageApiSlice = apiSlice.injectEndpoints({
 			transformResponse: (response: { reviews: LocationReviewItemType[] }) =>
 				response?.reviews,
 		}),
+		getRestaurantInformation: builder.query<LocationInfoType, string>({
+			query: (restaurantName) => ({
+				url: `/restaurant/info?restaurant=${restaurantName}`,
+				method: 'GET',
+			}),
+			transformResponse: (response: { restaurant_info: LocationInfoType }) =>
+				response?.restaurant_info,
+		}),
+		getRestaurantReviews: builder.query<LocationReviewItemType[], string>({
+			query: (restaurantName) => ({
+				url: `/restaurant/reviews?restaurant=${restaurantName}`,
+				method: 'GET',
+			}),
+			transformResponse: (response: { reviews: LocationReviewItemType[] }) =>
+				response?.reviews,
+		}),
 		getFullMenu: builder.query<AllMenuType[], void>({
 			query: () => ({
 				url: '/order/get_menu/',
@@ -37,5 +53,7 @@ export const menuPageApiSlice = apiSlice.injectEndpoints({
 export const {
 	useGetTakeawayInformationQuery,
 	useGetTakeawayReviewsQuery,
+	useGetRestaurantInformationQuery,
+	useGetRestaurantReviewsQuery,
 	useGetFullMenuQuery,
 } = menuPageApiSlice
