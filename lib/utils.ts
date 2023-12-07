@@ -12,7 +12,7 @@ export function formatPrice(
 		notation?: Intl.NumberFormatOptions['notation']
 	} = {}
 ) {
-	const { currency = 'EUR', notation = 'compact' } = options
+	const { currency = 'EUR', notation = 'standard' } = options
 
 	const numericPrice = typeof price === 'string' ? parseFloat(price) : price
 
@@ -57,4 +57,15 @@ export type Extend<T extends { [key: string]: any }> = T & {
 // capitalize first letter of a word
 export function capitalizeFirstLetter(word: string) {
 	return word.charAt(0).toUpperCase() + word.slice(1)
+}
+
+// calculate average rating
+export function calculateAverageRating(ratings: number[]): number {
+	if (ratings?.length === 0) {
+		return 0 // Return 0 if there are no ratings
+	}
+
+	const totalRatings = ratings.reduce((acc, rating) => acc + rating, 0)
+	const averageRating = totalRatings / ratings.length
+	return averageRating
 }

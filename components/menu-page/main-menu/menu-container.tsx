@@ -5,6 +5,12 @@ import MenuItems from './menu-items'
 
 import './menu.css'
 
+import { useAppSelector } from '@/redux/hooks'
+import {
+	MenuItemType,
+	selectMenuItemsByCategory,
+} from '@/redux/slices/menuPageSlice/menuPageSlice'
+
 const MenuContainer = ({
 	isRestaurant,
 	isTargetItemVisible,
@@ -15,6 +21,10 @@ const MenuContainer = ({
 	isInformationVisible: boolean
 }) => {
 	const sidebarRef = useRef<HTMLDivElement>(null)
+	const menuItemsByCategory: { [key: string]: MenuItemType } = useAppSelector(
+		selectMenuItemsByCategory
+	)
+	console.log(menuItemsByCategory)
 
 	// useEffect(() => {
 	// 	if (!isTargetItemVisible && sidebarRef?.current) {
@@ -44,11 +54,14 @@ const MenuContainer = ({
 						ref={sidebarRef}
 						className='sticky__sidebar flex h-[calc(100vh-65px)] flex-1 items-start overflow-y-auto overflow-x-hidden bg-transparent p-0 shadow-none'
 					>
-						<MenuCategories />
+						<MenuCategories menuItemsByCategory={menuItemsByCategory} />
 					</div>
 				</div>
 				{/* menu items */}
-				<MenuItems isRestaurant={isRestaurant} />
+				<MenuItems
+					menuItemsByCategory={menuItemsByCategory}
+					isRestaurant={isRestaurant}
+				/>
 			</div>
 		</div>
 	)

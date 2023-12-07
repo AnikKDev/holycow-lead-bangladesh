@@ -39,14 +39,14 @@ const persistConfig = {
 	key: 'root',
 	storage,
 	transforms: [encryptor],
-	whitelist: ['counter', 'auth', 'message'], // Things u want to persist
+	whitelist: ['counter', 'auth', 'order'], // Things u want to persist
 	blacklist: [], // Things u dont
 	stateReconciler: autoMergeLevel2,
 }
 
 // when user clicks logout, reset the redux store also persist-store
 const finalRootReducer: Reducer = (state: RootState, action: AnyAction) => {
-	console.log('action.type: ',action.type)
+	// console.log('action.type: ',action.type)
 	if (action.type === 'auth/logOut') {
 		// this applies to all keys defined in persistConfig(s)
 		storage.removeItem('persist:root')

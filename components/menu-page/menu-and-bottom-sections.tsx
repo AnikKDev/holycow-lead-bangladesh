@@ -9,17 +9,25 @@ import MenuContainer from './main-menu/menu-container'
 
 import './main-menu/menu.css'
 
+import { useGetFullMenuQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
+import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
+
 import { cn } from '@/lib/utils'
 
+import { Skeleton } from '../ui/skeleton'
 import LightboxComp from './gallery-lightbox/lightbox'
 import MenuNavbar from './menu-navbar'
 import AllReviews from './reviews/all-reviews'
 
 const MenuAndAllBottomSections = ({
 	isRestaurant = false,
+	locationInformation,
 }: {
 	isRestaurant?: boolean
+	locationInformation?: LocationInfoType
 }) => {
+	const { data, isLoading, isError } = useGetFullMenuQuery()
+
 	const targetRef = useRef<HTMLDivElement>(null)
 	const informationRef = useRef<HTMLDivElement>(null)
 	const menuRef = useRef<HTMLDivElement>(null)
@@ -98,11 +106,22 @@ const MenuAndAllBottomSections = ({
 				ref={refCallback}
 				id='menu'
 			>
-				<MenuContainer
-					isRestaurant={isRestaurant}
-					isTargetItemVisible={isTargetItemVisible}
-					isInformationVisible={isInformationVisible}
-				/>
+				{isLoading ? (
+					<div className='flex flex-row'>
+						<Skeleton className='relative z-[unset] -ml-2 mr-4 flex h-[calc(100vh-65px)] min-w-[190px] flex-1 bg-muted/80' />
+						<Skeleton className='flex h-[calc(100vh-65px)] w-full flex-col  justify-center gap-6 bg-muted/80 pt-5 ' />
+					</div>
+				) : isError ? (
+					<p className='container'>Error fetching menu</p>
+				) : (
+					data.length > 0 && (
+						<MenuContainer
+							isRestaurant={isRestaurant}
+							isTargetItemVisible={isTargetItemVisible}
+							isInformationVisible={isInformationVisible}
+						/>
+					)
+				)}
 			</div>
 
 			<div ref={informationRef}>
@@ -111,7 +130,7 @@ const MenuAndAllBottomSections = ({
 					id='information'
 					ref={refCallback}
 				>
-					<InformationSection />
+					<InformationSection locationInformation={locationInformation} />
 				</div>
 				{isRestaurant && (
 					<div
@@ -127,7 +146,10 @@ const MenuAndAllBottomSections = ({
 					id='reviews'
 					ref={refCallback}
 				>
-					<AllReviews />
+					<AllReviews
+						locationInformation={locationInformation}
+						isRestaurant={isRestaurant}
+					/>
 				</div>
 			</div>
 		</div>

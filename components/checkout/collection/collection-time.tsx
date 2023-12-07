@@ -6,9 +6,17 @@ import { Button } from '@/components/ui/button'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import {
+	selectOrderState,
+	setOrderState,
+} from '@/redux/slices/orderSlice/orderSlice'
+
 const CollectionTimeSection = () => {
 	const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(null)
 	const pickerRef = useRef<HTMLInputElement>(null)
+	const orderState = useAppSelector(selectOrderState)
+	const dispatch = useAppDispatch()
 
 	return (
 		<div className='flex items-center justify-between'>
@@ -20,15 +28,31 @@ const CollectionTimeSection = () => {
 			</div>
 			<div>
 				<DatePicker
-					selected={selectedDateTime}
-					onChange={(date) => setSelectedDateTime(date)}
+					selected={
+						!orderState?.collection_time
+							? null
+							: new Date(orderState?.collection_time)
+					}
+					onChange={(date) => {
+						// setSelectedDateTime(date)
+						dispatch(
+							setOrderState({
+								...orderState,
+								collection_time: date.toISOString(),
+							})
+						)
+					}}
 					showTimeSelect
 					dateFormat='Pp'
 					timeFormat='p'
 					minDate={new Date()}
 					customInput={
 						<CustomCollectionTimeBtn
-							value={selectedDateTime}
+							value={
+								!orderState?.collection_time
+									? null
+									: new Date(orderState?.collection_time)
+							}
 							onClick={setSelectedDateTime}
 							ref={pickerRef}
 						/>
@@ -43,7 +67,7 @@ const CollectionTimeSection = () => {
 
 const CustomCollectionTimeBtn = React.forwardRef(
 	({ value, onClick }: { value: any; onClick: any }, ref: any) => {
-		console.log('value from custom', value)
+		// console.log('value from custom', value)
 		return (
 			<div onClick={onClick} ref={ref}>
 				<Button variant='link' className='h-7 rounded-full px-5' size='sm'>

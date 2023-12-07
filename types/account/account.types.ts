@@ -1,3 +1,5 @@
+import { Extend } from '@/lib/utils'
+
 export type AccountTab = {
 	name: string
 	navigateTo: string
@@ -15,12 +17,14 @@ export type OrderTableColumns = {
 	status: React.ReactNode
 	total: string
 }
-export type AccountAddress = {
-	address: string
-	address_name: string
-	apartment_number: string
-	city: string
-	customer: number | string
-	id?: number
-	postal_code: string
-}
+export type AccountAddress = Extend<
+	Partial<{
+		address: string
+		address_name: string
+		apartment_number: string
+		city: string
+		customer: number | string
+		id: number
+		postal_code: string
+	}>
+>

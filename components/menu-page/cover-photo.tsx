@@ -1,14 +1,22 @@
 import Image from 'next/image'
-import coverImg from '@/public/menu-cover.jpg'
+import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 
-const CoverPhoto = () => {
+import { apiUrl } from '@/lib/constatns'
+
+type LocationInfoProps = {
+	locationInformation?: LocationInfoType
+}
+
+const CoverPhoto = ({ locationInformation }: LocationInfoProps) => {
 	return (
 		<div className='container'>
-			<div>
+			<div className=''>
 				<Image
-					src={coverImg}
+					src={`${apiUrl}${locationInformation.cover}`}
 					alt='Cover Photo'
 					className='h-[200px] w-full object-cover'
+					height={200}
+					width={1000}
 				/>
 			</div>
 		</div>

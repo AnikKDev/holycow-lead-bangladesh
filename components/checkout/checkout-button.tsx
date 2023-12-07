@@ -1,8 +1,13 @@
 import { useRouter } from 'next/navigation'
+import { useAppSelector } from '@/redux/hooks'
+import { getCartTotals } from '@/redux/slices/orderSlice/orderSlice'
+
+import { formatPrice } from '@/lib/utils'
 
 import { Button } from '../ui/button'
 
 const CheckoutButton = () => {
+	const cartTotals = useAppSelector(getCartTotals)
 	const router = useRouter()
 	return (
 		<div className='flex shrink-0 flex-col gap-2.5 border-t border-border pt-3'>
@@ -10,7 +15,9 @@ const CheckoutButton = () => {
 				<h3 className='text-base font-semibold'>
 					Total <span className='text-sm font-medium'>(tax incl.)</span>
 				</h3>
-				<h3 className='text-base font-bold'>27.09</h3>
+				<h3 className='text-base font-bold'>
+					{formatPrice(cartTotals.totalPrice)}
+				</h3>
 			</div>
 			<div className='w-full'>
 				<Button

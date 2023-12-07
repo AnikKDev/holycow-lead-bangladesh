@@ -20,7 +20,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 		}),
 		verifyRegisterOtp: builder.mutation({
 			query: (credentials: { phone_number: string; otp: string }) => ({
-				url: '/auth/verify-otp/',
+				url: '/auth/verify_otp/',
 				method: 'POST',
 				body: { ...credentials },
 			}),
@@ -28,14 +28,14 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
 		sendPhoneForgotPasswordOtp: builder.mutation({
 			query: (credentials: { phone_number: string }) => ({
-				url: '/auth/forgot_passwd/',
+				url: '/auth/forgot_password/',
 				method: 'POST',
 				body: { ...credentials },
 			}),
 		}),
 		sendPhoneForgotPasswordOtpAsResendOtp: builder.mutation({
 			query: (credentials: { phone_number: string }) => ({
-				url: '/auth/forgot_passwd/',
+				url: '/auth/forgot_password/',
 				method: 'POST',
 				body: { ...credentials },
 			}),
@@ -43,15 +43,15 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
 		checkForgotPasswordOtp: builder.mutation({
 			query: (credentials: { phone_number: string; otp: string }) => ({
-				url: '/auth/verify-otp/',
+				url: '/auth/verify_otp/',
 				method: 'POST',
 				body: { ...credentials },
 			}),
 		}),
 
 		resetForgotPassword: builder.mutation({
-			query: (credentials: { new_password: string }) => ({
-				url: '/auth/reset-password/',
+			query: (credentials: { phone_number: string; new_password: string }) => ({
+				url: '/auth/reset_password/',
 				method: 'POST',
 				body: { ...credentials },
 			}),
