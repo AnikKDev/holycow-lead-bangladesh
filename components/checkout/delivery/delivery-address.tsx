@@ -10,6 +10,16 @@ import { CreateAddressModal } from '@/components/addresses/create-address-modal'
 
 import { ShowAddressesModal } from './show-addresses-modal'
 
+export const addressInitialState = {
+	address: '',
+	address_name: '',
+	apartment_number: '',
+	city: 'london',
+	customer: '',
+	// id: 0,
+	postal_code: '',
+}
+
 const DeliveryAddressArea = () => {
 	const [isSelected, setIsSelected] = useState(false)
 	const [showCreateAddressModal, setShowCreatedAddressModal] = useState(false)
@@ -31,15 +41,8 @@ const DeliveryAddressArea = () => {
 				: 'Select'
 			: 'Add'
 
-	const [defaultAddress, setDefaultAddress] = useState<AccountAddress>({
-		address: '',
-		address_name: '',
-		apartment_number: '',
-		city: 'london',
-		customer: '',
-		// id: 0,
-		postal_code: '',
-	})
+	const [defaultAddress, setDefaultAddress] =
+		useState<AccountAddress>(addressInitialState)
 	return (
 		<>
 			<div className='flex items-center justify-between'>

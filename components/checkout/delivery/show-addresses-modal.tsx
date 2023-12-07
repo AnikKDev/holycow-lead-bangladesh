@@ -2,12 +2,16 @@
 
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { useGetAllAddressesQuery } from '@/redux/slices/accountSlice/addressSlice/addressApiSlice'
+import {
+	useDeleteAddressMutation,
+	useGetAllAddressesQuery,
+} from '@/redux/slices/accountSlice/addressSlice/addressApiSlice'
 import {
 	selectOrderState,
 	setOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
-import { Pencil, X } from 'lucide-react'
+import { Loader2, Pencil, X } from 'lucide-react'
+import toast from 'react-hot-toast'
 
 import { AccountAddress } from '@/types/account/account.types'
 import { Button } from '@/components/ui/button'
@@ -20,6 +24,9 @@ import {
 } from '@/components/ui/dialog'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { CreateAddressModal } from '@/components/addresses/create-address-modal'
+
+import { addressInitialState } from './delivery-address'
 
 export function ShowAddressesModal({
 	showModal,
@@ -36,6 +43,8 @@ export function ShowAddressesModal({
 		isError: isAllAddressesError,
 		error: allAddressesError,
 	} = useGetAllAddressesQuery(null)
+	const [defaultAddress, setDefaultAddress] =
+		useState<AccountAddress>(addressInitialState)
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
@@ -72,10 +81,14 @@ export function ShowAddressesModal({
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>
-			{/* <CreateAddressModal
+			<CreateAddressModal
+				defaultAddress={defaultAddress}
+				isEditingAddress={false}
+				setDefaultAddress={setDefaultAddress}
+				setIsEditingAddress={() => {}}
 				showModal={showCreateAddressModal}
 				setShowModal={setShowCreateAddressModal}
-			/> */}
+			/>
 		</>
 	)
 }
@@ -99,53 +112,72 @@ export function ViewAddressSection({ allAddress }) {
 			value={`${orderState?.delivery_address?.id || ''}`}
 		>
 			{allAddress.map((address: AccountAddress) => {
-				return (
-					<>
-						<div
-							key={address.id}
-							className='flex items-center justify-between space-x-2'
-						>
-							<div className='flex items-center gap-2.5'>
-								<RadioGroupItem
-									value={`${address.id}`}
-									id={`${address.address_name}`}
-									className=''
-								/>
-								<Label
-									htmlFor={`${address.address_name}`}
-									className='flex flex-col'
-								>
-									<h3 className='text-base font-medium'>
-										{address?.address_name}
-									</h3>
-									<span className='text-sm font-medium'>
-										{address?.address}
-									</span>
-								</Label>
-							</div>
-							<div className='flex items-center gap-4'>
-								<Pencil size={20} className='cursor-pointer text-foreground' />
-								<X size={24} className='cursor-pointer text-foreground' />
-							</div>
-						</div>
-						<div className='border-b border-border'></div>
-					</>
-				)
+				return <AddressSectionItem key={address.id} address={address} />
 			})}
+		</RadioGroup>
+	)
+}
 
-			{/* <div className='flex items-center justify-between space-x-2'>
+const AddressSectionItem = ({ address }: { address: AccountAddress }) => {
+	const [
+		deleteAddress,
+		{
+			isLoading: deleteAddressLoading,
+			isSuccess: deleteAddressSuccess,
+			isError: isDeleteAddressError,
+			error: deleteAddressError,
+		},
+	] = useDeleteAddressMutation()
+	const handleDeleteAddress = async () => {
+		try {
+			await deleteAddress(address.id).unwrap()
+			toast.success('Address deleted successfully')
+		} catch (e) {
+			console.log(e)
+		}
+	}
+	return (
+		<>
+			<div
+				key={address.id}
+				className='flex items-center justify-between space-x-2'
+			>
 				<div className='flex items-center gap-2.5'>
-					<RadioGroupItem value='school' id='r2' className='' />
-					<Label htmlFor='r2' className='flex flex-col'>
-						<h3 className='text-base font-medium'>Office</h3>
-						<span className='text-sm font-medium'>Archway N6 5BA, UK</span>
+					<RadioGroupItem
+						value={`${address.id}`}
+						id={`${address.address_name}`}
+						className=''
+					/>
+					<Label htmlFor={`${address.address_name}`} className='flex flex-col'>
+						<h3 className='text-base font-medium'>{address?.address_name}</h3>
+						<span className='text-sm font-medium'>{address?.address}</span>
 					</Label>
 				</div>
 				<div className='flex items-center gap-4'>
-					<Pencil size={20} className='cursor-pointer text-foreground' />
-					<X size={24} className='cursor-pointer text-foreground' />
+					<Button
+						disabled={deleteAddressLoading}
+						variant='outline'
+						className='h-auto border-none bg-transparent px-0 py-0 hover:bg-transparent'
+					>
+						<Pencil size={20} className='cursor-pointer text-foreground' />
+					</Button>
+					<Button
+						disabled={deleteAddressLoading}
+						variant='outline'
+						className='h-auto border-none bg-transparent px-0 py-0 hover:bg-transparent'
+					>
+						{deleteAddressLoading && (
+							<Loader2 className='mr-2 h-4 w-4 animate-spin' />
+						)}
+						<X
+							size={24}
+							className='cursor-pointer text-foreground'
+							onClick={handleDeleteAddress}
+						/>
+					</Button>
 				</div>
-			</div> */}
-		</RadioGroup>
+			</div>
+			<div className='border-b border-border'></div>
+		</>
 	)
 }

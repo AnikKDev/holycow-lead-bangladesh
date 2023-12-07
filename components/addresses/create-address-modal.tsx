@@ -1,30 +1,24 @@
-'use client'
+'use client';
 
-import { Dispatch, FormEvent, SetStateAction } from 'react'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import {
-	useCreateAddressMutation,
-	useUpdateAddressMutation,
-} from '@/redux/slices/accountSlice/addressSlice/addressApiSlice'
-import {
-	selectOrderState,
-	setOrderState,
-} from '@/redux/slices/orderSlice/orderSlice'
-import { Loader2 } from 'lucide-react'
-import toast from 'react-hot-toast'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useCreateAddressMutation, useUpdateAddressMutation } from '@/redux/slices/accountSlice/addressSlice/addressApiSlice';
+import { selectOrderState, setOrderState } from '@/redux/slices/orderSlice/orderSlice';
+import { Loader2 } from 'lucide-react';
+import { Dispatch, FormEvent, SetStateAction } from 'react';
+import toast from 'react-hot-toast';
 
-import { AccountAddress } from '@/types/account/account.types'
-import { Button } from '@/components/ui/button'
-import {
-	Dialog,
-	DialogContent,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-} from '@/components/ui/dialog'
 
-import { Input } from '../ui/input'
-import { Label } from '../ui/label'
+
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { AccountAddress } from '@/types/account/account.types';
+
+
+
+import { addressInitialState } from '../checkout/delivery/delivery-address';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
+
 
 export function CreateAddressModal({
 	isEditingAddress,
@@ -80,24 +74,34 @@ export function CreateAddressModal({
 					addressId: defaultAddress.id,
 				}).unwrap()
 				toast.success('Successfully address updated!')
+				setDefaultAddress(addressInitialState)
 			} catch (e) {
 				console.log(e)
 				toast.error('Error updating address')
+			} finally {
+				setShowModal(false)
+				setIsEditingAddress(false)
 			}
 		} else {
 			try {
 				const res = await createAddress(defaultAddress).unwrap()
 				console.log('create address res', res)
-				dispatch(
-					setOrderState({
-						...orderState,
-						delivery_address: res.address,
-					})
-				)
+				if(isFormCheckout) {
+					dispatch(
+						setOrderState({
+							...orderState,
+							delivery_address: res.address,
+						})
+					)
+				}
 				toast.success('Successfully address created!')
+				setDefaultAddress(addressInitialState)
 			} catch (e) {
 				console.log(e)
 				toast.error('Error creating an address!')
+			} finally {
+				setShowModal(false)
+				setIsEditingAddress(false)
 			}
 		}
 	}
