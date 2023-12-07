@@ -1,8 +1,12 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
-import { selectAllCartItems } from '@/redux/slices/orderSlice/orderSlice'
+import {
+	getCartTotals,
+	selectAllCartItems,
+} from '@/redux/slices/orderSlice/orderSlice'
 
+import { formatPrice } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
 	Sheet,
@@ -26,6 +30,7 @@ const CartSidebar = ({
 	const params = useParams()
 	const [showModal, setShowModal] = useState(false)
 	const cartItems = useAppSelector(selectAllCartItems)
+	const cartTotals = useAppSelector(getCartTotals)
 
 	return (
 		<>
@@ -48,7 +53,9 @@ const CartSidebar = ({
 					<SheetFooter className='shrink-0 flex-col gap-3 border-t border-border px-3 pt-3'>
 						<div className='flex items-center justify-between'>
 							<h3 className='text-base font-semibold'>Subtotal:</h3>
-							<h3 className='text-base font-semibold'>32.09</h3>
+							<h3 className='text-base font-semibold'>
+								{formatPrice(cartTotals.subtotal)}
+							</h3>
 						</div>
 						<div className='w-full'>
 							<Button

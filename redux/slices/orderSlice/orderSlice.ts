@@ -34,6 +34,20 @@ const orderSlice = createSlice({
 		setOrderDiscount: (state, action: PayloadAction<number>) => {
 			state.discount = action.payload
 		},
+		changeCartItemQuantityByInput: (
+			state,
+			action: PayloadAction<MenuItemType>
+		) => {
+			const existingIndex = state.cartItems.findIndex(
+				(prod) => prod.id == action.payload.id
+			)
+			if (existingIndex >= 0) {
+				state.cartItems[existingIndex] = {
+					...state.cartItems[existingIndex],
+					quantity: action.payload.quantity,
+				}
+			}
+		},
 		addItemToCart: (state, action: PayloadAction<MenuItemType>) => {
 			const existingIndex = state.cartItems.findIndex(
 				(prod) => prod.id == action.payload.id
@@ -79,6 +93,11 @@ const orderSlice = createSlice({
 				// noting to do
 			}
 		},
+		removeCartItem: (state, action: PayloadAction<MenuItemType>) => {
+			state.cartItems = state.cartItems.filter(
+				(item) => item.id !== action.payload.id
+			)
+		},
 	},
 })
 
@@ -88,6 +107,8 @@ export const {
 	addItemToCart,
 	increaseItemQuantity,
 	decreaseItemQuantity,
+	removeCartItem,
+	changeCartItemQuantityByInput,
 } = orderSlice.actions
 export default orderSlice.reducer
 

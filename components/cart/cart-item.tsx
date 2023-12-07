@@ -3,8 +3,10 @@ import itemImg from '@/public/menu-item.jpg'
 import { useAppDispatch } from '@/redux/hooks'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
+	changeCartItemQuantityByInput,
 	decreaseItemQuantity,
 	increaseItemQuantity,
+	removeCartItem,
 } from '@/redux/slices/orderSlice/orderSlice'
 import { FiMinus, FiPlus } from 'react-icons/fi'
 import { GoTrash } from 'react-icons/go'
@@ -23,6 +25,10 @@ const CartItem = ({ item }: { item: MenuItemType }) => {
 
 	const handleDecreaseQuantity = () => {
 		dispatch(decreaseItemQuantity(item))
+	}
+
+	const handleDeleteCartItem = () => {
+		dispatch(removeCartItem(item))
 	}
 
 	return (
@@ -51,6 +57,7 @@ const CartItem = ({ item }: { item: MenuItemType }) => {
 						<Button
 							variant='outline'
 							className='h-[32px]  w-[32px] rounded-full border border-border p-0 hover:bg-transparent hover:text-foreground'
+							onClick={handleDeleteCartItem}
 						>
 							<GoTrash className='h-[18px] w-[18px]' />
 						</Button>
@@ -66,9 +73,27 @@ const CartItem = ({ item }: { item: MenuItemType }) => {
 								type='number'
 								className='h-8 w-10 max-w-full border-none bg-transparent px-0 py-0 text-center text-sm font-medium focus-visible:ring-0 focus-visible:ring-offset-0'
 								id='quantity'
-								defaultValue='1'
 								min={1}
+								placeholder='1'
 								value={item.quantity}
+								onChange={(e) => {
+									console.log(e.target.valueAsNumber, item.quantity)
+									if (isNaN(e.target.valueAsNumber)) {
+										dispatch(
+											changeCartItemQuantityByInput({
+												...item,
+												quantity: 1,
+											})
+										)
+									} else {
+										dispatch(
+											changeCartItemQuantityByInput({
+												...item,
+												quantity: Number(e.target.valueAsNumber),
+											})
+										)
+									}
+								}}
 							/>
 							<Button
 								variant='outline'

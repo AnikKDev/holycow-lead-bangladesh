@@ -19,6 +19,7 @@ const MenuCategories = ({
 			<ul className='flex flex-col gap-1.5'>
 				{Object.keys(menuItemsByCategory).map((category, idx) => (
 					<CategoryItem
+						key={idx}
 						idx={idx}
 						category={category}
 						activeCategory={activeCategory}
@@ -33,7 +34,7 @@ const MenuCategories = ({
 const CategoryItem = ({ idx, category, activeCategory, setActiveCategory }) => {
 	return (
 		<>
-			<li key={idx} className='w-full'>
+			<li className='w-full'>
 				<button
 					onClick={() => setActiveCategory(category)}
 					className={cn(

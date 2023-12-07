@@ -1,7 +1,5 @@
 'use client'
 
-import { Dispatch, SetStateAction, useState } from 'react'
-import Image from 'next/image'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
@@ -9,10 +7,11 @@ import {
 	selectOrderState,
 	setOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
+import Image from 'next/image'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { FiMinusCircle, FiPlusCircle } from 'react-icons/fi'
 
-import { apiUrl } from '@/lib/constatns'
-import { formatPrice } from '@/lib/utils'
+import CartSidebar from '@/components/cart/cart-sidebar'
 import { Button } from '@/components/ui/button'
 import {
 	Dialog,
@@ -23,7 +22,8 @@ import {
 	DialogTitle,
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
-import CartSidebar from '@/components/cart/cart-sidebar'
+import { apiUrl } from '@/lib/constatns'
+import { formatPrice } from '@/lib/utils'
 
 export function MenuItemModal({
 	showModal,
@@ -54,7 +54,7 @@ export function MenuItemModal({
 				})
 			)
 		}
-
+		setQuantity(1)
 		setShowModal(false)
 		setShowCartSidebar(true)
 	}
@@ -105,7 +105,6 @@ export function MenuItemModal({
 								type='number'
 								className='h-8 w-14 max-w-full bg-[#E9E2D2] px-0 py-0 text-center text-lg font-medium'
 								id='quantity'
-								defaultValue='1'
 								min={1}
 								value={quantity}
 								onChange={(e) => {

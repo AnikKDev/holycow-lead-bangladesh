@@ -146,8 +146,8 @@ const PaginatedReviewItems = ({
 const ReviewContainer = ({ reviews }: { reviews: LocationReviewItemType }) => {
 	return (
 		<>
-			{reviews.map((review) => (
-				<ReviewItem review={review} />
+			{reviews.map((review, idx) => (
+				<ReviewItem key={idx} review={review} />
 			))}
 		</>
 	)
