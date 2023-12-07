@@ -119,6 +119,8 @@ export function ViewAddressSection({ allAddress }) {
 }
 
 const AddressSectionItem = ({ address }: { address: AccountAddress }) => {
+	const [editAddressModal, setEditAddressModal] = useState(false)
+	const [defaultAddress, setDefaultAddress] = useState<AccountAddress>(address)
 	const [
 		deleteAddress,
 		{
@@ -136,6 +138,7 @@ const AddressSectionItem = ({ address }: { address: AccountAddress }) => {
 			console.log(e)
 		}
 	}
+
 	return (
 		<>
 			<div
@@ -158,6 +161,9 @@ const AddressSectionItem = ({ address }: { address: AccountAddress }) => {
 						disabled={deleteAddressLoading}
 						variant='outline'
 						className='h-auto border-none bg-transparent px-0 py-0 hover:bg-transparent'
+						onClick={() => {
+							setEditAddressModal(true)
+						}}
 					>
 						<Pencil size={20} className='cursor-pointer text-foreground' />
 					</Button>
@@ -165,19 +171,25 @@ const AddressSectionItem = ({ address }: { address: AccountAddress }) => {
 						disabled={deleteAddressLoading}
 						variant='outline'
 						className='h-auto border-none bg-transparent px-0 py-0 hover:bg-transparent'
+						onClick={handleDeleteAddress}
 					>
 						{deleteAddressLoading && (
 							<Loader2 className='mr-2 h-4 w-4 animate-spin' />
 						)}
-						<X
-							size={24}
-							className='cursor-pointer text-foreground'
-							onClick={handleDeleteAddress}
-						/>
+						<X size={24} className='cursor-pointer text-foreground' />
 					</Button>
 				</div>
 			</div>
 			<div className='border-b border-border'></div>
+
+			<CreateAddressModal
+				isEditingAddress={true}
+				setDefaultAddress={setDefaultAddress}
+				setIsEditingAddress={() => {}}
+				defaultAddress={defaultAddress}
+				showModal={editAddressModal}
+				setShowModal={setEditAddressModal}
+			/>
 		</>
 	)
 }

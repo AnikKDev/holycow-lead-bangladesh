@@ -1,24 +1,31 @@
-'use client';
+'use client'
 
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { useCreateAddressMutation, useUpdateAddressMutation } from '@/redux/slices/accountSlice/addressSlice/addressApiSlice';
-import { selectOrderState, setOrderState } from '@/redux/slices/orderSlice/orderSlice';
-import { Loader2 } from 'lucide-react';
-import { Dispatch, FormEvent, SetStateAction } from 'react';
-import toast from 'react-hot-toast';
+import { Dispatch, FormEvent, SetStateAction } from 'react'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import {
+	useCreateAddressMutation,
+	useUpdateAddressMutation,
+} from '@/redux/slices/accountSlice/addressSlice/addressApiSlice'
+import {
+	selectOrderState,
+	setOrderState,
+} from '@/redux/slices/orderSlice/orderSlice'
+import { Loader2 } from 'lucide-react'
+import toast from 'react-hot-toast'
 
+import { AccountAddress } from '@/types/account/account.types'
+import { Button } from '@/components/ui/button'
+import {
+	Dialog,
+	DialogContent,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+} from '@/components/ui/dialog'
 
-
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { AccountAddress } from '@/types/account/account.types';
-
-
-
-import { addressInitialState } from '../checkout/delivery/delivery-address';
-import { Input } from '../ui/input';
-import { Label } from '../ui/label';
-
+import { addressInitialState } from '../checkout/delivery/delivery-address'
+import { Input } from '../ui/input'
+import { Label } from '../ui/label'
 
 export function CreateAddressModal({
 	isEditingAddress,
@@ -86,7 +93,7 @@ export function CreateAddressModal({
 			try {
 				const res = await createAddress(defaultAddress).unwrap()
 				console.log('create address res', res)
-				if(isFormCheckout) {
+				if (isFormCheckout) {
 					dispatch(
 						setOrderState({
 							...orderState,
@@ -182,13 +189,13 @@ export function CreateAddressModal({
 										size='lg'
 										className='w-full rounded-full'
 									>
-										{updateAddressLoading ||
-											(createAddressLoading && (
-												<Loader2 className='mr-2 h-4 w-4 animate-spin' />
-											))}
+										{(updateAddressLoading || createAddressLoading) && (
+											<Loader2 className='mr-2 h-4 w-4 animate-spin' />
+										)}
 										Submit
 									</Button>
 									<Button
+										type='button'
 										disabled={updateAddressLoading || createAddressLoading}
 										variant='outline'
 										size='lg'
