@@ -10,15 +10,15 @@ export const menuPageApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getTakeawayInformation: builder.query<LocationInfoType, string>({
 			query: (takeawayName) => ({
-				url: `/takeout/info?takeout=${takeawayName}`,
+				url: `/takeaway/info?takeaway=${takeawayName}`,
 				method: 'GET',
 			}),
-			transformResponse: (response: { takeout_info: LocationInfoType }) =>
-				response?.takeout_info,
+			transformResponse: (response: { takeaway_info: LocationInfoType }) =>
+				response?.takeaway_info,
 		}),
 		getTakeawayReviews: builder.query<LocationReviewItemType[], string>({
 			query: (takeawayName) => ({
-				url: `/takeout/reviews?takeout=${takeawayName}`,
+				url: `/takeaway/reviews?takeaway=${takeawayName}`,
 				method: 'GET',
 			}),
 			transformResponse: (response: { reviews: LocationReviewItemType[] }) =>

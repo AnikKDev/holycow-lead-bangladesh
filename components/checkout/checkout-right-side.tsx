@@ -4,6 +4,7 @@ import { useAppSelector } from '@/redux/hooks'
 import { selectOrderState } from '@/redux/slices/orderSlice/orderSlice'
 
 import CheckoutButton from './checkout-button'
+import CollectionAddressSection from './collection/collection-address'
 import CollectionTimeSection from './collection/collection-time'
 import DeliveryAddressArea from './delivery/delivery-address'
 import DeliveryTab from './delivery/delivery-tab'
@@ -28,7 +29,7 @@ const CheckoutRightSide = () => {
 				) : (
 					orderState.fulfillment_type === 'Collection' && (
 						<>
-							{/* <CollectionAddressSection /> */}
+							<CollectionAddressSection />
 							<div className='border-b border-border'></div>
 
 							<CollectionTimeSection />
