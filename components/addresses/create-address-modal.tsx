@@ -1,6 +1,10 @@
 'use client'
 
 import { Dispatch, SetStateAction, useState } from 'react'
+import {
+	useCreateAddressMutation,
+	useUpdateAddressMutation,
+} from '@/redux/slices/accountSlice/addressSlice/addressApiSlice'
 
 import { AccountAddress } from '@/types/account/account.types'
 import { Button } from '@/components/ui/button'
@@ -31,7 +35,24 @@ export function CreateAddressModal({
 	defaultAddress: AccountAddress
 }) {
 	// const [editedAddress, setEditedAddress] = useState({ ...defaultAddress });
-
+	const [
+		createAddress,
+		{
+			isLoading: createAddressLoading,
+			isSuccess: createAddressSuccess,
+			isError: isCreateAddressError,
+			error: createAddressError,
+		},
+	] = useCreateAddressMutation()
+	const [
+		updateAddress,
+		{
+			isLoading: updateAddressLoading,
+			isSuccess: updateAddressSuccess,
+			isError: isUpdateAddressError,
+			error: updateAddressError,
+		},
+	] = useUpdateAddressMutation()
 	const handleInputChange = (e) => {
 		const { id, value } = e.target
 		setDefaultAddress({
@@ -39,8 +60,13 @@ export function CreateAddressModal({
 			[id]: value,
 		})
 	}
-
-	console.log(isEditingAddress)
+	const handleSubmit = () => {
+		if (isEditingAddress) {
+			updateAddress({ address: defaultAddress, addressId: defaultAddress.id })
+		} else {
+			createAddress(defaultAddress)
+		}
+	}
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
@@ -55,9 +81,9 @@ export function CreateAddressModal({
 						<div className='grid w-full items-center gap-1.5'>
 							<Label htmlFor='postcode'>Postcode *</Label>
 							<Input
-								value={!isEditingAddress ? '' : defaultAddress.postal_code}
+								value={defaultAddress.postal_code}
 								type='string'
-								id='postcode'
+								id='postal_code'
 								placeholder='e.g. N9'
 								onChange={handleInputChange}
 							/>
@@ -65,7 +91,7 @@ export function CreateAddressModal({
 						<div className='grid w-full items-center gap-1.5'>
 							<Label htmlFor='address'>Address *</Label>
 							<Input
-								value={!isEditingAddress ? '' : defaultAddress.address}
+								value={defaultAddress.address}
 								type='string'
 								id='address'
 								placeholder='e.g. 555  Main st'
@@ -75,9 +101,9 @@ export function CreateAddressModal({
 						<div className='grid w-full items-center gap-1.5'>
 							<Label htmlFor='apt'>Apt, suite, floor</Label>
 							<Input
-								value={!isEditingAddress ? '' : defaultAddress.apartment_number}
+								value={defaultAddress.apartment_number}
 								type='string'
-								id='apt'
+								id='apartment_number'
 								placeholder='e.g. 15F'
 								onChange={handleInputChange}
 							/>
@@ -95,7 +121,7 @@ export function CreateAddressModal({
 						<div className='grid w-full items-center gap-1.5'>
 							<Label htmlFor='address_name'>Address name *</Label>
 							<Input
-								value={!isEditingAddress ? '' : defaultAddress.address_name}
+								value={defaultAddress.address_name}
 								type='string'
 								id='address_name'
 								placeholder='e.g. Home'
@@ -108,7 +134,8 @@ export function CreateAddressModal({
 						<div className='px-5'>
 							<div className='flex w-full items-center gap-2.5'>
 								<Button
-									onClick={() => console.log(defaultAddress)}
+									disabled={updateAddressLoading || createAddressLoading}
+									onClick={handleSubmit}
 									variant='default'
 									size='lg'
 									className='w-full rounded-full'
@@ -116,6 +143,7 @@ export function CreateAddressModal({
 									Submit
 								</Button>
 								<Button
+									disabled={updateAddressLoading || createAddressLoading}
 									variant='outline'
 									size='lg'
 									className='w-full rounded-full'

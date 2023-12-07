@@ -27,13 +27,14 @@ export default function AddressContainer({}: Props) {
 	} = useGetAllAddressesQuery(null)
 	// console.log(allAddresses)
 	// default and empty address
+	// todo: need to get the user id from the token
 	const [defaultAddress, setDefaultAddress] = useState<AccountAddress>({
 		address: '',
 		address_name: '',
 		apartment_number: '',
-		city: '',
+		city: 'london',
 		customer: '',
-		id: 0,
+		// id: 0,
 		postal_code: '',
 	})
 	const [isEditingAddress, setIsEditingAddress] = useState<boolean>(false)

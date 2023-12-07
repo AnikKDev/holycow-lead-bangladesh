@@ -21,6 +21,6 @@ export type AccountAddress = {
 	apartment_number: string
 	city: string
 	customer: number | string
-	id: number
+	id?: number
 	postal_code: string
 }

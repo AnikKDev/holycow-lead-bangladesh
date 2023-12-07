@@ -22,12 +22,15 @@ export const addressApiSlice = apiSlice.injectEndpoints({
 			invalidatesTags: ['Address'],
 		}),
 		updateAddress: builder.mutation({
-			query: (address) => ({
-				url: `/user/add_address/`,
+			query: ({ address, addressId }) => ({
+				url: `/user/address/${addressId}`,
 				method: 'PATCH',
 				body: address,
 			}),
-			invalidatesTags: (result, error, arg) => [{ type: 'Address', id: arg }],
+			invalidatesTags: (result, error, arg) => [
+				{ type: 'Address', id: arg.addressId },
+				'Address',
+			],
 		}),
 	}),
 })
