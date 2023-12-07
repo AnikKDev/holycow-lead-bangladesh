@@ -5,7 +5,7 @@ export const addressApiSlice = apiSlice.injectEndpoints({
 		// user/profile apis
 		getAllAddresses: builder.query({
 			query: () => ({
-				url: `user/all_addresses/`,
+				url: `/user/all_addresses/`,
 				method: 'GET',
 			}),
 			providesTags: (result, error, arg) => [{ type: 'Address', id: arg }],

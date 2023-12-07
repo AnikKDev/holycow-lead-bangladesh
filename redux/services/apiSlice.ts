@@ -10,7 +10,7 @@ export const apiSlice = createApi({
 		mode: 'cors',
 		prepareHeaders: (headers, { getState }) => {
 			// By default, if we have a token in the store, let's use that for authenticated requests
-			const token = (getState() as RootState).auth.token
+			const token = (getState() as RootState).auth.access
 			if (token) {
 				// headers.set('Authorization', `Token ${token}`)
 				headers.set('Authorization', `Bearer ${token}`)
