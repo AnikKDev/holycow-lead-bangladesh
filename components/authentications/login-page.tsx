@@ -82,7 +82,11 @@ const LoginPage = ({
 			})
 
 			// window.location.href = callBackRoute
-			router.push(callBackRoute)
+			if (callBackRoute) {
+				router.push(callBackRoute)
+			} else {
+				router.replace('/')
+			}
 		} catch (e) {
 			console.log(e)
 			toast.error('Phone number or password is incorrect')
