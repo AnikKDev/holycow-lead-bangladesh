@@ -27,10 +27,10 @@ module.exports = withBundleAnalyzer({
 			{
 				// protocol: 'http',
 				// hostname: 'ec2-15-168-142-203.ap-northeast-3.compute.amazonaws.com',
-		    // port: '',(http:/13.43.227.150:8000/media
+		    // port: '', http:/13.43.227.150:8000
 				protocol: 'http',
         hostname: '13.43.227.150',
-				port: '8000',
+				// port: '8000',
 			},
 		],
 	},
@@ -42,4 +42,5 @@ module.exports = withBundleAnalyzer({
 	// So, the source code is "basePath-ready".
 	// You can remove `basePath` if you don't need it.
 	reactStrictMode: true,
+	output: 'standalone',
 })
