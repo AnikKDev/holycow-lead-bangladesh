@@ -21,18 +21,27 @@ export default function FooterCopyrights({}: Props) {
 		<div>
 			<Separator className='my-4' />
 			{/* cr parts */}
-			<div className='flex items-center justify-between'>
+			{/* <div className='flex items-center justify-between mobile-sm:flex-wrap mobile-md:flex-nowrap'> */}
+			<div className='flex flex-wrap items-center justify-between'>
 				<div>
-					<span>© {new Date().getFullYear()} — Copyright</span>
+					<span>
+						© {new Date().getFullYear()} — Copyright Holy Cow - Fine Indian
+						Food. All Rights Reserved.
+					</span>
 				</div>
 				<div className='flex items-center'>
-					<span className='mx-3 flex items-center'>
+					{/* <span className='flex items-center'>
 						<CiPhone className='me-1' />
 						(414) 857 - 0107
-					</span>
-					<span className='mx-3 flex items-center'>
-						<MdOutlineEmail className='me-1' />
-						info@holycowonline.com
+					</span> */}
+					<span className='flex items-center'>
+						<a
+							href='mailto:info@holycowonline.com'
+							className='flex items-center gap-1'
+						>
+							<MdOutlineEmail className='h-4 w-4' />
+							info@holycowonline.com
+						</a>
 					</span>
 				</div>
 				<div>

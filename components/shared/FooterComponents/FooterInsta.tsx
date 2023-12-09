@@ -10,7 +10,7 @@ export default function FooterInsta({}: Props) {
 		<div>
 			{/* follow us */}
 			<h5 className='mb-6 text-lg font-bold text-white'>
-				Follow us on instagram
+				Follow us on Instagram
 			</h5>
 			{/* image will be here */}
 			<div className='flex flex-wrap items-center space-y-2'>
