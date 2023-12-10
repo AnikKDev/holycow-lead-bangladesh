@@ -182,7 +182,7 @@ const PrivacyPolicy = () => {
 						us: By email:{' '}
 						<span className='flex items-center'>
 							<MdEmail className='me-2 text-xl text-primary' />
-							info@holycowonline.com
+							<a href='mailto:info@holycowonline.com'>info@holycowonline.com</a>
 						</span>{' '}
 						Document updated date: November 27, 2019
 					</p>
