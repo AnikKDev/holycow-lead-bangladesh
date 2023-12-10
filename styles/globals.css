@@ -174,3 +174,8 @@ c-stepper__item:not(:last-child):after {
 	background-color: #e0e0e0;
 	order: -1;
 }
+
+/* privacy policy */
+.privacy-policy__header {
+	background-image: url('../assets/privacy-policy/page-banner.jpg');
+}
