@@ -13,7 +13,7 @@ export default function FooterInsta({}: Props) {
 				Follow us on Instagram
 			</h5>
 			{/* image will be here */}
-			<div className='flex flex-wrap items-center space-y-2'>
+			<div className='flex items-center space-y-2 mobile-sm:flex-wrap mobile-md:flex-wrap mobile-lg:flex-wrap tablet:flex-wrap'>
 				<Image
 					src={footer_img_1}
 					height={178}

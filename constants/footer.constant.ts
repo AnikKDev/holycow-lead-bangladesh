@@ -21,6 +21,28 @@ export const menuItemsArr = [
 	},
 ]
 
+export const menuItemsArrUpdated = [
+	{ text: 'About us', navigateTo: '/about' },
+	{ text: 'Takeaway Locations', navigateTo: '/locations' },
+	{ text: 'Takeaway Menu', navigateTo: '/menu' },
+	{ text: 'Putney Restaurant', navigateTo: '/putney' },
+	{ text: 'Fine Dining Menu – Putney', navigateTo: '/fine-dining' },
+	{ text: 'Book a Table', navigateTo: '/book-table' },
+	{ text: 'Gallery', navigateTo: '/gallery' },
+]
+
+export const footerExtraLinksArr = [
+	{ name: 'Allergy Advice', navigateTo: '/allergy-advice' },
+	{ name: 'Privacy & Cookies Policy', navigateTo: '/privacy-cookies-policy' },
+	{ name: 'Contact', navigateTo: '/contact' },
+	{ name: 'Feedback', navigateTo: '/feedback' },
+	{ name: 'Track & Trace – Takeaway', navigateTo: '/track-takeaway' },
+	{
+		name: 'Holy Cow Restaurant – Track & Trace',
+		navigateTo: '/holy-cow-track-trace',
+	},
+]
+
 export const locationsArr = [
 	{
 		text: 'Angel',
