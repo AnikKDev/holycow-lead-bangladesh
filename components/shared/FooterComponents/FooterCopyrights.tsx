@@ -18,11 +18,14 @@ export default function FooterCopyrights({}: Props) {
 		})
 	}
 	return (
-		<div>
+		<div className='text-center'>
 			<Separator className='my-4' />
 			{/* cr parts */}
-			{/* <div className='flex items-center justify-between mobile-sm:flex-wrap mobile-md:flex-nowrap'> */}
-			<div className='flex flex-wrap items-center justify-between'>
+			<span>
+				© {new Date().getFullYear()} — Copyright Holy Cow - Fine Indian Food.
+				All Rights Reserved.
+			</span>
+			{/* <div className='flex flex-wrap items-center justify-between'>
 				<div>
 					<span>
 						© {new Date().getFullYear()} — Copyright Holy Cow - Fine Indian
@@ -30,10 +33,6 @@ export default function FooterCopyrights({}: Props) {
 					</span>
 				</div>
 				<div className='flex items-center'>
-					{/* <span className='flex items-center'>
-						<CiPhone className='me-1' />
-						(414) 857 - 0107
-					</span> */}
 					<span className='flex items-center'>
 						<a
 							href='mailto:info@holycowonline.com'
@@ -51,11 +50,10 @@ export default function FooterCopyrights({}: Props) {
 						className='bg-[#F9F9F71F]'
 						variant='ghost'
 					>
-						{/* <FaInstagram className='text-xl' /> */}
 						<IoIosArrowRoundUp className='text-5xl font-thin' />
 					</Button>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	)
 }
