@@ -51,7 +51,6 @@
 }
 
 @layer utilities {
-
 	/* Chrome, Safari and Opera */
 	.no-scrollbar::-webkit-scrollbar {
 		display: none;
@@ -83,7 +82,9 @@ a {
 select {
 	width: 100%;
 	vertical-align: middle;
-	background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 12px center;
+	background: #fff
+		url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E")
+		no-repeat right 12px center;
 	background-size: 8px 10px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -172,4 +173,95 @@ c-stepper__item:not(:last-child):after {
 	height: 2px;
 	background-color: #e0e0e0;
 	order: -1;
+}
+
+/* allergy advice table */
+.section.content.fullwidth {
+	width: 100%;
+	padding: 0;
+}
+.responsive-table {
+	max-width: 100%;
+	display: block;
+	overflow-y: auto;
+}
+.table.tablepress.allergens,
+table.tablepress.allergen {
+	border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+section.content table {
+	width: 100%;
+}
+
+table.tablepress {
+	font-size: 14px;
+}
+.table.tablepress.allergens thead th,
+table.tablepress.allergen tr.row-1 td,
+table.tablepress.allergen tr.row-1 th,
+table.tablepress.allergen tr.row-2 td,
+table.tablepress.allergen tr.row-2 th,
+table.tablepress.allergen tr.row-3 td,
+table.tablepress.allergen tr.row-3 th {
+	background-color: #03565a;
+	color: #fff;
+	font-weight: 700;
+	border-top: 1px solid rgba(255, 255, 255, 0.12);
+	border-right: 1px solid rgba(255, 255, 255, 0.12);
+	border-bottom: 0;
+	text-align: center;
+}
+
+table.tablepress.allergen tbody td {
+	vertical-align: middle;
+	border-right: 1px solid rgba(0, 0, 0, 0.12);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+table.tablepress.allergen td,
+table.tablepress.allergen th {
+	padding: 6px 3px;
+}
+table.tablepress td,
+table.tablepress th {
+	line-height: 1.4;
+}
+.tablepress > * + tbody > * > *,
+.tablepress > tbody > * ~ * > *,
+.tablepress > tfoot > * > * {
+	border-top: 1px solid var(--border-color);
+}
+.tablepress > :not(caption) > * > * {
+	background: 0 0;
+	border: none;
+	box-sizing: content-box;
+	float: none !important;
+	padding: var(--padding);
+	text-align: left;
+	vertical-align: top;
+}
+table td {
+	padding: 5px 8px;
+	border-right: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.tablepress img {
+	height: auto;
+	width: 55px;
+}
+.tablepress img {
+	border: none;
+	margin: 0;
+	max-width: none;
+	padding: 0;
+}
+section.content table tbody tr:nth-child(2n) {
+	background-color: #ebe4d5;
+}
+table.tablepress.allergen tr.row-3 td {
+	background: unset;
+	color: #332d21;
+	font-weight: unset;
+	border-right: 1px solid #0000001f;
+	border-bottom: 1px solid #0000001f;
 }
