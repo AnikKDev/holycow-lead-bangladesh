@@ -194,7 +194,8 @@ section.content table {
 }
 
 table.tablepress {
-	font-size: 14px;
+	/* font-size: 14px; */
+	font-size: 15px;
 }
 .table.tablepress.allergens thead th,
 table.tablepress.allergen tr.row-1 td,
@@ -203,7 +204,8 @@ table.tablepress.allergen tr.row-2 td,
 table.tablepress.allergen tr.row-2 th,
 table.tablepress.allergen tr.row-3 td,
 table.tablepress.allergen tr.row-3 th {
-	background-color: #03565a;
+	/* background-color: #03565a; */
+	background-color: #ae9356;
 	color: #fff;
 	font-weight: 700;
 	border-top: 1px solid rgba(255, 255, 255, 0.12);
