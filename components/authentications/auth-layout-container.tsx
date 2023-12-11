@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import nav_logo from '@/assets/nav_logo.png'
 import { IoMdArrowBack } from 'react-icons/io'
 
@@ -15,14 +16,20 @@ type IMainProps = {
 const AuthLayoutContainer = (props: IMainProps) => {
 	return (
 		<section>
-			<div className='sticky top-0 z-[1038] flex h-16 items-center justify-center border-b border-border bg-white'>
+			<div className='sticky top-0 z-[1038] flex h-28 items-center justify-center border-b border-border bg-white'>
 				<nav
 					className={cn('container flex items-center justify-between', {
 						'justify-center': props?.hideBackBtn,
 					})}
 				>
 					<div>
-						<Image src={nav_logo} className='h-auto w-24' alt='holy cow logo' />
+						<Link href={'/'}>
+							<Image
+								src={nav_logo}
+								className='h-auto w-48 mobile-md:w-28'
+								alt='holy cow logo'
+							/>
+						</Link>
 					</div>
 					{/* nav options */}
 					<div className='flex items-center space-x-2.5'>
