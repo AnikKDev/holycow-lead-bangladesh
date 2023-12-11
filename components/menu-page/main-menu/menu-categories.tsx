@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
+import { useState } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -15,8 +15,8 @@ const MenuCategories = ({
 	const [activeCategory, setActiveCategory] = useState(allCategory[0])
 
 	return (
-		<div className='pt-5'>
-			<ul className='flex flex-col gap-1.5'>
+		<div className='pt-5 w-full'>
+			<ul className='flex flex-col gap-1.5 w-full'>
 				{Object.keys(menuItemsByCategory)?.length > 0
 					? Object.keys(menuItemsByCategory)?.map((category, idx) => (
 							<CategoryItem
@@ -47,16 +47,13 @@ const CategoryItem = ({ idx, category, activeCategory, setActiveCategory }) => {
 	}
 	return (
 		<>
-			<li className='w-full'>
+			<li className=' w-full '>
 				<a
 					href={`#${category.split(' ').join('-')}`}
 					data-scrollspy-id={category.split(' ').join('-')}
 					onClick={handleClick}
 					className={cn(
-						'block w-full items-center justify-center whitespace-nowrap rounded-md  px-1 py-1.5 pl-2 text-left text-base  text-[#6b6b83] ring-offset-background transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
-						activeCategory === category
-							? 'rounded-sm bg-primary/25 font-medium text-foreground'
-							: ''
+						'block w-full items-center justify-center whitespace-nowrap  rounded-md px-1 py-1.5 pl-2 text-left  text-base text-[#6b6b83] ring-offset-background transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 truncate'
 					)}
 				>
 					{category}

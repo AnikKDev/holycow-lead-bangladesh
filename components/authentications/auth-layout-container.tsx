@@ -16,7 +16,7 @@ type IMainProps = {
 const AuthLayoutContainer = (props: IMainProps) => {
 	return (
 		<section>
-			<div className='sticky top-0 z-[1038] flex h-28 items-center justify-center border-b border-border bg-white'>
+			<div className='sticky top-0 z-[1038] flex h-[85px] items-center justify-center border-b border-border bg-white'>
 				<nav
 					className={cn('container flex items-center justify-between', {
 						'justify-center': props?.hideBackBtn,
@@ -26,7 +26,7 @@ const AuthLayoutContainer = (props: IMainProps) => {
 						<Link href={'/'}>
 							<Image
 								src={nav_logo}
-								className='h-auto w-48 mobile-md:w-28'
+								className='h-auto w-36 mobile-md:w-28'
 								alt='holy cow logo'
 							/>
 						</Link>

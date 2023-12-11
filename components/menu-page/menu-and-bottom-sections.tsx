@@ -9,8 +9,13 @@ import MenuContainer from './main-menu/menu-container'
 
 import './main-menu/menu.css'
 
+import { useParams } from 'next/navigation'
+import { useAppDispatch } from '@/redux/hooks'
 import { useGetFullMenuQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
-import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
+import {
+	LocationInfoType,
+	setVisitedLocationSlug,
+} from '@/redux/slices/menuPageSlice/menuPageSlice'
 
 import { cn } from '@/lib/utils'
 
@@ -26,11 +31,13 @@ const MenuAndAllBottomSections = ({
 	isRestaurant?: boolean
 	locationInformation?: LocationInfoType
 }) => {
-	const { data, isLoading, isError } = useGetFullMenuQuery()
-
+	const { location } = useParams()
 	const targetRef = useRef<HTMLDivElement>(null)
 	const informationRef = useRef<HTMLDivElement>(null)
 	const menuRef = useRef<HTMLDivElement>(null)
+	const dispatch = useAppDispatch()
+	const { data, isLoading, isError } = useGetFullMenuQuery()
+
 	const targetItemEntry = useIntersectionObserver(targetRef, {
 		threshold: 0,
 		rootMargin: '0px 0px 0px 0px',
@@ -39,6 +46,12 @@ const MenuAndAllBottomSections = ({
 		threshold: 0,
 		rootMargin: '-70px 0px 0px 0px',
 	})
+
+	useEffect(() => {
+		if (!isRestaurant) {
+			dispatch(setVisitedLocationSlug(location as string))
+		}
+	}, [])
 
 	useEffect(() => {
 		if (
@@ -76,6 +89,7 @@ const MenuAndAllBottomSections = ({
 			sectionsRef.current.push(element)
 		}
 	}, [])
+
 	return (
 		<div>
 			<div
@@ -85,7 +99,7 @@ const MenuAndAllBottomSections = ({
 			<div
 				ref={menuRef}
 				className={cn(
-					'translateZ-class  sticky top-[64px] z-[1035]  w-full bg-background transition'
+					'translateZ-class  sticky top-[75px] z-[1035]  w-full bg-background transition'
 				)}
 			>
 				<div>
@@ -108,8 +122,8 @@ const MenuAndAllBottomSections = ({
 			>
 				{isLoading ? (
 					<div className='flex flex-row'>
-						<Skeleton className='relative z-[unset] -ml-2 mr-4 flex h-[calc(100vh-65px)] min-w-[190px] flex-1 bg-muted/80' />
-						<Skeleton className='flex h-[calc(100vh-65px)] w-full flex-col  justify-center gap-6 bg-muted/80 pt-5 ' />
+						<Skeleton className='relative z-[unset] -ml-2 mr-4 flex h-[calc(100vh-75px)] min-w-[190px] flex-1 bg-muted/80' />
+						<Skeleton className='flex h-[calc(100vh-75px)] w-full flex-col  justify-center gap-6 bg-muted/80 pt-5 ' />
 					</div>
 				) : isError ? (
 					<p className='container'>Error fetching menu</p>

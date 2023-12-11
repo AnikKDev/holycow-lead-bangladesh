@@ -51,6 +51,7 @@
 }
 
 @layer utilities {
+
 	/* Chrome, Safari and Opera */
 	.no-scrollbar::-webkit-scrollbar {
 		display: none;
@@ -82,9 +83,7 @@ a {
 select {
 	width: 100%;
 	vertical-align: middle;
-	background: #fff
-		url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E")
-		no-repeat right 12px center;
+	background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 12px center;
 	background-size: 8px 10px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -112,7 +111,11 @@ select::ms-expand {
 }
 
 .home-banner_background {
-	background-image: url('../assets/homepage/home_banner_webp.webp');
+	background-image: url('../assets/homepage/home_banner.webp');
+	background-color: gray;
+	background-blend-mode: multiply;
+	color: white;
+	background-attachment: fixed;
 }
 
 /* custom stepper */
@@ -184,6 +187,7 @@ c-stepper__item:not(:last-child):after {
 .privacy-policy__header {
 	background-image: url('../assets/privacy-policy/page-banner.jpg');
 }
+
 /* allergy advice */
 .allergy-advice__header {
 	background-image: url('../assets/allergy-advice/allergy_advice.jpg');
@@ -194,15 +198,18 @@ c-stepper__item:not(:last-child):after {
 	width: 100%;
 	padding: 0;
 }
+
 .responsive-table {
 	max-width: 100%;
 	display: block;
 	overflow-y: auto;
 }
+
 .table.tablepress.allergens,
 table.tablepress.allergen {
 	border-left: 1px solid rgba(0, 0, 0, 0.12);
 }
+
 section.content table {
 	width: 100%;
 }
@@ -211,6 +218,7 @@ table.tablepress {
 	/* font-size: 14px; */
 	font-size: 15px;
 }
+
 .table.tablepress.allergens thead th,
 table.tablepress.allergen tr.row-1 td,
 table.tablepress.allergen tr.row-1 th,
@@ -233,20 +241,24 @@ table.tablepress.allergen tbody td {
 	border-right: 1px solid rgba(0, 0, 0, 0.12);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
+
 table.tablepress.allergen td,
 table.tablepress.allergen th {
 	padding: 6px 3px;
 }
+
 table.tablepress td,
 table.tablepress th {
 	line-height: 1.4;
 }
-.tablepress > * + tbody > * > *,
-.tablepress > tbody > * ~ * > *,
-.tablepress > tfoot > * > * {
+
+.tablepress>*+tbody>*>*,
+.tablepress>tbody>*~*>*,
+.tablepress>tfoot>*>* {
 	border-top: 1px solid var(--border-color);
 }
-.tablepress > :not(caption) > * > * {
+
+.tablepress> :not(caption)>*>* {
 	background: 0 0;
 	border: none;
 	box-sizing: content-box;
@@ -255,6 +267,7 @@ table.tablepress th {
 	text-align: left;
 	vertical-align: top;
 }
+
 table td {
 	padding: 5px 8px;
 	border-right: 1px solid #e5e5e5;
@@ -265,15 +278,18 @@ table td {
 	height: auto;
 	width: 55px;
 }
+
 .tablepress img {
 	border: none;
 	margin: 0;
 	max-width: none;
 	padding: 0;
 }
+
 section.content table tbody tr:nth-child(2n) {
 	background-color: #ebe4d5;
 }
+
 table.tablepress.allergen tr.row-3 td {
 	background: unset;
 	color: #332d21;
@@ -287,6 +303,7 @@ table.tablepress.allergen tr.row-3 td {
 	width: 100%;
 	height: 100%;
 }
+
 .swiper-button-next,
 .swiper-button-prev {
 	background-color: white;
