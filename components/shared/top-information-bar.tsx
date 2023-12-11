@@ -17,15 +17,15 @@ const TopInformationBar = () => {
 
 	return (
 		<div className='w-full bg-primary py-[6px] text-primary-foreground'>
-			<div className='container flex items-center justify-between'>
+			<div className='container flex flex-wrap items-center justify-between'>
 				<div className='flex items-center gap-2.5'>
-					<a
+					{/* <a
 						href='tel:(414) 857 - 0107'
 						className='flex items-center gap-1 text-sm'
 					>
 						<CiPhone className='h-4 w-4 text-primary-foreground' />
 						(414) 857 - 0107
-					</a>
+					</a> */}
 					<a
 						href='mailto:info@holycowonline.com'
 						className='flex items-center gap-1 text-sm'
@@ -48,14 +48,16 @@ const TopInformationBar = () => {
 					</div>
 					<div className='flex items-center space-x-2.5'>
 						{getSocialIcons('text-sm').map((icon) => (
-							<Button
-								size='icon'
-								className='h-8 w-8 bg-[#F9F9F71F]'
-								variant='ghost'
-							>
-								{/* <FaInstagram className='text-xl' /> */}
-								{icon.icon}
-							</Button>
+							<a href={icon.navigateTo} target='_blank'>
+								<Button
+									size='icon'
+									className='h-8 w-8 bg-[#F9F9F71F]'
+									variant='ghost'
+								>
+									{/* <FaInstagram className='text-xl' /> */}
+									{icon.icon}
+								</Button>
+							</a>
 						))}
 					</div>
 				</div>
