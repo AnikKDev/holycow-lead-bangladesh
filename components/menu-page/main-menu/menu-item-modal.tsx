@@ -1,5 +1,8 @@
 'use client'
 
+import { Dispatch, SetStateAction, useState } from 'react'
+import Image from 'next/image'
+import itemImg from '@/public/menu-item.jpg'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
@@ -7,11 +10,10 @@ import {
 	selectOrderState,
 	setOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
-import Image from 'next/image'
-import { Dispatch, SetStateAction, useState } from 'react'
 import { FiMinusCircle, FiPlusCircle } from 'react-icons/fi'
 
-import CartSidebar from '@/components/cart/cart-sidebar'
+import { apiUrl } from '@/lib/constatns'
+import { formatPrice } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
 	Dialog,
@@ -22,8 +24,7 @@ import {
 	DialogTitle,
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
-import { apiUrl } from '@/lib/constatns'
-import { formatPrice } from '@/lib/utils'
+import CartSidebar from '@/components/cart/cart-sidebar'
 
 export function MenuItemModal({
 	showModal,
@@ -72,7 +73,7 @@ export function MenuItemModal({
 					<DialogHeader className='text-left'>
 						<div>
 							<Image
-								src={`${apiUrl}${item?.image}`}
+								src={item?.image ? `${apiUrl}${item?.image}` : itemImg}
 								alt='Menu item image'
 								className='max-h-[300px] w-full object-cover'
 								height={300}

@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import itemImg from '@/public/menu-item.jpg'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 
 import { apiUrl } from '@/lib/constatns'
+import { formatPrice } from '@/lib/utils'
 
 import { MenuItemModal } from './menu-item-modal'
 
@@ -39,13 +41,15 @@ const MenuItem = ({ item, isRestaurant }: IMenuItem) => {
 						<p className='line-clamp-2 text-sm font-normal text-[#767676] text-foreground'>
 							{item?.description}
 						</p>
-						<p className='text-sm font-medium text-foreground/70'>
-							{item.price}
-						</p>
+						{!isRestaurant && (
+							<p className='text-sm font-medium text-foreground/70'>
+								{formatPrice(item.price)}
+							</p>
+						)}
 					</div>
 					<div className='relative col-start-12 col-end-[17]'>
 						<Image
-							src={`${apiUrl}${item.image}`}
+							src={item.image ? `${apiUrl}${item.image}` : itemImg}
 							className='h-full w-full object-cover'
 							alt='Menu Item'
 							height={125}

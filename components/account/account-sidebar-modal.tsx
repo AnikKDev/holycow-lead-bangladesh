@@ -48,7 +48,10 @@ const AccountSidebarModal = ({
 					</SheetHeader>
 					<div className='grid min-h-fit grow-[1]'>
 						<div>
-							<Link href={'/account/your-profile'}>
+							<Link
+								href={'/account/your-profile'}
+								onClick={() => setShowAccountSidebar(false)}
+							>
 								<Button
 									size='lg'
 									className='flex w-full items-center justify-start gap-4 rounded-none border-b border-border  bg-transparent px-5 py-6'
@@ -58,7 +61,10 @@ const AccountSidebarModal = ({
 									View Account
 								</Button>
 							</Link>
-							<Link href={'/account/your-orders'}>
+							<Link
+								href={'/account/your-orders'}
+								onClick={() => setShowAccountSidebar(false)}
+							>
 								<Button
 									size='lg'
 									className='flex w-full items-center justify-start gap-4 rounded-none border-b border-border  bg-transparent px-5 py-6'
@@ -68,7 +74,10 @@ const AccountSidebarModal = ({
 									Order History
 								</Button>
 							</Link>
-							<Link href={'/account/view-address'}>
+							<Link
+								href={'/account/view-address'}
+								onClick={() => setShowAccountSidebar(false)}
+							>
 								<Button
 									size='lg'
 									className='flex w-full items-center justify-start gap-4 rounded-none border-b border-border  bg-transparent px-5 py-6'

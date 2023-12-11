@@ -5,6 +5,7 @@ import {
 	getCartTotals,
 	selectAllCartItems,
 } from '@/redux/slices/orderSlice/orderSlice'
+import { FiPlusCircle } from 'react-icons/fi'
 
 import { formatPrice } from '@/lib/utils'
 import { useAuthState } from '@/hooks/useAuthState'
@@ -43,13 +44,35 @@ const CartSidebar = ({
 					</SheetHeader>
 					<div className=' min-h-fit grow-[1] overflow-y-auto px-3 py-4'>
 						{cartItems.length > 0 ? (
-							<div className='grid  gap-7 '>
-								{cartItems.map((item) => (
-									<CartItem item={item} key={item.id} />
-								))}
+							<div>
+								<div className='grid  gap-7 '>
+									{cartItems.map((item) => (
+										<CartItem item={item} key={item.id} />
+									))}
+								</div>
+								<Button
+									onClick={() => setShowCartSidebar(false)}
+									variant='link'
+									className='mt-2 gap-1.5'
+								>
+									<FiPlusCircle className='h-4 w-4' />
+									Add More Items
+								</Button>
 							</div>
 						) : (
-							<p>No items in the cart</p>
+							<div className='flex h-full flex-col items-center justify-center space-y-4'>
+								<p className='text-sm font-medium text-foreground'>
+									No items in the cart
+								</p>
+								<Button
+									onClick={() => setShowCartSidebar(false)}
+									variant='link'
+									className='mt-2 gap-1.5'
+								>
+									<FiPlusCircle className='h-4 w-4' />
+									Add Items
+								</Button>
+							</div>
 						)}
 					</div>
 					<SheetFooter className='shrink-0 flex-col gap-3 border-t border-border px-3 pt-3'>
@@ -61,6 +84,7 @@ const CartSidebar = ({
 						</div>
 						<div className='w-full'>
 							<Button
+								disabled={!cartTotals.totalQuantity}
 								size='default'
 								type='button'
 								className=' w-full font-medium uppercase'
