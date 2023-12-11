@@ -54,16 +54,22 @@ export type LocationReviewItemType = Extend<
 
 type InitialStateType = {
 	allMenuItems: AllMenuType[]
+	menuSearchTerm: string
 }
 
 const initialState: InitialStateType = {
 	allMenuItems: [],
+	menuSearchTerm: '',
 }
 
 const menuPageSlice = createSlice({
 	name: 'menuPage',
 	initialState,
-	reducers: {},
+	reducers: {
+		setSearchTerm: (state, action: PayloadAction<string>) => {
+			state.menuSearchTerm = action.payload
+		},
+	},
 	extraReducers: (builder) => {
 		builder.addMatcher(
 			menuPageApiSlice.endpoints.getFullMenu.matchFulfilled,
@@ -73,7 +79,10 @@ const menuPageSlice = createSlice({
 		)
 	},
 })
+export const { setSearchTerm } = menuPageSlice.actions
 export default menuPageSlice.reducer
+export const selectMenuSearchTerm = (state: RootState) =>
+	state.menuPage.menuSearchTerm
 export const selectAllMenuitems = (state: RootState) =>
 	state.menuPage.allMenuItems
 
@@ -93,5 +102,39 @@ export const selectMenuItemsByCategory = createSelector(
 			},
 			{}
 		)
+	}
+)
+
+export const getSearchedMenuItems = createSelector(
+	selectMenuItemsByCategory,
+	selectMenuSearchTerm,
+	(allItemsByCategory, searchTerm) => {
+		if (!Object.keys(allItemsByCategory).length || !searchTerm) {
+			return {}
+		}
+
+		let result: { [key: string]: MenuItemType[] } = {}
+		Object.keys(allItemsByCategory).forEach((key) => {
+			if (key.toLowerCase().includes(searchTerm)) {
+				result = {
+					...result,
+					[key]: allItemsByCategory[key],
+				}
+			} else {
+				if (allItemsByCategory[key]?.length > 0) {
+					const sItems = allItemsByCategory[key].filter((item) =>
+						item.item_name.toLowerCase().includes(searchTerm.toLowerCase())
+					)
+
+					if (sItems?.length) {
+						result = {
+							...result,
+							[key]: sItems,
+						}
+					}
+				}
+			}
+		})
+		return result
 	}
 )

@@ -39,7 +39,7 @@ const TopInformationBar = () => {
 						<Link className='text-sm hover:underline' href={'/about-us'}>
 							About
 						</Link>
-						<Link className='text-sm hover:underline' href={'/contact-us'}>
+						<Link className='text-sm hover:underline' href={'/contact'}>
 							Contact
 						</Link>
 						<Link className='text-sm hover:underline' href={'/allergy-advice'}>
