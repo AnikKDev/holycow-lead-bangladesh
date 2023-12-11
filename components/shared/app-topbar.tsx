@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 
 import TopInformationBar from './top-information-bar'
-import TopNav from './TopNav'
+import TopNav from './top-nav'
 
 const AppTopBar = () => {
 	const pathname = usePathname()

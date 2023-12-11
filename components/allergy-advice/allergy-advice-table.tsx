@@ -12,7 +12,7 @@ export default function AllergyAdviceTable({}: Props) {
 				<tr className='row-1'>
 					<th className='column-1'></th>
 
-					<th className='column-2'>
+					<th className='column-2 flex h-28 flex-col items-center justify-center'>
 						<img
 							decoding='async'
 							width='100'
@@ -45,7 +45,7 @@ export default function AllergyAdviceTable({}: Props) {
 							className='alignnone size-full wp-image-3557 lazyloaded'
 							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-3.png'
 						/>
-						<noscript>
+						{/* <noscript>
 							<img
 								decoding='async'
 								width='100'
@@ -54,7 +54,7 @@ export default function AllergyAdviceTable({}: Props) {
 								alt=''
 								className='alignnone size-full wp-image-3557'
 							/>
-						</noscript>
+						</noscript> */}
 						<br />
 						CEREALS
 					</th>
@@ -287,7 +287,7 @@ export default function AllergyAdviceTable({}: Props) {
 			</thead>
 			<tbody>
 				<tr className='row-2'>
-					<td className='column-1'>
+					<td className='column-1 flex h-full flex-col items-center justify-center'>
 						<img
 							decoding='async'
 							width='100'
@@ -427,44 +427,46 @@ export default function AllergyAdviceTable({}: Props) {
 					<td className='column-9'></td>
 					<td className='column-10'></td>
 					<td className='column-11'>
-						<img
-							decoding='async'
-							width='100'
-							height='100'
-							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-18.png'
-							className='alignnone size-full wp-image-3572 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-18.png'
-						/>
-						<noscript>
+						<div className='flex items-center justify-center'>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
+								alt=''
+								data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-18.png'
+								className='alignnone size-full wp-image-3572 lazyloaded'
 								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-18.png'
-								alt=''
-								className='alignnone size-full wp-image-3572'
 							/>
-						</noscript>
-						<img
-							decoding='async'
-							width='100'
-							height='100'
-							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-19.png'
-							className='alignnone size-full wp-image-3573 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-19.png'
-						/>
-						<noscript>
+							<noscript>
+								<img
+									decoding='async'
+									width='100'
+									height='100'
+									src='https://holycowonline.com/wp-content/uploads/2021/10/HC-18.png'
+									alt=''
+									className='alignnone size-full wp-image-3572'
+								/>
+							</noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-19.png'
 								alt=''
-								className='alignnone size-full wp-image-3573'
+								data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-19.png'
+								className='alignnone size-full wp-image-3573 lazyloaded'
+								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-19.png'
 							/>
-						</noscript>
+							<noscript>
+								<img
+									decoding='async'
+									width='100'
+									height='100'
+									src='https://holycowonline.com/wp-content/uploads/2021/10/HC-19.png'
+									alt=''
+									className='alignnone size-full wp-image-3573'
+								/>
+							</noscript>
+						</div>
 						NUTS/TREENUTS
 					</td>
 					<td className='column-12'></td>
