@@ -25,7 +25,7 @@ export default function FooterInsta({}: Props) {
 				</a>
 			</h5>
 			{/* image will be here */}
-			<div className='flex items-center space-y-2 mobile-sm:flex-wrap mobile-md:flex-wrap mobile-lg:flex-wrap tablet:flex-wrap'>
+			<div className='flex items-center space-y-2 mobile-sm:flex-wrap mobile-md:flex-wrap mobile-lg:flex-wrap tablet:flex-wrap _desktop-sm:flex-wrap'>
 				<Image
 					// src={footer_img_1}
 					src={footer_img_3}
