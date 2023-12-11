@@ -68,9 +68,10 @@ const MenuContainer = ({
 	// 		sidebarRef.current.classList.add('fixed__sidebar')
 	// 	}
 	// }, [isInformationVisible, sidebarRef])
+	console.log('menu-container', document.getElementById('menu-container'))
 
 	return (
-		<div className='container' id='menu-container'>
+		<div className='container'>
 			<div className='flex flex-row'>
 				<ScrollSpy handleScroll={onScrollUpdate} />
 				{/* menu categories */}

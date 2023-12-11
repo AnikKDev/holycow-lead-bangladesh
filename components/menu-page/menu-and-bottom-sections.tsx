@@ -140,7 +140,7 @@ const MenuAndAllBottomSections = ({
 
 			<div ref={informationRef}>
 				<div
-					className='mx-auto max-w-[1200px] scroll-m-24 '
+					className='mx-auto max-w-[1200px] scroll-m-32 '
 					id='information'
 					ref={refCallback}
 				>
@@ -148,7 +148,7 @@ const MenuAndAllBottomSections = ({
 				</div>
 				{isRestaurant && (
 					<div
-						className='mx-auto max-w-[1200px] scroll-m-24 '
+						className='mx-auto max-w-[1200px] scroll-m-32 '
 						id='gallery'
 						ref={refCallback}
 					>
@@ -156,7 +156,7 @@ const MenuAndAllBottomSections = ({
 					</div>
 				)}
 				<div
-					className=' mx-auto max-w-[1200px] scroll-m-24'
+					className=' mx-auto max-w-[1200px] scroll-m-32'
 					id='reviews'
 					ref={refCallback}
 				>
