@@ -26,7 +26,7 @@ const AuthLayoutContainer = (props: IMainProps) => {
 						<Link href={'/'}>
 							<Image
 								src={nav_logo}
-								className='h-auto w-48 mobile-md:w-28'
+								className='h-auto w-40 mobile-md:w-28'
 								alt='holy cow logo'
 							/>
 						</Link>
