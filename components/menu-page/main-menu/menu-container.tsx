@@ -7,9 +7,26 @@ import './menu.css'
 
 import { useAppSelector } from '@/redux/hooks'
 import {
+	getSearchedMenuItems,
 	MenuItemType,
 	selectMenuItemsByCategory,
+	selectMenuSearchTerm,
 } from '@/redux/slices/menuPageSlice/menuPageSlice'
+
+import { ScrollSpy } from './scrollspy/ScrollSpy'
+
+// Abstracted from ScrollSpy to allow for easier customizations
+const onScrollUpdate = (entry, isInVewPort) => {
+	const { target, boundingClientRect } = entry
+	const menuItem = document.querySelector(`[data-scrollspy-id="${target.id}"]`)
+	if (boundingClientRect.y <= 0 && isInVewPort) {
+		menuItem.classList.add('active-scrollspy')
+	} else {
+		if (menuItem.classList.contains('active-scrollspy')) {
+			menuItem.classList.remove('active-scrollspy')
+		}
+	}
+}
 
 const MenuContainer = ({
 	isRestaurant,
@@ -24,7 +41,16 @@ const MenuContainer = ({
 	const menuItemsByCategory: { [key: string]: MenuItemType } = useAppSelector(
 		selectMenuItemsByCategory
 	)
-	console.log(menuItemsByCategory)
+	// console.log(menuItemsByCategory)
+	const searchTerm = useAppSelector(selectMenuSearchTerm)
+	const searchResult = useAppSelector(getSearchedMenuItems)
+	// let menuItemsByCategory: { [key: string]: MenuItemType }
+	console.log({ searchResult })
+	// if (!searchTerm) {
+	// 	menuItemsByCategory = menuItemsByCategory1
+	// } else {
+	// 	menuItemsByCategory = searchResult
+	// }
 
 	// useEffect(() => {
 	// 	if (!isTargetItemVisible && sidebarRef?.current) {
@@ -46,8 +72,9 @@ const MenuContainer = ({
 	// }, [isInformationVisible, sidebarRef])
 
 	return (
-		<div className='container'>
+		<div className='container' id='menu-container'>
 			<div className='flex flex-row'>
+				<ScrollSpy handleScroll={onScrollUpdate} />
 				{/* menu categories */}
 				<div className='relative z-[unset] -ml-2 mr-4 flex min-w-[190px] flex-1'>
 					<div

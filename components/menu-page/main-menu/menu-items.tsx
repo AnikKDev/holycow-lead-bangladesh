@@ -10,25 +10,37 @@ const MenuItems = ({
 	menuItemsByCategory: { [key: string]: MenuItemType }
 }) => {
 	return (
-		<div className='flex flex-col justify-start  gap-6 pt-5'>
-			{Object.keys(menuItemsByCategory).map((category) => {
-				return (
-					<div className='flex flex-col justify-center gap-2.5'>
-						<h1 className='text-xl font-medium'>{category}</h1>
-						<div className='grid grid-cols-2 gap-4'>
-							{menuItemsByCategory[category].map((item: MenuItemType) => {
-								return (
-									<MenuItem
-										key={item.id}
-										item={item}
-										isRestaurant={isRestaurant}
-									/>
-								)
-							})}
+		<div
+			className='flex flex-col justify-start  gap-6 pt-5'
+			id='menu-container-1'
+		>
+			{Object.keys(menuItemsByCategory)?.length > 0 ? (
+				Object.keys(menuItemsByCategory)?.map((category) => {
+					return (
+						<div
+							id={category.split(' ').join('-')}
+							data-nav-title={category.split(' ').join('-')}
+							data-scrollspy
+							className='flex scroll-mt-28 flex-col justify-center gap-2.5'
+						>
+							<h1 className='text-xl font-medium'>{category}</h1>
+							<div className='grid grid-cols-2 gap-4'>
+								{menuItemsByCategory[category]?.map((item: MenuItemType) => {
+									return (
+										<MenuItem
+											key={item.id}
+											item={item}
+											isRestaurant={isRestaurant}
+										/>
+									)
+								})}
+							</div>
 						</div>
-					</div>
-				)
-			})}
+					)
+				})
+			) : (
+				<p> No result found </p>
+			)}
 		</div>
 	)
 }
