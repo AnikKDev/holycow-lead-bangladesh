@@ -23,7 +23,7 @@ const TopCartBtn = () => {
 				onClick={() => {
 					setShowCartSidebar(true)
 				}}
-				className='flex items-center space-x-1.5 rounded-full px-4 text-primary-foreground'
+				className='flex items-center space-x-1.5 rounded-full px-4 text-primary-foreground mobile-md:hidden'
 				variant='default'
 				size='sm'
 			>
@@ -31,6 +31,16 @@ const TopCartBtn = () => {
 				<span className='text-sm'>Cart</span>
 				<GoDotFill className='text-sm' />
 				<span>{totalCartItems}</span>
+			</Button>
+			<Button
+				onClick={() => {
+					setShowCartSidebar(true)
+				}}
+				className='flex h-11 items-center space-x-1.5 rounded-full px-4 text-primary-foreground _tablet:hidden _desktop-sm:hidden _desktop-md:hidden'
+				variant='default'
+				size='sm'
+			>
+				<FaShoppingCart className='text-sm' />
 			</Button>
 
 			<CartSidebar
