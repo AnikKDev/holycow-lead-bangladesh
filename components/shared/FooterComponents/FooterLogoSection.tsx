@@ -12,15 +12,19 @@ type Props = {}
 export const getSocialIcons = (className = 'text-xl') => [
 	{
 		icon: <FaTwitter className={cn(className)} />,
+		navigateTo: 'https://twitter.com/HolyCowLondonUK/',
 	},
 	{
 		icon: <FaFacebookF className={cn(className)} />,
+		navigateTo: 'https://www.facebook.com/holycowfineindianfood/',
 	},
 	{
 		icon: <FiInstagram className={cn(className)} />,
+		navigateTo: 'https://www.instagram.com/holycowfineindianfood/',
 	},
 	{
 		icon: <FaTiktok className={cn(className)} />,
+		navigateTo: 'https://www.tiktok.com/@holycowfineindianfood/',
 	},
 ]
 

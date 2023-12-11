@@ -48,14 +48,16 @@ const TopInformationBar = () => {
 					</div>
 					<div className='flex items-center space-x-2.5'>
 						{getSocialIcons('text-sm').map((icon) => (
-							<Button
-								size='icon'
-								className='h-8 w-8 bg-[#F9F9F71F]'
-								variant='ghost'
-							>
-								{/* <FaInstagram className='text-xl' /> */}
-								{icon.icon}
-							</Button>
+							<a href={icon.navigateTo} target='_blank'>
+								<Button
+									size='icon'
+									className='h-8 w-8 bg-[#F9F9F71F]'
+									variant='ghost'
+								>
+									{/* <FaInstagram className='text-xl' /> */}
+									{icon.icon}
+								</Button>
+							</a>
 						))}
 					</div>
 				</div>
