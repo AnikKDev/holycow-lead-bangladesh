@@ -178,6 +178,10 @@ c-stepper__item:not(:last-child):after {
 .privacy-policy__header {
 	background-image: url('../assets/privacy-policy/page-banner.jpg');
 }
+/* allergy advice */
+.allergy-advice__header {
+	background-image: url('../assets/allergy-advice/allergy_advice.jpg');
+}
 
 /* allergy advice table */
 .section.content.fullwidth {
@@ -215,7 +219,7 @@ table.tablepress.allergen tr.row-3 th {
 	border-top: 1px solid rgba(255, 255, 255, 0.12);
 	border-right: 1px solid rgba(255, 255, 255, 0.12);
 	border-bottom: 0;
-	text-align: center;
+	/* text-align: center; */
 }
 
 table.tablepress.allergen tbody td {

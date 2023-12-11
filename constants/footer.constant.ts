@@ -33,7 +33,7 @@ export const menuItemsArrUpdated = [
 
 export const footerExtraLinksArr = [
 	{ name: 'Allergy Advice', navigateTo: '/allergy-advice' },
-	{ name: 'Privacy & Cookies Policy', navigateTo: '/privacy-cookies-policy' },
+	{ name: 'Privacy & Cookies Policy', navigateTo: '/privacy-policy' },
 	{ name: 'Contact', navigateTo: '/contact' },
 	{ name: 'Feedback', navigateTo: '/feedback' },
 	{ name: 'Track & Trace – Takeaway', navigateTo: '/track-takeaway' },
