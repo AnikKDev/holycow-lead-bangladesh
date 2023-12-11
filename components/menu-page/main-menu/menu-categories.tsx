@@ -1,7 +1,7 @@
 'use client'
 
-import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import { useState } from 'react'
+import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 
 import { cn } from '@/lib/utils'
 
@@ -17,19 +17,17 @@ const MenuCategories = ({
 	return (
 		<div className='pt-5'>
 			<ul className='flex flex-col gap-1.5'>
-				{Object.keys(menuItemsByCategory)?.length > 0 ? (
-					Object.keys(menuItemsByCategory)?.map((category, idx) => (
-						<CategoryItem
-							key={idx}
-							idx={idx}
-							category={category}
-							activeCategory={activeCategory}
-							setActiveCategory={setActiveCategory}
-						/>
-					))
-				) : (
-					<p>No menu items found</p>
-				)}
+				{Object.keys(menuItemsByCategory)?.length > 0
+					? Object.keys(menuItemsByCategory)?.map((category, idx) => (
+							<CategoryItem
+								key={idx}
+								idx={idx}
+								category={category}
+								activeCategory={activeCategory}
+								setActiveCategory={setActiveCategory}
+							/>
+					  ))
+					: null}
 			</ul>
 		</div>
 	)

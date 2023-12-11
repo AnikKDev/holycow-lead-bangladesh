@@ -113,7 +113,7 @@ export const getSearchedMenuItems = createSelector(
 			return {}
 		}
 
-		let result: { [key: string]: MenuItemType[] }
+		let result: { [key: string]: MenuItemType[] } = {}
 		Object.keys(allItemsByCategory).forEach((key) => {
 			if (key.toLowerCase().includes(searchTerm)) {
 				result = {

@@ -39,7 +39,7 @@ const MenuItems = ({
 					)
 				})
 			) : (
-				<p> No result found </p>
+				<p className='text-center'> No result found </p>
 			)}
 		</div>
 	)
