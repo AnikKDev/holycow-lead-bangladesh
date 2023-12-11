@@ -7,6 +7,7 @@ import {
 	LocationInfoType,
 	LocationReviewItemType,
 } from '@/redux/slices/menuPageSlice/menuPageSlice'
+// import ReactPaginate from 'react-paginate'
 import ReactPaginate from 'react-paginate'
 
 import { calculateAverageRating } from '@/lib/utils'

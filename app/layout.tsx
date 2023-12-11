@@ -9,6 +9,7 @@ import { IBM_Plex_Sans } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import AppTopBar from '@/components/shared/app-topbar'
 import Footer from '@/components/shared/Footer'
+import FooterUpdated from '@/components/shared/footer-updated'
 
 const fontIbmPlexSans = IBM_Plex_Sans({
 	subsets: ['latin'],
@@ -75,7 +76,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
 					{/* navbar / topbar */}
 					<AppTopBar />
 					<main className='_desktop-lg:max-w-7xl mx-auto'>{children}</main>
-					<Footer />
+					{/* <Footer /> */}
+					<FooterUpdated />
 				</ReduxProvider>
 			</body>
 		</html>

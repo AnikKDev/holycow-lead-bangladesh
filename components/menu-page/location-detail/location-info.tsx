@@ -22,7 +22,11 @@ const LocationInfo = ({
 				</div>
 				<div className='flex items-center gap-2 border-b border-border py-4'>
 					<MdCall size={18} />
-					<p>{locationInformation?.phone_number}</p>
+					<p>
+						<a href={`tel:${locationInformation?.phone_number}`}>
+							{locationInformation?.phone_number}
+						</a>
+					</p>
 				</div>
 				<div className='flex items-center gap-2 border-b border-border py-4'>
 					<HiMail size={18} />

@@ -2,6 +2,7 @@ import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import { MdOutlineLocationOn, MdOutlineStar } from 'react-icons/md'
 
 import BookATableBtn from './reservation/book-table-btn'
+import ReviewTotalCount from './review-total-count'
 
 const AboutLocation = ({
 	isRestaurant = false,
@@ -20,16 +21,22 @@ const AboutLocation = ({
 					<div className='flex flex-col justify-center gap-1'>
 						<div className='flex items-center gap-1'>
 							<MdOutlineStar size={18} />
-							<h2 className='font-medium'>
-								{Number(locationInformation.rating).toFixed(1)} (100+ ratings) •{' '}
-								{isRestaurant ? 'Restaurant' : 'Takeaway'}
+							<h2 className='flex items-center gap-[2px] font-medium'>
+								{Number(locationInformation.rating).toFixed(1)} (
+								<ReviewTotalCount
+									isRestaurant={isRestaurant}
+									locationInfo={locationInformation}
+								/>
+								+ ratings) • {isRestaurant ? 'Restaurant' : 'Takeaway'}
 							</h2>
 						</div>
 						<div className='flex items-center gap-1'>
 							<MdOutlineLocationOn size={18} />
 							<h2 className='font-medium'>
 								{locationInformation.address} •{' '}
-								{locationInformation.phone_number}
+								<a href={`tel:${locationInformation?.phone_number}`}>
+									{locationInformation?.phone_number}
+								</a>
 							</h2>
 						</div>
 					</div>

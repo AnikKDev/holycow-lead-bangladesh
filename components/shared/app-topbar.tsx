@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 
 import TopInformationBar from './top-information-bar'
-import TopNav from './TopNav'
+import TopNav from './top-nav'
 
 const AppTopBar = () => {
 	const pathname = usePathname()
@@ -13,7 +13,7 @@ const AppTopBar = () => {
 	return (
 		<>
 			<TopInformationBar />
-			<div className='sticky top-0 z-[1038] flex h-16 items-center justify-center border-b border-border bg-white'>
+			<div className='sticky top-0 z-[1038] flex h-28 items-center justify-center border-b border-border bg-white'>
 				<TopNav />
 			</div>
 		</>
