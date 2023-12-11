@@ -12,7 +12,7 @@ export default function TopNav({}: Props) {
 		<nav className='container flex items-center justify-between'>
 			<div>
 				<Link href={'/'}>
-					<Image src={nav_logo} className='h-auto w-24' alt='holy cow logo' />
+					<Image src={nav_logo} className='h-auto w-48' alt='holy cow logo' />
 				</Link>
 			</div>
 			{/* nav options */}

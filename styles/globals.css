@@ -112,7 +112,7 @@ select::ms-expand {
 }
 
 .home-banner_background {
-	background-image: url('../assets/homepage/home_banner.png');
+	background-image: url('../assets/homepage/home_banner_webp.webp');
 }
 
 /* custom stepper */
@@ -173,6 +173,10 @@ c-stepper__item:not(:last-child):after {
 	height: 2px;
 	background-color: #e0e0e0;
 	order: -1;
+}
+/* privacy policy */
+.privacy-policy__header {
+	background-image: url('../assets/privacy-policy/page-banner.jpg');
 }
 
 /* allergy advice table */
