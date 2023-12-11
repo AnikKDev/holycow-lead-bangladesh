@@ -43,3 +43,13 @@ export const allRestaurantLocations = [
 		slug: '/locations/limehouse-canary-wharf',
 	},
 ]
+
+export const allLocationsName = [
+	'Archway',
+	'Balham',
+	'Battersea',
+	'Hammersmith',
+	'Kilburn',
+	'Putney',
+	'Limehouse - Canary Wharf',
+]

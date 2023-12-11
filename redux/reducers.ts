@@ -7,6 +7,7 @@ import {
 
 import { apiSlice } from './services/apiSlice'
 import authSlice from './slices/authSlice/authSlice'
+import bookingSlice from './slices/bookingSlice/bookingSlice'
 import counterSlice from './slices/counter/counterSlice'
 import menuPageSlice from './slices/menuPageSlice/menuPageSlice'
 import orderSlice from './slices/orderSlice/orderSlice'
@@ -18,6 +19,7 @@ const allReducer = {
 	auth: authSlice,
 	menuPage: menuPageSlice,
 	order: orderSlice,
+	booking: bookingSlice,
 }
 
 type ReducersMapObject = typeof allReducer

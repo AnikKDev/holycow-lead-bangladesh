@@ -12,7 +12,7 @@ const PaymentTab = () => {
 				<div className='h-11 text-left text-sm font-medium text-foreground'>
 					Deposit Amount: {formatPrice(10)}
 				</div>
-				<Button size='lg'>Pay Deposit & Confirm Booking</Button>
+				<Button size='lg'>Pay & Confirm Booking</Button>
 			</div>
 		</div>
 	)
