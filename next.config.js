@@ -33,6 +33,7 @@ module.exports = withBundleAnalyzer({
 				// port: '8000',
 			},
 		],
+		domains: ['hc-api.alexpy.com'],
 	},
 	poweredByHeader: false,
 	// !update
