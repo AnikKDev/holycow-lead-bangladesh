@@ -17,7 +17,7 @@ type Props = {}
 
 export default function AboutUsCarousel({}: Props) {
 	return (
-		<div className='w-[40%] rounded-md p-2 shadow-md'>
+		<div className='w-[40%] rounded-md p-2 shadow-md mobile-md:w-full'>
 			<Swiper
 				spaceBetween={30}
 				navigation={true}

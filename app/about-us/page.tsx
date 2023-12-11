@@ -15,7 +15,7 @@ export default function AboutUs({}: Props) {
 				<h1 className='text-5xl font-bold text-primary'>About Us</h1>
 			</header>
 			{/*  */}
-			<div className='container flex items-start justify-between space-x-11 py-8'>
+			<div className='container flex items-start justify-between space-x-11 py-8 mobile-md:flex-wrap mobile-md:space-x-0 mobile-md:space-y-8'>
 				{/* carousel */}
 				<AboutUsCarousel />
 				{/* texts */}
