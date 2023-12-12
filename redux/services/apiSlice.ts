@@ -4,17 +4,29 @@ import { apiUrl } from '@/lib/constatns'
 
 import { RootState } from '../store'
 
+const noNeedTokenEndpoint = [
+	'getFullMenu',
+	'getTakeawayReviews',
+	'getTakeawayInformation',
+	'getRestaurantInformation',
+	'getRestaurantReviews',
+]
+
 export const apiSlice = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: apiUrl,
 		mode: 'cors',
-		prepareHeaders: (headers, { getState }) => {
+		prepareHeaders: (headers, { getState, endpoint }) => {
 			// By default, if we have a token in the store, let's use that for authenticated requests
-			const token = (getState() as RootState).auth.access
-			if (token) {
-				// headers.set('Authorization', `Token ${token}`)
-				headers.set('Authorization', `Bearer ${token}`)
+			console.log({ endpoint })
+			if (!noNeedTokenEndpoint.includes(endpoint)) {
+				const token = (getState() as RootState).auth.access
+				if (token) {
+					// headers.set('Authorization', `Token ${token}`)
+					headers.set('Authorization', `Bearer ${token}`)
+				}
 			}
+
 			return headers
 		},
 	}),

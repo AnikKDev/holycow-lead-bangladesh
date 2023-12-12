@@ -27,7 +27,7 @@ const PromoCodeApply = () => {
 			setOrderState({
 				...orderState,
 				discount: 3,
-				promo_code: data.promo_code,
+				promo_code: data.promo_code.toUpperCase(),
 			})
 		)
 	}

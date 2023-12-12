@@ -68,7 +68,7 @@ const ForgotVerifyPage = ({
 				<div className='flex flex-col gap-2.5'>
 					<h1 className='text-2xl font-bold text-foreground'>Enter Code</h1>
 					<p className='text-sm text-foreground/70'>
-						We’ve sent an SMS with an activation code to your phone +88
+						We’ve sent an SMS with an activation code to your phone +44
 						{phoneNumber}
 					</p>
 				</div>

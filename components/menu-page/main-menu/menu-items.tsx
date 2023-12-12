@@ -21,7 +21,7 @@ const MenuItems = ({
 							id={category.split(' ').join('-')}
 							data-nav-title={category.split(' ').join('-')}
 							data-scrollspy
-							className='flex scroll-mt-28 flex-col justify-center gap-2.5'
+							className='flex scroll-m-32 flex-col justify-center gap-2.5'
 						>
 							<h1 className='text-xl font-medium'>{category}</h1>
 							<div className='grid grid-cols-2 gap-4'>

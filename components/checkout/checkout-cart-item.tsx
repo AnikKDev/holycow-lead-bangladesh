@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import itemImg from '@/public/menu-item.jpg'
 import { useAppDispatch } from '@/redux/hooks'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
@@ -35,7 +36,7 @@ const CheckoutCartItem = ({ item }: { item: MenuItemType }) => {
 		<div className='-ml-2 -mr-2 grid grid-cols-[auto,1fr] items-center gap-4 rounded-md py-3 pl-2 pr-2 transition hover:bg-[#E9E2D2]'>
 			<div>
 				<Image
-					src={`${apiUrl}${item.image}`}
+					src={item?.image ? `${apiUrl}${item.image}` : itemImg}
 					alt='Cart product'
 					className='h-14 w-14 rounded-sm object-cover'
 					height={100}

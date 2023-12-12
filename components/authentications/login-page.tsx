@@ -65,7 +65,7 @@ const LoginPage = ({
 		try {
 			const res = await loginUser({
 				...data,
-				phone_number: `+88${data.phone_number}`,
+				phone_number: `+44${data.phone_number}`,
 				// phone_number: `${data.phone_number}`,
 			}).unwrap()
 			const { access, refresh } = await res

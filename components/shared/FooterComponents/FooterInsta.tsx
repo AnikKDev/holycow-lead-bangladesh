@@ -1,7 +1,4 @@
-import React from 'react'
 import Image from 'next/image'
-import footer_img_1 from '@/assets/footer/footer_img_1.png'
-import footer_img_2 from '@/assets/footer/footer_img_2.png'
 import footer_img_3 from '@/assets/footer/insta_img_1.jpeg'
 import footer_img_4 from '@/assets/footer/insta_img_2.jpeg'
 import { FiInstagram } from 'react-icons/fi'
@@ -25,14 +22,14 @@ export default function FooterInsta({}: Props) {
 				</a>
 			</h5>
 			{/* image will be here */}
-			<div className='flex items-center space-y-2 mobile-sm:flex-wrap mobile-md:flex-wrap mobile-lg:flex-wrap tablet:flex-wrap'>
+			<div className='mt-2 flex flex-wrap items-center gap-2'>
 				<Image
 					// src={footer_img_1}
 					src={footer_img_3}
 					height={178}
 					width={178}
-					alt='instagram follow'
-					className='me-5'
+					alt='instagram follow '
+					className='h-[140px] w-[140px]'
 				/>
 				<Image
 					// src={footer_img_2}
@@ -40,6 +37,7 @@ export default function FooterInsta({}: Props) {
 					height={178}
 					width={178}
 					alt='instagram follow 2'
+					className='h-[140px] w-[140px]'
 				/>
 			</div>
 			<div className='mt-6 flex items-center justify-center'>

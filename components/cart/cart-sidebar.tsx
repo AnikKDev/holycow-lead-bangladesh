@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
+import { selectVisitedLocationSlug } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
 	getCartTotals,
 	selectAllCartItems,
@@ -34,6 +35,7 @@ const CartSidebar = ({
 	const cartItems = useAppSelector(selectAllCartItems)
 	const cartTotals = useAppSelector(getCartTotals)
 	const { auth } = useAuthState()
+	const locationSlug = useAppSelector(selectVisitedLocationSlug)
 
 	return (
 		<>
@@ -51,7 +53,12 @@ const CartSidebar = ({
 									))}
 								</div>
 								<Button
-									onClick={() => setShowCartSidebar(false)}
+									onClick={() => {
+										if (params?.location !== locationSlug) {
+											router.push(`/takeaway-location/${locationSlug}/`)
+										}
+										setShowCartSidebar(false)
+									}}
 									variant='link'
 									className='mt-2 gap-1.5'
 								>
@@ -65,7 +72,12 @@ const CartSidebar = ({
 									No items in the cart
 								</p>
 								<Button
-									onClick={() => setShowCartSidebar(false)}
+									onClick={() => {
+										if (params?.location !== locationSlug) {
+											router.push(`/takeaway-location/${locationSlug}/`)
+										}
+										setShowCartSidebar(false)
+									}}
 									variant='link'
 									className='mt-2 gap-1.5'
 								>
@@ -91,9 +103,7 @@ const CartSidebar = ({
 								onClick={() => {
 									setShowCartSidebar(false)
 									if (auth.access) {
-										router.push(
-											`/takeaway-location/${params.location}/checkout`
-										)
+										router.push(`/takeaway-location/${locationSlug}/checkout`)
 									} else {
 										setShowModal(true)
 									}
