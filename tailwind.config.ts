@@ -16,6 +16,9 @@ module.exports = {
 			'mobile-md': {
 				max: '768px',
 			},
+			md: {
+				min: '768px',
+			},
 
 			'mobile-lg': {
 				max: '924px',

@@ -40,7 +40,7 @@ const MenuAndAllBottomSections = ({
 
 	const targetItemEntry = useIntersectionObserver(targetRef, {
 		threshold: 0,
-		rootMargin: '0px 0px 0px 0px',
+		rootMargin: '-75px 0px 0px 0px',
 	})
 	const informationEntry = useIntersectionObserver(informationRef, {
 		threshold: 0,
@@ -116,14 +116,14 @@ const MenuAndAllBottomSections = ({
 			</div>
 
 			<div
-				className='mx-auto max-w-[1200px] scroll-mt-[100vh]'
+				className='mx-auto max-w-[1200px] scroll-mt-[100vh] mobile-md:max-w-fit'
 				ref={refCallback}
 				id='menu'
 			>
 				{isLoading ? (
-					<div className='flex flex-row'>
-						<Skeleton className='relative z-[unset] -ml-2 mr-4 flex h-[calc(100vh-75px)] min-w-[190px] flex-1 bg-muted/80' />
-						<Skeleton className='flex h-[calc(100vh-75px)] w-full flex-col  justify-center gap-6 bg-muted/80 pt-5 ' />
+					<div className='flex flex-row mobile-md:flex-col'>
+						<Skeleton className='relative z-[unset] -ml-2 mr-4 flex h-[calc(100vh-75px)] min-w-[190px] flex-1 bg-muted/80 mobile-md:h-12 mobile-md:min-w-full' />
+						<Skeleton className='flex h-[calc(100vh-75px)] w-full flex-col justify-center  gap-6 bg-muted/80 pt-5 mobile-md:w-screen ' />
 					</div>
 				) : isError ? (
 					<p className='container'>Error fetching menu</p>

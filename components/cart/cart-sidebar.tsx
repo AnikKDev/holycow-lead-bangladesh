@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useState } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
 import { selectVisitedLocationSlug } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
@@ -31,6 +31,7 @@ const CartSidebar = ({
 }) => {
 	const router = useRouter()
 	const params = useParams()
+	const pathname = usePathname()
 	const [showModal, setShowModal] = useState(false)
 	const cartItems = useAppSelector(selectAllCartItems)
 	const cartTotals = useAppSelector(getCartTotals)
@@ -96,7 +97,9 @@ const CartSidebar = ({
 						</div>
 						<div className='w-full'>
 							<Button
-								disabled={!cartTotals.totalQuantity}
+								disabled={
+									!cartTotals.totalQuantity || pathname.includes('/checkout/')
+								}
 								size='default'
 								type='button'
 								className=' w-full font-medium uppercase'

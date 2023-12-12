@@ -11,7 +11,7 @@ const MenuItems = ({
 }) => {
 	return (
 		<div
-			className='flex flex-col justify-start  gap-6 pt-5'
+			className='flex flex-col justify-start  gap-6 pt-5 mobile-md:container'
 			id='menu-container-1'
 		>
 			{Object.keys(menuItemsByCategory)?.length > 0 ? (
@@ -24,7 +24,7 @@ const MenuItems = ({
 							className='flex scroll-m-32 flex-col justify-center gap-2.5'
 						>
 							<h1 className='text-xl font-medium'>{category}</h1>
-							<div className='grid grid-cols-2 gap-4'>
+							<div className='grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-4'>
 								{menuItemsByCategory[category]?.map((item: MenuItemType) => {
 									return (
 										<MenuItem

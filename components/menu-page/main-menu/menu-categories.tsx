@@ -1,7 +1,7 @@
 'use client'
 
-import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import { useState } from 'react'
+import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 
 import { cn } from '@/lib/utils'
 
@@ -15,8 +15,8 @@ const MenuCategories = ({
 	const [activeCategory, setActiveCategory] = useState(allCategory[0])
 
 	return (
-		<div className='pt-5 w-full'>
-			<ul className='flex flex-col gap-1.5 w-full'>
+		<div className='w-full pt-5 mobile-md:pt-0'>
+			<ul className='flex w-full flex-col gap-1.5 mobile-md:flex-row'>
 				{Object.keys(menuItemsByCategory)?.length > 0
 					? Object.keys(menuItemsByCategory)?.map((category, idx) => (
 							<CategoryItem
@@ -42,7 +42,10 @@ const CategoryItem = ({ idx, category, activeCategory, setActiveCategory }) => {
 		window.location.hash = e.target.hash
 		// Scroll to the section + 1 to account for weird bug.
 		// remove the `+1` and click on Section 2 link to see the bug.
-		const targetSection: any = document.querySelector(`${e.target.hash}`)
+		const targetSection: HTMLElement = document.querySelector(
+			`${e.target.hash}`
+		)
+		// targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
 		window.scrollTo(0, targetSection.offsetTop + 1)
 	}
 	return (
@@ -53,7 +56,7 @@ const CategoryItem = ({ idx, category, activeCategory, setActiveCategory }) => {
 					data-scrollspy-id={category.split(' ').join('-')}
 					onClick={handleClick}
 					className={cn(
-						'block w-full items-center justify-center whitespace-nowrap  rounded-md px-1 py-1.5 pl-2 text-left  text-base text-[#6b6b83] ring-offset-background transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 truncate'
+						'block w-full items-center justify-center truncate  whitespace-nowrap rounded-md px-1 py-1.5 pl-2  text-left text-base text-[#6b6b83] ring-offset-background transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 mobile-md:text-sm mobile-md:font-medium'
 					)}
 				>
 					{category}
