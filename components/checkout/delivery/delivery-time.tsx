@@ -8,7 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { format } from 'date-fns'
 import { GoClock } from 'react-icons/go'
 
-import './checkout.css'
+import '../checkout.css'
 
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import {
