@@ -32,7 +32,7 @@ const initialState: OrderInitialState = {
 	delivery_address: {},
 	delivery_time: ASAP,
 	collection_address: '',
-	collection_time: '',
+	collection_time: ASAP,
 }
 
 const orderSlice = createSlice({
