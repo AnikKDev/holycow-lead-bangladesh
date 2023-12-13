@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { menuItemsArr, menuItemsArrUpdated } from '@/constants/footer.constant'
 
 type Props = {}
@@ -11,7 +12,9 @@ export default function FooterAbout({}: Props) {
 			<ul>
 				{menuItemsArrUpdated.map((location) => (
 					<li className='mb-3' key={location.text}>
-						{location.text}
+						<Link href={location.navigateTo} className='hover:underline'>
+							{location.text}
+						</Link>
 					</li>
 				))}
 			</ul>

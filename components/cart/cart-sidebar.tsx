@@ -40,7 +40,7 @@ const CartSidebar = ({
 	return (
 		<>
 			<Sheet open={showCartSidebar} onOpenChange={setShowCartSidebar}>
-				<SheetContent className='flex h-full w-[420px] flex-col flex-nowrap gap-0 px-0 py-3 mobile-sm:w-full '>
+				<SheetContent className='[80%]full flex h-full w-[420px] flex-col flex-nowrap gap-0 px-0 py-3 '>
 					<SheetHeader className='shrink-0 border-b border-border px-3 pb-4'>
 						<SheetTitle>Cart Items({cartItems?.length})</SheetTitle>
 					</SheetHeader>

@@ -16,7 +16,7 @@ const TopInformationBar = () => {
 	}
 
 	return (
-		<div className='w-full bg-primary py-[6px] text-primary-foreground'>
+		<div className='w-full bg-primary py-[6px] text-primary-foreground tablet:hidden'>
 			<div className='container flex flex-wrap items-center justify-between'>
 				<div className='flex items-center gap-2.5'>
 					{/* <a

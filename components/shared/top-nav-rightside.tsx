@@ -2,6 +2,8 @@
 
 import { Dispatch, SetStateAction, useState } from 'react'
 import Link from 'next/link'
+import { AlignJustify } from 'lucide-react'
+import { CiMenuBurger } from 'react-icons/ci'
 import { FaRegCircleUser } from 'react-icons/fa6'
 import { HiOutlineMenuAlt3 } from 'react-icons/hi'
 
@@ -45,7 +47,7 @@ const TopNavRightSide = ({
 							setShowAccountSidebar(true)
 						}}
 					>
-						<FaRegCircleUser size={40} />
+						<AlignJustify size={40} />
 					</Button>
 
 					<AccountSidebarModal
@@ -81,7 +83,8 @@ const TopNavRightSide = ({
 						onClick={() => setShowNavSheet(true)}
 						className='mx-2 _tablet:hidden _desktop-sm:hidden _desktop-md:hidden'
 					>
-						<HiOutlineMenuAlt3 size={38} />
+						{/* <CiMenuBurger size={38} /> */}
+						<AlignJustify size={38} />
 					</div>
 					<TopNavSheet
 						setShowNavSheet={setShowNavSheet}
