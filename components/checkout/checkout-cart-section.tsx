@@ -13,7 +13,7 @@ const CheckoutCartSection = () => {
 	const params = useParams()
 	const cartItems = useAppSelector(selectAllCartItems)
 	return (
-		<div className='flex flex-col gap-3 pt-6'>
+		<div className='flex flex-col gap-3 pt-6 mobile-md:pt-1'>
 			<h1 className='border-b border-border pb-3 text-lg font-medium'>
 				Your Cart({cartItems.length})
 			</h1>

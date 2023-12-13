@@ -62,7 +62,7 @@ const PromoCodeApply = () => {
 					</div>
 
 					{!orderState.discount ? (
-						<div className='flex w-full items-center '>
+						<div className='flex w-full items-center'>
 							<AutoForm
 								containerClassName='w-full'
 								className='flex w-full items-center gap-2  '

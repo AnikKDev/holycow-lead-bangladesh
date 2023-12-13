@@ -24,7 +24,7 @@ const DeliveryTimeArea = () => {
 	const orderState = useAppSelector(selectOrderState)
 	const dispatch = useAppDispatch()
 	return (
-		<div>
+		<div className=''>
 			<div className='grid grid-cols-[auto,1fr] gap-2.5'>
 				<div>
 					<GoClock size={22} className='text-foreground' />
@@ -92,7 +92,7 @@ const DeliveryTimeArea = () => {
 										</svg>
 									</div>
 
-									<p className='mt-1 text-sm font-medium text-foreground'>
+									<p className='mt-1 whitespace-nowrap text-sm font-medium text-foreground '>
 										As soon as possible
 									</p>
 								</label>
@@ -130,7 +130,7 @@ const DeliveryTimeArea = () => {
 										/>
 									}
 									placeholderText='Choose a time'
-									className='text-sm'
+									className='whitespace-nowrap text-sm'
 								/>
 							</div>
 						</fieldset>
