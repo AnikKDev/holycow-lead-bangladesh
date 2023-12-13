@@ -13,7 +13,7 @@ export default function TopNavSheet({ showNavSheet, setShowNavSheet }: Props) {
 	return (
 		<>
 			<Sheet open={showNavSheet} onOpenChange={setShowNavSheet}>
-				<SheetContent className='flex h-full w-[420px] flex-col flex-nowrap gap-0 px-0 py-3 mobile-sm:w-full '>
+				<SheetContent className='flex h-full w-[420px] flex-col flex-nowrap gap-0 px-0 py-3 mobile-sm:w-[80%] '>
 					<SheetHeader className='shrink-0 border-b border-border px-3 pb-4'>
 						{/* <SheetTitle>Cart Items({cartItems?.length})</SheetTitle> */}
 						Signin or Register
