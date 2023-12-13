@@ -1,8 +1,5 @@
 import { useEffect } from 'react'
-import {
-	useResetForgotPasswordMutation,
-	useSendPhoneForgotPasswordOtpMutation,
-} from '@/redux/slices/authSlice/authApiSlice'
+import { useResetForgotPasswordMutation } from '@/redux/slices/authSlice/authApiSlice'
 import toast from 'react-hot-toast'
 import { z } from 'zod'
 
@@ -85,6 +82,7 @@ const RegisterPasswordPage = ({
 							new_password: {
 								inputProps: {
 									type: 'password',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 						}}

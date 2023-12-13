@@ -109,11 +109,13 @@ const LoginPage = ({
 								inputProps: {
 									// todo: regex for email or phone check
 									type: 'number',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 							password: {
 								inputProps: {
 									type: 'password',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 						}}

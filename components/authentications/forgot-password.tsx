@@ -4,7 +4,6 @@ import toast from 'react-hot-toast'
 import { z } from 'zod'
 
 import { ReduxErrorType } from '@/types/auth/auth.types'
-import { capitalizeFirstLetter } from '@/lib/utils'
 import { LoginPageStep } from '@/app/(auth)/login/page'
 
 import AutoForm from '../ui/auto-form'
@@ -82,6 +81,7 @@ const ForgotPasswordPage = ({
 							email_or_phone: {
 								inputProps: {
 									type: 'text',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 						}}

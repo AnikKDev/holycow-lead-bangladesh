@@ -100,21 +100,26 @@ const RegisterPage = ({
 						// className='space-y-0 gap-x-4 gap-y-3'
 						fieldConfig={{
 							full_name: {
-								inputProps: {},
+								inputProps: {
+									className: 'mobile-sm:bg-white',
+								},
 							},
 							phone_number: {
 								inputProps: {
 									type: 'number',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 							email: {
 								inputProps: {
 									type: 'email',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 							password: {
 								inputProps: {
 									type: 'password',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 						}}
