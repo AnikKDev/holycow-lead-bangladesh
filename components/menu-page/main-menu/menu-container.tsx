@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import MenuCategories from './menu-categories'
 import MenuItems from './menu-items'
@@ -16,7 +16,7 @@ import {
 import { ScrollSpy } from './scrollspy/ScrollSpy'
 
 // Abstracted from ScrollSpy to allow for easier customizations
-const onScrollUpdate = (entry, isInVewPort) => {
+const onScrollUpdate = (entry, isInVewPort, hasTopMenuClicked, callback) => {
 	const { target, boundingClientRect } = entry
 	const menuItem: HTMLElement = document.querySelector(
 		`[data-scrollspy-id="${target.id}"]`
@@ -24,7 +24,7 @@ const onScrollUpdate = (entry, isInVewPort) => {
 	const categoryContainer = document.getElementById('category-container')
 	if (boundingClientRect.y <= 0 && isInVewPort) {
 		menuItem?.classList?.add('active-scrollspy')
-		if (categoryContainer) {
+		if (categoryContainer && hasTopMenuClicked) {
 			const containerLeft = categoryContainer.scrollLeft
 			const containerWidth = categoryContainer.clientWidth
 			const itemOffsetLeft = menuItem.offsetLeft
@@ -48,6 +48,7 @@ const MenuContainer = ({
 	isTargetItemVisible: boolean
 	isInformationVisible: boolean
 }) => {
+	const [hasTopMenuClicked, setHasTopMenuClicked] = useState(false)
 	const sidebarRef = useRef<HTMLDivElement>(null)
 	const allMenuByCategory: { [key: string]: MenuItemType } = useAppSelector(
 		selectMenuItemsByCategory
@@ -92,7 +93,11 @@ const MenuContainer = ({
 	return (
 		<div className='md:container'>
 			<div className='flex flex-row mobile-md:flex-col'>
-				<ScrollSpy handleScroll={onScrollUpdate} />
+				<ScrollSpy
+					hasTopMenuClicked={hasTopMenuClicked}
+					setHasTopMenuClicked={setHasTopMenuClicked}
+					handleScroll={onScrollUpdate}
+				/>
 				{/* menu categories */}
 				<div
 					ref={sidebarRef}
@@ -102,7 +107,10 @@ const MenuContainer = ({
 						id='category-container'
 						className='sticky__sidebar custom-scrollbar flex h-[calc(100vh-65px)] flex-1 items-start overflow-y-auto overflow-x-hidden bg-transparent p-0 shadow-none  mobile-md:container mobile-md:h-12 mobile-md:items-center mobile-md:overflow-x-auto mobile-md:overflow-y-hidden'
 					>
-						<MenuCategories menuItemsByCategory={menuItemsByCategory} />
+						<MenuCategories
+							menuItemsByCategory={menuItemsByCategory}
+							setHasTopMenuClicked={setHasTopMenuClicked}
+						/>
 					</div>
 				</div>
 				{/* menu items */}

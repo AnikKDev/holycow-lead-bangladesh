@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 
 import { cn } from '@/lib/utils'
@@ -9,8 +9,10 @@ import { allCategory } from './data'
 
 const MenuCategories = ({
 	menuItemsByCategory,
+	setHasTopMenuClicked,
 }: {
 	menuItemsByCategory: { [key: string]: MenuItemType }
+	setHasTopMenuClicked?: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
 	const [activeCategory, setActiveCategory] = useState(allCategory[0])
 
@@ -25,6 +27,7 @@ const MenuCategories = ({
 								category={category}
 								activeCategory={activeCategory}
 								setActiveCategory={setActiveCategory}
+								setHasTopMenuClicked={setHasTopMenuClicked}
 							/>
 					  ))
 					: null}
@@ -33,7 +36,13 @@ const MenuCategories = ({
 	)
 }
 
-const CategoryItem = ({ idx, category, activeCategory, setActiveCategory }) => {
+const CategoryItem = ({
+	idx,
+	category,
+	activeCategory,
+	setActiveCategory,
+	setHasTopMenuClicked,
+}) => {
 	const handleClick = (e) => {
 		e.preventDefault()
 		// setActiveCategory(category)
@@ -46,6 +55,7 @@ const CategoryItem = ({ idx, category, activeCategory, setActiveCategory }) => {
 			`${e.target.hash}`
 		)
 		// targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+		setHasTopMenuClicked(true)
 		window.scrollTo(0, targetSection.offsetTop + 1)
 	}
 	return (
