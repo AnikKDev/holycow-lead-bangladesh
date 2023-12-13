@@ -69,7 +69,7 @@ export function MenuItemModal({
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
-				<DialogContent className='sm:max-w-[425px] max-w-[500px] overflow-hidden p-0'>
+				<DialogContent className='min-w-0  max-w-[500px] p-0 mobile-sm:w-full'>
 					<DialogHeader className='text-left'>
 						<div>
 							<Image
