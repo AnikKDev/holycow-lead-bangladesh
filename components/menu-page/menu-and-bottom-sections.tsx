@@ -12,10 +12,8 @@ import './main-menu/menu.css'
 import { useParams } from 'next/navigation'
 import { useAppDispatch } from '@/redux/hooks'
 import { useGetFullMenuQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
-import {
-	LocationInfoType,
-	setVisitedLocationSlug,
-} from '@/redux/slices/menuPageSlice/menuPageSlice'
+import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
+import { setVisitedLocationSlug } from '@/redux/slices/orderSlice/orderSlice'
 
 import { cn } from '@/lib/utils'
 
@@ -99,7 +97,7 @@ const MenuAndAllBottomSections = ({
 			<div
 				ref={menuRef}
 				className={cn(
-					'translateZ-class  sticky top-[75px] z-[1035]  w-full bg-background transition'
+					'translateZ-class  sticky top-[75px] z-[1035] w-full  bg-background transition mobile-md:top-16'
 				)}
 			>
 				<div>

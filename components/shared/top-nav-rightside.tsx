@@ -3,9 +3,7 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 import Link from 'next/link'
 import { AlignJustify } from 'lucide-react'
-import { CiMenuBurger } from 'react-icons/ci'
 import { FaRegCircleUser } from 'react-icons/fa6'
-import { HiOutlineMenuAlt3 } from 'react-icons/hi'
 
 import { useAuthState } from '@/hooks/useAuthState'
 
@@ -41,13 +39,13 @@ const TopNavRightSide = ({
 					{/* for smaller screen */}
 					<Button
 						size='sm'
-						className='flex items-center gap-1.5 rounded-3xl bg-transparent px-4 _tablet:hidden _desktop-sm:hidden _desktop-md:hidden'
+						className='flex items-center rounded-3xl bg-transparent p-0 hover:bg-transparent _tablet:hidden _desktop-sm:hidden _desktop-md:hidden'
 						variant='secondary'
 						onClick={() => {
 							setShowAccountSidebar(true)
 						}}
 					>
-						<AlignJustify size={40} />
+						<AlignJustify size={24} />
 					</Button>
 
 					<AccountSidebarModal
@@ -59,22 +57,22 @@ const TopNavRightSide = ({
 				<>
 					{/* smaller screen */}
 					<div className='mobile-md:hidden'>
-						<Link href={'/login'}>
+						<Link href={'/register'}>
 							<Button
 								size='sm'
 								className='rounded-3xl bg-transparent px-4'
 								variant='secondary'
 							>
-								Sign In
+								Sign Up
 							</Button>
 						</Link>
-						<Link href={'/register'}>
+						<Link href={'/login'}>
 							<Button
 								size='sm'
 								className='rounded-3xl px-4'
 								variant='secondary'
 							>
-								Sign Up
+								Log In
 							</Button>
 						</Link>
 					</div>

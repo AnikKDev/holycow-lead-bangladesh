@@ -20,6 +20,7 @@ type OrderInitialState = Extend<
 		delivery_time: string
 		collection_address: string
 		collection_time: string
+		visited_location_slug: string
 	}>
 >
 
@@ -33,6 +34,7 @@ const initialState: OrderInitialState = {
 	delivery_time: ASAP,
 	collection_address: '',
 	collection_time: ASAP,
+	visited_location_slug: '',
 }
 
 const orderSlice = createSlice({
@@ -43,6 +45,9 @@ const orderSlice = createSlice({
 			action.payload,
 		setOrderDiscount: (state, action: PayloadAction<number>) => {
 			state.discount = action.payload
+		},
+		setVisitedLocationSlug: (state, action: PayloadAction<string>) => {
+			state.visited_location_slug = action.payload
 		},
 		changeCartItemQuantityByInput: (
 			state,
@@ -114,6 +119,7 @@ const orderSlice = createSlice({
 export const {
 	setOrderState,
 	setOrderDiscount,
+	setVisitedLocationSlug,
 	addItemToCart,
 	increaseItemQuantity,
 	decreaseItemQuantity,
@@ -126,7 +132,8 @@ export const selectAllCartItems = (state: RootState) => state.order.cartItems
 export const selectOrderState = (state: RootState) => state.order
 export const selectTotalCartItems = (state: RootState) =>
 	state.order.cartItems.length
-
+export const selectVisitedLocationSlug = (state: RootState) =>
+	state.order.visited_location_slug
 export const getCartTotals = createSelector(
 	selectAllCartItems,
 	selectOrderState,

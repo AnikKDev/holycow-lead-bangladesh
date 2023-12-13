@@ -13,7 +13,7 @@ const AppTopBar = () => {
 	return (
 		<>
 			<TopInformationBar />
-			<div className='sticky top-0 z-[1038] flex h-[75px] items-center justify-center border-b border-border bg-white'>
+			<div className='sticky top-0 z-[1038] flex h-[75px] items-center justify-center border-b border-border bg-white mobile-md:h-16'>
 				<TopNav />
 			</div>
 		</>

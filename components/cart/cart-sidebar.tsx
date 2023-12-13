@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useParams, usePathname, useRouter } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
-import { selectVisitedLocationSlug } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
 	getCartTotals,
 	selectAllCartItems,
+	selectVisitedLocationSlug,
 } from '@/redux/slices/orderSlice/orderSlice'
 import { FiPlusCircle } from 'react-icons/fi'
 
@@ -41,7 +41,7 @@ const CartSidebar = ({
 	return (
 		<>
 			<Sheet open={showCartSidebar} onOpenChange={setShowCartSidebar}>
-				<SheetContent className='[80%]full flex h-full w-[420px] flex-col flex-nowrap gap-0 px-0 py-3 '>
+				<SheetContent className=' flex h-full w-[420px] flex-col flex-nowrap gap-0 px-0 py-3 mobile-sm:w-full '>
 					<SheetHeader className='shrink-0 border-b border-border px-3 pb-4'>
 						<SheetTitle>Cart Items({cartItems?.length})</SheetTitle>
 					</SheetHeader>

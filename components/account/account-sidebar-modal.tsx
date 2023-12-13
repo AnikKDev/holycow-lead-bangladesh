@@ -42,7 +42,7 @@ const AccountSidebarModal = ({
 	return (
 		<>
 			<Sheet open={showAccountSidebar} onOpenChange={setShowAccountSidebar}>
-				<SheetContent className='flex h-full w-[384px] max-w-sm flex-col flex-nowrap gap-0 px-0 py-0  mobile-sm:w-screen'>
+				<SheetContent className='flex h-full w-[300px] max-w-sm flex-col flex-nowrap gap-0 px-0 py-0'>
 					<SheetHeader className='shrink-0 border-b border-border px-5 pb-3 pt-5'>
 						<SheetTitle>John Doe</SheetTitle>
 					</SheetHeader>

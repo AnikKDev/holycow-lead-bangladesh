@@ -101,7 +101,7 @@ const MenuContainer = ({
 				{/* menu categories */}
 				<div
 					ref={sidebarRef}
-					className='relative z-[unset] -ml-2 mr-4 flex min-w-[190px] flex-1 mobile-md:sticky mobile-md:top-[calc(75px+48px)] mobile-md:z-[99] mobile-md:-ml-0 mobile-md:mr-0  mobile-md:min-w-full mobile-md:border-b mobile-md:border-border mobile-md:bg-background md:!bg-transparent'
+					className='relative z-[unset] -ml-2 mr-4 flex min-w-[190px] flex-1 mobile-md:sticky mobile-md:top-[calc(64px+48px)] mobile-md:z-[99] mobile-md:-ml-0 mobile-md:mr-0  mobile-md:min-w-full mobile-md:border-b mobile-md:border-border mobile-md:bg-background md:!bg-transparent'
 				>
 					<div
 						id='category-container'

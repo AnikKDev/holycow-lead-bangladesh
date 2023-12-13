@@ -55,13 +55,11 @@ export type LocationReviewItemType = Extend<
 type InitialStateType = {
 	allMenuItems: AllMenuType[]
 	menuSearchTerm: string
-	visited_location_slug: string
 }
 
 const initialState: InitialStateType = {
 	allMenuItems: [],
 	menuSearchTerm: '',
-	visited_location_slug: '',
 }
 
 const menuPageSlice = createSlice({
@@ -70,9 +68,6 @@ const menuPageSlice = createSlice({
 	reducers: {
 		setSearchTerm: (state, action: PayloadAction<string>) => {
 			state.menuSearchTerm = action.payload
-		},
-		setVisitedLocationSlug: (state, action: PayloadAction<string>) => {
-			state.visited_location_slug = action.payload
 		},
 	},
 	extraReducers: (builder) => {
@@ -84,14 +79,12 @@ const menuPageSlice = createSlice({
 		)
 	},
 })
-export const { setSearchTerm, setVisitedLocationSlug } = menuPageSlice.actions
+export const { setSearchTerm } = menuPageSlice.actions
 export default menuPageSlice.reducer
 export const selectMenuSearchTerm = (state: RootState) =>
 	state.menuPage.menuSearchTerm
 export const selectAllMenuitems = (state: RootState) =>
 	state.menuPage.allMenuItems
-export const selectVisitedLocationSlug = (state: RootState) =>
-	state.menuPage.visited_location_slug
 export const selectMenuItemsByCategory = createSelector(
 	selectAllMenuitems,
 	(allMenu) => {
