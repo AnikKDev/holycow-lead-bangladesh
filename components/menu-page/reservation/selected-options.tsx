@@ -4,7 +4,7 @@ import { Calendar, Clock3, MapPin, User } from 'lucide-react'
 const TableSelectedOptions = () => {
 	return (
 		<div className='flex flex-col gap-2.5'>
-			<div className='flex items-center gap-5'>
+			<div className='flex items-center gap-5 mobile-sm:flex-wrap mobile-sm:gap-2.5'>
 				<div className='flex items-center gap-1.5'>
 					<Calendar className='h-5 w-5 text-foreground' />
 					<span className='text-base text-foreground'>
