@@ -79,7 +79,7 @@ const BookingContactForm = ({
 			<AutoForm
 				onSubmit={handleFormSubmit}
 				formSchema={formSchema}
-				containerClassName='grid grid-cols-2 items-baseline space-y-0 gap-x-4 gap-y-3'
+				containerClassName='grid grid-cols-2 mobile-sm:grid-cols-1 items-baseline space-y-0 gap-x-4 gap-y-3'
 				className='gap-x-4 gap-y-3'
 				fieldConfig={{
 					occasion: {

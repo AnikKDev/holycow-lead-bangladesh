@@ -82,6 +82,7 @@ const ForgotVerifyPage = ({
 							otp: {
 								inputProps: {
 									type: 'number',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 						}}

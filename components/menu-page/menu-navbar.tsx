@@ -152,7 +152,7 @@ const MenuNavbar = ({
 								)
 							})}
 						</nav>
-						<div className='basis-1/5'>
+						<div className='basis-auto mobile-sm:hidden'>
 							<SearchBar />
 						</div>
 					</div>
