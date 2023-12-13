@@ -40,7 +40,7 @@ export default function FooterInsta({}: Props) {
 					className='h-[140px] w-[140px]'
 				/>
 			</div>
-			<div className='mt-6 flex items-center justify-center'>
+			<div className='mt-6 flex items-center justify-start'>
 				<Button className='bg-[#333333] hover:bg-[#464646]'>
 					Load More...
 				</Button>

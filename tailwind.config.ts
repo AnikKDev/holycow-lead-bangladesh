@@ -73,6 +73,7 @@ module.exports = {
 			gridTemplateColumns: {
 				// Simple 16 column grid
 				16: 'repeat(16, minmax(0, 1fr))',
+				'auto-fit-minmax': 'repeat(auto-fit, minmax(400px, 1fr))',
 			},
 			colors: {
 				border: 'hsl(var(--border))',
