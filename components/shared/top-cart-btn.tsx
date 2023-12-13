@@ -36,11 +36,11 @@ const TopCartBtn = () => {
 				onClick={() => {
 					setShowCartSidebar(true)
 				}}
-				className='flex h-11 items-center space-x-1.5 rounded-full px-4 text-primary-foreground _tablet:hidden _desktop-sm:hidden _desktop-md:hidden'
-				variant='default'
+				className='flex h-11 items-center space-x-1.5 rounded-full text-primary-foreground _tablet:hidden _desktop-sm:hidden _desktop-md:hidden'
+				// variant='default'
 				size='sm'
 			>
-				<FaShoppingCart className='text-sm' />
+				<FaShoppingCart size={21} />
 			</Button>
 
 			<CartSidebar

@@ -19,17 +19,21 @@ export default function TopNavSheet({ showNavSheet, setShowNavSheet }: Props) {
 						Signin or Register
 					</SheetHeader>
 					<div className=' flex min-h-fit grow-[1] flex-col items-start space-y-2 overflow-y-auto px-3 py-4'>
-						<Link href={'/login'} className='w-full bg-primary/50'>
+						<Link href={'/login'} className='w-full rounded-full bg-primary/50'>
 							<Button
 								size='lg'
-								className='w-full bg-transparent px-4'
+								className='w-full rounded-full bg-transparent px-4'
 								variant='secondary'
 							>
 								Sign In
 							</Button>
 						</Link>
-						<Link href={'/register'} className='w-full'>
-							<Button size='lg' className='w-full px-4' variant='secondary'>
+						<Link href={'/register'} className='w-full rounded-full'>
+							<Button
+								size='lg'
+								className='w-full rounded-full px-4'
+								variant='secondary'
+							>
 								Register
 							</Button>
 						</Link>
