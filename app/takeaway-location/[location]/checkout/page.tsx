@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import CheckoutButton from '@/components/checkout/checkout-button'
@@ -8,6 +9,13 @@ import CheckoutRightSide from '@/components/checkout/checkout-right-side'
 
 const CheckoutPage = () => {
 	const isMobileMd = useMediaQuery({ maxWidth: 768 })
+	const footerElm = document.getElementById('footer-container')
+
+	useEffect(() => {
+		if (footerElm) {
+			footerElm.style.display = 'none'
+		}
+	}, [])
 
 	return (
 		<div className='md:container'>
