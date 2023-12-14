@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import itemImg from '@/public/menu-item.jpg'
-import { useAppDispatch } from '@/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
 	changeCartItemQuantityByInput,
 	decreaseItemQuantity,
 	increaseItemQuantity,
 	removeCartItem,
+	selectOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
 import { FiMinus, FiPlus } from 'react-icons/fi'
 import { GoTrash } from 'react-icons/go'
@@ -14,22 +15,27 @@ import { GoTrash } from 'react-icons/go'
 import { apiUrl } from '@/lib/constatns'
 import { formatPrice } from '@/lib/utils'
 
+import { resetOrderDiscount } from '../checkout/checkout-cart-item'
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 
 const CartItem = ({ item }: { item: MenuItemType }) => {
 	const dispatch = useAppDispatch()
+	const orderState = useAppSelector(selectOrderState)
 
 	const handleIncreaseQuantity = () => {
 		dispatch(increaseItemQuantity(item))
+		resetOrderDiscount(orderState)
 	}
 
 	const handleDecreaseQuantity = () => {
 		dispatch(decreaseItemQuantity(item))
+		resetOrderDiscount(orderState)
 	}
 
 	const handleDeleteCartItem = () => {
 		dispatch(removeCartItem(item))
+		resetOrderDiscount(orderState)
 	}
 	return (
 		<div className='grid grid-cols-[auto,1fr] items-start gap-4'>
@@ -87,6 +93,7 @@ const CartItem = ({ item }: { item: MenuItemType }) => {
 												quantity: 1,
 											})
 										)
+										resetOrderDiscount(orderState)
 									} else {
 										dispatch(
 											changeCartItemQuantityByInput({
@@ -94,6 +101,7 @@ const CartItem = ({ item }: { item: MenuItemType }) => {
 												quantity: Number(e.target.valueAsNumber),
 											})
 										)
+										resetOrderDiscount(orderState)
 									}
 								}}
 							/>

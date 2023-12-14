@@ -1,13 +1,17 @@
 import Image from 'next/image'
 import itemImg from '@/public/menu-item.jpg'
-import { useAppDispatch } from '@/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
 	changeCartItemQuantityByInput,
 	decreaseItemQuantity,
 	increaseItemQuantity,
+	OrderInitialState,
 	removeCartItem,
+	selectOrderState,
+	setOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
+import { store } from '@/redux/store'
 import { FiMinus, FiPlus } from 'react-icons/fi'
 import { GoTrash } from 'react-icons/go'
 
@@ -17,23 +21,39 @@ import { formatPrice } from '@/lib/utils'
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 
+export const resetOrderDiscount = (orderState: OrderInitialState) => {
+	if (orderState.discount) {
+		store.dispatch(
+			setOrderState({
+				...orderState,
+				discount: null,
+				promo_code: '',
+			})
+		)
+	}
+}
+
 const CheckoutCartItem = ({ item }: { item: MenuItemType }) => {
 	const dispatch = useAppDispatch()
+	const orderState = useAppSelector(selectOrderState)
 
 	const handleIncreaseQuantity = () => {
 		dispatch(increaseItemQuantity(item))
+		resetOrderDiscount(orderState)
 	}
 
 	const handleDecreaseQuantity = () => {
 		dispatch(decreaseItemQuantity(item))
+		resetOrderDiscount(orderState)
 	}
 
 	const handleDeleteCartItem = () => {
 		dispatch(removeCartItem(item))
+		resetOrderDiscount(orderState)
 	}
 
 	return (
-		<div className='-ml-2 -mr-2 grid grid-cols-[auto,1fr] items-center gap-4 rounded-md py-3 pl-2 pr-2 transition hover:bg-[#E9E2D2]'>
+		<div className='-ml-2 -mr-2 grid grid-cols-[auto,1fr] items-center gap-4 rounded-md py-3 pl-2 pr-2 transition hover:bg-[#E9E2D2] mobile-md:py-1 mobile-md:hover:bg-transparent'>
 			<div>
 				<Image
 					src={item?.image ? `${apiUrl}${item.image}` : itemImg}
@@ -44,9 +64,14 @@ const CheckoutCartItem = ({ item }: { item: MenuItemType }) => {
 				/>
 			</div>
 			<div className='flex flex-row justify-between'>
-				<h1 className='text-base font-medium'>{item.item_name}</h1>
+				<h1 className='text-base font-medium'>
+					<span className='hidden mobile-md:mr-1 mobile-md:flex'>
+						{item.quantity}x
+					</span>
+					{item.item_name}
+				</h1>
 				<div className='flex items-center gap-16'>
-					<div className='flex items-center gap-5'>
+					<div className='flex items-center gap-5 mobile-md:hidden'>
 						<Button
 							onClick={handleDeleteCartItem}
 							variant='outline'
@@ -78,6 +103,7 @@ const CheckoutCartItem = ({ item }: { item: MenuItemType }) => {
 												quantity: 1,
 											})
 										)
+										resetOrderDiscount(orderState)
 									} else {
 										dispatch(
 											changeCartItemQuantityByInput({
@@ -85,6 +111,7 @@ const CheckoutCartItem = ({ item }: { item: MenuItemType }) => {
 												quantity: Number(e.target.valueAsNumber),
 											})
 										)
+										resetOrderDiscount(orderState)
 									}
 								}}
 							/>
@@ -98,7 +125,7 @@ const CheckoutCartItem = ({ item }: { item: MenuItemType }) => {
 						</div>
 					</div>
 					<span className='text-base font-medium'>
-						{formatPrice(item.price)}
+						{formatPrice(Number(item.price) * item.quantity)}
 					</span>
 				</div>
 			</div>

@@ -1,8 +1,13 @@
+'use client'
+
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { useApplyPromoCodeMutation } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
 import {
+	getCartTotals,
 	selectOrderState,
 	setOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
+import toast from 'react-hot-toast'
 import { IoPricetagOutline } from 'react-icons/io5'
 import { z } from 'zod'
 
@@ -21,15 +26,29 @@ const formSchema = z.object({
 
 const PromoCodeApply = () => {
 	const orderState = useAppSelector(selectOrderState)
+	const cartTotals = useAppSelector(getCartTotals)
 	const dispatch = useAppDispatch()
+	const [applyPromoCode, { isLoading, isError }] = useApplyPromoCodeMutation()
 	const handleSubmit = async (data: Partial<z.infer<typeof formSchema>>) => {
-		dispatch(
-			setOrderState({
-				...orderState,
-				discount: 3,
-				promo_code: data.promo_code.toUpperCase(),
-			})
-		)
+		try {
+			const res = await applyPromoCode({
+				coupon_code: data.promo_code.toUpperCase(),
+				subtotal: cartTotals.subtotal,
+			}).unwrap()
+			console.log(res)
+			const { discounted_amount } = res
+			dispatch(
+				setOrderState({
+					...orderState,
+					discount: discounted_amount,
+					promo_code: data.promo_code.toUpperCase(),
+				})
+			)
+			toast.success('Promo code applied successfully!')
+		} catch (e) {
+			console.log(e)
+			toast.error(e?.data?.message || 'Invalid promo code')
+		}
 	}
 	return (
 		<>
@@ -62,7 +81,7 @@ const PromoCodeApply = () => {
 					</div>
 
 					{!orderState.discount ? (
-						<div className='flex w-full items-center '>
+						<div className='flex w-full items-center'>
 							<AutoForm
 								containerClassName='w-full'
 								className='flex w-full items-center gap-2  '
@@ -82,7 +101,7 @@ const PromoCodeApply = () => {
 									},
 								}}
 							>
-								<Button type='submit' className='!m-0'>
+								<Button type='submit' className='!m-0' disabled={isLoading}>
 									Apply
 								</Button>
 							</AutoForm>

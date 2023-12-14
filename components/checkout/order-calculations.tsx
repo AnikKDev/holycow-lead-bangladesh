@@ -1,3 +1,5 @@
+'use client'
+
 import { useAppSelector } from '@/redux/hooks'
 import {
 	getCartTotals,
@@ -18,7 +20,9 @@ const OrderCalculations = () => {
 			<div className='flex items-center justify-between'>
 				<h3 className='text-base font-medium'>Delivery Fee</h3>
 				<span className='text-base font-medium'>
-					{formatPrice(orderState.delivery_charge)}
+					{orderState.delivery_charge > 0
+						? formatPrice(orderState.delivery_charge)
+						: 'Free'}
 				</span>
 			</div>
 			{orderState.discount && (
