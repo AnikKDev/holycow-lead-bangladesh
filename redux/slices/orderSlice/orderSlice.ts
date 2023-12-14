@@ -147,6 +147,7 @@ export const getCartTotals = createSelector(
 		let totalQuantity: number = 0
 		let subtotal: number = 0
 		let totalPrice: number = 0
+		let delivery_charge: number = 0
 
 		if (cartItems.length) {
 			totalQuantity = cartItems.reduce(
@@ -164,13 +165,14 @@ export const getCartTotals = createSelector(
 
 			const discount = Number(orderState?.discount) || 0
 
-			const delivery_charge =
+			delivery_charge =
 				orderState.fulfillment_type === 'Delivery'
 					? subtotal >= 15
 						? 0
-						: Number(orderState.delivery_charge)
+						: DELIVERY_CHARGE
 					: 0
 
+			console.log({ subtotal, delivery_charge })
 			totalPrice = subtotal + delivery_charge - discount
 
 			totalPrice = decimalFormatter(totalPrice)
@@ -179,12 +181,14 @@ export const getCartTotals = createSelector(
 				totalQuantity,
 				subtotal,
 				totalPrice,
+				delivery_charge,
 			}
 		} else {
 			return {
 				totalQuantity,
 				subtotal,
 				totalPrice,
+				delivery_charge,
 			}
 		}
 	}

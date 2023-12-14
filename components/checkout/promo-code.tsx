@@ -7,6 +7,7 @@ import {
 	selectOrderState,
 	setOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
+import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { IoPricetagOutline } from 'react-icons/io5'
 import { z } from 'zod'
@@ -102,6 +103,9 @@ const PromoCodeApply = () => {
 								}}
 							>
 								<Button type='submit' className='!m-0' disabled={isLoading}>
+									{isLoading && (
+										<Loader2 className='mr-1.5 h-4 w-4 animate-spin' />
+									)}
 									Apply
 								</Button>
 							</AutoForm>

@@ -2,7 +2,11 @@
 
 import { useRouter } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
-import { getCartTotals } from '@/redux/slices/orderSlice/orderSlice'
+import {
+	getCartTotals,
+	selectOrderState,
+} from '@/redux/slices/orderSlice/orderSlice'
+import toast from 'react-hot-toast'
 
 import { formatPrice } from '@/lib/utils'
 
@@ -10,7 +14,21 @@ import { Button } from '../ui/button'
 
 const CheckoutButton = () => {
 	const cartTotals = useAppSelector(getCartTotals)
+	const orderState = useAppSelector(selectOrderState)
 	const router = useRouter()
+	const canPlaceOrder = () => {
+		if (!orderState.cartItems.length) {
+			toast.error('Please add item to your cart')
+			return
+		}
+		return true
+	}
+
+	const handlePlaceOrder = () => {
+		if (!canPlaceOrder()) {
+			return
+		}
+	}
 	return (
 		<div className='flex shrink-0 flex-col gap-2.5 border-t border-border pt-3 mobile-md:container mobile-md:pb-2.5'>
 			<div className='flex items-center justify-between '>
@@ -27,7 +45,8 @@ const CheckoutButton = () => {
 					type='button'
 					className=' w-full font-semibold uppercase'
 					onClick={() => {
-						router.push('/account/your-profile')
+						handlePlaceOrder()
+						// router.push('/account/your-profile')
 					}}
 				>
 					Place Order

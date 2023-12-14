@@ -21,7 +21,20 @@ const CheckoutCartSection = () => {
 				Your Cart({cartItems.length})
 			</h1>
 
-			{isMobileMd && <h3 className='text-base font-medium'>Order summary</h3>}
+			{isMobileMd && (
+				<h3 className='flex items-center justify-between text-base font-medium'>
+					<span className='text-xl font-medium'>Items</span>
+					<Button
+						variant='link'
+						className='m-0 h-auto  p-0'
+						onClick={() => {
+							router.push(`/takeaway-location/${params.location}/`)
+						}}
+					>
+						Edit order
+					</Button>
+				</h3>
+			)}
 
 			<div className='flex flex-col gap-1'>
 				{cartItems.length > 0 ? (
@@ -32,7 +45,7 @@ const CheckoutCartSection = () => {
 					<p>No items in the cart</p>
 				)}
 			</div>
-			<div>
+			<div className='mobile-md:hidden'>
 				<Button
 					onClick={() => {
 						router.push(`/takeaway-location/${params.location}/`)

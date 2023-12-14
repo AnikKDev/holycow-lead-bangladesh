@@ -55,7 +55,10 @@ const CartSidebar = ({
 								</div>
 								<Button
 									onClick={() => {
-										if (params?.location !== locationSlug) {
+										if (
+											params?.location !== locationSlug ||
+											pathname.includes('checkout')
+										) {
 											router.push(`/takeaway-location/${locationSlug}/`)
 										}
 										setShowCartSidebar(false)
@@ -74,7 +77,11 @@ const CartSidebar = ({
 								</p>
 								<Button
 									onClick={() => {
-										if (params?.location !== locationSlug) {
+										console.log(pathname.includes('checkout'))
+										if (
+											params?.location !== locationSlug ||
+											pathname.includes('checkout')
+										) {
 											router.push(`/takeaway-location/${locationSlug}/`)
 										}
 										setShowCartSidebar(false)
