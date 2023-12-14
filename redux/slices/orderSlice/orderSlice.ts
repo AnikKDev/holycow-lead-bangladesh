@@ -9,7 +9,7 @@ import { Extend } from '@/lib/utils'
 import { MenuItemType } from '../menuPageSlice/menuPageSlice'
 
 export type FulfillmentType = 'Delivery' | 'Collection'
-type OrderInitialState = Extend<
+export type OrderInitialState = Extend<
 	Partial<{
 		cartItems: MenuItemType[]
 		discount: number
@@ -114,6 +114,12 @@ const orderSlice = createSlice({
 			)
 		},
 	},
+	extraReducers: (builder) => {
+		builder.addCase(
+			'orderSlice/changeCartItemQuantityByInput',
+			(state, action) => {}
+		)
+	},
 })
 
 export const {
@@ -160,12 +166,14 @@ export const getCartTotals = createSelector(
 
 			const delivery_charge =
 				orderState.fulfillment_type === 'Delivery'
-					? Number(orderState.delivery_charge)
+					? subtotal >= 15
+						? 0
+						: Number(orderState.delivery_charge)
 					: 0
 
 			totalPrice = subtotal + delivery_charge - discount
 
-			totalPrice = decimalFormatter(Math.round(totalPrice))
+			totalPrice = decimalFormatter(totalPrice)
 
 			return {
 				totalQuantity,

@@ -4,6 +4,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
 import { selectAllCartItems } from '@/redux/slices/orderSlice/orderSlice'
 import { IoMdArrowBack } from 'react-icons/io'
+import { useMediaQuery } from 'react-responsive'
 
 import { Button } from '../ui/button'
 import CheckoutCartItem from './checkout-cart-item'
@@ -12,11 +13,15 @@ const CheckoutCartSection = () => {
 	const router = useRouter()
 	const params = useParams()
 	const cartItems = useAppSelector(selectAllCartItems)
+	const isMobileMd = useMediaQuery({ maxWidth: 768 })
+
 	return (
-		<div className='flex flex-col gap-3 pt-6 mobile-md:pt-1'>
-			<h1 className='border-b border-border pb-3 text-lg font-medium'>
+		<div className='flex flex-col gap-3 pt-6 mobile-md:gap-2 mobile-md:pt-1'>
+			<h1 className='border-b border-border pb-3 text-lg font-medium mobile-md:hidden'>
 				Your Cart({cartItems.length})
 			</h1>
+
+			{isMobileMd && <h3 className='text-base font-medium'>Order summary</h3>}
 
 			<div className='flex flex-col gap-1'>
 				{cartItems.length > 0 ? (
