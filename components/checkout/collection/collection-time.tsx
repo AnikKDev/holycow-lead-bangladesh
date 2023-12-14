@@ -46,7 +46,7 @@ const CollectionTimeSection = () => {
 					</div>
 					{/* collection time selection */}
 					<div>
-						<fieldset className='flex flex-row items-center gap-4'>
+						<fieldset className='flex flex-row items-center gap-4 mobile-md:gap-2.5'>
 							<legend className='sr-only'>Collection</legend>
 
 							<div className='basis-[35%]'>
@@ -98,7 +98,7 @@ const CollectionTimeSection = () => {
 								</label>
 							</div>
 
-							<div className=' basis-[43%]'>
+							<div className='basis-[43%] mobile-md:basis-3/6'>
 								<DatePicker
 									selected={
 										orderState?.collection_time === ASAP
