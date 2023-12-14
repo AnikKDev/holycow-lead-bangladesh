@@ -19,8 +19,8 @@ export default function OrderDetailsSummaryItems({}: Props) {
 					className='h-14 w-14 rounded-sm object-cover'
 				/>
 				<div className='flex flex-col gap-1'>
-					<h1 className='text-xl font-medium'>VEGETABLE PAKORA</h1>
-					<p className='text-base font-medium text-[#767676]'>Quantity: 1</p>
+					<h1 className='text-base font-medium'>VEGETABLE PAKORA</h1>
+					<p className='text-sm font-medium text-[#767676]'>Quantity: 1</p>
 				</div>
 			</div>
 

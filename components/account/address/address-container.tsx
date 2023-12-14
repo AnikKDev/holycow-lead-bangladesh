@@ -58,7 +58,7 @@ export default function AddressContainer({}: Props) {
 	} else if (
 		allAddressesSuccess &&
 		!allAddressesError &&
-		allAddresses.addresses.length === 0
+		allAddresses.addresses?.length === 0
 	) {
 		displayableAddress = (
 			<div className='border-b border-[#D1D5DB]'>
@@ -82,7 +82,7 @@ export default function AddressContainer({}: Props) {
 			</div>
 		)
 	} else {
-		displayableAddress = allAddresses.addresses.map((address) => (
+		displayableAddress = allAddresses?.addresses?.map((address) => (
 			<AddressRow
 				setIsEditingAddress={setIsEditingAddress}
 				setDefaultAddress={setDefaultAddress}
