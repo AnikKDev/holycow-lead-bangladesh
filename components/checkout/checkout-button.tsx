@@ -19,7 +19,21 @@ const CheckoutButton = () => {
 	const canPlaceOrder = () => {
 		if (!orderState.cartItems.length) {
 			toast.error('Please add item to your cart')
-			return
+			return false
+		} else if (orderState.fulfillment_type === 'Delivery') {
+			if (!orderState.delivery_address?.address_name) {
+				toast.error('Please add your delivery address')
+				return false
+			} else if (!orderState?.delivery_time) {
+				toast.error('Please add delivery time')
+				return false
+			}
+		} else if (
+			orderState.fulfillment_type === 'Collection' &&
+			!orderState?.collection_time
+		) {
+			toast.error('Please add collection time')
+			return false
 		}
 		return true
 	}
