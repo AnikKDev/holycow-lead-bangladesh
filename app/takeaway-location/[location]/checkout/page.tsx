@@ -15,6 +15,9 @@ const CheckoutPage = () => {
 		if (footerElm) {
 			footerElm.style.display = 'none'
 		}
+		return () => {
+			footerElm.style.display = 'block'
+		}
 	}, [])
 
 	return (
