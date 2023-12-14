@@ -12,7 +12,7 @@ export default function OrderDetailsEstimation({}: Props) {
 	return (
 		<div>
 			<div className='flex items-center justify-between'>
-				<h2 className='text-3xl font-bold'>Order ID: 1234567780</h2>
+				<h2 className='text-2xl font-bold'>Order ID: 1234567780</h2>
 				{/* btns */}
 				<div className='flex items-center space-x-3'>
 					<Button variant='outline' className='flex items-center'>

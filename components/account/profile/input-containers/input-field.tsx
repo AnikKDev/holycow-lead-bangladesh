@@ -50,7 +50,7 @@ export default function InputField({
 	}
 	return (
 		<div className='p-6'>
-			<h4 className='mb-5 text-2xl font-bold capitalize'>
+			<h4 className='mb-5 text-xl font-bold capitalize'>
 				Edit {editingSection}
 			</h4>
 			{displayContent}

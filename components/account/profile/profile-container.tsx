@@ -19,10 +19,10 @@ export default function ProfileContainer({}: Props) {
 						editingSection={editingSection}
 					/>
 				) : (
-					<div className='flex items-center justify-between p-6'>
+					<div className='flex items-center justify-between px-5 py-3.5'>
 						{/* name */}
 						<div className='leading-9'>
-							<h5 className='text-lg'>Name</h5>
+							<h5 className='text-base'>Name</h5>
 							<span className='text-sm text-[#6B6B83]'>John Doe</span>
 						</div>
 						{/* icon */}
@@ -44,10 +44,10 @@ export default function ProfileContainer({}: Props) {
 						editingSection={editingSection}
 					/>
 				) : (
-					<div className='flex items-center justify-between p-6'>
+					<div className='flex items-center justify-between px-5 py-3.5'>
 						{/* name */}
 						<div className='leading-9'>
-							<h5 className='text-lg'>Email</h5>
+							<h5 className='text-base'>Email</h5>
 							<span className='text-sm text-[#6B6B83]'>johndoe@email.com</span>
 						</div>
 						{/* icon */}
@@ -69,10 +69,10 @@ export default function ProfileContainer({}: Props) {
 						editingSection={editingSection}
 					/>
 				) : (
-					<div className='flex items-center justify-between p-6'>
+					<div className='flex items-center justify-between px-5 py-3.5'>
 						{/* name */}
 						<div className='leading-9'>
-							<h5 className='text-lg'>Password</h5>
+							<h5 className='text-base'>Password</h5>
 							<span className='text-sm text-[#6B6B83]'>******</span>
 						</div>
 						{/* icon */}

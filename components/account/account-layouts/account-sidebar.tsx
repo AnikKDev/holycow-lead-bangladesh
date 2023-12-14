@@ -10,19 +10,25 @@ export const ACCOUNT_TABS = [
 		name: 'profile',
 		navigateTo: '/your-profile',
 		info: 'account information',
-		icon: <FaRegCircleUser className='text-3xl' />,
+		icon: (
+			<FaRegCircleUser className='tablet:me-1 tablet:text-xl _desktop-sm:text-3xl _desktop-md:text-3xl' />
+		),
 	},
 	{
 		name: 'your orders',
 		navigateTo: '/your-orders',
 		info: 'your orders',
-		icon: <RxDashboard className='text-3xl' />,
+		icon: (
+			<RxDashboard className='tablet:me-1 tablet:text-xl _desktop-sm:text-3xl _desktop-md:text-3xl' />
+		),
 	},
 	{
 		name: 'view address',
 		navigateTo: '/view-address',
 		info: 'delivery addresses',
-		icon: <MdOutlineLocationOn className='text-3xl' />,
+		icon: (
+			<MdOutlineLocationOn className='tablet:me-1 tablet:text-xl _desktop-sm:text-3xl _desktop-md:text-3xl' />
+		),
 	},
 ]
 export default function AccountSidebar({}: Props) {

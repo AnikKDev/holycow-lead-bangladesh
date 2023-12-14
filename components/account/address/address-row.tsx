@@ -38,7 +38,7 @@ export default function AddressRow({
 	] = useDeleteAddressMutation()
 	return (
 		<div className='border-b border-[#D1D5DB]'>
-			<div className='flex items-center justify-between p-6'>
+			<div className='flex items-center justify-between px-5 py-3.5'>
 				{/* name */}
 				<div className='leading-9'>
 					<h5 className='text-lg capitalize'>{address_name}</h5>
