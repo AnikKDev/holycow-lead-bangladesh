@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Badge } from '../badge'
 
 type Props = {
@@ -9,6 +7,7 @@ type Props = {
 export default function CustomBadge({ status }: Props) {
 	return (
 		<Badge
+			className='whitespace-nowrap text-xs'
 			variant={
 				status === 'In Progress'
 					? 'inProgress'

@@ -1,3 +1,5 @@
+import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
+
 import { Extend } from '@/lib/utils'
 
 export type AccountTab = {
@@ -6,15 +8,17 @@ export type AccountTab = {
 	info: string
 	icon?: JSX.Element
 }
+export type OrderTabType = 'current orders' | 'order history'
+
 export type YourOrdersTab = {
-	name: string
+	name: OrderTabType
 }
 
 export type OrderTableColumns = {
 	orderNumber: string
-	items: string
-	orderDate: string
-	status: React.ReactNode
+	items: MenuItemType[]
+	orderDate: Date | string
+	status: string
 	total: string
 }
 export type AccountAddress = Extend<
