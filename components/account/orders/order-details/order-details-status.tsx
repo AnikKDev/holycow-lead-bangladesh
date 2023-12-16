@@ -1,5 +1,3 @@
-import React from 'react'
-
 import CustomBadge from '@/components/ui/custom-ui/custom-badge'
 
 import OrderDetailsStatusSteps from './order-details-status-steps'
@@ -22,13 +20,13 @@ export default function OrderDetailsStatus({}: Props) {
 		{ title: 'Delivered', description: '--', completed: false },
 	]
 	return (
-		<div className='my-10 min-h-[4rem] rounded-lg border border-[#D1D5DB] p-6'>
+		<div className='my-6 min-h-[4rem] rounded-lg border border-[#D1D5DB] p-6'>
 			<div>
-				<h3 className='mb-3 text-xl font-medium'>Order status</h3>
+				<h3 className='mb-2 text-lg font-medium'>Order status</h3>
 				<CustomBadge status='In Progress' />
 			</div>
 			{/* steppers */}
-			<ol className='c-stepper mt-5'>
+			<ol className='c-stepper mt-2.5'>
 				{steps.map((step, index) => (
 					<OrderDetailsStatusSteps
 						key={index}

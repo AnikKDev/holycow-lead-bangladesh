@@ -1,5 +1,3 @@
-import React from 'react'
-
 type Props = {
 	title: string
 	description: string
@@ -17,8 +15,8 @@ export default function OrderDetailsStatusSteps({
 				completed ? 'c-stepper__item__completed' : ''
 			}`}
 		>
-			<h3 className=' capitalize'>{title}</h3>
-			<p className='c-stepper__desc text-lg uppercase text-[#6F6F6F]'>
+			<h3 className='font-medium capitalize'>{title}</h3>
+			<p className='c-stepper__desc text-base uppercase text-[#6F6F6F]'>
 				{description}
 			</p>
 		</li>

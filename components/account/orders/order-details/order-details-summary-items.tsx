@@ -1,18 +1,12 @@
-import React from 'react'
 import Image from 'next/image'
 import itemImg from '@/public/menu-item.jpg'
-import { FiMinus, FiPlus } from 'react-icons/fi'
-import { GoTrash } from 'react-icons/go'
-
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 
 type Props = {}
 
 export default function OrderDetailsSummaryItems({}: Props) {
 	return (
-		<div className='mb-8 flex items-start justify-between'>
-			<div className='flex gap-8'>
+		<div className='flex items-start justify-between'>
+			<div className='flex gap-5'>
 				<Image
 					src={itemImg}
 					alt='Cart product'
