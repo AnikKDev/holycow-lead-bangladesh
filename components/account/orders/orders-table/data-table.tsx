@@ -67,12 +67,12 @@ export default function OrderDataTable({
 			</div>
 			{/* separators and paginations */}
 			<Separator orientation='horizontal' className='my-6' />
-			<div className='flex items-center justify-between space-x-2'>
+			<div className='flex items-center justify-between'>
 				{/* <div>
-					<h6>Showing 1 to 10 of 11 results</h6>
-				</div>
-				<div>
-					<DatatablePagination />
+					<h6>
+						Showing {currentItems.length * pageCount - 4} to{' '}
+						{currentItems.length * pageCount} of {orders.length} results
+					</h6>
 				</div> */}
 				<PaginatedOrderTable
 					pageCount={pageCount}
