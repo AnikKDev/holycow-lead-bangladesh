@@ -1,6 +1,10 @@
 import { useLayoutEffect } from 'react'
 
-export const ScrollSpy = ({ handleScroll }) => {
+export const ScrollSpy = ({
+	handleScroll,
+	hasTopMenuClicked,
+	setHasTopMenuClicked,
+}) => {
 	const isInViewPort = (entry, offset = 0) => {
 		const rect = entry.boundingClientRect
 		console.log({ rect })
@@ -13,7 +17,15 @@ export const ScrollSpy = ({ handleScroll }) => {
 			const observer = new IntersectionObserver(
 				(entries) => {
 					entries.forEach((entry) => {
-						handleScroll && handleScroll(entry, isInViewPort(entry))
+						handleScroll &&
+							handleScroll(
+								entry,
+								isInViewPort(entry),
+								hasTopMenuClicked,
+								() => {
+									setHasTopMenuClicked(false)
+								}
+							)
 					})
 				},
 				{

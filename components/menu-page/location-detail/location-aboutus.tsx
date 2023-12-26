@@ -6,7 +6,7 @@ const LocationAboutUs = () => {
 				<h2 className='text-base font-medium'>
 					Holy Cow – Fine Indian Food – Indian Takeaway in Archway, London
 				</h2>
-				<div className='flex flex-col gap-5'>
+				<div className='flex flex-col gap-5 text-base '>
 					<p>
 						Looking for Indian food takeaway in Archway? Our Holy Cow Archway
 						branch is situated at the heart of Archway, walking distance to the

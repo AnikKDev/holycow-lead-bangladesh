@@ -1,9 +1,9 @@
 'use client'
 
-import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
 import { useLoginMutation } from '@/redux/slices/authSlice/authApiSlice'
 import { Loader2 } from 'lucide-react'
+import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useCookies } from 'react-cookie'
 import toast from 'react-hot-toast'
 import { z } from 'zod'
@@ -109,11 +109,13 @@ const LoginPage = ({
 								inputProps: {
 									// todo: regex for email or phone check
 									type: 'number',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 							password: {
 								inputProps: {
 									type: 'password',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 						}}
@@ -141,7 +143,7 @@ const LoginPage = ({
 				<p className='text-center text-sm font-medium'>
 					Don't have an account ?{' '}
 					<Link className='text-primary' href={'/register/'}>
-						Register
+						Sign Up
 					</Link>
 				</p>
 			</div>

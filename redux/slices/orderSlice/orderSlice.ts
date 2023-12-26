@@ -9,7 +9,7 @@ import { Extend } from '@/lib/utils'
 import { MenuItemType } from '../menuPageSlice/menuPageSlice'
 
 export type FulfillmentType = 'Delivery' | 'Collection'
-type OrderInitialState = Extend<
+export type OrderInitialState = Extend<
 	Partial<{
 		cartItems: MenuItemType[]
 		discount: number
@@ -20,6 +20,7 @@ type OrderInitialState = Extend<
 		delivery_time: string
 		collection_address: string
 		collection_time: string
+		visited_location_slug: string
 	}>
 >
 
@@ -32,7 +33,8 @@ const initialState: OrderInitialState = {
 	delivery_address: {},
 	delivery_time: ASAP,
 	collection_address: '',
-	collection_time: '',
+	collection_time: ASAP,
+	visited_location_slug: '',
 }
 
 const orderSlice = createSlice({
@@ -43,6 +45,9 @@ const orderSlice = createSlice({
 			action.payload,
 		setOrderDiscount: (state, action: PayloadAction<number>) => {
 			state.discount = action.payload
+		},
+		setVisitedLocationSlug: (state, action: PayloadAction<string>) => {
+			state.visited_location_slug = action.payload
 		},
 		changeCartItemQuantityByInput: (
 			state,
@@ -109,11 +114,18 @@ const orderSlice = createSlice({
 			)
 		},
 	},
+	extraReducers: (builder) => {
+		builder.addCase(
+			'orderSlice/changeCartItemQuantityByInput',
+			(state, action) => {}
+		)
+	},
 })
 
 export const {
 	setOrderState,
 	setOrderDiscount,
+	setVisitedLocationSlug,
 	addItemToCart,
 	increaseItemQuantity,
 	decreaseItemQuantity,
@@ -126,7 +138,8 @@ export const selectAllCartItems = (state: RootState) => state.order.cartItems
 export const selectOrderState = (state: RootState) => state.order
 export const selectTotalCartItems = (state: RootState) =>
 	state.order.cartItems.length
-
+export const selectVisitedLocationSlug = (state: RootState) =>
+	state.order.visited_location_slug
 export const getCartTotals = createSelector(
 	selectAllCartItems,
 	selectOrderState,
@@ -134,6 +147,7 @@ export const getCartTotals = createSelector(
 		let totalQuantity: number = 0
 		let subtotal: number = 0
 		let totalPrice: number = 0
+		let delivery_charge: number = 0
 
 		if (cartItems.length) {
 			totalQuantity = cartItems.reduce(
@@ -151,25 +165,30 @@ export const getCartTotals = createSelector(
 
 			const discount = Number(orderState?.discount) || 0
 
-			const delivery_charge =
+			delivery_charge =
 				orderState.fulfillment_type === 'Delivery'
-					? Number(orderState.delivery_charge)
+					? subtotal >= 15
+						? 0
+						: DELIVERY_CHARGE
 					: 0
 
+			console.log({ subtotal, delivery_charge })
 			totalPrice = subtotal + delivery_charge - discount
 
-			totalPrice = decimalFormatter(Math.round(totalPrice))
+			totalPrice = decimalFormatter(totalPrice)
 
 			return {
 				totalQuantity,
 				subtotal,
 				totalPrice,
+				delivery_charge,
 			}
 		} else {
 			return {
 				totalQuantity,
 				subtotal,
 				totalPrice,
+				delivery_charge,
 			}
 		}
 	}

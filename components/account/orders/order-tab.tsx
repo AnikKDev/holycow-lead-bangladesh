@@ -1,22 +1,33 @@
 import React from 'react'
 import { ORDERS_TAB } from '@/constants/account.constant'
 
+import { OrderTabType } from '@/types/account/account.types'
+import { cn } from '@/lib/utils'
 import { Command, CommandInput } from '@/components/ui/command'
 import { Separator } from '@/components/ui/separator'
 
-type Props = {}
+type Props = {
+	selectedTab: OrderTabType
+	setSelectedTab: React.Dispatch<React.SetStateAction<OrderTabType>>
+}
 
-export default function OrderTab({}: Props) {
+export default function OrderTab({ selectedTab, setSelectedTab }: Props) {
 	return (
-		<div className='flex items-center justify-between space-x-4 rounded-lg border border-[#D1D5DB] px-3 py-1 shadow-sm'>
+		<div className='flex items-center justify-between space-x-4 rounded-lg border border-[#D1D5DB] bg-white px-3 py-1 shadow-sm'>
 			{/* tab sections */}
-			<div className='flex'>
+			<div className='flex items-center gap-5'>
 				{ORDERS_TAB.map((tab) => (
-					<div key={tab.name} className='me-7 text-lg capitalize'>
-						<span>{tab.name}</span>
-						{tab.name === 'current orders' && (
-							<div className='mt-0.5 h-0.5 w-full bg-primary' />
+					<div
+						onClick={() => setSelectedTab(tab.name)}
+						key={tab.name}
+						className={cn(
+							'cursor-pointer border-b-2 border-transparent text-base capitalize',
+							{
+								'border-primary': selectedTab === tab.name,
+							}
 						)}
+					>
+						<span>{tab.name}</span>
 					</div>
 				))}
 			</div>
@@ -26,10 +37,10 @@ export default function OrderTab({}: Props) {
 			/>
 			{/* search sections */}
 			<div className='flex-1'>
-				<Command className='rounded-lg border-none'>
+				<Command className='rounded-lg border-none bg-white'>
 					<CommandInput
-						className='border-none text-lg'
-						placeholder='Type a command or search...'
+						className='border-none  text-base'
+						placeholder='Search by order number'
 					/>
 				</Command>
 			</div>

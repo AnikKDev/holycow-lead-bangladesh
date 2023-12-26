@@ -17,7 +17,7 @@ export default function TopNav({}: Props) {
 				<Link href={'/'}>
 					<Image
 						src={nav_logo}
-						className='h-auto w-36 mobile-md:w-28'
+						className='h-auto w-36 mobile-md:w-[100px]'
 						alt='holy cow logo'
 					/>
 				</Link>

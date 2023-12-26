@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { CiPhone } from 'react-icons/ci'
 import { MdOutlineEmail } from 'react-icons/md'
 
 import { Button } from '../ui/button'
@@ -16,7 +15,7 @@ const TopInformationBar = () => {
 	}
 
 	return (
-		<div className='w-full bg-primary py-[6px] text-primary-foreground'>
+		<div className='w-full bg-primary py-[6px] text-primary-foreground mobile-md:hidden'>
 			<div className='container flex flex-wrap items-center justify-between'>
 				<div className='flex items-center gap-2.5'>
 					{/* <a

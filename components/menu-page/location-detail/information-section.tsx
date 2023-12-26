@@ -15,7 +15,7 @@ const InformationSection = ({
 				Holycow - {locationInformation?.name}, Fine Indian Food - Indian
 				Takeaway in {locationInformation?.name}, London
 			</h1>
-			<div className='grid grid-cols-[repeat(auto-fit,minmax(500px,1fr))] gap-8'>
+			<div className='grid grid-cols-[repeat(auto-fit,minmax(479px,1fr))] gap-8 mobile-sm:grid-cols-[repeat(auto-fit,minmax(250px,1fr))]'>
 				<LocationInfo locationInformation={locationInformation} />
 				<LocationOpeningHours locationInformation={locationInformation} />
 				<LocationAboutUs />

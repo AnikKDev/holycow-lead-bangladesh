@@ -76,7 +76,7 @@ const AllReviews = ({
 	}
 
 	return (
-		<div className='container px-7 py-10'>
+		<div className='container px-7 py-10 mobile-md:px-4'>
 			<div className='flex flex-col gap-7'>
 				<div className='border-b border-border pb-4'>
 					<div className='mx-auto flex max-w-[956px] flex-col  gap-2.5'>
@@ -97,10 +97,10 @@ const AllReviews = ({
 						</h2>
 					</div>
 				</div>
-				<div className='mx-auto flex max-w-[956px] flex-col gap-10'>
+				<div className='mx-auto flex w-full max-w-[956px] flex-col gap-10'>
 					{isLoading || isRestaurantReviewLoading ? (
 						[1, 2, 3, 4, 5].map((i) => (
-							<div key={i} className='w-[956px] min-w-fit '>
+							<div key={i} className=' min-w-fit '>
 								<div className='mb-1.5 flex items-center justify-between '>
 									<div className='flex items-center gap-2.5'>
 										<Skeleton className='h-8 w-8 rounded-full' />

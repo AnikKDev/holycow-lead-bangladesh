@@ -1,5 +1,9 @@
 import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
-import { MdOutlineLocationOn, MdOutlineStar } from 'react-icons/md'
+import {
+	MdOutlineCall,
+	MdOutlineLocationOn,
+	MdOutlineStar,
+} from 'react-icons/md'
 
 import BookATableBtn from './reservation/book-table-btn'
 import ReviewTotalCount from './review-total-count'
@@ -13,7 +17,7 @@ const AboutLocation = ({
 }) => {
 	return (
 		<>
-			<div className='container mb-1.5 mt-4 grid grid-cols-[1fr_auto] text-foreground'>
+			<div className='container mb-1.5 mt-4 grid grid-cols-[1fr_auto] gap-3 text-foreground mobile-sm:grid-cols-1'>
 				<div className='flex flex-col gap-2'>
 					<h1 className='text-2xl font-bold'>
 						Holycow - {locationInformation.name}
@@ -30,7 +34,7 @@ const AboutLocation = ({
 								+ ratings) • {isRestaurant ? 'Restaurant' : 'Takeaway'}
 							</h2>
 						</div>
-						<div className='flex items-center gap-1'>
+						<div className='flex items-center gap-1 mobile-sm:hidden'>
 							<MdOutlineLocationOn size={18} />
 							<h2 className='font-medium'>
 								{locationInformation.address} •{' '}
@@ -38,6 +42,21 @@ const AboutLocation = ({
 									{locationInformation?.phone_number}
 								</a>
 							</h2>
+						</div>
+						<div className='hidden items-center gap-1 mobile-sm:flex'>
+							<MdOutlineLocationOn size={18} />
+							<h2 className='font-medium'>{locationInformation.address}</h2>
+						</div>
+						<div className='hidden items-center gap-1 mobile-sm:flex'>
+							<a
+								href={`tel:${locationInformation?.phone_number}`}
+								className='flex items-center gap-1'
+							>
+								<MdOutlineCall size={18} />
+								<h2 className='font-medium'>
+									{locationInformation?.phone_number}
+								</h2>
+							</a>
 						</div>
 					</div>
 				</div>

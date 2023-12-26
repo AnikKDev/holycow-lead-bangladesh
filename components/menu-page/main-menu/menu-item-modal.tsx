@@ -8,7 +8,6 @@ import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
 	addItemToCart,
 	selectOrderState,
-	setOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
 import { FiMinusCircle, FiPlusCircle } from 'react-icons/fi'
 
@@ -25,6 +24,7 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import CartSidebar from '@/components/cart/cart-sidebar'
+import { resetOrderDiscount } from '@/components/checkout/checkout-cart-item'
 
 export function MenuItemModal({
 	showModal,
@@ -47,14 +47,8 @@ export function MenuItemModal({
 			})
 		)
 		// if already discount added and user tries to change the cart quantity then reset the discount
-		if (orderState.discount) {
-			dispatch(
-				setOrderState({
-					...orderState,
-					discount: 0,
-				})
-			)
-		}
+		resetOrderDiscount(orderState)
+
 		setQuantity(1)
 		setShowModal(false)
 		setShowCartSidebar(true)
@@ -69,7 +63,7 @@ export function MenuItemModal({
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
-				<DialogContent className='sm:max-w-[425px] max-w-[500px] overflow-hidden p-0'>
+				<DialogContent className='min-w-0  max-w-[500px] p-0 mobile-sm:w-full'>
 					<DialogHeader className='text-left'>
 						<div>
 							<Image

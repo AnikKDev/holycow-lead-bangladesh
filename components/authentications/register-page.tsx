@@ -89,7 +89,7 @@ const RegisterPage = ({
 	return (
 		<AuthLayoutContainer hideBackBtn>
 			<div className='flex w-full flex-col space-y-3.5 place-self-center rounded-lg bg-white px-7  py-6 drop-shadow-lg mobile-sm:bg-transparent mobile-sm:px-0 mobile-sm:drop-shadow-none '>
-				<h1 className='text-2xl font-bold'>Create Your Account</h1>
+				<h1 className='text-2xl font-bold'>Create an Account</h1>
 				<div>
 					<AutoForm
 						onSubmit={(data) => {
@@ -100,21 +100,26 @@ const RegisterPage = ({
 						// className='space-y-0 gap-x-4 gap-y-3'
 						fieldConfig={{
 							full_name: {
-								inputProps: {},
+								inputProps: {
+									className: 'mobile-sm:bg-white',
+								},
 							},
 							phone_number: {
 								inputProps: {
 									type: 'number',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 							email: {
 								inputProps: {
 									type: 'email',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 							password: {
 								inputProps: {
 									type: 'password',
+									className: 'mobile-sm:bg-white',
 								},
 							},
 						}}
@@ -126,7 +131,7 @@ const RegisterPage = ({
 							disabled={isLoading}
 						>
 							{isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
-							Register
+							Sign Up
 						</Button>
 					</AutoForm>
 				</div>

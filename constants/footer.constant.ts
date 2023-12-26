@@ -22,7 +22,7 @@ export const menuItemsArr = [
 ]
 
 export const menuItemsArrUpdated = [
-	{ text: 'About us', navigateTo: '/about' },
+	{ text: 'About us', navigateTo: '/about-us' },
 	{ text: 'Takeaway Locations', navigateTo: '/locations' },
 	{ text: 'Takeaway Menu', navigateTo: '/menu' },
 	{ text: 'Putney Restaurant', navigateTo: '/putney' },

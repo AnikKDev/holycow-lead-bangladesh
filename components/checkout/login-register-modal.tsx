@@ -40,7 +40,7 @@ export function LoginRegisterModal({
 									// 	router.push(`/takeaway-location/${params.location}/checkout`)
 									// }}
 								>
-									Login
+									Log In
 								</Button>
 							</Link>
 						</div>
@@ -53,7 +53,7 @@ export function LoginRegisterModal({
 									variant='default'
 									size='lg'
 								>
-									Register
+									Sign Up
 								</Button>
 							</Link>
 						</div>

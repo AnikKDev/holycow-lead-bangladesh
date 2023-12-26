@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useState } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
-import { selectVisitedLocationSlug } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
 	getCartTotals,
 	selectAllCartItems,
+	selectVisitedLocationSlug,
 } from '@/redux/slices/orderSlice/orderSlice'
 import { FiPlusCircle } from 'react-icons/fi'
 
@@ -31,6 +31,7 @@ const CartSidebar = ({
 }) => {
 	const router = useRouter()
 	const params = useParams()
+	const pathname = usePathname()
 	const [showModal, setShowModal] = useState(false)
 	const cartItems = useAppSelector(selectAllCartItems)
 	const cartTotals = useAppSelector(getCartTotals)
@@ -40,7 +41,7 @@ const CartSidebar = ({
 	return (
 		<>
 			<Sheet open={showCartSidebar} onOpenChange={setShowCartSidebar}>
-				<SheetContent className='flex h-full w-[420px] flex-col flex-nowrap gap-0 px-0 py-3 mobile-sm:w-full '>
+				<SheetContent className=' flex h-full w-[420px] flex-col flex-nowrap gap-0 px-0 py-3 mobile-sm:w-full '>
 					<SheetHeader className='shrink-0 border-b border-border px-3 pb-4'>
 						<SheetTitle>Cart Items({cartItems?.length})</SheetTitle>
 					</SheetHeader>
@@ -54,7 +55,10 @@ const CartSidebar = ({
 								</div>
 								<Button
 									onClick={() => {
-										if (params?.location !== locationSlug) {
+										if (
+											params?.location !== locationSlug ||
+											pathname.includes('checkout')
+										) {
 											router.push(`/takeaway-location/${locationSlug}/`)
 										}
 										setShowCartSidebar(false)
@@ -73,7 +77,11 @@ const CartSidebar = ({
 								</p>
 								<Button
 									onClick={() => {
-										if (params?.location !== locationSlug) {
+										console.log(pathname.includes('checkout'))
+										if (
+											params?.location !== locationSlug ||
+											pathname.includes('checkout')
+										) {
 											router.push(`/takeaway-location/${locationSlug}/`)
 										}
 										setShowCartSidebar(false)
@@ -96,7 +104,9 @@ const CartSidebar = ({
 						</div>
 						<div className='w-full'>
 							<Button
-								disabled={!cartTotals.totalQuantity}
+								disabled={
+									!cartTotals.totalQuantity || pathname.includes('/checkout/')
+								}
 								size='default'
 								type='button'
 								className=' w-full font-medium uppercase'

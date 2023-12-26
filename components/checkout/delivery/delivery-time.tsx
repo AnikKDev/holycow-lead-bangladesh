@@ -8,7 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { format } from 'date-fns'
 import { GoClock } from 'react-icons/go'
 
-import './checkout.css'
+import '../checkout.css'
 
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import {
@@ -24,7 +24,7 @@ const DeliveryTimeArea = () => {
 	const orderState = useAppSelector(selectOrderState)
 	const dispatch = useAppDispatch()
 	return (
-		<div>
+		<div className=''>
 			<div className='grid grid-cols-[auto,1fr] gap-2.5'>
 				<div>
 					<GoClock size={22} className='text-foreground' />
@@ -46,7 +46,7 @@ const DeliveryTimeArea = () => {
 					</div>
 					{/* delivery time selection */}
 					<div>
-						<fieldset className='flex flex-row items-center gap-4'>
+						<fieldset className='flex flex-row items-center gap-4 mobile-md:gap-2.5'>
 							<legend className='sr-only'>Delivery</legend>
 
 							<div className='basis-[35%]'>
@@ -92,13 +92,13 @@ const DeliveryTimeArea = () => {
 										</svg>
 									</div>
 
-									<p className='mt-1 text-sm font-medium text-foreground'>
+									<p className='mt-1 whitespace-nowrap text-sm font-medium text-foreground '>
 										As soon as possible
 									</p>
 								</label>
 							</div>
 
-							<div className=' basis-[43%]'>
+							<div className='basis-[43%] mobile-md:basis-3/6'>
 								<DatePicker
 									selected={
 										orderState?.delivery_time === ASAP
@@ -130,7 +130,7 @@ const DeliveryTimeArea = () => {
 										/>
 									}
 									placeholderText='Choose a time'
-									className='text-sm'
+									className='whitespace-nowrap text-sm'
 								/>
 							</div>
 						</fieldset>

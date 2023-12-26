@@ -27,7 +27,7 @@ export default function AccountTabbarTab({
 			{/* icon */}
 			{/* <CgProfile className='me-1 text-xl' /> */}
 			{icon}
-			<h6 className='text-lg font-semibold capitalize'>{name}</h6>
+			<h6 className='text-base font-semibold capitalize'>{name}</h6>
 		</button>
 	)
 }

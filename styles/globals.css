@@ -180,7 +180,7 @@ c-stepper__item:not(:last-child):after {
 
 
 .active-scrollspy {
-	@apply rounded-sm bg-primary/25 font-medium text-foreground
+	@apply rounded-sm bg-primary/25 text-foreground
 }
 
 /* privacy policy */
@@ -328,6 +328,7 @@ table.tablepress.allergen tr.row-3 td {
 	box-sizing: border-box;
 	animation: rotation 1s linear infinite;
 }
+
 .loader::after {
 	content: '';
 	box-sizing: border-box;
@@ -341,11 +342,53 @@ table.tablepress.allergen tr.row-3 td {
 	border-bottom: 8px solid gray;
 	animation: rotation 0.5s linear infinite reverse;
 }
+
 @keyframes rotation {
 	0% {
 		transform: rotate(0deg);
 	}
+
 	100% {
 		transform: rotate(360deg);
 	}
+}
+
+
+/* .custom-scrollbar::-webkit-scrollbar {
+	@apply w-4
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+	@apply bg-[#e4e4e4] rounded-full;
+
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	@apply rounded-full border-[2px] border-transparent bg-clip-content bg-primary;
+} */
+
+.custom-scrollbar::-webkit-scrollbar {
+	height: 4px;
+	width: 4px;
+	background: gray;
+}
+
+/* Track */
+.custom-scrollbar::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:horizontal {
+	background: #979797bb;
+	border-radius: 10px;
 }

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import OrderDetailsSummaryItems from './order-details-summary-items'
 
 type Props = {}
@@ -7,10 +5,12 @@ type Props = {}
 export default function OrderDetailsSummary({}: Props) {
 	return (
 		<div>
-			<h3 className='my-8 text-2xl font-medium'>Order Summary</h3>
-			<OrderDetailsSummaryItems />
-			<OrderDetailsSummaryItems />
-			<OrderDetailsSummaryItems />
+			<h3 className='mb-3.5 text-lg font-medium'>Order Summary</h3>
+			<div className='flex flex-col gap-5'>
+				<OrderDetailsSummaryItems />
+				<OrderDetailsSummaryItems />
+				<OrderDetailsSummaryItems />
+			</div>
 		</div>
 	)
 }
