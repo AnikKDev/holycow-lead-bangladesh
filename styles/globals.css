@@ -1,14 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap'); */
 @layer base {
 	:root {
 		/* old */
 		/* --background: 48 56% 98%; */
 		/* --foreground: 0 0% 10%; */
-		--background: #e8d3a2;
-		--foreground: #f3f2eb;
+		--background: 42, 60.34%, 77.25%;
+		--foreground: 52.5, 25%, 93.73%;
 
 		--card: 48 56% 98%;
 		--card-foreground: 0 0% 10%;
@@ -18,11 +18,11 @@
 
 		/* --primary: 42 35% 51%;
 		--primary-foreground: 210 40% 98%; */
-		--primary: #0c0b08;
-		--primary-foreground: #727272;
+		--primary: 45, 20%, 3.92%;
+		--primary-foreground: 0, 0%, 44.71%;
 
-		--secondary: #905a09;
-		--secondary-foreground: #bd9632;
+		--secondary: 36, 88.24%, 30%;
+		--secondary-foreground: 43.17, 58.16%, 46.86%;
 
 		--muted: 210 40% 96.1%;
 		--muted-foreground: 215.4 16.3% 46.9%;
@@ -34,7 +34,7 @@
 		--destructive-foreground: 210 40% 98%;
 
 		/* --border: 0 0% 73%; */
-		--border: #efe3c8;
+		--border: 41.54, 54.93%, 86.08%;
 		--input: 0 0% 73%;
 		--ring: 0 0% 10%;
 
@@ -53,6 +53,17 @@
 
 	body {
 		@apply bg-background font-open_sans text-foreground;
+	}
+}
+
+@layer base {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-lora;
 	}
 }
 

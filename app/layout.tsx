@@ -4,17 +4,23 @@ import { siteConfig } from '@/config/site'
 
 import '@/styles/globals.css'
 
-import { IBM_Plex_Sans } from 'next/font/google'
+import { Lora, Open_Sans } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
 import AppTopBar from '@/components/shared/app-topbar'
 import FooterUpdated from '@/components/shared/footer-updated'
 
-const fontIbmPlexSans = IBM_Plex_Sans({
+const fontOpenSans = Open_Sans({
 	subsets: ['latin'],
 	display: 'swap',
-	variable: '--font-ibm_plex_sans',
-	weight: ['100', '300', '400', '500', '700'],
+	variable: '--font-open_sans',
+	weight: ['300', '400', '500', '700'],
+})
+const fontLora = Lora({
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-lora',
+	weight: ['400', '500', '700'],
 })
 
 export const metadata = {
@@ -65,7 +71,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html
-			className={cn(fontIbmPlexSans.variable)}
+			className={cn(fontOpenSans.variable, fontLora.variable)}
 			lang='en'
 			suppressHydrationWarning
 		>

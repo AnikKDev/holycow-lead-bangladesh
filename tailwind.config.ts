@@ -134,8 +134,10 @@ module.exports = {
 			},
 			fontFamily: {
 				open_sans: ['var(--font-open_sans)'],
+				lora: ['var(--font-lora)'],
 			},
 		},
 	},
+
 	plugins: [require('tailwindcss-animate')],
 }
