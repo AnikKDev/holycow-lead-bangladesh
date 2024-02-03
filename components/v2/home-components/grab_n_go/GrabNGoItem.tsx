@@ -41,7 +41,10 @@ const GrabNGoItem = ({
 						{storeAddress[0]}
 						<br /> {storeAddress[1]}
 					</p>
-					<p className='flex items-center gap-1 text-sm font-semibold leading-7'>
+					<p
+						className='flex items-center gap-1 text-sm font-semibold '
+						style={{ lineHeight: 1.75 }}
+					>
 						<svg
 							width='12'
 							height='12'

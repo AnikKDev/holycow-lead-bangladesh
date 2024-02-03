@@ -18,10 +18,10 @@ const SpecialtyItem = ({ foodImage, foodName, price, description }: Props) => {
 				className='border border-[#e8d3a233]'
 			/>
 			<div className='mt-[29px] flex items-center justify-between'>
-				<h3 className='text-xl font-bold leading-[1.3] tracking-[0.04em] text-[#0c0b08]'>
+				<h3 className='text-xl font-bold leading-[1.3] tracking-[0.04em] text-primary'>
 					{foodName}
 				</h3>
-				<p className='flex items-center text-[22px] font-bold capitalize leading-[1.3] tracking-[0.04em] text-[#0c0b08]'>
+				<p className='flex items-center text-[22px] font-bold capitalize leading-[1.3] tracking-[0.04em] text-primary'>
 					<svg
 						width='9'
 						height='10'

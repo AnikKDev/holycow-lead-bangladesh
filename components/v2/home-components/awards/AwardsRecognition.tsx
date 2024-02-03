@@ -86,11 +86,17 @@ const AwardsRecognition = (props: Props) => {
 						>
 							Best Indian Restaurant
 						</h4>
-						<p className='text-lg leading-7 tracking-[0.04em]'>
+						<p
+							className='text-lg tracking-[0.04em] text-[#414141]'
+							style={{ lineHeight: 1.75 }}
+						>
 							What makes Holy Cow Fine Indian Food so special? Style, Quality,
 							Creativity, Refinement, but above all Taste!
 						</p>
-						<p className='text-lg leading-7 tracking-[0.04em]'>
+						<p
+							className='text-lg tracking-[0.04em] text-[#414141]'
+							style={{ lineHeight: 1.75 }}
+						>
 							It’s because we take the finest quality, authentic, fresh
 							ingredients. Our qualified, experienced chefs then creatively
 							combine and balance the flavours to conjure up exquisite dishes,

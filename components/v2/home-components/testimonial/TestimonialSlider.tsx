@@ -56,7 +56,7 @@ const TestimonialSlider = (props: Props) => {
 	useEffect(() => {
 		const intervalId = setInterval(() => {
 			nextSlider()
-		}, 30000)
+		}, 300)
 
 		return () => {
 			clearInterval(intervalId)

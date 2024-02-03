@@ -13,7 +13,10 @@ const Specialty = (props: Props) => {
 				title='Menu that fits you palette'
 			/>
 			<SpecialtyList />
-			<button className='bg-[#e8d3a2] px-8 py-2 font-medium leading-7 tracking-[0.04em] text-[#0c0b08]'>
+			<button
+				className='bg-[#e8d3a2] px-8 py-2 font-medium tracking-[0.04em] text-primary'
+				style={{ lineHeight: 1.75 }}
+			>
 				Explore Menu
 			</button>
 		</section>

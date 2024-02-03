@@ -32,7 +32,7 @@ const SectionHeader = ({
 				containerClasses[containsAlign]
 			)}
 		>
-			<h3 className='text-[22px] font-medium capitalize leading-[1.3] tracking-[0.04em] text-[#905a09]'>
+			<h3 className='text-[22px] font-medium capitalize leading-snug tracking-[0.04em] text-secondary'>
 				{subTitle}
 			</h3>
 			<svg
@@ -62,10 +62,9 @@ const SectionHeader = ({
 
 			<h2
 				className={cn(
-					'max-w-[1328px] font-medium capitalize tracking-[0.04em] text-[#0c0b08]',
+					'max-w-[1328px] font-medium capitalize leading-snug tracking-[0.04em] text-primary',
 					subTitleClasses[subTitleSize]
 				)}
-				style={{ lineHeight: '1.3' }}
 			>
 				{title}
 			</h2>
