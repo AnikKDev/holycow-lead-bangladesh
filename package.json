@@ -41,6 +41,8 @@
 		"cmdk": "^0.2.0",
 		"date-fns": "^2.30.0",
 		"dayjs": "^1.11.9",
+		"embla-carousel-autoplay": "^8.0.0-rc22",
+		"embla-carousel-react": "^8.0.0-rc22",
 		"eslint-config-next": "13.4.19",
 		"framer-motion": "^10.16.1",
 		"lodash": "^4.17.21",

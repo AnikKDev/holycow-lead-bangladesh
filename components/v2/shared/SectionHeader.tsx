@@ -10,8 +10,8 @@ type Props = {
 }
 
 const containerClasses: Record<Props['containsAlign'], string> = {
-	left: 'items-start',
-	center: 'items-center',
+	left: 'items-start text-left',
+	center: 'items-center text-center',
 }
 
 const subTitleClasses: Record<Props['subTitleSize'], string> = {
@@ -62,7 +62,7 @@ const SectionHeader = ({
 
 			<h2
 				className={cn(
-					'max-w-[1328px] text-center font-medium capitalize tracking-[0.04em] text-[#0c0b08]',
+					'max-w-[1328px] font-medium capitalize tracking-[0.04em] text-[#0c0b08]',
 					subTitleClasses[subTitleSize]
 				)}
 				style={{ lineHeight: '1.3' }}
