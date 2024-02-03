@@ -7,8 +7,8 @@
 		/* old */
 		/* --background: 48 56% 98%; */
 		/* --foreground: 0 0% 10%; */
-		--background: 42, 60.34%, 77.25%;
-		--foreground: 52.5, 25%, 93.73%;
+		--background: 42, 60.34%, 77.25%; /* #e8d3a2 */
+		--foreground: 52.5, 25%, 93.73%; /* #f3f2eb */
 
 		--card: 48 56% 98%;
 		--card-foreground: 0 0% 10%;
@@ -18,11 +18,11 @@
 
 		/* --primary: 42 35% 51%;
 		--primary-foreground: 210 40% 98%; */
-		--primary: 45, 20%, 3.92%;
-		--primary-foreground: 0, 0%, 44.71%;
+		--primary: 45, 20%, 3.92%; /* #0c0b08 */
+		--primary-foreground: 0, 0%, 44.71%; /* 	#727272*/
 		/* new */
-		--secondary: 36, 88.24%, 30%;
-		--secondary-foreground: 43.17, 58.16%, 46.86%;
+		--secondary: 36, 88.24%, 30%; /* 	#905a09 */
+		--secondary-foreground: 43.17, 58.16%, 46.86%; /*	#bd9632 */
 
 		--muted: 210 40% 96.1%;
 		--muted-foreground: 215.4 16.3% 46.9%;
