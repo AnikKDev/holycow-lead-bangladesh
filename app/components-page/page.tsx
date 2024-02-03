@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import AwardsRecognition from '@/components/v2/home-components/awards/AwardsRecognition'
 import GrabNGo from '@/components/v2/home-components/grab_n_go/GrabNGo'
 import Header from '@/components/v2/home-components/header/Header'
+import HollyChef from '@/components/v2/home-components/holly-chef/HollyChef'
 import PhotoGallery from '@/components/v2/home-components/photo_gallery/PhotoGallery'
 import Testimonial from '@/components/v2/home-components/testimonial/Testimonial'
 import WonderfulRestaurant from '@/components/v2/home-components/wonderful-restaurant/WonderfulRestaurant'
@@ -18,7 +19,7 @@ export default function AboutUs({}: Props) {
 		<>
 			<Header />
 			<WonderfulRestaurant />
-			{/* so spacial section missing */}
+			<HollyChef />
 			<Specialty />
 			<GrabNGo />
 			<AwardsRecognition />
