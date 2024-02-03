@@ -35,7 +35,8 @@
 
 		/* --border: 0 0% 73%; */
 		--border: 41.54, 54.93%, 86.08%;
-		--input: 0 0% 73%;
+		/* --input: 0 0% 73%; */
+		--input: 41.54, 54.93%, 86.08%;
 		--ring: 0 0% 10%;
 
 		--radius: 0.5rem;
@@ -406,4 +407,23 @@ table.tablepress.allergen tr.row-3 td {
 .custom-scrollbar::-webkit-scrollbar-thumb:horizontal {
 	background: #979797bb;
 	border-radius: 10px;
+}
+
+/* private info page */
+.private-event__header {
+	height: 60vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-image: url('../assets/private-info/private-info-bg.png');
+	background-color: linear-gradient(
+		180deg,
+		#e8d3a2 0%,
+		#f3f2eb 102.18%,
+		#ffffff 102.19%
+	);
+	background-blend-mode: multiply;
 }

@@ -76,7 +76,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 			suppressHydrationWarning
 		>
 			<head />
-			<body className={cn('min-h-screen bg-background antialiased')}>
+			<body className={cn('min-h-screen bg-foreground antialiased')}>
 				<ReduxProvider>
 					{/* navbar / topbar */}
 					<AppTopBar />
