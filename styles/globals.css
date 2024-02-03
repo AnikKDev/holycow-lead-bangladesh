@@ -19,10 +19,10 @@
 		/* --primary: 42 35% 51%;
 		--primary-foreground: 210 40% 98%; */
 		--primary: 45, 20%, 3.92%; /* #0c0b08 */
-		--primary-foreground: 0, 0%, 44.71%;
+		--primary-foreground: 0, 0%, 44.71%; /* 	#727272*/
 		/* new */
-		--secondary: 36, 88.24%, 30%;
-		--secondary-foreground: 43.17, 58.16%, 46.86%;
+		--secondary: 36, 88.24%, 30%; /* 	#905a09 */
+		--secondary-foreground: 43.17, 58.16%, 46.86%; /*	#bd9632 */
 
 		--muted: 210 40% 96.1%;
 		--muted-foreground: 215.4 16.3% 46.9%;
