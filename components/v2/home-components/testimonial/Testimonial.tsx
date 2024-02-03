@@ -7,9 +7,11 @@ type Props = {}
 
 const Testimonial = (props: Props) => {
 	return (
-		<section className='mt-[144px]'>
+		<section className='my-[144px] flex w-full flex-col items-center'>
 			<SectionHeader title='Happy customers' subTitle='Testimonial' />
-			<TestimonialSlider />
+			<div className='mt-[75px] flex max-w-[1328px]'>
+				<TestimonialSlider />
+			</div>
 		</section>
 	)
 }

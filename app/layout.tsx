@@ -2,6 +2,7 @@ import { ReduxProvider } from '@/redux/provider'
 
 import { siteConfig } from '@/config/site'
 
+import '@smastrom/react-rating/style.css'
 import '@/styles/globals.css'
 
 import { Lora, Open_Sans } from 'next/font/google'
