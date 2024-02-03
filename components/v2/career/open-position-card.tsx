@@ -7,7 +7,10 @@ type Props = {}
 export default function OpenPositionCard({}: Props) {
 	return (
 		<div className='mx-auto my-8 max-w-4xl space-y-8 font-lora'>
-			<div className='rounded-lg border p-6'>
+			<div
+				style={{ boxShadow: '0px 4px 4px 0px #00000040' }}
+				className='rounded-lg border-[#F3F2EB] p-6'
+			>
 				<h2 className='text-3xl font-bold text-secondary'>Store Manager</h2>
 				<div className='mt-4 grid grid-cols-2 gap-4 text-[20px] leading-[2] tracking-[0.04em] text-primary'>
 					<div>
@@ -36,7 +39,10 @@ export default function OpenPositionCard({}: Props) {
 					</div>
 				</div>
 			</div>
-			<div className='rounded-lg border p-6'>
+			<div
+				style={{ boxShadow: '0px 4px 4px 0px #00000040' }}
+				className='rounded-lg border-[#F3F2EB] p-6'
+			>
 				<h2 className='text-3xl font-bold text-secondary'>Curry Chef</h2>
 				<div className='mt-4 grid grid-cols-2 gap-4 text-[20px] leading-[2] text-primary'>
 					<div>
