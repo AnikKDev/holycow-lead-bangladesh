@@ -3,8 +3,7 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 import AwardsRecognition from '@/components/v2/home-components/awards/AwardsRecognition'
 import GrabNGo from '@/components/v2/home-components/grab_n_go/GrabNGo'
-import DeliveryAndDine from '@/components/v2/home-components/header/DeliveryAndDine'
-import Hero from '@/components/v2/home-components/header/Hero'
+import Header from '@/components/v2/home-components/header/Header'
 import Testimonial from '@/components/v2/home-components/testimonial/Testimonial'
 import WonderfulRestaurant from '@/components/v2/home-components/wonderful-restaurant/WonderfulRestaurant'
 import VideoPlayer from '@/components/v2/shared/VideoPlayer'
@@ -16,8 +15,7 @@ type Props = {}
 export default function AboutUs({}: Props) {
 	return (
 		<>
-			<Hero />
-			<DeliveryAndDine />
+			<Header />
 			<WonderfulRestaurant />
 			{/* so spacial section missing */}
 			<Specialty />
