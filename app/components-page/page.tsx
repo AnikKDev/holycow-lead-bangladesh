@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import AwardsRecognition from '@/components/v2/home-components/awards/AwardsRecognition'
 import GrabNGo from '@/components/v2/home-components/grab_n_go/GrabNGo'
 import Header from '@/components/v2/home-components/header/Header'
+import PhotoGallery from '@/components/v2/home-components/photo_gallery/PhotoGallery'
 import Testimonial from '@/components/v2/home-components/testimonial/Testimonial'
 import WonderfulRestaurant from '@/components/v2/home-components/wonderful-restaurant/WonderfulRestaurant'
 import VideoPlayer from '@/components/v2/shared/VideoPlayer'
@@ -22,7 +23,7 @@ export default function AboutUs({}: Props) {
 			<GrabNGo />
 			<AwardsRecognition />
 			<VideoPlayer />
-			{/* photo gallery section  */}
+			<PhotoGallery />
 			<Testimonial />
 		</>
 	)
