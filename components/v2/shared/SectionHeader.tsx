@@ -6,7 +6,7 @@ type Props = {
 	title: string
 	subTitle: string
 	containsAlign?: 'left' | 'center'
-	subTitleSize?: 'large' | 'medium'
+	subTitleSize?: 'large' | 'medium' | 'small'
 }
 
 const containerClasses: Record<Props['containsAlign'], string> = {
@@ -17,6 +17,7 @@ const containerClasses: Record<Props['containsAlign'], string> = {
 const subTitleClasses: Record<Props['subTitleSize'], string> = {
 	large: 'text-[56px]',
 	medium: 'text-[48px]',
+	small: 'text-[32px]',
 }
 
 const SectionHeader = ({

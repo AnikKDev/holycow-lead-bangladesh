@@ -6,6 +6,8 @@ import { z } from 'zod'
 import AutoForm from '@/components/ui/auto-form'
 import { Button } from '@/components/ui/button'
 
+import SectionHeader from '../shared/SectionHeader'
+
 type Props = {}
 // Define your form schema using zod
 const formSchema = z.object({
@@ -44,10 +46,12 @@ const formSchema = z.object({
 export default function ContactForm({}: Props) {
 	const handleFormSubmit = (data: Partial<z.infer<typeof formSchema>>) => {}
 	return (
-		<section className='mx-auto w-2/3'>
-			<h2 className='my-5 text-center text-4xl font-[500] capitalize text-primary'>
-				Message to us
-			</h2>
+		<section>
+			<SectionHeader
+				subTitle='Contact'
+				title='Message To Us'
+				subTitleSize='large'
+			/>
 			{/* inputs */}
 			<div>
 				<AutoForm
