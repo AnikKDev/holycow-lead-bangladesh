@@ -2,7 +2,6 @@ import React from 'react'
 
 import SectionHeader from '../../shared/SectionHeader'
 import CarousalSection from './CarousalSection'
-import TextSection from './TextSection'
 
 type Props = {}
 
