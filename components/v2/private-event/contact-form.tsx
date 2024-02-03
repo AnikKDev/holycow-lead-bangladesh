@@ -46,7 +46,7 @@ const formSchema = z.object({
 export default function ContactForm({}: Props) {
 	const handleFormSubmit = (data: Partial<z.infer<typeof formSchema>>) => {}
 	return (
-		<section>
+		<section className='mb-12'>
 			<SectionHeader
 				subTitle='Contact'
 				title='Message To Us'

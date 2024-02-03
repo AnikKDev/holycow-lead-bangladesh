@@ -4,7 +4,6 @@ import bg from '@/assets/private-info/private-info-bg.png'
 import ContactForm from '@/components/v2/private-event/contact-form'
 import BannerContents from '@/components/v2/shared/banner-contents'
 import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
-import PageInfo from '@/components/v2/shared/page-info'
 import SectionHeader from '@/components/v2/shared/SectionHeader'
 
 type Props = {}
@@ -23,7 +22,9 @@ export default function PrivateEvent({}: Props) {
 				subTitleSize='small'
 			/>
 			{/* message to us form */}
-			<ContactForm />
+			<div>
+				<ContactForm />
+			</div>
 		</GradientWrapper>
 	)
 }
