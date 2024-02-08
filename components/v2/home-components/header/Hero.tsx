@@ -8,7 +8,8 @@ type Props = {}
 
 const hero = (props: Props) => {
 	return (
-		<div className='mx-auto h-[792px] max-w-[1792px] '>
+		<div className='mx-auto h-[792px] px-10'>
+			{/* max-w-[1792px] */}
 			<div
 				style={{ background: `url(${bg.src})` }}
 				className='h-full w-full overflow-hidden rounded-[32px] bg-cover bg-no-repeat'
@@ -16,7 +17,7 @@ const hero = (props: Props) => {
 				<div className='flex h-full w-full items-center justify-center bg-gradient-to-b from-[#0B0600]/70 to-[#4D412F]/70 bg-cover bg-no-repeat'>
 					<div className='flex  w-[1627px] flex-col items-center justify-center gap-8 text-center '>
 						<div className='space-y-2 text-[#EEDFC8]'>
-							<p className='font-lora text-center text-[22px] font-[500] leading-[28.6px] tracking-[0.04em]'>
+							<p className='text-center font-lora text-[22px] font-[500] leading-[28.6px] tracking-[0.04em]'>
 								Chase the new Flavour
 							</p>
 							<div className='flex items-center justify-center'>
@@ -47,7 +48,7 @@ const hero = (props: Props) => {
 							</div>
 						</div>
 						<div>
-							<h1 className='font-lora text-center text-[64px] font-[600px] leading-[83.2px] tracking-[0.04em] text-[#DCCA87]'>
+							<h1 className='text-center font-lora text-[64px] font-[600px] leading-[83.2px] tracking-[0.04em] text-[#DCCA87]'>
 								<span>Style, Quality, Creativity, Refinement,</span>
 								<br />
 								<span>but above all Taste!</span>
@@ -68,7 +69,7 @@ const hero = (props: Props) => {
 								<span>uniquely combine creativity with authenticity.</span>
 							</p>
 						</div>
-						<Button className='font-lora rounded-none bg-[#E8D3A2] text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-[#0C0B08]'>
+						<Button className='rounded-none bg-[#E8D3A2] font-lora text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-[#0C0B08]'>
 							Explore Menu
 						</Button>
 					</div>

@@ -18,8 +18,9 @@ type Props = {}
 
 const PhotoGallery = (props: Props) => {
 	return (
-		<div className='flex min-h-[763px] w-full items-center justify-center bg-red-100'>
-			<div className='ml-[296px] flex'>
+		<div className='flex max-w-full items-center justify-center bg-red-100'>
+			{/* min-h-[763px]  */}
+			<div className='ml-[296px] flex flex-col p-10'>
 				<LeftDiv />
 				<CarousalDiv />
 			</div>
@@ -31,7 +32,7 @@ export default PhotoGallery
 
 const LeftDiv = () => {
 	return (
-		<div className='mr-10  w-[491px] space-y-6'>
+		<div className='mr-10 max-w-[700px] space-y-6'>
 			<SectionHeader
 				title='Photo Gallery'
 				subTitle='Instagram'
@@ -56,7 +57,8 @@ const CarousalDiv = () => {
 		>
 			<CarouselContent>
 				{Array.from({ length: 10 }).map((_, index) => (
-					<CarouselItem key={index} className='basis-1/5 '>
+					<CarouselItem key={index} className='basis-1/2'>
+						{/* basis-1/5 */}
 						<div className='group relative flex cursor-pointer justify-center '>
 							<Image
 								src={'http://via.placeholder.com/301x447'}
