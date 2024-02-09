@@ -9,15 +9,14 @@ type Props = {}
 const hero = (props: Props) => {
 	return (
 		<div className='mx-auto h-[792px] px-10'>
-			{/* max-w-[1792px] */}
 			<div
 				style={{ background: `url(${bg.src})` }}
 				className='h-full w-full overflow-hidden rounded-[32px] bg-cover bg-no-repeat'
 			>
 				<div className='flex h-full w-full items-center justify-center bg-gradient-to-b from-[#0B0600]/70 to-[#4D412F]/70 bg-cover bg-no-repeat'>
-					<div className='flex  w-[1627px] flex-col items-center justify-center gap-8 text-center '>
+					<div className='flex  max-w-[1627px] flex-col items-center justify-center gap-8 text-center '>
 						<div className='space-y-2 text-[#EEDFC8]'>
-							<p className='text-center font-lora text-[22px] font-[500] leading-[28.6px] tracking-[0.04em]'>
+							<p className='text-center font-lora text-lg font-medium leading-[1.3] tracking-[0.04em]'>
 								Chase the new Flavour
 							</p>
 							<div className='flex items-center justify-center'>
@@ -48,27 +47,17 @@ const hero = (props: Props) => {
 							</div>
 						</div>
 						<div>
-							<h1 className='text-center font-lora text-[64px] font-[600px] leading-[83.2px] tracking-[0.04em] text-[#DCCA87]'>
+							<h1 className='sm:text-6x flex flex-col text-center font-lora text-3xl font-semibold leading-[1.3] tracking-[0.04em] text-[#DCCA87]'>
 								<span>Style, Quality, Creativity, Refinement,</span>
-								<br />
 								<span>but above all Taste!</span>
 							</h1>
 						</div>
-						<div>
-							<p className='font-open-sans text-center text-[18px] font-[600px] leading-[31.5px] tracking-[0.04em] text-[#EEDFC8]'>
-								<span>
-									Everyone who knows and loves quality Indian food recognises
-									the importance of well prepared, fresh
-								</span>{' '}
-								<br />
-								<span>
-									ingredients. Yet here’s an added opportunity to experience a
-									blend of new, inspired dishes that
-								</span>{' '}
-								<br />
-								<span>uniquely combine creativity with authenticity.</span>
-							</p>
-						</div>
+						<p className='font-open-sans max-w-[961px] text-center text-lg font-medium leading-[1.75] tracking-[0.04em] text-[#EEDFC8]'>
+							Everyone who knows and loves quality Indian food recognises the
+							importance of well prepared, fresh ingredients. Yet here’s an
+							added opportunity to experience a blend of new, inspired dishes
+							that uniquely combine creativity with authenticity.
+						</p>
 						<Button className='rounded-none bg-[#E8D3A2] font-lora text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-[#0C0B08]'>
 							Explore Menu
 						</Button>
