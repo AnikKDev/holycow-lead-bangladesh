@@ -83,7 +83,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 					<AppTopBar />
 					<main className='_desktop-lg:max-w-7xl mx-auto'>{children}</main>
 					{/* <Footer /> */}
-					<FooterUpdated />
+					{/* <FooterUpdated /> */}
 				</ReduxProvider>
 			</body>
 		</html>
