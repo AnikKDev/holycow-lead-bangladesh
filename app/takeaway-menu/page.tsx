@@ -17,7 +17,7 @@ export default function AboutUs({}: Props) {
 	return (
 		<>
 			<GradientWrapper>
-				<div>
+				<div className='px-2 md:px-4 _desktop-md:px-8'>
 					<BannerContents text='Private event' image={bg.src} />
 				</div>
 				<SectionHeader
@@ -27,7 +27,7 @@ export default function AboutUs({}: Props) {
 				/>
 				<hr className='my-24 border-t-[0.5px] border-dotted border-[#727272]' />
 			</GradientWrapper>
-			<div className='mx-auto w-[1327px] space-y-24'>
+			<div className='container mx-auto max-w-[1327px] space-y-24'>
 				<TakeawayMenu />
 			</div>
 		</>
