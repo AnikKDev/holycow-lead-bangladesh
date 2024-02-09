@@ -1,7 +1,10 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import bg from '@/assets/v2/secondary-bg.png'
 
 import { apiUrl } from '@/lib/constatns'
+import BannerContents from '@/components/v2/shared/banner-contents'
+import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
 import TakeawayMenuWithSidebar from '@/components/v2/takeaway-components/takeaway-categories/TakeawayMenuWithSidebar'
 
 type ParamsType = {
@@ -36,10 +39,13 @@ export const generateMetadata = async ({
 const TakeawayMenuItemPage = () => {
 	return (
 		<>
-			<div className='container mt-[176px] text-primary'>
-				<hr className='my-8 border-t-[0.5px] border-dotted border-[#727272] md:my-24' />
-
-				<h2 className='my-8 text-center font-lora text-2xl font-medium capitalize leading-[1.3] tracking-[0.03em] text-primary md:my-24 md:text-[56px]'>
+			<GradientWrapper>
+				<div className='px-2 md:px-4 _desktop-md:px-8'>
+					<BannerContents text='Takeaway' image={bg.src} />
+				</div>
+			</GradientWrapper>
+			<div className='container text-primary'>
+				<h2 className='my-8 text-center font-lora text-2xl font-medium capitalize leading-[1.3] tracking-[0.03em] text-primary md:my-12 md:text-[56px]'>
 					Food Menu
 				</h2>
 				<TakeawayMenuWithSidebar />

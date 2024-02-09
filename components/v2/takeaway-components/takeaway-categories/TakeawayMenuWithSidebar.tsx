@@ -69,6 +69,7 @@ const TakeawayMenuWithSidebar = (props: Props) => {
 									lastPartPath == item.slug ? 'text-secondary underline ' : ''
 								)}
 								href={`/takeaway-menu/${item.slug}`}
+								scroll={false}
 							>
 								{item.name}
 							</Link>

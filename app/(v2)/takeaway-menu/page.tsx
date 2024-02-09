@@ -16,7 +16,7 @@ const Page = () => {
 		<>
 			<GradientWrapper>
 				<div className='px-2 md:px-4 _desktop-md:px-8'>
-					<BannerContents text='Private event' image={bg.src} />
+					<BannerContents text='Takeaway' image={bg.src} />
 				</div>
 				<SectionHeader
 					title='take our fresh, delicious fare home for an unforgettable experience'
