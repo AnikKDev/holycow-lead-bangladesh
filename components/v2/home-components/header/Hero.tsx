@@ -8,12 +8,12 @@ type Props = {}
 
 const hero = (props: Props) => {
 	return (
-		<div className='mx-auto h-[792px] px-10'>
+		<div className='mx-auto px-4 _desktop-md:px-10'>
 			<div
 				style={{ background: `url(${bg.src})` }}
-				className='h-full w-full overflow-hidden rounded-[32px] bg-cover bg-no-repeat'
+				className='h-full w-full overflow-hidden rounded-2xl bg-cover bg-no-repeat'
 			>
-				<div className='flex h-full w-full items-center justify-center bg-gradient-to-b from-[#0B0600]/70 to-[#4D412F]/70 bg-cover bg-no-repeat'>
+				<div className='flex h-full w-full items-center justify-center bg-gradient-to-b from-[#0B0600]/70 to-[#4D412F]/70 bg-cover bg-no-repeat py-8 _desktop-md:py-[184px]'>
 					<div className='flex  max-w-[1627px] flex-col items-center justify-center gap-8 text-center '>
 						<div className='space-y-2 text-[#EEDFC8]'>
 							<p className='text-center font-lora text-lg font-medium leading-[1.3] tracking-[0.04em]'>

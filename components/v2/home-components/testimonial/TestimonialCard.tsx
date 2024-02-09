@@ -1,14 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
+import { Props } from 'next/script'
 import DoubleQuotation from '@/assets/v2/home-page/double-quotation.svg'
+import { Review } from '@/types'
 import { Rating as ReactRating, ThinStar } from '@smastrom/react-rating'
-
-type Props = {
-	message: string
-	name: string
-	rating: number
-	image: string
-}
 
 const ratingStyles = {
 	itemShapes: ThinStar,
@@ -19,7 +14,7 @@ const ratingStyles = {
 	itemStrokeWidth: 1,
 }
 
-const TestimonialCard = ({ message, name, rating, image }: Props) => {
+const TestimonialCard = ({ review, reviewer, rating, image }: Review) => {
 	return (
 		<article className='rounded border border-[#E9DBBC] bg-[#f3f2eb]'>
 			<div className='mb-[77px] ml-12 mt-[50px] flex gap-[18px]'>
@@ -31,7 +26,7 @@ const TestimonialCard = ({ message, name, rating, image }: Props) => {
 					alt='double quotation'
 				/>
 				<p className='pt-[9.11px] font-open_sans text-lg font-semibold italic leading-7 tracking-[0.04em] text-[#8A877E]'>
-					{`“${message}”`}
+					{`“${review}”`}
 				</p>
 			</div>
 			<div className='relative bg-[#905A09]/10 py-[43px] pl-[60px]'>
@@ -42,11 +37,11 @@ const TestimonialCard = ({ message, name, rating, image }: Props) => {
 							letterSpacing: 1.3,
 						}}
 					>
-						{name}
+						{reviewer}
 					</h4>
 					<ReactRating
 						style={{ maxWidth: 100 }}
-						value={rating}
+						value={parseInt(rating)}
 						readOnly
 						itemStyles={ratingStyles}
 					/>
@@ -56,7 +51,7 @@ const TestimonialCard = ({ message, name, rating, image }: Props) => {
 						className='rounded-full'
 						width={125}
 						height={125}
-						src={image}
+						src={image ? image : 'http://via.placeholder.com/125'}
 						alt='user name'
 						style={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}
 					/>

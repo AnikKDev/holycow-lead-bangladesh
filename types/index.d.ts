@@ -17,3 +17,9 @@ export type MenuItem = {
 	href: string
 	icon?: IconType
 }
+export type Review = {
+	reviewer: string
+	review: string
+	rating: string
+	image?: string
+}
