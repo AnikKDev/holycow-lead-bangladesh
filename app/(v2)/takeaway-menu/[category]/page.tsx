@@ -44,13 +44,15 @@ const TakeawayMenuItemPage = () => {
 					<BannerContents text='Takeaway' image={bg.src} />
 				</div>
 			</GradientWrapper>
-			<div className='container text-primary'>
-				<h2 className='my-8 text-center font-lora text-2xl font-medium capitalize leading-[1.3] tracking-[0.03em] text-primary md:my-12 md:text-[56px]'>
+			<div className='container my-16 flex flex-col items-center gap-8 text-primary md:gap-16'>
+				<h2 className='text-center font-lora text-2xl font-medium capitalize leading-[1.3] tracking-[0.03em] text-primary md:text-[56px]'>
 					Food Menu
 				</h2>
 				<TakeawayMenuWithSidebar />
-
-				<Link className='capitalize ' href={'/'}>
+				<Link
+					className='v2-custom-button bg-background px-8 py-2 text-sm font-medium capitalize leading-[1.7] tracking-[0.04em]'
+					href={'/'}
+				>
 					Order Online
 				</Link>
 			</div>

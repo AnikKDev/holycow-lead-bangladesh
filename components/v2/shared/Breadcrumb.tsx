@@ -10,7 +10,7 @@ const Breadcrumb = () => {
 	const pathNames = paths.split('/').filter((path) => path)
 	return (
 		<div>
-			<ul className='flex items-center gap-2 font-lora text-lg font-semibold leading-[1.3] tracking-[0.04] text-[#EEDFC8]'>
+			<ul className='flex items-center gap-2 font-lora text-base font-medium leading-[1.3] tracking-[0.04] text-[#EEDFC8]'>
 				<li>
 					<Link className='font-lora' href={'/'}>
 						Home
