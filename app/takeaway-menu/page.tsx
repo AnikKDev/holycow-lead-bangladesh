@@ -1,7 +1,9 @@
 import React from 'react'
 import { Metadata } from 'next'
-import Head from 'next/head'
+import bg from '@/assets/private-info/private-info-bg.png'
 
+import BannerContents from '@/components/v2/shared/banner-contents'
+import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
 import SectionHeader from '@/components/v2/shared/SectionHeader'
 import TakeawayMenu from '@/components/v2/takeaway-components/takeaway-menu/TakeawayMenu'
 
@@ -14,20 +16,19 @@ export const metadata: Metadata = {
 export default function AboutUs({}: Props) {
 	return (
 		<>
-			<Head>
-				<title>Best Indian Takeaway Menu | Holy Cow | Fine Indian Food</title>
-			</Head>
-
-			<div className='container'>
-				<div className='mt-[176px]'>
-					<SectionHeader
-						title='take our fresh, delicious fare home for an unforgettable experience'
-						subTitle='Grab-N-go'
-						subTitleSize='medium'
-					/>
-					<hr className='my-24 border-t-[0.5px] border-dotted border-[#727272]' />
-					<TakeawayMenu />
+			<GradientWrapper>
+				<div>
+					<BannerContents text='Private event' image={bg.src} />
 				</div>
+				<SectionHeader
+					title='take our fresh, delicious fare home for an unforgettable experience'
+					subTitle='Grab-N-go'
+					subTitleSize='medium'
+				/>
+				<hr className='my-24 border-t-[0.5px] border-dotted border-[#727272]' />
+			</GradientWrapper>
+			<div className='mx-auto w-[1327px] space-y-24'>
+				<TakeawayMenu />
 			</div>
 		</>
 	)
