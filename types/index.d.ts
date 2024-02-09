@@ -37,3 +37,9 @@ export type TakeawayMenu = {
 	availability: boolean
 	items: TakeawayMenuList
 }
+export type Review = {
+	reviewer: string
+	review: string
+	rating: string
+	image?: string
+}

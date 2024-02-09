@@ -18,13 +18,16 @@ const CarousalSection = (props: Props) => {
 			opts={{
 				align: 'start',
 			}}
-			className='w-full max-w-full'
+			className='max-w-full'
 		>
 			<CarouselPrevious className='-top-8 left-0 text-primary' />
 			<CarouselNext className='-top-8 left-12 text-primary' />
 			<CarouselContent>
 				{Array.from({ length: 10 }).map((_, index) => (
-					<CarouselItem key={index} className='h-[457px] w-[421px] basis-1/3'>
+					<CarouselItem
+						key={index}
+						className='desktop:basis-1/3 w-[421px] basis-1/2'
+					>
 						<Image
 							src={'http://via.placeholder.com/421x457'}
 							width={421}

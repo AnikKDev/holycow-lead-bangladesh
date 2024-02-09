@@ -7,7 +7,7 @@ type Props = {}
 
 const WonderfulRestaurant = (props: Props) => {
 	return (
-		<div className='mx-auto w-[1327px] space-y-24'>
+		<div className='mx-auto max-w-[1327px] space-y-24 p-10'>
 			<div className='max-w-[909px]'>
 				<SectionHeader
 					title='Come for our fresh, delicious fare, and stay for a dining experience you won’t forget.'

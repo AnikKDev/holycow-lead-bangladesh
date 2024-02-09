@@ -17,14 +17,14 @@ type Props = {}
 export default function AboutUs({}: Props) {
 	return (
 		<>
-			<Header />
-			<WonderfulRestaurant />
+			{/* <Header /> */}
+			{/* <WonderfulRestaurant />
 			<HollyChef />
 			<Specialty />
 			<GrabNGo />
 			<AwardsRecognition />
 			<VideoPlayer />
-			<PhotoGallery />
+			<PhotoGallery /> */}
 			<Testimonial />
 		</>
 	)

@@ -8,8 +8,8 @@ import '@/styles/globals.css'
 import { Lora, Open_Sans } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
-import AppTopBar from '@/components/shared/app-topbar'
 import FooterUpdated from '@/components/shared/footer-updated'
+import AppTopBar from '@/components/shared/NavComponentsV2/app-topbar'
 
 const fontOpenSans = Open_Sans({
 	subsets: ['latin'],
