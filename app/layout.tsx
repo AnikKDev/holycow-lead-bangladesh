@@ -80,7 +80,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 			<body className={cn('min-h-screen bg-foreground antialiased')}>
 				<ReduxProvider>
 					{/* navbar / topbar */}
-					<AppTopBar />
+					{/* <AppTopBar /> */}
 					<main className='_desktop-lg:max-w-7xl mx-auto'>{children}</main>
 					{/* <Footer /> */}
 					{/* <FooterUpdated /> */}

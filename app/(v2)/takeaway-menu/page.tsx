@@ -1,19 +1,17 @@
 import React from 'react'
 import { Metadata } from 'next'
-import bg from '@/assets/private-info/private-info-bg.png'
+import bg from '@/assets/v2/secondary-bg.png'
 
 import BannerContents from '@/components/v2/shared/banner-contents'
 import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
 import SectionHeader from '@/components/v2/shared/SectionHeader'
 import TakeawayMenu from '@/components/v2/takeaway-components/takeaway-menu/TakeawayMenu'
 
-type Props = {}
-
 export const metadata: Metadata = {
 	title: 'Best Indian Takeaway Menu',
 }
 
-export default function AboutUs({}: Props) {
+const Page = () => {
 	return (
 		<>
 			<GradientWrapper>
@@ -33,3 +31,5 @@ export default function AboutUs({}: Props) {
 		</>
 	)
 }
+
+export default Page
