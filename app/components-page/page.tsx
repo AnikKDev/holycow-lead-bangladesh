@@ -18,14 +18,14 @@ export default function AboutUs({}: Props) {
 	return (
 		<>
 			<Header />
-			<WonderfulRestaurant />
+			{/* <WonderfulRestaurant />
 			<HollyChef />
 			<Specialty />
 			<GrabNGo />
 			<AwardsRecognition />
 			<VideoPlayer />
 			<PhotoGallery />
-			<Testimonial />
+			<Testimonial /> */}
 		</>
 	)
 }
