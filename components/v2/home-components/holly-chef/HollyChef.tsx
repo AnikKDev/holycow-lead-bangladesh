@@ -16,8 +16,8 @@ const HollyChef = (props: Props) => {
 				containsAlign='left'
 			/>
 			<div className='flex justify-between'>
-				<div className='flex max-w-[460px] flex-col gap-24'>
-					<div className='flex max-w-[360px] flex-col gap-16'>
+				<div className='flex flex-col gap-8 overflow-hidden md:max-w-[460px] md:gap-24'>
+					<div className='flex flex-col gap-8 md:max-w-[360px] md:gap-16'>
 						<p className='font-open_sans text-base leading-7 tracking-[0.04em] text-[#414141]'>
 							It’s because we take the finest quality, authentic, fresh
 							ingredients. Our qualified, experienced chefs then creatively
@@ -31,11 +31,12 @@ const HollyChef = (props: Props) => {
 							width={340}
 							height={399}
 							alt='restaurant-menu-2'
+							className='self-center'
 						/>
 					</div>
 					<div className='flex flex-col gap-3 tracking-[0.04em]'>
 						<p
-							className='font-lora text-xl font-medium capitalize  text-primary'
+							className='font-lora text-xl font-medium capitalize  text-foreground'
 							style={{
 								lineHeight: 1.58,
 							}}
@@ -50,14 +51,13 @@ const HollyChef = (props: Props) => {
 						</p>
 					</div>
 				</div>
-				<div className='relative flex w-full justify-end mobile-md:hidden md:min-h-[975px]'>
-					<span className='absolute -bottom-[5.72%] -right-[17.8%] -top-[5.72%] left-[34.98%] -z-10 bg-background'></span>
+				<div className='relative flex hidden w-full justify-end md:block'>
 					<Image
 						src={img1}
 						alt='restaurant'
 						width={767}
 						height={975}
-						className='max-w-[75%]'
+						style={{ boxShadow: '178px 2px 0px 48px rgba(232,211,162,1)' }}
 					/>
 				</div>
 			</div>

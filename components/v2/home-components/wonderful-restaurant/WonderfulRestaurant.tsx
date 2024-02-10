@@ -20,7 +20,7 @@ const restaurantImages = [
 ]
 const WonderfulRestaurant = (props: Props) => {
 	return (
-		<div className='container space-y-24 p-10'>
+		<div className='container my-14 space-y-24 p-10 md:my-[144px]'>
 			<SectionHeader
 				title='Come for our fresh, delicious fare, and stay for a dining experience you won’t forget.'
 				subTitle='Wonderful Restaurant'

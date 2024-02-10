@@ -7,21 +7,15 @@ import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
 } from '@/components/ui/carousel'
 
 import SectionHeader from '../../shared/SectionHeader'
 
-type Props = {}
-
-const PhotoGallery = (props: Props) => {
+const PhotoGallery = () => {
 	return (
-		<div className='flex max-w-full items-center justify-center bg-red-100'>
-			<div className='flex flex-col p-10 md:flex-row'>
-				<LeftDiv />
-				<CarousalDiv />
-			</div>
+		<div className='container my-14 flex flex-col md:my-[144px] md:flex-row'>
+			<LeftDiv />
+			<CarousalDiv />
 		</div>
 	)
 }
@@ -30,7 +24,7 @@ export default PhotoGallery
 
 const LeftDiv = () => {
 	return (
-		<div className='mr-10 max-w-[700px] space-y-6 mobile-md:py-8'>
+		<div className='max-w-[700px] space-y-6 mobile-md:py-8 md:mr-10'>
 			<SectionHeader
 				title='Photo Gallery'
 				subTitle='Instagram'
@@ -52,13 +46,13 @@ const CarousalDiv = () => {
 			opts={{
 				align: 'start',
 			}}
-			className=''
+			className='md:max-w-[60%]'
 		>
 			<CarouselContent>
 				{Array.from({ length: 10 }).map((_, index) => (
 					<CarouselItem
 						key={index}
-						className='basis-1/2 md:basis-1/2 _desktop-sm:basis-1/4 _desktop-md:basis-1/5'
+						className='basis-1/2 md:basis-1/2 _desktop-md:basis-1/3'
 					>
 						<div className='group relative flex cursor-pointer justify-center'>
 							<Image

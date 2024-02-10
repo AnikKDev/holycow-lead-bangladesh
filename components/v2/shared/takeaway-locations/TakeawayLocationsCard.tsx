@@ -16,9 +16,9 @@ const TakeawayLocationsCard = ({
 	storeLocation,
 }: Props) => {
 	return (
-		<article className='relative text-primary'>
+		<article className='relative text-foreground'>
 			<div
-				className='relative z-20 mx-4 my-[22px] mt-4 flex max-h-[355px] flex-col items-center gap-5 rounded-3xl border-t border-[#905A09] bg-background px-5 pb-6 pt-9'
+				className='relative z-20 mx-4 my-[22px] mt-4 flex flex-col items-center gap-8 rounded-3xl border-t border-[#905A09] bg-background p-8'
 				style={{
 					boxShadow:
 						'0px 39px 16px rgba(144, 90, 9, 0.01), 0px 22px 13px rgba(144, 90, 9, 0.05), 0px 10px 10px rgba(144, 90, 9, 0.09), 0px 2px 5px rgba(144, 90, 9, 0.1)',
@@ -71,13 +71,13 @@ const TakeawayLocationsCard = ({
 					</div>
 				</div>
 				<Link
-					className='v2-custom-button bg-background px-8 py-2 text-xs font-medium capitalize leading-[1.7] tracking-[0.04em]'
+					className='v2-custom-button bg-primary px-8 py-2 text-xs font-medium capitalize leading-[1.7] tracking-[0.04em]'
 					href={storeLocation}
 				>
 					View Location
 				</Link>
 			</div>
-			<span className='absolute bottom-0  z-10 h-1/2 w-full bg-primary'></span>
+			<span className='absolute bottom-0 z-10 h-1/2 w-full bg-primary'></span>
 		</article>
 	)
 }

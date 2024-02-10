@@ -1,6 +1,5 @@
 import React from 'react'
 import Image from 'next/image'
-import { Props } from 'next/script'
 import DoubleQuotation from '@/assets/v2/home-page/double-quotation.svg'
 import { Review } from '@/types'
 import { Rating as ReactRating, ThinStar } from '@smastrom/react-rating'
@@ -16,8 +15,8 @@ const ratingStyles = {
 
 const TestimonialCard = ({ review, reviewer, rating, image }: Review) => {
 	return (
-		<article className='relative flex h-full flex-col justify-between rounded border border-[#E9DBBC] bg-background p-4'>
-			<div className='flex h-full gap-[18px] md:mb-[77px] md:ml-12 md:mt-[50px]'>
+		<article className='relative flex h-full flex-col justify-between rounded border border-[#E9DBBC] bg-background'>
+			<div className='flex h-full gap-[18px] p-4 md:mb-[77px] md:ml-12 md:mt-[50px]'>
 				<div className='flex flex-1'>
 					<Image
 						className='h-[46px] w-[58px] rotate-[-10.35] md:h-[66px] md:w-[78px]'
@@ -31,10 +30,10 @@ const TestimonialCard = ({ review, reviewer, rating, image }: Review) => {
 					</p>
 				</div>
 			</div>
-			<div className='relative bg-background/10 md:py-[43px] md:pl-[60px]'>
+			<div className='relative bg-[#905A091A] p-4 md:py-[43px] md:pl-[60px]'>
 				<div className='flex flex-col gap-2 md:gap-4'>
 					<h4
-						className='text-xl font-medium tracking-[0.04em] text-primary md:text-3xl'
+						className='text-xl font-medium tracking-[0.04em] text-foreground md:text-3xl'
 						style={{
 							letterSpacing: 1.3,
 						}}

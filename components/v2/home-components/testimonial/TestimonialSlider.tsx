@@ -22,7 +22,7 @@ const TestimonialSlider = ({ reviews }: TestimonialSlider) => {
 	useEffect(() => {
 		const intervalId = setInterval(() => {
 			nextSlider()
-		}, 300000)
+		}, 3000)
 
 		return () => {
 			clearInterval(intervalId)
