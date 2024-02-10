@@ -28,6 +28,10 @@ const TopNavigationSidebarModal = ({
 				<SheetContent
 					side='left'
 					className=' h-full w-[400px] bg-primary p-5 mobile-sm:w-full '
+					closeBtnProps={{
+						containerClassName: 'top-[30px] right-[30px]',
+						iconClassName: 'h-5 w-5',
+					}}
 				>
 					<div className='flex h-full flex-col flex-nowrap gap-0 bg-[#EEEAE2] px-4 py-3 mobile-sm:w-full '>
 						<SheetHeader className='shrink-0 px-3 pb-4'>
@@ -130,37 +134,37 @@ const TopNavigationSidebarModal = ({
 									href={'https://www.instagram.com/holycowfineindianfood/'}
 									target='_blank'
 								>
-									<Instagram size={24} />
+									<Instagram size={22} />
 								</Link>
 								<Link
 									href={'https://www.facebook.com/holycowfineindianfood/'}
 									target='_blank'
 								>
-									<Facebook size={24} />
+									<Facebook size={22} />
 								</Link>
 								<Link
 									href={'https://twitter.com/HolyCowLondonUK/'}
 									target='_blank'
 								>
-									<Twitter size={24} />
+									<Twitter size={22} />
 								</Link>
 								<Link
 									href={'https://www.pinterest.co.uk/HolyCowFineIndianFood/'}
 									target='_blank'
 								>
-									<FaPinterestP size={24} />
+									<FaPinterestP size={22} />
 								</Link>
 								<Link
 									href={'https://www.tumblr.com/holycowfineindianfood'}
 									target='_blank'
 								>
-									<IoLogoTumblr size={24} />
+									<IoLogoTumblr size={22} />
 								</Link>
 								<Link
 									href={'https://www.tiktok.com/@holycowfineindianfood/'}
 									target='_blank'
 								>
-									<IoLogoTiktok size={24} />
+									<IoLogoTiktok size={22} />
 								</Link>
 							</div>
 						</SheetFooter>
