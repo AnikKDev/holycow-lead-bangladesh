@@ -28,9 +28,9 @@ module.exports = withBundleAnalyzer({
 				// protocol: 'http',
 				// hostname: 'ec2-15-168-142-203.ap-northeast-3.compute.amazonaws.com',
 				// port: '', http:/13.43.227.150:8000
-				protocol: 'https',
-				hostname: 'hc-api.alexpy.com',
-				// port: '8000',
+				protocol: 'http', //'https',
+				hostname: '13.43.227.150', // 'hc-api.alexpy.com',
+				port: '8000',
 			},
 			{
 				// protocol: 'http',
