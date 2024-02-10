@@ -13,12 +13,13 @@ import AccountSidebarModal from '../account/account-sidebar-modal'
 import CartSidebar from '../cart/cart-sidebar'
 import { LoginRegisterModal } from '../checkout/login-register-modal'
 import { TopDropdownNavItesm } from './top-dropdown-navs'
+import TopNavigationSidebarModal from './top-navigation-sidebar'
 
 const NewTopNav = () => {
 	const [showCartSidebar, setShowCartSidebar] = useState(false)
 	const [showAccountSidebar, setShowAccountSidebar] = useState(false)
 	const [showLoginRegModal, setShowLoginRegModal] = useState(false)
-
+	const [showNavSidebar, setShowNavSidebar] = useState(false)
 	const totalCartItems = useAppSelector(selectTotalCartItems)
 	const { auth } = useAuthState()
 
@@ -30,6 +31,9 @@ const NewTopNav = () => {
 					<div>
 						{/* <CiMenuBurger size={38} /> */}
 						<AlignJustify
+							onClick={() => {
+								setShowNavSidebar(true)
+							}}
 							className='cursor-pointer text-primary-foreground'
 							size={22}
 						/>
@@ -100,6 +104,11 @@ const NewTopNav = () => {
 			<LoginRegisterModal
 				showModal={showLoginRegModal}
 				setShowModal={setShowLoginRegModal}
+			/>
+
+			<TopNavigationSidebarModal
+				showNavSidebar={showNavSidebar}
+				setShowNavSidebar={setShowNavSidebar}
 			/>
 		</>
 	)
