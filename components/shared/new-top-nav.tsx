@@ -28,10 +28,11 @@ const NewTopNav = () => {
 				{/* left nav-items*/}
 				<div className='flex flex-row items-center justify-between gap-2'>
 					<div>
-						<div className=''>
-							{/* <CiMenuBurger size={38} /> */}
-							<AlignJustify className='text-primary-foreground' size={22} />
-						</div>
+						{/* <CiMenuBurger size={38} /> */}
+						<AlignJustify
+							className='cursor-pointer text-primary-foreground'
+							size={22}
+						/>
 					</div>
 
 					{/* middle nav-items */}
