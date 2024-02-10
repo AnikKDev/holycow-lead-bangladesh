@@ -1,24 +1,30 @@
 import React from 'react'
+import Image from 'next/image'
+import bg from '@/assets/career/career-and-offer-bg.png'
 import AwardBackground from '@/assets/v2/home-page/award-bg.png'
 import OffersImg from '@/assets/v2/offers/offers.png'
 
-import SharedBanner from '@/components/v2/shared/shared-banner'
+import { cn } from '@/lib/utils'
+import OffersCard from '@/components/v2/offers/offers-card'
+import BannerContents from '@/components/v2/shared/banner-contents'
+import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
+import SectionHeader from '@/components/v2/shared/SectionHeader'
 
 type Props = {}
 
 export default function Offers({}: Props) {
 	return (
-		<SharedBanner
-			backgroundImage={AwardBackground}
-			bannerContentsText='Offers'
-			cardInfo='Monday to Thursday till 31st January 2024! Offer available
-		at Putney and Canary Wharf restaurant via online booking
-		only.'
-			cardSubtitle='3-course meal + welcome drink, all for just $30 per person'
-			cardTitle='Ring In The New Year With Culinary Delights!'
-			offerImage={OffersImg}
-			sectionHeaderTitle='Whats On'
-			spoonText=' Latest Offers'
-		/>
+		<div className='mb-32'>
+			<GradientWrapper>
+				{/* banner here */}
+				<div>
+					<BannerContents text='Career' image={bg.src} />
+				</div>
+				{/* page info */}
+				<SectionHeader title='Whats On' showSpoon={false} />
+				{/* offer cards */}
+				<OffersCard backgroundImage={AwardBackground} offerImage={OffersImg} />
+			</GradientWrapper>
+		</div>
 	)
 }
