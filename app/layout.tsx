@@ -2,6 +2,7 @@ import { ReduxProvider } from '@/redux/provider'
 
 import { siteConfig } from '@/config/site'
 
+import '@smastrom/react-rating/style.css'
 import '@/styles/globals.css'
 
 import { Lora, Open_Sans } from 'next/font/google'
@@ -76,13 +77,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
 			suppressHydrationWarning
 		>
 			<head />
-			<body className={cn('min-h-screen bg-background antialiased')}>
+			<body className={cn('min-h-screen bg-foreground antialiased')}>
 				<ReduxProvider>
 					{/* navbar / topbar */}
 					<AppTopBar />
 					<main className='_desktop-lg:max-w-7xl mx-auto'>{children}</main>
 					{/* <Footer /> */}
-					<FooterUpdated />
+					{/* <FooterUpdated /> */}
 				</ReduxProvider>
 			</body>
 		</html>
