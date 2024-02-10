@@ -7,7 +7,7 @@ type Props = {}
 
 const Specialty = (props: Props) => {
 	return (
-		<section className='mt-[198px] flex flex-col items-center gap-24'>
+		<section className='flex flex-col items-center gap-24'>
 			<SectionHeader
 				subTitle='OUR Specialty'
 				title='Menu that fits you palette'

@@ -1,5 +1,11 @@
-import React from 'react'
+'use client'
 
+import React from 'react'
+import { useGetSpecialityMenuQuery } from '@/redux/slices/takeawayMenuSlice/takeawayMenuSlice'
+
+import { Skeleton } from '@/components/ui/skeleton'
+
+import MenuFoodCard from '../../shared/card/MenuFoodCard'
 import SpecialtyItem from './SpecialtyItem'
 
 type Props = {}
@@ -64,15 +70,32 @@ const specialtyItems = [
 ]
 
 const SpecialtyList = (props: Props) => {
+	const { data, isLoading } = useGetSpecialityMenuQuery()
+
+	if (isLoading) {
+		return (
+			<section className='grid grid-cols-12 gap-8'>
+				<div className='col-span-3'>
+					<ul className='flex flex-col gap-8'>
+						<div className='space-y-2'>
+							<Skeleton className='h-4 w-[250px]' />
+							<Skeleton className='h-4 w-[200px]' />
+						</div>
+					</ul>
+				</div>
+			</section>
+		)
+	}
+
 	return (
-		<div className='grid grid-cols-4 grid-rows-2 gap-x-8 gap-y-12'>
-			{specialtyItems.map((item, index) => (
-				<SpecialtyItem
-					key={index}
-					foodImage={item.food_image}
-					foodName={item.food_name}
-					price={item.price}
+		<div className='grid grid-cols-1 gap-x-8  gap-y-12 md:grid-cols-2 _desktop-sm:grid-cols-3 _desktop-md:grid-cols-4'>
+			{data?.data.map((item) => (
+				<MenuFoodCard
+					id={item.id}
 					description={item.description}
+					image={item.image}
+					item_name={item.item_name}
+					price={item.price}
 				/>
 			))}
 		</div>

@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { Card, CardContent } from '@/components/ui/card'
 import {
 	Carousel,
 	CarouselContent,
@@ -10,26 +9,28 @@ import {
 	CarouselPrevious,
 } from '@/components/ui/carousel'
 
-type Props = {}
+type Props = {
+	restaurantImages: { 'item-name': string; image: string }[]
+}
 
-const CarousalSection = (props: Props) => {
+const CarousalSection = ({ restaurantImages }: Props) => {
 	return (
 		<Carousel
 			opts={{
 				align: 'start',
 			}}
-			className='w-full max-w-full'
+			className='max-w-full'
 		>
 			<CarouselPrevious className='-top-8 left-0 text-primary' />
 			<CarouselNext className='-top-8 left-12 text-primary' />
 			<CarouselContent>
-				{Array.from({ length: 10 }).map((_, index) => (
-					<CarouselItem key={index} className='h-[457px] w-[421px] basis-1/3'>
+				{restaurantImages.map((restaurantImage, index) => (
+					<CarouselItem key={index} className='basis-1/2  md:basis-1/3'>
 						<Image
-							src={'http://via.placeholder.com/421x457'}
+							src={restaurantImage.image}
 							width={421}
 							height={457}
-							alt='image'
+							alt={restaurantImage['item-name']}
 						/>
 					</CarouselItem>
 				))}

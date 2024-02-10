@@ -1,5 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
+import img1 from '@/assets/v2/home-page/holy-chef-menu-1.png'
+import img2 from '@/assets/v2/home-page/holy-chef-menu-2.png'
 
 import SectionHeader from '../../shared/SectionHeader'
 
@@ -7,15 +9,15 @@ type Props = {}
 
 const HollyChef = (props: Props) => {
 	return (
-		<section className='mt-[192px] flex flex-col items-center gap-16'>
+		<section className='container mt-[192px] flex flex-col justify-center gap-16'>
 			<SectionHeader
 				title='What makes Holy Cow Fine Indian Food so special?'
 				subTitle='Holy Chef'
 				containsAlign='left'
 			/>
-			<div className='flex gap-[115px]'>
-				<div className='flex max-w-[453px] flex-col gap-24'>
-					<div className='flex max-w-[329px] flex-col gap-16'>
+			<div className='flex justify-between'>
+				<div className='flex max-w-[460px] flex-col gap-24'>
+					<div className='flex max-w-[360px] flex-col gap-16'>
 						<p className='font-open_sans text-base leading-7 tracking-[0.04em] text-[#414141]'>
 							It’s because we take the finest quality, authentic, fresh
 							ingredients. Our qualified, experienced chefs then creatively
@@ -25,7 +27,7 @@ const HollyChef = (props: Props) => {
 							to your door – within 45 minutes*
 						</p>
 						<Image
-							src='http://via.placeholder.com/125'
+							src={img2}
 							width={340}
 							height={399}
 							alt='restaurant-menu-2'
@@ -48,13 +50,14 @@ const HollyChef = (props: Props) => {
 						</p>
 					</div>
 				</div>
-				<div className='relative my-[63px]'>
-					<span className='absolute -top-[63px] left-[289px] -z-10 h-[1101px] w-[717px] bg-background'></span>
+				<div className='relative flex w-full justify-end mobile-md:hidden md:min-h-[975px]'>
+					<span className='absolute -bottom-[5.72%] -right-[17.8%] -top-[5.72%] left-[34.98%] -z-10 bg-background'></span>
 					<Image
-						src='http://via.placeholder.com/767x975'
+						src={img1}
 						alt='restaurant'
 						width={767}
 						height={975}
+						className='max-w-[75%]'
 					/>
 				</div>
 			</div>

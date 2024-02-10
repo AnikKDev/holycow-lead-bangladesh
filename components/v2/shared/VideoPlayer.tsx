@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import VideoImage from '@/assets/v2/home-page/video-front.png'
+import { MdPlayArrow } from 'react-icons/md'
 
 import { cn } from '@/lib/utils'
 
@@ -25,12 +26,12 @@ const VideoPlayer = (props: Props) => {
 	}
 
 	return (
-		<section className='relative mt-[144px] h-[763px]'>
+		<section className='relative max-h-[520px]'>
 			<div
-				className='relative flex h-full w-full items-center justify-center border border-[#e8d3a2]'
+				className='max-h-[520px]cursor-pointer relative flex items-center justify-center border border-[#e8d3a2]'
 				onClick={handleShowVideo}
 			>
-				<video id='videoElement' className='h-full w-full' controls>
+				<video id='videoElement' className='max-h-[520px]' controls>
 					<source
 						src='https://docs.material-tailwind.com/demo.mp4'
 						type='video/mp4'
@@ -51,17 +52,9 @@ const VideoPlayer = (props: Props) => {
 						height={0}
 					/>
 					<span className='absolute bottom-0 left-0 right-0 top-0 z-20 bg-[#0b0b0b] opacity-40' />
-
-					<svg
-						className='absolute z-30'
-						width='120'
-						height='120'
-						fill='none'
-						xmlns='http://www.w3.org/2000/svg'
-					>
-						<circle cx='60' cy='60' r='59.5' stroke='#E8D3A2' />
-						<path d='M76 61.5 52 76V47l24 14.5z' fill='#fff' />
-					</svg>
+					<span className='absolute z-30 flex h-20 w-20 items-center justify-center rounded-full border border-background md:h-28 md:w-28'>
+						<MdPlayArrow className='relative text-4xl text-6xl' />
+					</span>
 				</div>
 			</div>
 		</section>
