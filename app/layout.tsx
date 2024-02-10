@@ -2,14 +2,13 @@ import { ReduxProvider } from '@/redux/provider'
 
 import { siteConfig } from '@/config/site'
 
-import '@smastrom/react-rating/style.css'
 import '@/styles/globals.css'
+import '@smastrom/react-rating/style.css'
 
 import { Lora, Open_Sans } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
 import AppTopBar from '@/components/shared/app-topbar'
-import FooterUpdated from '@/components/shared/footer-updated'
 
 const fontOpenSans = Open_Sans({
 	subsets: ['latin'],
@@ -77,7 +76,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 			suppressHydrationWarning
 		>
 			<head />
-			<body className={cn('min-h-screen bg-foreground antialiased')}>
+			<body className={cn('min-h-screen bg-background antialiased')}>
 				<ReduxProvider>
 					{/* navbar / topbar */}
 					<AppTopBar />
