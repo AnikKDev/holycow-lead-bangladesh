@@ -18,7 +18,7 @@ export default function Offers({}: Props) {
 			<GradientWrapper>
 				{/* banner here */}
 				<div>
-					<BannerContents text='Career' image={bg.src} />
+					<BannerContents text='Offers' image={bg.src} />
 				</div>
 				{/* page info */}
 				<SectionHeader title='Whats On' showSpoon={false} />
