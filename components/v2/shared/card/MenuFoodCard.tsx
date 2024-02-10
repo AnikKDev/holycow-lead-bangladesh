@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import { TakeawayMenuItem } from '@/types'
 
-import { Skeleton } from '@/components/ui/skeleton'
-
 const MenuFoodCard = ({
 	image,
 	item_name,
