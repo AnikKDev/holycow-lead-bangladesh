@@ -11,7 +11,7 @@ const AppTopBar = () => {
 	}
 	return (
 		<>
-			<div className='sticky top-0 z-[1038] flex h-[75px] items-center justify-center  bg-[#E8D3A2] mobile-md:h-16'>
+			<div className='sticky top-0 z-[1038] flex h-[75px] items-center justify-center  bg-primary mobile-md:h-16'>
 				<TopNavV2 />
 			</div>
 		</>

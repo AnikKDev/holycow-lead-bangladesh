@@ -29,7 +29,7 @@ const FastDelivery = (props: Props) => {
 		<div className='m-10 text-center  md:text-right'>
 			<div className='max-w-[620px] space-y-8'>
 				<div className='space-y-2'>
-					<h2 className='font-lora text-4xl font-semibold leading-[1.3] tracking-[0.04em] text-[#0C0B08] md:text-6xl md:leading-[1.3]'>
+					<h2 className='font-lora text-4xl font-semibold leading-[1.3] tracking-[0.04em] text-foreground md:text-6xl md:leading-[1.3]'>
 						Fast Delivery
 					</h2>
 					<div className='flex items-center justify-center md:justify-end '>
@@ -68,7 +68,7 @@ const FastDelivery = (props: Props) => {
 					hot into special stay-fresh packs, ready to collect, or be delivered
 					to your door – within 45 minutes*
 				</p>
-				<Button className='rounded-none bg-[#E8D3A2] font-lora text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-[#0C0B08]'>
+				<Button className='rounded-none bg-primary font-lora text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-foreground'>
 					Takeaway / Order Online
 				</Button>
 			</div>
@@ -81,7 +81,7 @@ const FineDine = (props: Props) => {
 		<div className='m-10 text-center md:text-left'>
 			<div className='max-w-[620px] space-y-8'>
 				<div className='space-y-2'>
-					<h2 className='font-lora text-4xl font-semibold leading-[1.3] tracking-[0.04em] text-[#0C0B08] md:text-6xl md:leading-[1.3]'>
+					<h2 className='font-lora text-4xl font-semibold leading-[1.3] tracking-[0.04em] text-foreground md:text-6xl md:leading-[1.3]'>
 						Fine Dine
 					</h2>
 					<div className='flex items-center justify-center md:justify-start '>
@@ -119,7 +119,7 @@ const FineDine = (props: Props) => {
 					its best, to see what can be done when you give the highest quality
 					ingredients to the best Indian chefs.
 				</p>
-				<Button className='rounded-none bg-[#E8D3A2] font-lora text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-[#0C0B08]'>
+				<Button className='rounded-none bg-primary font-lora text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-foreground'>
 					Book a table
 				</Button>
 			</div>

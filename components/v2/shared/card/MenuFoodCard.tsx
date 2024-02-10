@@ -20,7 +20,7 @@ const MenuFoodCard = ({
 				alt={item_name}
 				className='border border-[#e8d3a233]'
 			/>
-			<div className='mt-[29px] flex items-center justify-between font-lora text-xl font-medium leading-[1.3] tracking-[0.04em] text-primary'>
+			<div className='mt-[29px] flex items-center justify-between font-lora text-xl font-medium leading-[1.3] tracking-[0.04em] text-foreground'>
 				<h3>{item_name}</h3>
 				<p className='flex items-center font-semibold'>£{price}</p>
 			</div>

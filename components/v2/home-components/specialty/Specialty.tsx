@@ -14,7 +14,7 @@ const Specialty = (props: Props) => {
 			/>
 			<SpecialtyList />
 			<button
-				className='bg-[#e8d3a2] px-8 py-2 font-medium tracking-[0.04em] text-primary'
+				className='bg-primary px-8 py-2 font-medium tracking-[0.04em] text-primary'
 				style={{ lineHeight: 1.75 }}
 			>
 				Explore Menu

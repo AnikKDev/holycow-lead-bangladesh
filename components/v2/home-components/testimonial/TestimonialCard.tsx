@@ -16,7 +16,7 @@ const ratingStyles = {
 
 const TestimonialCard = ({ review, reviewer, rating, image }: Review) => {
 	return (
-		<article className='relative flex h-full flex-col justify-between rounded border border-[#E9DBBC] bg-[#f3f2eb] p-4'>
+		<article className='relative flex h-full flex-col justify-between rounded border border-[#E9DBBC] bg-background p-4'>
 			<div className='flex h-full gap-[18px] md:mb-[77px] md:ml-12 md:mt-[50px]'>
 				<div className='flex flex-1'>
 					<Image
@@ -31,7 +31,7 @@ const TestimonialCard = ({ review, reviewer, rating, image }: Review) => {
 					</p>
 				</div>
 			</div>
-			<div className='relative bg-[#905A09]/10 md:py-[43px] md:pl-[60px]'>
+			<div className='relative bg-background/10 md:py-[43px] md:pl-[60px]'>
 				<div className='flex flex-col gap-2 md:gap-4'>
 					<h4
 						className='text-xl font-medium tracking-[0.04em] text-primary md:text-3xl'

@@ -69,7 +69,7 @@ const GrabNGoList = (props: Props) => {
 						storeLocation={store.location}
 					/>
 				))}
-				<span className='absolute bottom-0 h-1/2 w-full bg-[#E8D3A2]'></span>
+				<span className='absolute bottom-0 h-1/2 w-full bg-primary'></span>
 			</div>
 
 			<div className='relative mt-8 flex items-center justify-center gap-8 px-4 pb-5'>
@@ -82,7 +82,7 @@ const GrabNGoList = (props: Props) => {
 						storeLocation={store.location}
 					/>
 				))}
-				<span className='absolute bottom-0 h-1/2 w-full bg-[#E8D3A2]'></span>
+				<span className='absolute bottom-0 h-1/2 w-full bg-primary'></span>
 			</div>
 		</div>
 	)

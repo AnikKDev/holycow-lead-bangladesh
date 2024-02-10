@@ -16,7 +16,7 @@ const GrabNGoItem = ({
 }: Props) => {
 	return (
 		<article
-			className='z-10 flex w-[300px] flex-col items-center gap-10 rounded-3xl border-t border-[#905A09] bg-[#F3F2EB] px-5 py-9'
+			className='z-10 flex w-[300px] flex-col items-center gap-10 rounded-3xl border-t border-[#905A09] bg-background px-5 py-9'
 			style={{
 				boxShadow:
 					'0px 39px 16px rgba(144, 90, 9, 0.01), 0px 22px 13px rgba(144, 90, 9, 0.05), 0px 10px 10px rgba(144, 90, 9, 0.09), 0px 2px 5px rgba(144, 90, 9, 0.1)',
@@ -29,7 +29,7 @@ const GrabNGoItem = ({
 					width={80}
 					height={37}
 				/>
-				<hr className='my-5 w-full border-t border-dotted border-[#0c0b08]' />
+				<hr className='my-5 w-full border-t border-dotted border-foreground' />
 				<h4
 					className='text-center text-lg font-semibold capitalize tracking-[0.04em]'
 					style={{ lineHeight: 1.3 }}
@@ -69,7 +69,7 @@ const GrabNGoItem = ({
 				</div>
 			</div>
 			<a
-				className='w-fit bg-[#e8d3a2] px-8 py-2 text-center text-xs  font-medium tracking-[0.04em] text-[#0c0b08]'
+				className='w-fit bg-foreground px-8 py-2 text-center text-xs  font-medium tracking-[0.04em] text-foreground'
 				target='_blank'
 				href={storeLocation}
 			>

@@ -58,7 +58,7 @@ const hero = (props: Props) => {
 							added opportunity to experience a blend of new, inspired dishes
 							that uniquely combine creativity with authenticity.
 						</p>
-						<Button className='rounded-none bg-[#E8D3A2] font-lora text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-[#0C0B08]'>
+						<Button className='rounded-none bg-primary font-lora text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-foreground'>
 							Explore Menu
 						</Button>
 					</div>
