@@ -16,23 +16,25 @@ const ratingStyles = {
 
 const TestimonialCard = ({ review, reviewer, rating, image }: Review) => {
 	return (
-		<article className='rounded border border-[#E9DBBC] bg-[#f3f2eb]'>
-			<div className='mb-[77px] ml-12 mt-[50px] flex gap-[18px]'>
-				<Image
-					className='h-[66px] w-[78px] rotate-[-10.35]'
-					src={DoubleQuotation}
-					width={78}
-					height={66}
-					alt='double quotation'
-				/>
-				<p className='pt-[9.11px] font-open_sans text-lg font-semibold italic leading-7 tracking-[0.04em] text-[#8A877E]'>
-					{`“${review}”`}
-				</p>
+		<article className='relative flex h-full flex-col justify-between rounded border border-[#E9DBBC] bg-[#f3f2eb] p-4'>
+			<div className='flex h-full gap-[18px] md:mb-[77px] md:ml-12 md:mt-[50px]'>
+				<div className='flex flex-1'>
+					<Image
+						className='h-[46px] w-[58px] rotate-[-10.35] md:h-[66px] md:w-[78px]'
+						src={DoubleQuotation}
+						width={78}
+						height={66}
+						alt='double quotation'
+					/>
+					<p className='pt-[9.11px] font-open_sans text-xs font-semibold italic leading-7 tracking-[0.04em] text-[#8A877E] md:pr-9 md:text-lg'>
+						{`“${review}”`}
+					</p>
+				</div>
 			</div>
-			<div className='relative bg-[#905A09]/10 py-[43px] pl-[60px]'>
-				<div className='flex flex-col gap-4'>
+			<div className='relative bg-[#905A09]/10 md:py-[43px] md:pl-[60px]'>
+				<div className='flex flex-col gap-2 md:gap-4'>
 					<h4
-						className='text-3xl font-medium tracking-[0.04em] text-primary'
+						className='text-xl font-medium tracking-[0.04em] text-primary md:text-3xl'
 						style={{
 							letterSpacing: 1.3,
 						}}
@@ -46,7 +48,7 @@ const TestimonialCard = ({ review, reviewer, rating, image }: Review) => {
 						itemStyles={ratingStyles}
 					/>
 				</div>
-				<div className='absolute -top-[45px] right-[67px] h-[125px] w-[125px] rounded-full border border-[#E9DBBC] bg-white p-3'>
+				<div className='absolute -top-[45%] right-[10%] h-[80px] w-[80px] rounded-full border border-[#E9DBBC] bg-white p-3 md:h-[125px] md:w-[125px]'>
 					<Image
 						className='rounded-full'
 						width={125}

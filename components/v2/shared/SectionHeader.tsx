@@ -16,8 +16,8 @@ const containerClasses: Record<Props['containsAlign'], string> = {
 }
 
 const subTitleClasses: Record<Props['subTitleSize'], string> = {
-	large: 'text-[56px]',
-	medium: 'text-[48px]',
+	large: 'md:text-[56px] text-4xl leading-[1.3]',
+	medium: 'text-3xl md:text-[48px] leading-[1.3]',
 	small: 'text-[32px]',
 }
 

@@ -1,5 +1,8 @@
 import Image from 'next/image'
+import menuItemThumb from '@/assets/v2/takeaway/menu-item-thumb.png'
 import { TakeawayMenuItem } from '@/types'
+
+import { apiUrl } from '@/lib/constatns'
 
 const MenuFoodCard = ({
 	image,
@@ -7,10 +10,11 @@ const MenuFoodCard = ({
 	price,
 	description,
 }: TakeawayMenuItem) => {
+	const fullImageUrl = apiUrl + image
 	return (
 		<article className='max-w-[308px]'>
 			<Image
-				src={image ? image : 'http://via.placeholder.com/308x300'}
+				src={image ? fullImageUrl : menuItemThumb}
 				width={308}
 				height={300}
 				alt={item_name}

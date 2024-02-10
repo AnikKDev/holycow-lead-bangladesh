@@ -3,7 +3,6 @@ import Image from 'next/image'
 import instagram from '@/assets/homepage/instagram.svg'
 
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
 import {
 	Carousel,
 	CarouselContent,
@@ -19,8 +18,7 @@ type Props = {}
 const PhotoGallery = (props: Props) => {
 	return (
 		<div className='flex max-w-full items-center justify-center bg-red-100'>
-			{/* min-h-[763px]  */}
-			<div className='ml-[296px] flex flex-col p-10'>
+			<div className='flex flex-col p-10 md:flex-row'>
 				<LeftDiv />
 				<CarousalDiv />
 			</div>
@@ -32,11 +30,12 @@ export default PhotoGallery
 
 const LeftDiv = () => {
 	return (
-		<div className='mr-10 max-w-[700px] space-y-6'>
+		<div className='mr-10 max-w-[700px] space-y-6 mobile-md:py-8'>
 			<SectionHeader
 				title='Photo Gallery'
 				subTitle='Instagram'
 				containsAlign='left'
+				subTitleSize='medium'
 			/>
 			<p className='text-[#414141]'>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur
@@ -57,9 +56,11 @@ const CarousalDiv = () => {
 		>
 			<CarouselContent>
 				{Array.from({ length: 10 }).map((_, index) => (
-					<CarouselItem key={index} className='basis-1/2'>
-						{/* basis-1/5 */}
-						<div className='group relative flex cursor-pointer justify-center '>
+					<CarouselItem
+						key={index}
+						className='basis-1/2 md:basis-1/2 _desktop-sm:basis-1/4 _desktop-md:basis-1/5'
+					>
+						<div className='group relative flex cursor-pointer justify-center'>
 							<Image
 								src={'http://via.placeholder.com/301x447'}
 								width={301}

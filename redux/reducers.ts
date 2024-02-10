@@ -11,7 +11,6 @@ import bookingSlice from './slices/bookingSlice/bookingSlice'
 import counterSlice from './slices/counter/counterSlice'
 import menuPageSlice from './slices/menuPageSlice/menuPageSlice'
 import orderSlice from './slices/orderSlice/orderSlice'
-import takeawayMenuSlice from './slices/takeawayMenuSlice/takeawayMenuSlice'
 
 // all the reducers/slices we create should be inside combine reducers
 const allReducer = {
@@ -21,7 +20,6 @@ const allReducer = {
 	menuPage: menuPageSlice,
 	order: orderSlice,
 	booking: bookingSlice,
-	takeawayMenu: takeawayMenuSlice,
 }
 
 type ReducersMapObject = typeof allReducer

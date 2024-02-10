@@ -8,13 +8,15 @@ type Props = {}
 
 const DeliveryAndDine = (props: Props) => {
 	return (
-		<div className='my-[132px]'>
+		<div className='md:my-[132px]'>
 			<div className='mx-auto '>
-				{/* w-[1353px] */}
-				{/* h-[600px] */}
-				<div className='flex flex-col items-center justify-center '>
+				<div className='flex flex-col items-center justify-center md:flex-row'>
 					<FastDelivery />
-					<Image className='hidden' src={DividerLine}></Image>
+					<Image
+						className='hidden md:block'
+						src={DividerLine}
+						alt='divider'
+					></Image>
 					<FineDine />
 				</div>
 			</div>
@@ -24,13 +26,13 @@ const DeliveryAndDine = (props: Props) => {
 
 const FastDelivery = (props: Props) => {
 	return (
-		<div className='m-10 text-right'>
+		<div className='m-10 text-center  md:text-right'>
 			<div className='max-w-[620px] space-y-8'>
 				<div className='space-y-2'>
-					<h2 className='font-lora text-[64px] font-[600px] leading-[83.2px] tracking-[0.04em] text-[#0C0B08]'>
+					<h2 className='font-lora text-4xl font-semibold leading-[1.3] tracking-[0.04em] text-[#0C0B08] md:text-6xl md:leading-[1.3]'>
 						Fast Delivery
 					</h2>
-					<div className='flex items-center justify-end '>
+					<div className='flex items-center justify-center md:justify-end '>
 						<svg
 							width='40'
 							height='9'
@@ -58,7 +60,7 @@ const FastDelivery = (props: Props) => {
 						</svg>
 					</div>
 				</div>
-				<p className='font-open_sans text-[20px] font-[400px] leading-[39.2px] tracking-[0.04em] text-[#414141]'>
+				<p className='font-open_sans font-[400px] leading-[1.7] tracking-[0.04em] text-[#414141] md:text-[20px] '>
 					Here’s an added opportunity to experience a blend of new, inspired
 					dishes that uniquely combine creativity with authenticity. Fresh meats
 					and vegetables. Aromatic, piquant herbs & spices. No artificial
@@ -76,13 +78,13 @@ const FastDelivery = (props: Props) => {
 
 const FineDine = (props: Props) => {
 	return (
-		<div className='m-10 text-left'>
+		<div className='m-10 text-center md:text-left'>
 			<div className='max-w-[620px] space-y-8'>
 				<div className='space-y-2'>
-					<h2 className='font-lora text-[64px] font-[600px] leading-[83.2px] tracking-[0.04em] text-[#0C0B08]'>
+					<h2 className='font-lora text-4xl font-semibold leading-[1.3] tracking-[0.04em] text-[#0C0B08] md:text-6xl md:leading-[1.3]'>
 						Fine Dine
 					</h2>
-					<div className='flex items-center justify-start '>
+					<div className='flex items-center justify-center md:justify-start '>
 						<svg
 							width='40'
 							height='9'
@@ -109,7 +111,7 @@ const FineDine = (props: Props) => {
 						</svg>
 					</div>
 				</div>
-				<p className='font-open_sans text-[20px] font-[400px] leading-[39.2px] tracking-[0.04em] text-[#414141]'>
+				<p className='font-open_sans font-[400px] leading-[1.7] tracking-[0.04em] text-[#414141] md:text-[20px]'>
 					If you want to design your own dish, we can do that too. A little
 					creamier, a little hotter, a little more fenugreek? No problem. Just
 					ask us and we’ll cook it to order at no extra cost. Special children’s

@@ -1,5 +1,5 @@
 import { apiSlice } from '@/redux/services/apiSlice'
-import { createSlice } from '@reduxjs/toolkit'
+import { TakeawayMenuItem } from '@/types'
 
 import { AllMenuType } from '../menuPageSlice/menuPageSlice'
 
@@ -21,11 +21,13 @@ const takeawayMenuApi = apiSlice.injectEndpoints({
 	}),
 })
 
-const takeawayMenuSlice = createSlice({
-	name: 'takeawayMenu',
-	initialState,
-	reducers: {},
+const specialityMenuApi = apiSlice.injectEndpoints({
+	endpoints: (builder) => ({
+		getSpecialityMenu: builder.query<{ data: TakeawayMenuItem[] }, void>({
+			query: () => 'order/get_special_items/',
+		}),
+	}),
 })
 
-export default takeawayMenuSlice.reducer
 export const { useGetTakeawayMenuQuery } = takeawayMenuApi
+export const { useGetSpecialityMenuQuery } = specialityMenuApi

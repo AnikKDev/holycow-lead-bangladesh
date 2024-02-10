@@ -22,7 +22,7 @@ const TestimonialSlider = ({ reviews }: TestimonialSlider) => {
 	useEffect(() => {
 		const intervalId = setInterval(() => {
 			nextSlider()
-		}, 30000)
+		}, 300000)
 
 		return () => {
 			clearInterval(intervalId)
@@ -31,11 +31,11 @@ const TestimonialSlider = ({ reviews }: TestimonialSlider) => {
 	const isSmallScreen = window.innerWidth <= 768
 
 	return (
-		<div className='flex flex-row items-center overflow-hidden md:min-w-[350px]'>
-			<div className='relative overflow-hidden'>
+		<div className='relative flex w-full flex-row items-center overflow-hidden md:min-w-[350px]'>
+			<div className='relative w-full overflow-hidden'>
 				{/* slider container */}
 				<div
-					className='flex duration-300 ease-linear'
+					className='relative flex duration-300 ease-linear'
 					style={{
 						transform: `translateX(-${
 							currentSlider * (isSmallScreen ? 100 : 50)
@@ -44,7 +44,7 @@ const TestimonialSlider = ({ reviews }: TestimonialSlider) => {
 				>
 					{/* sliders */}
 					{reviews.map((each, idx) => (
-						<div key={idx} className='min-w-full p-4 md:min-w-[50%]'>
+						<div key={idx} className='relative min-w-full p-4 md:min-w-[50%]'>
 							<TestimonialCard
 								key={idx}
 								reviewer={each.reviewer}
