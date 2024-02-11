@@ -7,7 +7,7 @@ type Props = {}
 
 const Header = (props: Props) => {
 	return (
-		<div className='bg-gradient-to-b from-[#E8D3A2] to-[#F3F2EB]'>
+		<div className='bg-gradient-to-b from-primary to-background'>
 			<Hero />
 			<DeliveryAndDine />
 		</div>

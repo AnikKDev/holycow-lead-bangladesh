@@ -9,7 +9,7 @@ type Props = {}
 
 const AwardsRecognition = (props: Props) => {
 	return (
-		<section className='container'>
+		<section className='container my-14 md:my-[144px]'>
 			<SectionHeader title='Accolades Earned' subTitle='Awards & recognition' />
 			<div className='mt-8  flex flex-col items-center gap-8 md:mt-[98px] md:flex-row'>
 				<div className='flex flex-col items-center gap-2 md:items-start md:gap-4 _desktop-md:flex-row'>

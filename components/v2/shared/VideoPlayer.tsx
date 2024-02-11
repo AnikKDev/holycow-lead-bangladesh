@@ -28,7 +28,7 @@ const VideoPlayer = (props: Props) => {
 	return (
 		<section className='relative max-h-[520px]'>
 			<div
-				className='max-h-[520px]cursor-pointer relative flex items-center justify-center border border-[#e8d3a2]'
+				className='max-h-[520px]cursor-pointer relative flex items-center justify-center border border-primary'
 				onClick={handleShowVideo}
 			>
 				<video id='videoElement' className='max-h-[520px]' controls>
@@ -53,7 +53,7 @@ const VideoPlayer = (props: Props) => {
 					/>
 					<span className='absolute bottom-0 left-0 right-0 top-0 z-20 bg-[#0b0b0b] opacity-40' />
 					<span className='absolute z-30 flex h-20 w-20 items-center justify-center rounded-full border border-background md:h-28 md:w-28'>
-						<MdPlayArrow className='relative text-4xl text-6xl' />
+						<MdPlayArrow className='relative text-4xl md:text-6xl' />
 					</span>
 				</div>
 			</div>

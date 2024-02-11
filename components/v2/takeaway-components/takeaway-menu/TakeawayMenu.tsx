@@ -68,7 +68,7 @@ const menuItems = [
 const TakeawayMenu = () => {
 	return (
 		<section className='flex flex-col items-center justify-center gap-24'>
-			<h2 className='mt-24 text-center font-lora text-5xl font-medium capitalize leading-[1.3] tracking-[0.03em] text-primary'>
+			<h2 className='mt-24 text-center font-lora text-5xl font-medium capitalize leading-[1.3] tracking-[0.03em] text-foreground'>
 				Takeaway Menu
 			</h2>
 			<TakeawayMenuList takeawayMenuItems={menuItems} />

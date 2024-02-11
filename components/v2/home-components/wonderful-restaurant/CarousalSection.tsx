@@ -21,8 +21,8 @@ const CarousalSection = ({ restaurantImages }: Props) => {
 			}}
 			className='max-w-full'
 		>
-			<CarouselPrevious className='-top-8 left-0 text-primary' />
-			<CarouselNext className='-top-8 left-12 text-primary' />
+			<CarouselPrevious className='-top-8 left-0 border-[#905A09] text-[#905A09]' />
+			<CarouselNext className='-top-8 left-12 border-[#905A09] text-[#905A09]' />
 			<CarouselContent>
 				{restaurantImages.map((restaurantImage, index) => (
 					<CarouselItem key={index} className='basis-1/2  md:basis-1/3'>

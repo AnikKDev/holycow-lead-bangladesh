@@ -79,7 +79,7 @@ export default function SharedBanner({
 									{cardTitle}
 								</h4>
 								<p
-									className='text-[18px] tracking-[0.04em] text-[#0C0B08]'
+									className='text-[18px] tracking-[0.04em] text-foreground'
 									style={{ lineHeight: 1.75 }}
 								>
 									{cardSubtitle}

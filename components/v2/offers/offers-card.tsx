@@ -49,7 +49,7 @@ export default function OffersCard({ backgroundImage, offerImage }: Props) {
 							Ring In The New Year With Culinary Delights!
 						</h4>
 						<p
-							className='text-[18px] tracking-[0.04em] text-[#0C0B08]'
+							className='text-[18px] tracking-[0.04em] text-foreground'
 							style={{ lineHeight: 1.75 }}
 						>
 							3-course meal + welcome drink, all for just $30 per person

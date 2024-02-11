@@ -36,7 +36,7 @@ const SectionHeader = ({
 			)}
 		>
 			{subTitle && (
-				<h3 className='text-[22px] font-medium capitalize leading-snug tracking-[0.04em] text-secondary'>
+				<h3 className='text-[22px] font-medium capitalize leading-snug tracking-[0.04em] text-[#905A09]'>
 					{subTitle}
 				</h3>
 			)}
@@ -69,7 +69,7 @@ const SectionHeader = ({
 
 			<h2
 				className={cn(
-					'max-w-[1328px] font-medium capitalize tracking-[0.04em] text-primary',
+					'max-w-[1328px] font-medium capitalize tracking-[0.04em] text-foreground',
 					subTitleClasses[subTitleSize]
 				)}
 			>

@@ -27,7 +27,7 @@ const Testimonial = (props: Props) => {
 		)
 	}
 	return (
-		<section className='relative my-[144px] flex w-full flex-col items-center'>
+		<section className='relative my-14 flex w-full flex-col items-center md:my-[144px]'>
 			<SectionHeader title='Happy customers' subTitle='Testimonial' />
 			<div className='container relative mt-[75px] flex'>
 				<TestimonialSlider reviews={data?.data} />
