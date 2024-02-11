@@ -5,6 +5,7 @@ import BannerContents from '@/components/v2/shared/banner-contents'
 import DeliveryAndDine from '@/components/v2/home-components/header/DeliveryAndDine'
 import Branches from '@/components/v2/contact-us/branches'
 import TakeawaySection from '@/components/v2/contact-us/takeaway-section'
+import ContactForm from '@/components/v2/private-event/contact-form'
 
 type Props = {}
 
@@ -62,6 +63,10 @@ const ContactUs = (props: Props) => {
 
         />
         <TakeawaySection />
+        <div className="max-w-7xl mx-auto">
+
+          <ContactForm />
+        </div>
       </div>
     </>
   )

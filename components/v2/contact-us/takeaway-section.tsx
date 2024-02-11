@@ -5,7 +5,7 @@ type Props = {}
 
 export default function TakeawaySection({ }: Props) {
   return (
-    <div className=" p-10 text-center">
+    <div className="my-20 p-10 text-center">
       <h2 className="text-[22px] font-[500] tracking-widest text-[#905A09]">Takeaway</h2>
       <h1 className="mt-2 text-4xl font-[500] text-foreground">Holy Cow Indian Takeaway In London</h1>
       <p className="mt-4 text-lg text-primary">
