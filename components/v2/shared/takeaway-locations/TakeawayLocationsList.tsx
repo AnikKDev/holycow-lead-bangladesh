@@ -1,5 +1,3 @@
-import React from 'react'
-
 import TakeawayLocationsCard from './TakeawayLocationsCard'
 
 type Props = {}
@@ -9,37 +7,37 @@ const takeawayLocationsList = [
 		name: 'Angel',
 		address: ['98 Chapel Market,', 'London N1 9EY'],
 		phone: '0203 995 6000',
-		location: '/locations/angel',
+		location: '/takeaway-location/angel/',
 	},
 	{
 		name: 'Archway',
 		address: ['87 Junction Road, ', 'Archway, London N19 5QU'],
 		phone: '0207 263 7007',
-		location: '/locations/archway',
+		location: '/takeaway-location/archway',
 	},
 	{
 		name: 'Balham',
 		address: ['27 Balham High Road, ', 'Balham, London SW12 9AL'],
 		phone: '020 8673 8000',
-		location: '/locations/balham',
+		location: '/takeaway-location/balham',
 	},
 	{
 		name: 'Battersea',
 		address: ['152 Battersea Bridge Road, ', 'Battersea, London SW11 3AW'],
 		phone: '020 7498 2000',
-		location: 'locations/battersea',
+		location: '/takeaway-location/battersea',
 	},
 	{
 		name: 'Hammersmith',
 		address: ['354 King Street, ', 'Hammersmith, London W6 0RX'],
 		phone: '020 8748 8989',
-		location: '/locations/hammersmith',
+		location: '/takeaway-location/hammersmith',
 	},
 	{
 		name: 'Kilburn',
 		address: ['2F Dyne Road, ', 'Kilburn, London NW6 7XB'],
 		phone: '020 7372 3123',
-		location: '/locations/kilburn',
+		location: '/takeaway-location/kilburn',
 	},
 	{
 		name: 'Putney',

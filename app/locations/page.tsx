@@ -1,6 +1,5 @@
-import React from 'react'
-import { Metadata } from 'next'
 import bg from '@/assets/v2/takeaway/location-bg.png'
+import { Metadata } from 'next'
 
 import BannerContents from '@/components/v2/shared/banner-contents'
 import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
@@ -27,7 +26,7 @@ const Page = () => {
 			</GradientWrapper>
 
 			<section className='container mt-24 flex flex-col items-center gap-24'>
-				<h2 className='text-center font-lora text-[64px] font-medium capitalize leading-[1.3] tracking-[0.04em] text-primary'>
+				<h2 className='text-center font-lora text-[64px] font-medium capitalize leading-[1.3] tracking-[0.04em] text-foreground'>
 					Takeaway Locations
 				</h2>
 				<TakeawayLocationsList />

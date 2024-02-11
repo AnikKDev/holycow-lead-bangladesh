@@ -12,6 +12,8 @@ import { useAuthState } from '@/hooks/useAuthState'
 import AccountSidebarModal from '../account/account-sidebar-modal'
 import CartSidebar from '../cart/cart-sidebar'
 import { LoginRegisterModal } from '../checkout/login-register-modal'
+import { allTakeawayLocations } from '../home-components/date'
+import { HomeShowLocationsModal } from '../home-components/home-modal'
 import { TopDropdownNavItesm } from './top-dropdown-navs'
 import TopNavigationSidebarModal from './top-navigation-sidebar'
 
@@ -20,6 +22,7 @@ const NewTopNav = () => {
 	const [showAccountSidebar, setShowAccountSidebar] = useState(false)
 	const [showLoginRegModal, setShowLoginRegModal] = useState(false)
 	const [showNavSidebar, setShowNavSidebar] = useState(false)
+	const [showTakeawayLocations, setShowTakeawayLocations] = useState(false)
 	const totalCartItems = useAppSelector(selectTotalCartItems)
 	const { auth } = useAuthState()
 
@@ -42,7 +45,12 @@ const NewTopNav = () => {
 					{/* middle nav-items */}
 					<ul className='flex items-center gap-2 space-x-2.5'>
 						<TopDropdownNavItesm />
-						<li className='cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
+						<li
+							onClick={() => {
+								setShowTakeawayLocations(true)
+							}}
+							className='cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'
+						>
 							Online Order
 						</li>
 						<li className='cursor-pointer px-4 text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
@@ -55,16 +63,16 @@ const NewTopNav = () => {
 							</Link>
 						</li>
 						<li className='cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
-							<Link href={'/events'}>Private Event</Link>
+							<Link href={'/private-event'}>Private Event</Link>
 						</li>
 						<li className='cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
 							<Link href={'/career'}>Career</Link>
 						</li>
 						<li className='cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
-							<Link href={'/offers'}>Offers</Link>
+							<Link href={'/whats-on'}>Offers</Link>
 						</li>
 						<li className='cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
-							<Link href={'/contact-us'}>Contact Us</Link>
+							<Link href={'/contact'}>Contact Us</Link>
 						</li>
 					</ul>
 
@@ -109,6 +117,14 @@ const NewTopNav = () => {
 			<TopNavigationSidebarModal
 				showNavSidebar={showNavSidebar}
 				setShowNavSidebar={setShowNavSidebar}
+			/>
+
+			{/* online order popup */}
+			<HomeShowLocationsModal
+				header='Select the nearest takeaway location'
+				selectOptions={allTakeawayLocations}
+				showModal={showTakeawayLocations}
+				setShowModal={setShowTakeawayLocations}
 			/>
 		</>
 	)
