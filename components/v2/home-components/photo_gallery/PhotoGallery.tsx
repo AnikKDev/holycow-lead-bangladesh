@@ -24,7 +24,7 @@ export default PhotoGallery
 
 const LeftDiv = () => {
 	return (
-		<div className='max-w-[700px] space-y-6 mobile-md:py-8 md:mr-10'>
+		<div className='max-w-[700px] space-y-6 mobile-md:py-8 md:ml-28 md:mr-10'>
 			<SectionHeader
 				title='Photo Gallery'
 				subTitle='Instagram'

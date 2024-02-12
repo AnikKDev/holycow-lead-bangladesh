@@ -10,21 +10,25 @@ type Props = {}
 
 export default function PrivateEvent({}: Props) {
 	return (
-		<GradientWrapper>
+		<div className='mb-24'>
 			{/* banner here */}
-			<div>
+			<div className='container'>
 				<BannerContents text='Private event' image={bg.src} />
 			</div>
 			{/* page info */}
-			<SectionHeader
-				subTitle='Make your event Simply Unforgettable'
-				title='Our dedicated events team helps you every step of the way. Intimate dinners, festive stand-up cocktail parties, unique corporate functions, and bespoke tasting experiences featuring sushi, sake offer endless possibilities!'
-				subTitleSize='small'
-			/>
-			{/* message to us form */}
-			<div>
-				<ContactForm />
+			<div className='mx-auto max-w-5xl'>
+				<div className='my-20'>
+					<SectionHeader
+						subTitle='Make your event Simply Unforgettable'
+						title='Our dedicated events team helps you every step of the way. Intimate dinners, festive stand-up cocktail parties, unique corporate functions, and bespoke tasting experiences featuring sushi, sake offer endless possibilities!'
+						subTitleSize='small'
+					/>
+				</div>
+				{/* message to us form */}
+				<div>
+					<ContactForm />
+				</div>
 			</div>
-		</GradientWrapper>
+		</div>
 	)
 }

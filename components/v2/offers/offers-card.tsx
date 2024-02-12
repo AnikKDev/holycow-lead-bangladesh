@@ -8,8 +8,8 @@ type Props = {
 
 export default function OffersCard({ backgroundImage, offerImage }: Props) {
 	return (
-		<section className='mt-[166px]'>
-			<div className='mt-[98px] flex items-center justify-center gap-[78px]'>
+		<section>
+			<div className='flex items-center justify-center gap-[78px]'>
 				<div className='flex  gap-4'>
 					<div className='max-w-[489px]'>
 						{/* spoon and the sub-title */}
@@ -38,18 +38,18 @@ export default function OffersCard({ backgroundImage, offerImage }: Props) {
 									</clipPath>
 								</defs>
 							</svg>
-							<h3 className='text-[22px] font-medium capitalize leading-snug tracking-[0.04em] text-secondary'>
+							<h3 className='text-lg font-medium capitalize leading-snug tracking-[0.04em] text-secondary'>
 								Latest Offers
 							</h3>
 						</div>
 						<h4
-							className='text-[32px] font-medium tracking-[0.04em] text-primary'
+							className='text-2xl font-medium tracking-[0.04em] text-primary'
 							style={{ lineHeight: 1.3 }}
 						>
 							Ring In The New Year With Culinary Delights!
 						</h4>
 						<p
-							className='text-[18px] tracking-[0.04em] text-foreground'
+							className='font-medium tracking-[0.04em] text-foreground'
 							style={{ lineHeight: 1.75 }}
 						>
 							3-course meal + welcome drink, all for just $30 per person
@@ -65,14 +65,14 @@ export default function OffersCard({ backgroundImage, offerImage }: Props) {
 				<div className='relative'>
 					<Image
 						src={offerImage}
-						width={535}
-						height={549}
+						width={335}
+						height={349}
 						alt='shortlisted for best indian restaurant in the deliveroo restaurant award 2021 '
 					/>
 					<Image
 						src={backgroundImage}
 						alt='background'
-						className='absolute left-[-145px] top-[205px]'
+						className='absolute left-[-145px] top-[80px]'
 					/>
 				</div>
 			</div>
