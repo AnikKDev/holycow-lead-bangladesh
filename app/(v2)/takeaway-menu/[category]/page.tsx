@@ -1,10 +1,10 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import bg from '@/assets/v2/secondary-bg.png'
 
 import { apiUrl } from '@/lib/constatns'
 import BannerContents from '@/components/v2/shared/banner-contents'
 import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
+import TakeawayMenuOrderOnlineBtn from '@/components/v2/takeaway-components/takeaway-categories/takeaway-menu-order-online'
 import TakeawayMenuWithSidebar from '@/components/v2/takeaway-components/takeaway-categories/TakeawayMenuWithSidebar'
 
 type ParamsType = {
@@ -49,12 +49,7 @@ const TakeawayMenuItemPage = () => {
 					Food Menu
 				</h2>
 				<TakeawayMenuWithSidebar />
-				<Link
-					className='v2-custom-button bg-primary px-8 py-2 text-sm font-medium capitalize leading-[1.7] tracking-[0.04em] text-foreground'
-					href={'/'}
-				>
-					Order Online
-				</Link>
+				<TakeawayMenuOrderOnlineBtn />
 			</div>
 		</>
 	)
