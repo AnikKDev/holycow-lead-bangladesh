@@ -1,10 +1,10 @@
-import { Metadata } from 'next'
 import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
+import { Metadata } from 'next'
 
-import { apiUrl } from '@/lib/constatns'
 import AboutLocation from '@/components/menu-page/about-location'
 import CoverPhoto from '@/components/menu-page/cover-photo'
 import MenuAndAllBottomSections from '@/components/menu-page/menu-and-bottom-sections'
+import { apiUrl } from '@/lib/constatns'
 
 type ParamsType = {
 	params: { location: string }
@@ -18,8 +18,7 @@ const getLocationInfo = async (location: string): Promise<LocationInfoType> => {
 		},
 	})
 
-	const data = await res.json()
-	// console.log(data)
+	const data = await res?.json()
 	if (!res.ok) {
 		// This will activate the closest `error.js` Error Boundary
 		throw new Error('Takeaway information not found')
