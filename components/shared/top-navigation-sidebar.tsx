@@ -71,7 +71,7 @@ const TopNavigationSidebarModal = ({
 										<li>
 											<Link
 												className='hover:underline'
-												href={'/fine-dining-menu-limehouse-canary-wharf/'}
+												href={'/fine-dining-menu/'}
 											>
 												Fine Dine Menu
 											</Link>
