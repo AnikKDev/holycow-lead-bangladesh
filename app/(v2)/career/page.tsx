@@ -10,19 +10,21 @@ type Props = {}
 
 export default function Career({}: Props) {
 	return (
-		<GradientWrapper>
+		<>
 			{/* banner here */}
-			<div>
+			<div className='container'>
 				<BannerContents text='Career' image={bg.src} />
 			</div>
 			{/* page info */}
-			<SectionHeader
-				subTitle='Grab-N-go'
-				title='take our fresh, delicious fare home for an unforgettable experience'
-				subTitleSize='medium'
-			/>
-			{/* open positions */}
-			<div>
+			<div className='mx-auto max-w-5xl'>
+				<div className='my-20'>
+					<SectionHeader
+						subTitle='Grab-N-go'
+						title='take our fresh, delicious fare home for an unforgettable experience'
+						subTitleSize='medium'
+					/>
+				</div>
+				{/* open positions */}
 				<SectionHeader
 					title='Open Position'
 					subTitleSize='large'
@@ -31,6 +33,6 @@ export default function Career({}: Props) {
 				{/* cards */}
 				<OpenPositionCard />
 			</div>
-		</GradientWrapper>
+		</>
 	)
 }
