@@ -43,3 +43,23 @@ export type Review = {
 	rating: string
 	image?: string
 }
+
+export type FoodItemProps = {
+	id: number
+	food_name: string
+	description?: string
+	price?: number
+	peppers?: number
+}
+
+export type FoodListProps = {
+	id: number
+	food_list_name: string
+	food_list_items: FoodItem[]
+}
+
+export type FoodSectionProps = {
+	id: number
+	food_section_name: string
+	food_section_items: FoodList[]
+}

@@ -434,3 +434,36 @@ table.tablepress.allergen tr.row-3 td {
 	box-shadow: 2px 4px 8px rgba(144, 90, 9, 0.2);
 	background: linear-gradient(0deg, #e8d3a2, #e8d3a2), #e8d3a2;
 }
+
+.v2-custom-tab[data-state='active'] {
+	background-color: transparent !important;
+	box-shadow: none !important;
+	@apply !text-[#905A09];
+}
+
+.v2-custom-tab svg {
+	@apply border-b-[2.5px] border-transparent;
+}
+
+.v2-custom-tab[data-state='active'] svg {
+	@apply border-b-[2.5px] border-[#905A09];
+}
+
+.v2-custom-tab .svg-fill {
+	fill: #727272;
+	@apply border-b-[2.5px] border-[#727272];
+}
+
+.v2-custom-tab[data-state='active'] .svg-fill {
+	fill: #905a09;
+
+	@apply border-b-[2.5px] border-[#905A09];
+}
+
+.v2-custom-tab .svg-stoke {
+	stroke: #727272;
+}
+
+.v2-custom-tab[data-state='active'] .svg-stoke {
+	stroke: #905a09;
+}
