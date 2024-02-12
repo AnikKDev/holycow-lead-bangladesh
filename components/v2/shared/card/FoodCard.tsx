@@ -12,13 +12,13 @@ const FoodCard = ({
 			<div className='flex justify-between text-[22px] font-semibold leading-[1.3]'>
 				{food_name && (
 					<>
-						<h5 className='flex items-center gap-2'>
+						<h5 className='mt-4 flex items-center gap-2'>
 							{food_name}
 							<span className='flex'>
 								{peppers && <GeneratePeppers peppers={peppers} />}
 							</span>
 						</h5>
-						{price && <span className='hidden'>£{price}</span>}
+						{price && <span>£{price}</span>}
 					</>
 				)}
 			</div>

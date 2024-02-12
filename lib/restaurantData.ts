@@ -1062,3 +1062,58 @@ export const winesSection = {
 		teetotaller,
 	],
 }
+
+export const lunchMenu = {
+	id: 1,
+	food_list_name: 'Lunch Menu',
+	food_list_items: [
+		{
+			food_name: 'Chicken Tiffin Box',
+			description:
+				'Tender chicken breast cooked in tandoor and mixed in rich tomato and cream sauce served with pilau rice and Aloo gobi (sauté potatoes and cauliflower in Indian spices)',
+			price: 10.9,
+		},
+		{
+			food_name: 'Lamb Tiffin Box',
+			description:
+				'Tender lamb seasoned with a touch of ginger and coriander. Cooked in a tomato, garlic and ginger sauce served with pilau rice and fresh cooked spinach.',
+			price: 11.05,
+		},
+		{
+			food_name: 'Vegan Tiffin Box',
+			description:
+				'A winning seasonal combination of fresh vegetables and our own spices and herbs create this wonderful dish served with tarka (chana) daal and plain rice.',
+			price: 9.95,
+		},
+		{
+			food_name: 'Lamb Roll',
+			description:
+				'Minced lamb prepared with a variety of fresh herb and our own spices, skewered and cooked in tandoor and wrapped in freshly prepared plain naan with mixed salad.',
+			price: 9.95,
+		},
+		{
+			food_name: 'Chicken Roll',
+			description:
+				'Our chef’s own recipe of minced chicken marinated with special herbs and spices. Cooked in skewers in the tandoor and wrapped with freshly prepared plain naan and mixed salad.',
+			price: 9.85,
+		},
+		{
+			food_name: 'Royal Salmon Roll',
+			description:
+				'Spiced fresh salmon filet brochette marinated in our own masala, cooked in the tandoor mixed with fresh spinach and wrapped in freshly prepared plain naan with a mixed salad.',
+			price: 9.95,
+		},
+		{
+			food_name: 'Paneer Roll',
+			description:
+				'Homemade cottage cheese marinated with our own special spices, slowly cooked with green peppers and onions in the tandoor and wrapped in freshly prepared plain naan with mixed salad.',
+			price: 9.25,
+		},
+		{
+			food_name: 'Indian Salad',
+			description:
+				'Mixture of fresh cucumber, carrot, onion, red cabbage, fresh coriander and white chickpeas with the hint of chat masala.',
+			price: 3.95,
+		},
+	],
+}

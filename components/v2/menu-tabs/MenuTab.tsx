@@ -1,5 +1,3 @@
-'use client'
-
 import {
 	dessertsSection,
 	FoodSection,
@@ -12,7 +10,6 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import FoodCard from '../shared/card/FoodCard'
-import MenuFoodList from '../shared/menu/text-type/MenuFoodList'
 import MenuSection from '../shared/menu/text-type/MenuSection'
 
 const MenuTab = () => {
