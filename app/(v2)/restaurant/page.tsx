@@ -1,10 +1,15 @@
 import React from 'react'
+import { Metadata } from 'next'
 import bg from '@/assets/v2/secondary-bg.png'
 
 import MenuTab from '@/components/v2/menu-tabs/MenuTab'
 import BannerContents from '@/components/v2/shared/banner-contents'
 import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
 import SectionHeader from '@/components/v2/shared/SectionHeader'
+
+export const metadata: Metadata = {
+	title: 'Fine Indian Dining Menu Limehouse – Canary Wharf',
+}
 
 const Page = () => {
 	return (

@@ -1,3 +1,5 @@
+'use client'
+
 import {
 	dessertsSection,
 	FoodSection,
@@ -13,7 +15,6 @@ import FoodCard from '../shared/card/FoodCard'
 import MenuSection from '../shared/menu/text-type/MenuSection'
 
 const MenuTab = () => {
-	console.log({ winesSection })
 	return (
 		<Tabs defaultValue='food-menu' className='flex flex-col md:gap-[114px]'>
 			<TabsList className='container flex h-fit items-center bg-transparent md:gap-[149px]'>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Metadata } from 'next'
 import Link from 'next/link'
 import bg from '@/assets/v2/secondary-bg.png'
 
@@ -8,6 +9,9 @@ import FoodCard from '@/components/v2/shared/card/FoodCard'
 import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
 import SectionHeader from '@/components/v2/shared/SectionHeader'
 
+export const metadata: Metadata = {
+	title: 'Lunch Menu',
+}
 const Page = () => {
 	return (
 		<>
