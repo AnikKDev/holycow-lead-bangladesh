@@ -36,7 +36,7 @@ const SectionHeader = ({
 			)}
 		>
 			{subTitle && (
-				<h3 className='text-[22px] font-medium capitalize leading-snug tracking-[0.04em] text-[#905A09]'>
+				<h3 className='text-lg font-medium capitalize leading-snug tracking-[0.04em] text-[#905A09]'>
 					{subTitle}
 				</h3>
 			)}
