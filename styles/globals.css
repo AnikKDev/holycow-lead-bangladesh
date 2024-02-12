@@ -27,6 +27,9 @@
 		/* --primary: 45, 20%, 3.92%;
 		--primary-foreground: 0, 0%, 44.71%; */
 
+		--primary-dark: 36 88.24% 30%;
+		--primary-dark-foreground: 45 20% 4%;
+
 		/* old */
 		--secondary: 0 0% 84%;
 		--secondary-foreground: 0 0% 10%;
@@ -70,6 +73,7 @@
 }
 
 @layer base {
+
 	h1,
 	h2,
 	h3,
@@ -81,6 +85,7 @@
 }
 
 @layer utilities {
+
 	/* Chrome, Safari and Opera */
 	.no-scrollbar::-webkit-scrollbar {
 		display: none;
@@ -112,9 +117,7 @@ a {
 select {
 	width: 100%;
 	vertical-align: middle;
-	background: #fff
-		url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E")
-		no-repeat right 12px center;
+	background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 12px center;
 	background-size: 8px 10px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -282,13 +285,13 @@ table.tablepress th {
 	line-height: 1.4;
 }
 
-.tablepress > * + tbody > * > *,
-.tablepress > tbody > * ~ * > *,
-.tablepress > tfoot > * > * {
+.tablepress>*+tbody>*>*,
+.tablepress>tbody>*~*>*,
+.tablepress>tfoot>*>* {
 	border-top: 1px solid var(--border-color);
 }
 
-.tablepress > :not(caption) > * > * {
+.tablepress> :not(caption)>*>* {
 	background: 0 0;
 	border: none;
 	box-sizing: content-box;
@@ -420,13 +423,12 @@ table.tablepress.allergen tr.row-3 td {
 	background: #979797bb;
 	border-radius: 10px;
 }
+
 .v2-custom-button:hover {
 	box-shadow: 2px 4px 8px rgba(144, 90, 9, 0.2);
-	background: linear-gradient(
-			0deg,
+	background: linear-gradient(0deg,
 			rgba(144, 90, 9, 0.2),
-			rgba(144, 90, 9, 0.2)
-		),
+			rgba(144, 90, 9, 0.2)),
 		#e8d3a2;
 }
 
@@ -434,6 +436,7 @@ table.tablepress.allergen tr.row-3 td {
 	box-shadow: 2px 4px 8px rgba(144, 90, 9, 0.2);
 	background: linear-gradient(0deg, #e8d3a2, #e8d3a2), #e8d3a2;
 }
+
 
 .v2-custom-tab[data-state='active'] {
 	background-color: transparent !important;

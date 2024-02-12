@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import fancyUnderline from '@/assets/fancy-underline.svg'
@@ -15,6 +15,9 @@ import {
 	SheetTitle,
 } from '@/components/ui/sheet'
 
+import { allTakeawayLocations } from '../home-components/date'
+import { HomeShowLocationsModal } from '../home-components/home-modal'
+
 const TopNavigationSidebarModal = ({
 	showNavSidebar,
 	setShowNavSidebar,
@@ -22,6 +25,8 @@ const TopNavigationSidebarModal = ({
 	showNavSidebar: boolean
 	setShowNavSidebar: Dispatch<SetStateAction<boolean>>
 }) => {
+	const [showTakeawayLocations, setShowTakeawayLocations] = useState(false)
+
 	return (
 		<>
 			<Sheet open={showNavSidebar} onOpenChange={setShowNavSidebar}>
@@ -66,18 +71,30 @@ const TopNavigationSidebarModal = ({
 										<li>
 											<Link
 												className='hover:underline'
-												href={'/fine-dine-menu'}
+												href={'/fine-dining-menu/'}
 											>
 												Fine Dine Menu
 											</Link>
 										</li>
 										<li>
-											<Link className='hover:underline' href={'#'}>
+											<Link
+												className='hover:underline'
+												href={''}
+												onClick={() => {
+													setShowNavSidebar(false)
+													setShowTakeawayLocations(true)
+												}}
+											>
 												Online Order
 											</Link>
 										</li>
 										<li>
-											<Link className='hover:underline' href={'#'}>
+											<Link
+												className='hover:underline'
+												href={
+													'/locations/limehouse-canary-wharf-indian-restaurant/'
+												}
+											>
 												Make a Reservation
 											</Link>
 										</li>
@@ -104,7 +121,7 @@ const TopNavigationSidebarModal = ({
 											</Link>
 										</li>
 										<li>
-											<Link className='hover:underline' href={'/contact-us'}>
+											<Link className='hover:underline' href={'/contact'}>
 												Contact Us
 											</Link>
 										</li>
@@ -116,11 +133,11 @@ const TopNavigationSidebarModal = ({
 												Allergy Advice
 											</Link>
 										</li>
-										<li>
+										{/* <li>
 											<Link className='hover:underline' href={'/covid-19'}>
 												Covid-19
 											</Link>
-										</li>
+										</li> */}
 									</ul>
 								</div>
 							</div>
@@ -171,6 +188,14 @@ const TopNavigationSidebarModal = ({
 					</div>
 				</SheetContent>
 			</Sheet>
+
+			{/* online order popup */}
+			<HomeShowLocationsModal
+				header='Select the nearest takeaway location'
+				selectOptions={allTakeawayLocations}
+				showModal={showTakeawayLocations}
+				setShowModal={setShowTakeawayLocations}
+			/>
 		</>
 	)
 }

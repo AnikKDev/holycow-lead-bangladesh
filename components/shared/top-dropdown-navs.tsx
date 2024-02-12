@@ -22,9 +22,11 @@ export function TopDropdownNavItesm() {
 					</NavigationMenuTrigger>
 					<NavigationMenuContent className='border-none bg-primary'>
 						<ul className='grid w-[250px]  gap-1.5 border-none bg-primary px-4 py-5'>
-							<ListItem href='/menu/dining-menu'>Fine Dining Menu</ListItem>
-							<ListItem href='/reservation'>Reservation</ListItem>
-							<ListItem href='/locations/putney'>Putney Restaurant</ListItem>
+							<ListItem href='/fine-dining-menu/'>Fine Dining Menu</ListItem>
+							<ListItem href='/reservations'>Reservation</ListItem>
+							<ListItem href='/locations/limehouse-canary-wharf-indian-restaurant/'>
+								Limehouse - Canary Wharf Restaurant
+							</ListItem>
 						</ul>
 					</NavigationMenuContent>
 				</NavigationMenuItem>
@@ -35,8 +37,8 @@ export function TopDropdownNavItesm() {
 					<NavigationMenuContent className='border-none bg-primary'>
 						<ul className='grid w-[250px] gap-1.5 border-none bg-primary px-4 py-5'>
 							<ListItem href='/takeaway-menu'>Takeaway Menu</ListItem>
-							<ListItem href='/takeaway-location'>Takeaway Location</ListItem>
-							<ListItem href='/menu/lunch-menu'>Lunch Menu</ListItem>
+							<ListItem href='/locations'>Takeaway Location</ListItem>
+							<ListItem href='/lunch-menu'>Lunch Menu</ListItem>
 						</ul>
 					</NavigationMenuContent>
 				</NavigationMenuItem>

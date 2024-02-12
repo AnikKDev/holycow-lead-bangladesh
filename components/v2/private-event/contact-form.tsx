@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import { z } from 'zod'
 
 import AutoForm from '@/components/ui/auto-form'
@@ -46,7 +45,7 @@ const formSchema = z.object({
 export default function ContactForm({}: Props) {
 	const handleFormSubmit = (data: Partial<z.infer<typeof formSchema>>) => {}
 	return (
-		<section className='mb-12'>
+		<section className='container mb-12'>
 			<SectionHeader
 				subTitle='Contact'
 				title='Message To Us'
