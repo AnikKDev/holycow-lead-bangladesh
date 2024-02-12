@@ -16,9 +16,9 @@ const containerClasses: Record<Props['containsAlign'], string> = {
 }
 
 const subTitleClasses: Record<Props['subTitleSize'], string> = {
-	large: 'md:text-[56px] text-4xl leading-[1.3]',
-	medium: 'text-3xl md:text-[48px] leading-[1.3]',
-	small: 'text-[32px]',
+	large: 'md:text-[38px] text-2xl leading-[1.3]',
+	medium: 'text-xl md:text-[30px] leading-[1.3]',
+	small: 'text-[24px]',
 }
 
 const SectionHeader = ({
@@ -36,7 +36,7 @@ const SectionHeader = ({
 			)}
 		>
 			{subTitle && (
-				<h3 className='text-[22px] font-medium capitalize leading-snug tracking-[0.04em] text-[#905A09]'>
+				<h3 className='text-lg font-medium capitalize leading-snug tracking-[0.04em] text-[#905A09]'>
 					{subTitle}
 				</h3>
 			)}

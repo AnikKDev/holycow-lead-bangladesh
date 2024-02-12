@@ -4,7 +4,7 @@ type Props = { text: string; image: string }
 
 export default function BannerContents({ text, image }: Props) {
 	return (
-		<div className='mx-auto h-[480px] max-w-[1792px] '>
+		<div className='mx-auto h-[480px]'>
 			<div
 				style={{
 					background: `url(${image}) `,

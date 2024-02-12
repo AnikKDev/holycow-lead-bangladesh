@@ -21,12 +21,10 @@ export default function Branches({
 	branchOpeningHours,
 }: Props) {
 	return (
-		<div>
-			<div
-				className={cn('mx-auto flex max-w-7xl items-center gap-x-32', classes)}
-			>
+		<div className='mb-24'>
+			<div className={cn('flex items-center gap-x-32', classes)}>
 				<div className='flex w-1/2 flex-col pr-10'>
-					<h2 className='mb-2 text-2xl font-bold text-primary'>{branchNum}</h2>
+					<h2 className='mb-2 text-lg font-bold text-primary'>{branchNum}</h2>
 					<svg
 						width='40'
 						height='9'
@@ -51,14 +49,14 @@ export default function Branches({
 							</clipPath>
 						</defs>
 					</svg>
-					<h1 className='my-2 mb-4 text-4xl font-[32px] leading-[41.6px] tracking-[3%]'>
+					<h1 className='my-2 text-2xl leading-[41.6px] tracking-[3%]'>
 						{branchName}
 					</h1>
 					<p className='mb-2 text-xl'>{branchLocation}</p>
-					<a className='mb-8 text-primary' href='#'>
+					<a className='mb-8 font-medium text-primary' href='#'>
 						{branchEmail}
 					</a>
-					<h3 className='mb-4 text-[32px] font-[500] tracking-[3%]'>
+					<h3 className='mb-4 text-2xl font-[500] tracking-[3%]'>
 						Opening Hours
 					</h3>
 					{branchOpeningHours}

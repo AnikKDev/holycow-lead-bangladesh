@@ -27,9 +27,9 @@ const DeliveryAndDine = (props: Props) => {
 const FastDelivery = (props: Props) => {
 	return (
 		<div className='m-10 text-center  md:text-right'>
-			<div className='max-w-[620px] space-y-8'>
+			<div className='max-w-[650px] space-y-8'>
 				<div className='space-y-2'>
-					<h2 className='font-lora text-4xl font-semibold leading-[1.3] tracking-[0.04em] text-foreground md:text-6xl md:leading-[1.3]'>
+					<h2 className='font-lora text-2xl font-semibold leading-[1.3] tracking-[0.04em] text-foreground md:text-5xl md:leading-[1.3]'>
 						Fast Delivery
 					</h2>
 					<div className='flex items-center justify-center md:justify-end '>
@@ -81,7 +81,7 @@ const FineDine = (props: Props) => {
 		<div className='m-10 text-center md:text-left'>
 			<div className='max-w-[620px] space-y-8'>
 				<div className='space-y-2'>
-					<h2 className='font-lora text-4xl font-semibold leading-[1.3] tracking-[0.04em] text-foreground md:text-6xl md:leading-[1.3]'>
+					<h2 className='font-lora text-2xl font-semibold leading-[1.3] tracking-[0.04em] text-foreground md:text-5xl md:leading-[1.3]'>
 						Fine Dine
 					</h2>
 					<div className='flex items-center justify-center md:justify-start '>

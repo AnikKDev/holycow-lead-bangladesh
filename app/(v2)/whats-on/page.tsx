@@ -15,16 +15,18 @@ type Props = {}
 export default function Offers({}: Props) {
 	return (
 		<div className='mb-32'>
-			<GradientWrapper>
-				{/* banner here */}
-				<div>
-					<BannerContents text='Offers' image={bg.src} />
-				</div>
+			{/* banner here */}
+			<div className='container'>
+				<BannerContents text='Offers' image={bg.src} />
+			</div>
+			<div className='mx-auto max-w-5xl'>
 				{/* page info */}
-				<SectionHeader title='Whats On' showSpoon={false} />
+				<div className='my-20'>
+					<SectionHeader title='Whats On' showSpoon={false} />
+				</div>
 				{/* offer cards */}
 				<OffersCard backgroundImage={AwardBackground} offerImage={OffersImg} />
-			</GradientWrapper>
+			</div>
 		</div>
 	)
 }
