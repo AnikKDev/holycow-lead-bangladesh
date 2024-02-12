@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { cn } from '@/lib/utils'
 
 type Props = {
@@ -16,8 +14,8 @@ const containerClasses: Record<Props['containsAlign'], string> = {
 }
 
 const subTitleClasses: Record<Props['subTitleSize'], string> = {
-	large: 'md:text-[38px] text-2xl leading-[1.3]',
-	medium: 'text-xl md:text-[30px] leading-[1.3]',
+	large: 'md:text-3xl text-2xl leading-[1.3]',
+	medium: 'text-xl md:text-2xl leading-[1.3]',
 	small: 'text-[24px]',
 }
 
@@ -69,7 +67,7 @@ const SectionHeader = ({
 
 			<h2
 				className={cn(
-					'max-w-[1328px] font-medium capitalize tracking-[0.04em] text-foreground',
+					'max-w-5xl font-medium capitalize tracking-[0.04em] text-foreground',
 					subTitleClasses[subTitleSize]
 				)}
 			>

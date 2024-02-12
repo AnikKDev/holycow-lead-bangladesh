@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Button } from '@/components/ui/button'
 
 type Props = {}
@@ -11,8 +9,8 @@ export default function OpenPositionCard({}: Props) {
 				style={{ boxShadow: '0px 4px 4px 0px #00000040' }}
 				className='rounded-lg border-background p-6'
 			>
-				<h2 className='text-3xl font-bold text-secondary'>Store Manager</h2>
-				<div className='mt-4 grid grid-cols-2 gap-4 leading-[2] tracking-[0.04em] text-primary'>
+				<h2 className='text-3xl font-bold text-[#905A09]'>Store Manager</h2>
+				<div className='mt-4 grid grid-cols-2 gap-4 leading-[2] tracking-[0.04em] text-primary-foreground'>
 					<div>
 						<p className=''>
 							<span className='font-[500]'>Vacancy:</span>{' '}
@@ -23,9 +21,7 @@ export default function OpenPositionCard({}: Props) {
 							<span className='font-[400]'>Putney</span>
 						</p>
 						<p className='f'>Job Type: Full Time</p>
-						<Button className='mt-4 bg-background text-primary'>
-							View Details
-						</Button>
+						<Button className='mt-4'>View Details</Button>
 					</div>
 					<div>
 						<p className=''>
@@ -43,8 +39,8 @@ export default function OpenPositionCard({}: Props) {
 				style={{ boxShadow: '0px 4px 4px 0px #00000040' }}
 				className='rounded-lg border-background p-6'
 			>
-				<h2 className='text-3xl font-bold text-secondary'>Curry Chef</h2>
-				<div className='mt-4 grid grid-cols-2 gap-4 leading-[2] text-primary'>
+				<h2 className='text-3xl font-bold text-[#905A09]'>Curry Chef</h2>
+				<div className='mt-4 grid grid-cols-2 gap-4 leading-[2] text-primary-foreground'>
 					<div>
 						<p className=''>
 							<span className='font-[500]'>Vacancy:</span>{' '}
@@ -55,9 +51,7 @@ export default function OpenPositionCard({}: Props) {
 							<span className='font-[400]'>Putney</span>
 						</p>
 						<p className='f'>Job Type: Full Time</p>
-						<Button className='mt-4 bg-background text-primary'>
-							View Details
-						</Button>
+						<Button className='mt-4'>View Details</Button>
 					</div>
 					<div>
 						<p className=''>

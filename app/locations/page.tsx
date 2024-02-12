@@ -22,11 +22,11 @@ const Page = () => {
 					subTitle='Grab-N-go'
 					subTitleSize='medium'
 				/>
-				<hr className='my-24 border-t-[0.5px] border-dotted border-[#727272]' />
+				<hr className='my-10 border-t-[0.5px] border-dotted border-[#727272] mobile-md:my-5' />
 			</GradientWrapper>
 
-			<section className='container mt-24 flex flex-col items-center gap-24'>
-				<h2 className='text-center font-lora text-[64px] font-medium capitalize leading-[1.3] tracking-[0.04em] text-foreground'>
+			<section className='container my-10 flex flex-col items-center gap-10'>
+				<h2 className='text-center font-lora text-3xl font-medium capitalize leading-[1.3] tracking-[0.04em] text-foreground'>
 					Takeaway Locations
 				</h2>
 				<TakeawayLocationsList />

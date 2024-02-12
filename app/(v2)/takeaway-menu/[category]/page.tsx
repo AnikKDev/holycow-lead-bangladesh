@@ -40,12 +40,10 @@ const TakeawayMenuItemPage = () => {
 	return (
 		<>
 			<GradientWrapper>
-				<div className='px-2 md:px-4 _desktop-md:px-8'>
-					<BannerContents text='Takeaway' image={bg.src} />
-				</div>
+				<BannerContents text='Takeaway' image={bg.src} />
 			</GradientWrapper>
-			<div className='container my-16 flex flex-col items-center gap-8 text-primary md:gap-16'>
-				<h2 className='text-center font-lora text-2xl font-medium capitalize leading-[1.3] tracking-[0.03em] text-foreground md:text-[56px]'>
+			<div className='container my-16 flex max-w-[1200px] flex-col items-center gap-8 text-foreground md:gap-16'>
+				<h2 className='text-center font-lora text-3xl font-medium capitalize leading-[1.3] tracking-[0.03em] text-foreground'>
 					Food Menu
 				</h2>
 				<TakeawayMenuWithSidebar />

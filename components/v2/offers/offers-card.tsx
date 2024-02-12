@@ -1,4 +1,3 @@
-import React from 'react'
 import Image, { StaticImageData } from 'next/image'
 
 type Props = {
@@ -38,12 +37,12 @@ export default function OffersCard({ backgroundImage, offerImage }: Props) {
 									</clipPath>
 								</defs>
 							</svg>
-							<h3 className='text-lg font-medium capitalize leading-snug tracking-[0.04em] text-secondary'>
+							<h3 className='text-lg font-medium capitalize leading-snug tracking-[0.04em] text-foreground text-opacity-70'>
 								Latest Offers
 							</h3>
 						</div>
 						<h4
-							className='text-2xl font-medium tracking-[0.04em] text-primary'
+							className='text-primary-dark text-2xl font-medium tracking-[0.04em]'
 							style={{ lineHeight: 1.3 }}
 						>
 							Ring In The New Year With Culinary Delights!
