@@ -3,12 +3,12 @@ import { ReduxProvider } from '@/redux/provider'
 import { siteConfig } from '@/config/site'
 
 import '@/styles/globals.css'
+import '@smastrom/react-rating/style.css'
 
 import { Lora, Open_Sans } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
 import AppTopBar from '@/components/shared/app-topbar'
-import FooterUpdated from '@/components/shared/footer-updated'
 
 const fontOpenSans = Open_Sans({
 	subsets: ['latin'],
@@ -82,7 +82,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 					<AppTopBar />
 					<main className='_desktop-lg:max-w-7xl mx-auto'>{children}</main>
 					{/* <Footer /> */}
-					<FooterUpdated />
+					{/* <FooterUpdated /> */}
 				</ReduxProvider>
 			</body>
 		</html>
