@@ -1,9 +1,9 @@
 'use client'
 
-import { useLoginMutation } from '@/redux/slices/authSlice/authApiSlice'
-import { Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useLoginMutation } from '@/redux/slices/authSlice/authApiSlice'
+import { Loader2 } from 'lucide-react'
 import { useCookies } from 'react-cookie'
 import toast from 'react-hot-toast'
 import { z } from 'zod'
@@ -136,13 +136,13 @@ const LoginPage = ({
 				<Button
 					variant='link'
 					onClick={() => setCurrentStep('forgot-password')}
-					className='text-center text-sm font-medium text-primary'
+					className='text-primary-dark text-center text-sm font-medium'
 				>
 					Forgot your password?
 				</Button>
 				<p className='text-center text-sm font-medium'>
 					Don't have an account ?{' '}
-					<Link className='text-primary' href={'/register/'}>
+					<Link className='text-primary-dark' href={'/register/'}>
 						Sign Up
 					</Link>
 				</p>

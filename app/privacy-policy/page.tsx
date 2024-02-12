@@ -151,7 +151,7 @@ const PrivacyPolicy = () => {
 						information on the privacy practices of Google, please visit the
 						Google Privacy & Terms web page:{' '}
 						<a
-							className='text-primary'
+							className='text-primary-dark'
 							href='https://policies.google.com/privacy?hl=en'
 						>
 							Google's terms and privacy policy

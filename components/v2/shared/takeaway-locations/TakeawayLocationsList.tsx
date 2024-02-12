@@ -55,7 +55,7 @@ const takeawayLocationsList = [
 
 const TakeawayLocationsList = (props: Props) => {
 	return (
-		<div className='grid grid-cols-1 gap-0 _tablet:grid-cols-2  _tablet:gap-y-8 _desktop-sm:grid-cols-3 _desktop-sm:gap-y-8 _desktop-md:grid-cols-4 _desktop-md:gap-y-8'>
+		<div className='grid grid-flow-row grid-cols-1 gap-0 _tablet:grid-cols-2  _tablet:gap-y-8 _desktop-sm:grid-cols-3 _desktop-sm:gap-y-8 _desktop-md:grid-cols-4 _desktop-md:gap-y-8'>
 			{takeawayLocationsList.map((store, index) => (
 				<TakeawayLocationsCard
 					key={index}

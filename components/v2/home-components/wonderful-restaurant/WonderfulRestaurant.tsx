@@ -1,5 +1,3 @@
-import React from 'react'
-
 import SectionHeader from '../../shared/SectionHeader'
 import CarousalSection from './CarousalSection'
 
@@ -20,7 +18,7 @@ const restaurantImages = [
 ]
 const WonderfulRestaurant = (props: Props) => {
 	return (
-		<div className='container my-14 space-y-24 p-10 md:my-[144px]'>
+		<div className='container my-14 space-y-10 p-10 mobile-md:space-x-5 md:my-[144px]'>
 			<SectionHeader
 				title='Come for our fresh, delicious fare, and stay for a dining experience you won’t forget.'
 				subTitle='Wonderful Restaurant'

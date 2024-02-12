@@ -1,4 +1,3 @@
-import React from 'react'
 import { Metadata } from 'next'
 import bg from '@/assets/v2/secondary-bg.png'
 
@@ -15,10 +14,8 @@ const Page = () => {
 	return (
 		<>
 			<GradientWrapper>
-				<div className='px-2 md:px-4 _desktop-md:px-8'>
-					<BannerContents text='Limehouse' image={bg.src} />
-				</div>
-				<div className='container flex flex-col gap-24'>
+				<BannerContents text='Limehouse' image={bg.src} />
+				<div className='container flex flex-col gap-12'>
 					<SectionHeader
 						subTitle='Grab-N-Taste'
 						title='Come for our fresh, delicious fare, and stay for a dining experience you won’t forget.'
@@ -28,7 +25,7 @@ const Page = () => {
 				</div>
 			</GradientWrapper>
 
-			<div className='mt-9 md:mt-24'>
+			<div className='mt-5 md:mt-10'>
 				<MenuTab />
 			</div>
 		</>

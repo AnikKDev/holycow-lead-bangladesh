@@ -1,10 +1,10 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import bg from '@/assets/v2/secondary-bg.png'
 
 import { apiUrl } from '@/lib/constatns'
 import BannerContents from '@/components/v2/shared/banner-contents'
 import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
+import TakeawayMenuOrderOnlineBtn from '@/components/v2/takeaway-components/takeaway-categories/takeaway-menu-order-online'
 import TakeawayMenuWithSidebar from '@/components/v2/takeaway-components/takeaway-categories/TakeawayMenuWithSidebar'
 
 type ParamsType = {
@@ -40,21 +40,14 @@ const TakeawayMenuItemPage = () => {
 	return (
 		<>
 			<GradientWrapper>
-				<div className='px-2 md:px-4 _desktop-md:px-8'>
-					<BannerContents text='Takeaway' image={bg.src} />
-				</div>
+				<BannerContents text='Takeaway' image={bg.src} />
 			</GradientWrapper>
-			<div className='container my-16 flex flex-col items-center gap-8 text-primary md:gap-16'>
-				<h2 className='text-center font-lora text-2xl font-medium capitalize leading-[1.3] tracking-[0.03em] text-foreground md:text-[56px]'>
+			<div className='container my-16 flex max-w-[1200px] flex-col items-center gap-8 text-foreground md:gap-16'>
+				<h2 className='text-center font-lora text-3xl font-medium capitalize leading-[1.3] tracking-[0.03em] text-foreground'>
 					Food Menu
 				</h2>
 				<TakeawayMenuWithSidebar />
-				<Link
-					className='v2-custom-button bg-primary px-8 py-2 text-sm font-medium capitalize leading-[1.7] tracking-[0.04em] text-foreground'
-					href={'/'}
-				>
-					Order Online
-				</Link>
+				<TakeawayMenuOrderOnlineBtn />
 			</div>
 		</>
 	)

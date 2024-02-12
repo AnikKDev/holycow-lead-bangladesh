@@ -17,7 +17,7 @@ import MenuSection from '../shared/menu/text-type/MenuSection'
 const MenuTab = () => {
 	return (
 		<Tabs defaultValue='food-menu' className='flex flex-col md:gap-[114px]'>
-			<TabsList className='container flex h-fit items-center bg-transparent md:gap-[149px]'>
+			<TabsList className='container flex h-fit max-w-[1200px] items-center bg-transparent md:gap-[149px]'>
 				<TabsTrigger
 					value='food-menu'
 					className='v2-custom-tab flex flex-col gap-6 border-b-[2.5px] border-transparent font-lora font-medium tracking-[0.04em] md:text-3xl'
