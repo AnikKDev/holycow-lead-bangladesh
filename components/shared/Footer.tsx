@@ -1,8 +1,7 @@
+import FooterContact from './FooterComponents/footer-contact'
 import FooterServices from './FooterComponents/footer-services'
 import FooterAbout from './FooterComponents/FooterAbout'
 import FooterCopyrights from './FooterComponents/FooterCopyrights'
-import FooterInsta from './FooterComponents/FooterInsta'
-import FooterLocations from './FooterComponents/FooterLocations'
 import FooterLogoSection from './FooterComponents/FooterLogoSection'
 
 type Props = {}
@@ -14,7 +13,7 @@ export default function Footer({}: Props) {
 				<FooterLogoSection />
 				<FooterAbout />
 				<FooterServices />
-				<FooterLocations />
+				<FooterContact />
 			</div>
 			{/* copyrights */}
 
