@@ -6,6 +6,7 @@ import nav_logo from '@/assets/nav_logo.png'
 import { useAppSelector } from '@/redux/hooks'
 import { selectTotalCartItems } from '@/redux/slices/orderSlice/orderSlice'
 import { AlignJustify, ShoppingCart, User } from 'lucide-react'
+import { useMediaQuery } from 'react-responsive'
 
 import { useAuthState } from '@/hooks/useAuthState'
 
@@ -29,7 +30,7 @@ const NewTopNav = () => {
 		useState(false)
 	const totalCartItems = useAppSelector(selectTotalCartItems)
 	const { auth } = useAuthState()
-
+	const isMobileMd = useMediaQuery({ query: '(max-width: 768px)' })
 	return (
 		<>
 			<nav className='container'>
@@ -39,8 +40,11 @@ const NewTopNav = () => {
 						{/* <CiMenuBurger size={38} /> */}
 						<AlignJustify
 							onClick={() => {
-								// setShowNavSidebar(true)
-								setShowResponsiveNavigation(true)
+								if (isMobileMd) {
+									setShowResponsiveNavigation(true)
+								} else {
+									setShowNavSidebar(true)
+								}
 							}}
 							className='cursor-pointer text-primary-foreground'
 							size={22}
