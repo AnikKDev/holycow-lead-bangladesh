@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import fancyUnderline from '@/assets/fancy-underline.svg'
+import nav_logo from '@/assets/nav_logo.png'
 import { Facebook, Instagram, Twitter } from 'lucide-react'
 import { FaPinterestP } from 'react-icons/fa'
 import { IoLogoTumblr } from 'react-icons/io'
@@ -17,6 +18,7 @@ import {
 
 import { allTakeawayLocations } from '../home-components/date'
 import { HomeShowLocationsModal } from '../home-components/home-modal'
+import MobileNavbar from './mobile-navbar'
 
 const TopNavigationSidebarModal = ({
 	showNavSidebar,
@@ -32,7 +34,7 @@ const TopNavigationSidebarModal = ({
 			<Sheet open={showNavSidebar} onOpenChange={setShowNavSidebar}>
 				<SheetContent
 					side='left'
-					className=' h-full w-[400px] bg-primary p-5 mobile-sm:w-full '
+					className='h-full w-[400px] bg-primary p-5 mobile-sm:w-full'
 					closeBtnProps={{
 						containerClassName: 'top-[30px] right-[30px]',
 						iconClassName: 'h-5 w-5',
@@ -143,47 +145,7 @@ const TopNavigationSidebarModal = ({
 							</div>
 						</div>
 						<SheetFooter className='shrink-0 flex-col space-y-2 px-3 pb-4 pt-3'>
-							<div>
-								<Image src={fancyUnderline} className='max-h-8' alt='spoon' />
-							</div>
-							<div className='flex items-center gap-1.5 space-x-2'>
-								<Link
-									href={'https://www.instagram.com/holycowfineindianfood/'}
-									target='_blank'
-								>
-									<Instagram size={22} />
-								</Link>
-								<Link
-									href={'https://www.facebook.com/holycowfineindianfood/'}
-									target='_blank'
-								>
-									<Facebook size={22} />
-								</Link>
-								<Link
-									href={'https://twitter.com/HolyCowLondonUK/'}
-									target='_blank'
-								>
-									<Twitter size={22} />
-								</Link>
-								<Link
-									href={'https://www.pinterest.co.uk/HolyCowFineIndianFood/'}
-									target='_blank'
-								>
-									<FaPinterestP size={22} />
-								</Link>
-								<Link
-									href={'https://www.tumblr.com/holycowfineindianfood'}
-									target='_blank'
-								>
-									<IoLogoTumblr size={22} />
-								</Link>
-								<Link
-									href={'https://www.tiktok.com/@holycowfineindianfood/'}
-									target='_blank'
-								>
-									<IoLogoTiktok size={22} />
-								</Link>
-							</div>
+							<TopSideNavigationFooterSocials />
 						</SheetFooter>
 					</div>
 				</SheetContent>
@@ -199,5 +161,98 @@ const TopNavigationSidebarModal = ({
 		</>
 	)
 }
-
 export default TopNavigationSidebarModal
+
+export function ResponsiveTopNavigation({
+	setShowNavResSidebar,
+	showNavResSidebar,
+}) {
+	const [showTakeawayLocations, setShowTakeawayLocations] = useState(false)
+	return (
+		<>
+			<Sheet open={showNavResSidebar} onOpenChange={setShowNavResSidebar}>
+				<SheetContent
+					side='left'
+					className='flex h-full w-[400px] flex-col justify-between overflow-y-auto bg-background px-0 py-0 mobile-sm:w-full'
+					closeBtnProps={{
+						containerClassName: 'top-[12px] right-[12px] ',
+						iconClassName: 'h-5 w-5',
+					}}
+				>
+					<div className='shrink-0 '>
+						<SheetHeader className='px-2.5 pb-2 pt-3'>
+							<SheetTitle className='inline-block cursor-pointer'>
+								<Link href={'/'} className=''>
+									<Image
+										src={nav_logo}
+										className='h-auto w-28 '
+										alt='holycow logo'
+									/>
+								</Link>
+							</SheetTitle>
+						</SheetHeader>
+						<MobileNavbar
+							isOpen={showNavResSidebar}
+							toggleOpen={setShowNavResSidebar}
+						/>
+					</div>
+					<SheetFooter className='shrink-0 flex-col space-y-2  px-3 pb-7 pt-3'>
+						<TopSideNavigationFooterSocials />
+					</SheetFooter>
+				</SheetContent>
+			</Sheet>
+
+			<HomeShowLocationsModal
+				header='Select the nearest takeaway location'
+				selectOptions={allTakeawayLocations}
+				showModal={showTakeawayLocations}
+				setShowModal={setShowTakeawayLocations}
+			/>
+		</>
+	)
+}
+
+export function TopSideNavigationFooterSocials() {
+	return (
+		<>
+			<div>
+				<Image src={fancyUnderline} className='max-h-8' alt='spoon' />
+			</div>
+			<div className='flex items-center gap-1.5 space-x-2'>
+				<Link
+					href={'https://www.instagram.com/holycowfineindianfood/'}
+					target='_blank'
+				>
+					<Instagram size={22} />
+				</Link>
+				<Link
+					href={'https://www.facebook.com/holycowfineindianfood/'}
+					target='_blank'
+				>
+					<Facebook size={22} />
+				</Link>
+				<Link href={'https://twitter.com/HolyCowLondonUK/'} target='_blank'>
+					<Twitter size={22} />
+				</Link>
+				<Link
+					href={'https://www.pinterest.co.uk/HolyCowFineIndianFood/'}
+					target='_blank'
+				>
+					<FaPinterestP size={22} />
+				</Link>
+				<Link
+					href={'https://www.tumblr.com/holycowfineindianfood'}
+					target='_blank'
+				>
+					<IoLogoTumblr size={22} />
+				</Link>
+				<Link
+					href={'https://www.tiktok.com/@holycowfineindianfood/'}
+					target='_blank'
+				>
+					<IoLogoTiktok size={22} />
+				</Link>
+			</div>
+		</>
+	)
+}
