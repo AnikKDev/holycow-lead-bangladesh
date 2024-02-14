@@ -14,6 +14,7 @@ export type OrderInitialState = Extend<
 		cartItems: MenuItemType[]
 		discount: number
 		promo_code: string
+		promo_code_id: null | number
 		delivery_charge: number
 		fulfillment_type: FulfillmentType
 		delivery_address: AccountAddress
@@ -28,6 +29,7 @@ const initialState: OrderInitialState = {
 	cartItems: [],
 	discount: null,
 	promo_code: '',
+	promo_code_id: null,
 	delivery_charge: DELIVERY_CHARGE,
 	fulfillment_type: 'Delivery',
 	delivery_address: {},

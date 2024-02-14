@@ -1,12 +1,10 @@
 'use client'
 
-import { useState } from 'react'
 import { useAppSelector } from '@/redux/hooks'
 import {
 	getCartTotals,
 	selectOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
-import { loadStripe } from '@stripe/stripe-js'
 import toast from 'react-hot-toast'
 
 import { apiUrl } from '@/lib/constatns'
@@ -45,7 +43,7 @@ const CheckoutButton = () => {
 	const orderItems = (cartItems) => {
 		return cartItems.map((item) => ({
 			menu_item: item.id,
-			price: parseFloat(item.price),
+			// price: parseFloat(item.price),
 			quantity: parseFloat(item.quantity),
 		}))
 	}
@@ -72,8 +70,8 @@ const CheckoutButton = () => {
 		if (!canPlaceOrder()) {
 			return
 		}
-		const cardItems = orderItems(orderState.cartItems)
-		const subtotal = cardItems
+		const cartItems = orderItems(orderState.cartItems)
+		const subtotal = cartItems
 			.reduce((total, item) => total + item.price * item.quantity, 0)
 			.toFixed(2)
 		const deliveryFee = orderState.delivery_charge
@@ -89,15 +87,19 @@ const CheckoutButton = () => {
 			tax
 		).toFixed(2)
 		makePayment({
-			order_items: cardItems,
+			order_items: cartItems,
 			order_type: orderState.fulfillment_type.toUpperCase(),
-			subtotal: subtotal,
-			discount: discount,
-			delivery_fee: deliveryFee,
-			tax: tax,
-			total: total,
+			collection_time:
+				orderState.fulfillment_type === 'Delivery'
+					? orderState?.delivery_time
+					: orderState?.collection_time, // both for delivery_time and collection_time
 			address: orderState.delivery_address.id,
-			promo_code: 1,
+			promo_code: orderState?.promo_code_id,
+			// subtotal: subtotal,
+			// discount: discount,
+			// delivery_fee: deliveryFee,
+			// tax: tax,
+			// total: total,
 		})
 	}
 	return (
