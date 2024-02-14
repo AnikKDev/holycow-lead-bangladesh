@@ -37,13 +37,13 @@ const PromoCodeApply = () => {
 				subtotal: cartTotals.subtotal,
 			}).unwrap()
 			console.log(res)
-			const { discounted_amount, id } = res
+			const { discounted_amount, promo_code } = res
 			dispatch(
 				setOrderState({
 					...orderState,
 					discount: discounted_amount,
 					promo_code: data.promo_code.toUpperCase(),
-					promo_code_id: id,
+					promo_code_id: promo_code,
 				})
 			)
 			toast.success('Promo code applied successfully!')

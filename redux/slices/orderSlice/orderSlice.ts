@@ -1,10 +1,10 @@
 import { RootState } from '@/redux/store'
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { AccountAddress } from '@/types/account/account.types'
-import { ASAP, DELIVERY_CHARGE } from '@/lib/constatns'
+import { ASAP, DELIVERY_CHARGE, TAX_RATE } from '@/lib/constatns'
 import { decimalFormatter } from '@/lib/formatter'
 import { Extend } from '@/lib/utils'
+import { AccountAddress } from '@/types/account/account.types'
 
 import { MenuItemType } from '../menuPageSlice/menuPageSlice'
 
@@ -165,17 +165,19 @@ export const getCartTotals = createSelector(
 				return sum
 			}, 0)
 
-			const discount = Number(orderState?.discount) || 0
-
 			delivery_charge =
 				orderState.fulfillment_type === 'Delivery'
-					? subtotal >= 15
+					? subtotal >= 20
 						? 0
 						: DELIVERY_CHARGE
 					: 0
 
+			const tax_amount = subtotal > 20 ? 0 : subtotal * TAX_RATE
+
+			const discount = Number(orderState?.discount) || 0
+
 			console.log({ subtotal, delivery_charge })
-			totalPrice = subtotal + delivery_charge - discount
+			totalPrice = (subtotal - discount) + tax_amount + delivery_charge
 
 			totalPrice = decimalFormatter(totalPrice)
 
