@@ -6,7 +6,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getAllOrder: builder.query<OrderDetailType[], void>({
 			query: () => ({
-				url: '/get_orders/',
+				url: '/order/get_orders/',
 				method: 'GET',
 			}),
 			transformResponse: (response: { data: OrderDetailType[] }) =>
@@ -14,7 +14,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
 		}),
 		getOrderDetailById: builder.query<OrderDetailType, string>({
 			query: (id) => ({
-				url: '/track_order/',
+				url: '/order/track_order/',
 				params: {
 					tracking_id: id,
 				},

@@ -1,9 +1,9 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import { OrderDetailType } from '@/redux/slices/orderSlice/orderSlice'
 import ReactPaginate from 'react-paginate'
 
-import { OrderTableColumns } from '@/types/account/account.types'
 import { Separator } from '@/components/ui/separator'
 import {
 	Table,
@@ -16,7 +16,7 @@ import {
 import DataTableRow from './data-table-row'
 
 type Props = {
-	data: OrderTableColumns[]
+	data: OrderDetailType[]
 	itemsPerPage?: number
 }
 
@@ -84,17 +84,19 @@ export default function OrderDataTable({
 	)
 }
 
-const OrderTableBody = ({ orders }: { orders: OrderTableColumns[] }) => {
-	return orders.map(({ orderNumber, items, orderDate, status, total }, idx) => (
-		<DataTableRow
-			key={idx}
-			items={items}
-			orderDate={orderDate}
-			status={status}
-			orderNumber={orderNumber}
-			total={total}
-		/>
-	))
+const OrderTableBody = ({ orders }: { orders: OrderDetailType[] }) => {
+	return orders.map(
+		({ tracking_id, order_items, order_date, status, total, id }) => (
+			<DataTableRow
+				key={id}
+				order_items={order_items}
+				order_date={order_date}
+				status={status}
+				tracking_id={tracking_id}
+				total={total}
+			/>
+		)
+	)
 }
 
 const PaginatedOrderTable = ({
