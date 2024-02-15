@@ -38,7 +38,7 @@ export type OrderDetailType = Extend<
 		tracking_id: string
 		order_date: string
 		status: ORDER_STATUS
-		order_items: MenuItemType
+		order_items: MenuItemType[]
 		subtotal: number | string
 		delivery_fee: number | string
 		discount: number | string

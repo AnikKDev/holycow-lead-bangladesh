@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { OrderDetailType } from '@/redux/slices/orderSlice/orderSlice'
 import ReactPaginate from 'react-paginate'
 
+import { OrderTabType } from '@/types/account/account.types'
 import { Separator } from '@/components/ui/separator'
 import {
 	Table,
@@ -18,11 +19,15 @@ import DataTableRow from './data-table-row'
 type Props = {
 	data: OrderDetailType[]
 	itemsPerPage?: number
+	searchText?: string
+	selectedTab?: OrderTabType
 }
 
 export default function OrderDataTable({
 	data: orders,
 	itemsPerPage = 5,
+	searchText,
+	selectedTab,
 }: Props) {
 	const ref = useRef<HTMLDivElement>(null)
 	const [itemOffset, setItemOffset] = useState(0)
@@ -31,8 +36,32 @@ export default function OrderDataTable({
 	// (This could be items from props; or items loaded in a local state
 	// from an API endpoint with useEffect and useState)
 	const endOffset = itemOffset + itemsPerPage
-	console.log(`Loading items from ${itemOffset} to ${endOffset}`)
-	const currentItems = orders.slice(itemOffset, endOffset)
+
+	function filterOrdersByTabSelect(orderItem: OrderDetailType) {
+		if (selectedTab === 'current orders' && orderItem.status !== 'DELIVERED') {
+			return true
+		} else if (
+			selectedTab === 'order history' &&
+			orderItem.status === 'DELIVERED'
+		) {
+			return true
+		} else {
+			return false
+		}
+	}
+
+	function filterOrdersBySearchInput(orderItem: OrderDetailType) {
+		if (searchText.trim()) {
+			return orderItem.tracking_id.includes(searchText)
+		} else {
+			return true
+		}
+	}
+
+	const currentItems = orders
+		.filter(filterOrdersByTabSelect)
+		.filter(filterOrdersBySearchInput)
+		.slice(itemOffset, endOffset)
 	const pageCount = Math.ceil(orders.length / itemsPerPage)
 
 	// Invoke when user click to request another page.

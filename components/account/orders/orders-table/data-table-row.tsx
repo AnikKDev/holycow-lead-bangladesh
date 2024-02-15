@@ -1,13 +1,13 @@
 'use client'
 
-import { format } from 'date-fns'
 import { useRouter } from 'next/navigation'
+import { OrderDetailType } from '@/redux/slices/orderSlice/orderSlice'
+import { format } from 'date-fns'
 
+import { formatPrice } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import CustomBadge from '@/components/ui/custom-ui/custom-badge'
 import { TableCell, TableRow } from '@/components/ui/table'
-import { formatPrice } from '@/lib/utils'
-import { OrderDetailType } from '@/redux/slices/orderSlice/orderSlice'
 
 type Props = OrderDetailType
 
@@ -23,7 +23,7 @@ export default function DataTableRow({
 		<TableRow
 			key={tracking_id}
 			className='cursor-pointer text-sm duration-150'
-			onClick={() => router.push(`/account/your-orders/1`)}
+			onClick={() => router.push(`/account/your-orders/${tracking_id}`)}
 		>
 			<TableCell className='whitespace-nowrap border-r-0 px-4 py-3 font-medium'>
 				{tracking_id}
