@@ -1,13 +1,15 @@
 'use client'
 
 import { useAppSelector } from '@/redux/hooks'
+import { useCheckoutOrderMutation } from '@/redux/slices/orderSlice/orderApislice'
 import {
 	getCartTotals,
 	selectOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
+import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-import { apiUrl } from '@/lib/constatns'
+import { ASAP } from '@/lib/constatns'
 import { formatPrice } from '@/lib/utils'
 import { useAuthState } from '@/hooks/useAuthState'
 
@@ -17,6 +19,8 @@ const CheckoutButton = () => {
 	const cartTotals = useAppSelector(getCartTotals)
 	const orderState = useAppSelector(selectOrderState)
 	const { auth } = useAuthState()
+	const [handleCheckoutOrder, { isLoading, isError }] =
+		useCheckoutOrderMutation()
 	const canPlaceOrder = () => {
 		if (!orderState.cartItems.length) {
 			toast.error('Please add item to your cart')
@@ -49,20 +53,25 @@ const CheckoutButton = () => {
 	}
 	const makePayment = async (body) => {
 		try {
-			const headers = {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${auth.access}`,
-			}
-			const response = await fetch(`${apiUrl}/order/checkout/`, {
-				method: 'POST',
-				headers: headers,
-				body: JSON.stringify(body),
-			})
+			const res = await handleCheckoutOrder(body).unwrap()
+			// const headers = {
+			// 	'Content-Type': 'application/json',
+			// 	Authorization: `Bearer ${auth.access}`,
+			// }
+			// const response = await fetch(`${apiUrl}/order/checkout/`, {
+			// 	method: 'POST',
+			// 	headers: headers,
+			// 	body: JSON.stringify(body),
+			// })
 
-			const data = await response.json()
-			window.location.href = data.url
+			const { url } = res
+
+			console.log(res)
+
+			window.location.href = url
 		} catch (error) {
 			console.error('Error fetching client secret:', error)
+			toast.error('Something went wrong!')
 		}
 	}
 
@@ -91,10 +100,15 @@ const CheckoutButton = () => {
 			order_type: orderState.fulfillment_type.toUpperCase(),
 			collection_time:
 				orderState.fulfillment_type === 'Delivery'
-					? orderState?.delivery_time
-					: orderState?.collection_time, // both for delivery_time and collection_time
+					? orderState?.delivery_time === ASAP
+						? null
+						: orderState?.delivery_time
+					: orderState?.collection_time === ASAP
+					  ? null
+					  : orderState?.collection_time, // both for delivery_time and collection_time
 			address: orderState.delivery_address.id,
 			promo_code: orderState?.promo_code_id,
+			takeaway: 'Putney',
 			// subtotal: subtotal,
 			// discount: discount,
 			// delivery_fee: deliveryFee,
@@ -114,6 +128,7 @@ const CheckoutButton = () => {
 			</div>
 			<div className='w-full'>
 				<Button
+					disabled={isLoading}
 					size='lg'
 					type='button'
 					className=' w-full font-semibold uppercase'
@@ -121,6 +136,7 @@ const CheckoutButton = () => {
 						handlePlaceOrder()
 					}}
 				>
+					{isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
 					Place Order
 				</Button>
 			</div>

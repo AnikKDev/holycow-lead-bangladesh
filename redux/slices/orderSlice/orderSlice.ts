@@ -1,10 +1,10 @@
 import { RootState } from '@/redux/store'
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+import { AccountAddress } from '@/types/account/account.types'
 import { ASAP, DELIVERY_CHARGE, TAX_RATE } from '@/lib/constatns'
 import { decimalFormatter } from '@/lib/formatter'
 import { Extend } from '@/lib/utils'
-import { AccountAddress } from '@/types/account/account.types'
 
 import { MenuItemType } from '../menuPageSlice/menuPageSlice'
 
@@ -22,6 +22,28 @@ export type OrderInitialState = Extend<
 		collection_address: string
 		collection_time: string
 		visited_location_slug: string
+	}>
+>
+
+export type ORDER_STATUS =
+	| 'PENDING'
+	| 'ACCEPTED'
+	| 'PREPARING'
+	| 'DISPATCHED'
+	| 'DELIVERED'
+
+export type OrderDetailType = Extend<
+	Partial<{
+		id: number
+		tracking_id: string
+		order_date: string
+		status: ORDER_STATUS
+		order_items: MenuItemType
+		subtotal: number | string
+		delivery_fee: number | string
+		discount: number | string
+		total: number | string
+		address: AccountAddress
 	}>
 >
 
@@ -177,7 +199,7 @@ export const getCartTotals = createSelector(
 			const discount = Number(orderState?.discount) || 0
 
 			console.log({ subtotal, delivery_charge })
-			totalPrice = (subtotal - discount) + tax_amount + delivery_charge
+			totalPrice = subtotal - discount + tax_amount + delivery_charge
 
 			totalPrice = decimalFormatter(totalPrice)
 

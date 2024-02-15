@@ -20,7 +20,6 @@ const CheckoutRightSide = () => {
 	const isMobileMd = useMediaQuery({ maxWidth: 768 })
 	const footerElm = document.getElementById('footer-container')
 
-	console.log({ footerElm })
 	useEffect(() => {
 		if (footerElm !== null) {
 			footerElm.style.display = 'none'
