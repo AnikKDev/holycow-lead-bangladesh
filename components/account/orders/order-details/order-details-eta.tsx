@@ -10,6 +10,7 @@ import { Separator } from '@/components/ui/separator'
 type Props = { order: OrderDetailType }
 
 export default function OrderDetailsEstimation({ order }: Props) {
+	console.log('order from order details eta component')
 	return (
 		<div className='flex flex-col gap-2.5'>
 			<div className='flex items-center justify-between'>

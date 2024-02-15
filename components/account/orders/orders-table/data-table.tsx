@@ -52,21 +52,24 @@ export default function OrderDataTable({
 
 	function filterOrdersBySearchInput(orderItem: OrderDetailType) {
 		if (searchText.trim()) {
-			return orderItem.tracking_id.includes(searchText)
+			return orderItem.tracking_id
+				?.toLowerCase()
+				.includes(searchText.toLowerCase())
 		} else {
 			return true
 		}
 	}
 
-	const currentItems = orders
+	const filteredOrders = orders
 		.filter(filterOrdersByTabSelect)
 		.filter(filterOrdersBySearchInput)
-		.slice(itemOffset, endOffset)
-	const pageCount = Math.ceil(orders.length / itemsPerPage)
+
+	const currentItems = filteredOrders.slice(itemOffset, endOffset)
+	const pageCount = Math.ceil(filteredOrders.length / itemsPerPage)
 
 	// Invoke when user click to request another page.
 	const handlePageClick = (event) => {
-		const newOffset = (event.selected * itemsPerPage) % orders.length
+		const newOffset = (event.selected * itemsPerPage) % filteredOrders.length
 		console.log(
 			`User requested page number ${event.selected}, which is offset ${newOffset}`
 		)

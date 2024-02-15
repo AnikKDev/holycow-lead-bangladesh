@@ -9,9 +9,9 @@ import {
 import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 
+import { useAuthState } from '@/hooks/useAuthState'
 import { ASAP } from '@/lib/constatns'
 import { formatPrice } from '@/lib/utils'
-import { useAuthState } from '@/hooks/useAuthState'
 
 import { Button } from '../ui/button'
 
@@ -108,7 +108,7 @@ const CheckoutButton = () => {
 					  : orderState?.collection_time, // both for delivery_time and collection_time
 			address: orderState.delivery_address.id,
 			promo_code: orderState?.promo_code_id,
-			takeaway: 'Putney',
+			// takeaway: 'Putney',
 			// subtotal: subtotal,
 			// discount: discount,
 			// delivery_fee: deliveryFee,

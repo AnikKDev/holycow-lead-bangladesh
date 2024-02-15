@@ -2,21 +2,26 @@
 
 import { useGetOrderDetailByIdQuery } from '@/redux/slices/orderSlice/orderApislice'
 
-import { Separator } from '@/components/ui/separator'
 import OrderBackButton from '@/components/account/orders/order-details/detail-back-btn'
 import OrderDetailsAddress from '@/components/account/orders/order-details/order-details-address'
 import OrderDetailsEstimation from '@/components/account/orders/order-details/order-details-eta'
 import OrderDetailsPricing from '@/components/account/orders/order-details/order-details-pricing'
 import OrderDetailsStatus from '@/components/account/orders/order-details/order-details-status'
 import OrderDetailsSummary from '@/components/account/orders/order-details/order-details-summary'
+import { Separator } from '@/components/ui/separator'
 
-type Props = {}
+type Props = {
+	params: { orderId: string }
+}
 
-export default function OrderDetails({}: Props) {
-	const { data, isLoading, isError } = useGetOrderDetailByIdQuery(undefined, {
-		refetchOnFocus: true,
-		refetchOnReconnect: true,
-	})
+export default function OrderDetails({ params }: Props) {
+	const { data, isLoading, isError } = useGetOrderDetailByIdQuery(
+		params.orderId,
+		{
+			refetchOnFocus: true,
+			refetchOnReconnect: true,
+		}
+	)
 
 	return (
 		<div className='flex flex-col gap-4'>
@@ -29,8 +34,7 @@ export default function OrderDetails({}: Props) {
 				) : isError ? (
 					<p className=''>Error loading order detail</p>
 				) : (
-					data &&
-					data?.length > 0 && (
+					data && (
 						<>
 							<OrderDetailsEstimation order={data} />
 							<OrderDetailsStatus order={data} />

@@ -14,7 +14,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
 		}),
 		getOrderDetailById: builder.query<OrderDetailType, string>({
 			query: (id) => ({
-				url: '/order/track_order/',
+				url: '/order/track_order',
 				params: {
 					tracking_id: id,
 				},
