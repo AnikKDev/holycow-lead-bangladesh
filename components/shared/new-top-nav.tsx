@@ -6,6 +6,7 @@ import nav_logo from '@/assets/nav_logo.png'
 import { useAppSelector } from '@/redux/hooks'
 import { selectTotalCartItems } from '@/redux/slices/orderSlice/orderSlice'
 import { AlignJustify, ShoppingCart, User } from 'lucide-react'
+import { useMediaQuery } from 'react-responsive'
 
 import { useAuthState } from '@/hooks/useAuthState'
 
@@ -15,7 +16,9 @@ import { LoginRegisterModal } from '../checkout/login-register-modal'
 import { allTakeawayLocations } from '../home-components/date'
 import { HomeShowLocationsModal } from '../home-components/home-modal'
 import { TopDropdownNavItesm } from './top-dropdown-navs'
-import TopNavigationSidebarModal from './top-navigation-sidebar'
+import TopNavigationSidebarModal, {
+	ResponsiveTopNavigation,
+} from './top-navigation-sidebar'
 
 const NewTopNav = () => {
 	const [showCartSidebar, setShowCartSidebar] = useState(false)
@@ -23,9 +26,11 @@ const NewTopNav = () => {
 	const [showLoginRegModal, setShowLoginRegModal] = useState(false)
 	const [showNavSidebar, setShowNavSidebar] = useState(false)
 	const [showTakeawayLocations, setShowTakeawayLocations] = useState(false)
+	const [showResponsiveNavigation, setShowResponsiveNavigation] =
+		useState(false)
 	const totalCartItems = useAppSelector(selectTotalCartItems)
 	const { auth } = useAuthState()
-
+	const isMobileMd = useMediaQuery({ query: '(max-width: 768px)' })
 	return (
 		<>
 			<nav className='container'>
@@ -35,7 +40,11 @@ const NewTopNav = () => {
 						{/* <CiMenuBurger size={38} /> */}
 						<AlignJustify
 							onClick={() => {
-								setShowNavSidebar(true)
+								if (isMobileMd) {
+									setShowResponsiveNavigation(true)
+								} else {
+									setShowNavSidebar(true)
+								}
 							}}
 							className='cursor-pointer text-primary-foreground'
 							size={22}
@@ -49,7 +58,7 @@ const NewTopNav = () => {
 							onClick={() => {
 								setShowTakeawayLocations(true)
 							}}
-							className='cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'
+							className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent  focus:text-[#905A09] md:block'
 						>
 							Online Order
 						</li>
@@ -62,16 +71,16 @@ const NewTopNav = () => {
 								/>
 							</Link>
 						</li>
-						<li className='cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
+						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
 							<Link href={'/private-event'}>Private Event</Link>
 						</li>
-						<li className='cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
+						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
 							<Link href={'/career'}>Career</Link>
 						</li>
-						<li className='cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
+						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
 							<Link href={'/whats-on'}>Offers</Link>
 						</li>
-						<li className='cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
+						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
 							<Link href={'/contact'}>Contact Us</Link>
 						</li>
 					</ul>
@@ -100,23 +109,33 @@ const NewTopNav = () => {
 				</div>
 			</nav>
 
+			{/* cart modal */}
 			<CartSidebar
 				showCartSidebar={showCartSidebar}
 				setShowCartSidebar={setShowCartSidebar}
 			/>
 
+			{/* account setting sidebar modal */}
 			<AccountSidebarModal
 				showAccountSidebar={showAccountSidebar}
 				setShowAccountSidebar={setShowAccountSidebar}
 			/>
+			{/* login reg popup modal */}
 			<LoginRegisterModal
 				showModal={showLoginRegModal}
 				setShowModal={setShowLoginRegModal}
 			/>
 
+			{/* top navbar side navigation modal */}
 			<TopNavigationSidebarModal
 				showNavSidebar={showNavSidebar}
 				setShowNavSidebar={setShowNavSidebar}
+			/>
+
+			{/* responsive navbar */}
+			<ResponsiveTopNavigation
+				setShowNavResSidebar={setShowResponsiveNavigation}
+				showNavResSidebar={showResponsiveNavigation}
 			/>
 
 			{/* online order popup */}
