@@ -36,6 +36,7 @@ const AccountSidebarModal = ({
 		removeCookie('refresh')
 		dispatch(logOut())
 		setShowModal(false)
+		setShowAccountSidebar(false)
 		router.replace('/')
 	}
 

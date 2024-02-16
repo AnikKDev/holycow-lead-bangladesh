@@ -10,9 +10,7 @@ import NewTopNav from './new-top-nav'
 const AppTopBar = () => {
 	const navbarRef = useRef(null)
 	const pathname = usePathname()
-	if (pathname === '/login/' || pathname === '/register/') {
-		return null
-	}
+
 	const isNoRequiredOfGradientPage =
 		pathname.includes('/checkout') || pathname.includes('/account')
 
@@ -32,6 +30,10 @@ const AppTopBar = () => {
 
 		return () => window.removeEventListener('scroll', handleScroll)
 	}, [])
+
+	if (pathname === '/login/' || pathname === '/register/') {
+		return null
+	}
 
 	return (
 		<>

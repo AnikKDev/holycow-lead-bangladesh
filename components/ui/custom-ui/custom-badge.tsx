@@ -1,22 +1,26 @@
+import { ORDER_STATUS } from '@/redux/slices/orderSlice/orderSlice'
+
 import { Badge } from '../badge'
 
 type Props = {
-	status: string
+	status: ORDER_STATUS
 }
 
 export default function CustomBadge({ status }: Props) {
 	return (
 		<Badge
-			className='whitespace-nowrap text-xs'
+			className='whitespace-nowrap text-[13px]'
 			variant={
-				status === 'In Progress'
+				status === 'PENDING' || status === 'PREPARING'
 					? 'inProgress'
-					: status === 'Completed'
+					: status === 'ACCEPTED' || status === 'DISPATCHED'
 					  ? 'completed'
-					  : 'cancelled'
+					  : status === 'DELIVERED'
+					    ? 'default'
+					    : 'cancelled'
 			}
 		>
-			{status}
+			{status || 'Unknown'}
 		</Badge>
 	)
 }

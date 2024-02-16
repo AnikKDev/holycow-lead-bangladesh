@@ -1,9 +1,10 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import { OrderDetailType } from '@/redux/slices/orderSlice/orderSlice'
 import ReactPaginate from 'react-paginate'
 
-import { OrderTableColumns } from '@/types/account/account.types'
+import { OrderTabType } from '@/types/account/account.types'
 import { Separator } from '@/components/ui/separator'
 import {
 	Table,
@@ -16,13 +17,17 @@ import {
 import DataTableRow from './data-table-row'
 
 type Props = {
-	data: OrderTableColumns[]
+	data: OrderDetailType[]
 	itemsPerPage?: number
+	searchText?: string
+	selectedTab?: OrderTabType
 }
 
 export default function OrderDataTable({
 	data: orders,
 	itemsPerPage = 5,
+	searchText,
+	selectedTab,
 }: Props) {
 	const ref = useRef<HTMLDivElement>(null)
 	const [itemOffset, setItemOffset] = useState(0)
@@ -31,13 +36,40 @@ export default function OrderDataTable({
 	// (This could be items from props; or items loaded in a local state
 	// from an API endpoint with useEffect and useState)
 	const endOffset = itemOffset + itemsPerPage
-	console.log(`Loading items from ${itemOffset} to ${endOffset}`)
-	const currentItems = orders.slice(itemOffset, endOffset)
-	const pageCount = Math.ceil(orders.length / itemsPerPage)
+
+	function filterOrdersByTabSelect(orderItem: OrderDetailType) {
+		if (selectedTab === 'current orders' && orderItem.status !== 'DELIVERED') {
+			return true
+		} else if (
+			selectedTab === 'order history' &&
+			orderItem.status === 'DELIVERED'
+		) {
+			return true
+		} else {
+			return false
+		}
+	}
+
+	function filterOrdersBySearchInput(orderItem: OrderDetailType) {
+		if (searchText.trim()) {
+			return orderItem.tracking_id
+				?.toLowerCase()
+				.includes(searchText.toLowerCase())
+		} else {
+			return true
+		}
+	}
+
+	const filteredOrders = orders
+		.filter(filterOrdersByTabSelect)
+		.filter(filterOrdersBySearchInput)
+
+	const currentItems = filteredOrders.slice(itemOffset, endOffset)
+	const pageCount = Math.ceil(filteredOrders.length / itemsPerPage)
 
 	// Invoke when user click to request another page.
 	const handlePageClick = (event) => {
-		const newOffset = (event.selected * itemsPerPage) % orders.length
+		const newOffset = (event.selected * itemsPerPage) % filteredOrders.length
 		console.log(
 			`User requested page number ${event.selected}, which is offset ${newOffset}`
 		)
@@ -84,17 +116,19 @@ export default function OrderDataTable({
 	)
 }
 
-const OrderTableBody = ({ orders }: { orders: OrderTableColumns[] }) => {
-	return orders.map(({ orderNumber, items, orderDate, status, total }, idx) => (
-		<DataTableRow
-			key={idx}
-			items={items}
-			orderDate={orderDate}
-			status={status}
-			orderNumber={orderNumber}
-			total={total}
-		/>
-	))
+const OrderTableBody = ({ orders }: { orders: OrderDetailType[] }) => {
+	return orders.map(
+		({ tracking_id, order_items, order_date, status, total, id }) => (
+			<DataTableRow
+				key={id}
+				order_items={order_items}
+				order_date={order_date}
+				status={status}
+				tracking_id={tracking_id}
+				total={total}
+			/>
+		)
+	)
 }
 
 const PaginatedOrderTable = ({
