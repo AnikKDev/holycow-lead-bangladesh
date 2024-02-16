@@ -1,5 +1,4 @@
-import React from 'react'
-import Image from 'next/image'
+import Link from 'next/link'
 import bg from '@/assets/homepage/hero_banner.png'
 
 import { Button } from '@/components/ui/button'
@@ -58,9 +57,11 @@ const hero = (props: Props) => {
 							added opportunity to experience a blend of new, inspired dishes
 							that uniquely combine creativity with authenticity.
 						</p>
-						<Button className='rounded-none bg-primary font-lora text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-foreground'>
-							Explore Menu
-						</Button>
+						<Link href={'/takeaway-menu'}>
+							<Button className='rounded-none bg-primary font-lora text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-foreground'>
+								Explore Menu
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</div>
