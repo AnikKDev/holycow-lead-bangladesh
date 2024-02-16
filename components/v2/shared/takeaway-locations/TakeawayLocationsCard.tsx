@@ -17,8 +17,9 @@ const TakeawayLocationsCard = ({
 }: Props) => {
 	return (
 		<article className='relative text-foreground'>
+			{/* note: added fixed height to maintain consistent height. may remove this */}
 			<div
-				className='relative z-20 mx-4 my-[22px] mt-4 flex flex-col items-center gap-8 rounded-3xl border-t border-[#905A09] bg-background p-8'
+				className='relative z-20 mx-4 my-[22px] mt-4 flex h-[385px] flex-col items-center justify-between gap-8 rounded-3xl border-t border-[#905A09] bg-background p-5'
 				style={{
 					boxShadow:
 						'0px 39px 16px rgba(144, 90, 9, 0.01), 0px 22px 13px rgba(144, 90, 9, 0.05), 0px 10px 10px rgba(144, 90, 9, 0.09), 0px 2px 5px rgba(144, 90, 9, 0.1)',
