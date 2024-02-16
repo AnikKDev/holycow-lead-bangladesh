@@ -11,8 +11,8 @@ import TestimonialSlider from './TestimonialSlider'
 type Props = {}
 
 const Testimonial = (props: Props) => {
-	const { data, isLoading } = useGetReviewsQuery()
-	if (isLoading) {
+	const { data, isLoading, isError } = useGetReviewsQuery()
+	if (isLoading && !isError) {
 		return (
 			<section className='grid grid-cols-12 gap-8'>
 				<div className='col-span-3'>
@@ -25,6 +25,8 @@ const Testimonial = (props: Props) => {
 				</div>
 			</section>
 		)
+	} else if (!isLoading && isError) {
+		return <h3>Error getting reviews!</h3>
 	}
 	return (
 		<section className='relative my-14 flex w-full flex-col items-center md:my-[144px]'>

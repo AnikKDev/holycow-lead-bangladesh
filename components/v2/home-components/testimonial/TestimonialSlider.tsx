@@ -29,7 +29,7 @@ const TestimonialSlider = ({ reviews }: TestimonialSlider) => {
 		}
 	}, [currentSlider])
 	const isSmallScreen = window.innerWidth <= 768
-
+	console.log(reviews, 'reviews')
 	return (
 		<div className='relative flex w-full flex-row items-center overflow-hidden md:min-w-[350px]'>
 			<div className='relative w-full overflow-hidden'>
@@ -43,7 +43,7 @@ const TestimonialSlider = ({ reviews }: TestimonialSlider) => {
 					}}
 				>
 					{/* sliders */}
-					{reviews.map((each, idx) => (
+					{reviews?.map((each, idx) => (
 						<div key={idx} className='relative min-w-full p-4 md:min-w-[50%]'>
 							<TestimonialCard
 								key={idx}
