@@ -16,14 +16,18 @@ export default function AboutUs({}: Props) {
 	return (
 		<>
 			<Header />
-			<WonderfulRestaurant />
-			<HollyChef />
-			<Specialty />
-			<TakeawayLocations />
-			<AwardsRecognition />
+			<div className='mx-auto max-w-5xl'>
+				<WonderfulRestaurant />
+				<HollyChef />
+				<Specialty />
+				<TakeawayLocations />
+				<AwardsRecognition />
+			</div>
 			<VideoPlayer />
 			<PhotoGallery />
-			<Testimonial />
+			<div className='mx-auto max-w-5xl'>
+				<Testimonial />
+			</div>
 		</>
 	)
 }

@@ -5,7 +5,7 @@ import TakeawayLocationsList from './TakeawayLocationsList'
 
 const TakeawayLocations = () => {
 	return (
-		<section className='container flex flex-col gap-24'>
+		<section className='flex flex-col gap-24'>
 			<SectionHeader
 				title='Take our fresh, delicious fare home for an
 						unforgettable experience'
