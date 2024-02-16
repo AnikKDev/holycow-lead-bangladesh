@@ -125,7 +125,11 @@ const CartSidebar = ({
 					</SheetFooter>
 				</SheetContent>
 			</Sheet>
-			<LoginRegisterModal showModal={showModal} setShowModal={setShowModal} />
+			<LoginRegisterModal
+				isCheckoutPage
+				showModal={showModal}
+				setShowModal={setShowModal}
+			/>
 		</>
 	)
 }

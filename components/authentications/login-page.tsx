@@ -53,7 +53,7 @@ const LoginPage = ({
 	setCurrentStep: React.Dispatch<React.SetStateAction<LoginPageStep>>
 }) => {
 	const searchParams = useSearchParams()
-	const callBackRoute = searchParams.get('callback-url')
+	const callBackUrl = searchParams.get('callback-url')
 	const [loginUser, { isLoading: verifiedUserLoginLoading }] =
 		useLoginMutation()
 
@@ -82,8 +82,8 @@ const LoginPage = ({
 			})
 
 			// window.location.href = callBackRoute
-			if (callBackRoute) {
-				router.push(callBackRoute)
+			if (callBackUrl) {
+				window.location.href = callBackUrl
 			} else {
 				router.replace('/')
 			}
@@ -136,7 +136,7 @@ const LoginPage = ({
 				<Button
 					variant='link'
 					onClick={() => setCurrentStep('forgot-password')}
-					className='text-primary-dark text-center text-sm font-medium'
+					className='text-center text-sm font-medium text-primary-dark'
 				>
 					Forgot your password?
 				</Button>
