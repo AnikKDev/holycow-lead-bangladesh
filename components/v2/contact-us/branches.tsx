@@ -22,9 +22,16 @@ export default function Branches({
 }: Props) {
 	return (
 		<div className='mb-24'>
-			<div className={cn('flex items-center gap-x-32', classes)}>
-				<div className='flex w-1/2 flex-col pr-10'>
-					<h2 className='mb-2 text-lg font-bold text-primary'>{branchNum}</h2>
+			<div
+				className={cn(
+					'flex items-center justify-between gap-5 mobile-md:flex-wrap',
+					classes
+				)}
+			>
+				<div className='flex flex-col'>
+					<h2 className='mb-2 text-lg font-bold text-primary-dark'>
+						{branchNum}
+					</h2>
 					<svg
 						width='40'
 						height='9'
@@ -53,7 +60,7 @@ export default function Branches({
 						{branchName}
 					</h1>
 					<p className='mb-2 text-xl'>{branchLocation}</p>
-					<a className='mb-8 font-medium text-primary' href='#'>
+					<a className='mb-8 font-medium text-primary-dark' href='#'>
 						{branchEmail}
 					</a>
 					<h3 className='mb-4 text-2xl font-[500] tracking-[3%]'>
@@ -61,7 +68,7 @@ export default function Branches({
 					</h3>
 					{branchOpeningHours}
 				</div>
-				<div className='w-1/2'>
+				<div className='max-w-[450px] mobile-sm:max-w-full'>
 					<img alt='Map' className='h-auto w-full' src={branchImg.src} />
 				</div>
 			</div>
