@@ -10,7 +10,7 @@ export default function BannerContents({ text, image }: Props) {
 					style={{
 						background: `url(${image}), lightgray 0px -166px / 107.143% 228.696% no-repeat`,
 					}}
-					className='relative h-full w-full !bg-center object-cover'
+					className='relative h-full w-full !bg-cover !bg-center object-cover'
 				>
 					<div className='absolute inset-0 bg-[linear-gradient(78deg,#0B0600_74.17%,#4D412F_100.51%)] opacity-50'></div>
 

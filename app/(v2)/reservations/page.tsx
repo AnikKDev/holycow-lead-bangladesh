@@ -1,16 +1,11 @@
-import React from 'react'
 import bg from '@/assets/career/career-and-offer-bg.png'
 
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import Branches from '@/components/v2/contact-us/branches'
-import TakeawaySection from '@/components/v2/contact-us/takeaway-section'
-import DeliveryAndDine from '@/components/v2/home-components/header/DeliveryAndDine'
 import PhotoGallery from '@/components/v2/home-components/photo_gallery/PhotoGallery'
-import ContactForm from '@/components/v2/private-event/contact-form'
 import HappyHours from '@/components/v2/reservation/happy-hours'
 import BannerContents from '@/components/v2/shared/banner-contents'
-import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
 import SectionHeader from '@/components/v2/shared/SectionHeader'
 import VideoPlayer from '@/components/v2/shared/VideoPlayer'
 
@@ -23,17 +18,17 @@ export default function Reservation({}: Props) {
 			<div className='container'>
 				<BannerContents text='Reservation' image={bg.src} />
 			</div>
-			<div className='mx-auto max-w-5xl'>
-				<div className='my-32'>
+			<div className='container mx-auto max-w-5xl'>
+				<div className='my-10 mobile-md:my-5'>
 					<SectionHeader
 						subTitle='Grab-N-Taste'
 						title='Come for our fresh, delicious fare, and stay for a dining experience you won’t forget. '
 						subTitleSize='medium'
 					/>
-					<Button className='mx-auto my-12 block'>Book A Table</Button>
+					<Button className='mx-auto my-5 block'>Book A Table</Button>
 				</div>
 				{/* separator */}
-				<Separator className='container my-20 max-w-7xl' />
+				<Separator className='container my-10 max-w-7xl' />
 				{/* branches */}
 				<div>
 					<Branches
@@ -56,10 +51,10 @@ export default function Reservation({}: Props) {
 						branchNum='Putney'
 					/>
 					{/* happy section */}
-					<div className='mt-10'>
+					<div className='mt-4'>
 						<HappyHours />
 					</div>
-					<div className='mx-auto mt-20 max-w-7xl'>
+					<div className='mx-auto mt-10 max-w-7xl'>
 						<VideoPlayer />
 					</div>
 				</div>
