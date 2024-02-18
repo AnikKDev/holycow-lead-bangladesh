@@ -40,7 +40,7 @@ const AuthLayoutContainer = (props: IMainProps) => {
 								className='flex items-center gap-1.5 rounded-md'
 								variant='outline'
 							>
-								<IoMdArrowBack className=' text-xl text-primary text-opacity-70 mobile-lg:text-sm' />
+								<IoMdArrowBack className=' text-primary-dark text-xl text-opacity-70 mobile-lg:text-sm' />
 								<span>Go Back</span>
 							</Button>
 						)}

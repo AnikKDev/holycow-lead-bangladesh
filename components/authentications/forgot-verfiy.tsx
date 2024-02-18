@@ -90,7 +90,7 @@ const ForgotVerifyPage = ({
 						<div className='flex flex-col gap-2'>
 							<p className='text-center text-sm text-[7D7D7D]'>
 								Didn’t receive otp?{' '}
-								<strong className='cursor-pointer text-sm font-medium text-primary'>
+								<strong className='text-primary-dark cursor-pointer text-sm font-medium'>
 									Resend
 								</strong>
 							</p>

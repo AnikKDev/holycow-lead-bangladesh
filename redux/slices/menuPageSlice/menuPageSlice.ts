@@ -32,6 +32,8 @@ export type MenuItemType = Extend<
 		image: string
 		// for cart
 		quantity: number
+		// for order detail
+		unit_price: number
 	}>
 >
 export type AllMenuType = Extend<

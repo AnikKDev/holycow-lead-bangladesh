@@ -64,7 +64,7 @@ const CartSidebar = ({
 										setShowCartSidebar(false)
 									}}
 									variant='link'
-									className='mt-2 gap-1.5'
+									className='mt-2 gap-1.5 text-[#905A09]'
 								>
 									<FiPlusCircle className='h-4 w-4' />
 									Add More Items
@@ -125,7 +125,11 @@ const CartSidebar = ({
 					</SheetFooter>
 				</SheetContent>
 			</Sheet>
-			<LoginRegisterModal showModal={showModal} setShowModal={setShowModal} />
+			<LoginRegisterModal
+				isCheckoutPage
+				showModal={showModal}
+				setShowModal={setShowModal}
+			/>
 		</>
 	)
 }

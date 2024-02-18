@@ -29,6 +29,7 @@ export const resetOrderDiscount = (orderState: OrderInitialState) => {
 				...orderState,
 				discount: null,
 				promo_code: '',
+				promo_code_id: null,
 			})
 		)
 	}

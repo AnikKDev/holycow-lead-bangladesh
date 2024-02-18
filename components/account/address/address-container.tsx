@@ -1,14 +1,11 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
 import { useGetAllAddressesQuery } from '@/redux/slices/accountSlice/addressSlice/addressApiSlice'
-import { HiOutlinePencil } from 'react-icons/hi'
-import { RiDeleteBinLine } from 'react-icons/ri'
+import { useEffect, useState } from 'react'
 
-import { AccountAddress } from '@/types/account/account.types'
-import AddressSkeleton from '@/components/ui/custom-ui/skeletons/address-skeleton'
 import { CreateAddressModal } from '@/components/addresses/create-address-modal'
-import { ShowAddressesModal } from '@/components/checkout/delivery/show-addresses-modal'
+import AddressSkeleton from '@/components/ui/custom-ui/skeletons/address-skeleton'
+import { AccountAddress } from '@/types/account/account.types'
 
 import AddressRow from './address-row'
 
@@ -33,7 +30,7 @@ export default function AddressContainer({}: Props) {
 		address_name: '',
 		apartment_number: '',
 		city: 'london',
-		customer: '',
+		// customer: '',
 		// id: 0,
 		postal_code: '',
 	})

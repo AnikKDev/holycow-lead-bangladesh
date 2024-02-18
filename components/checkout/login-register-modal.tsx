@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -14,11 +13,13 @@ import {
 export function LoginRegisterModal({
 	showModal,
 	setShowModal,
+	isCheckoutPage = false,
 }: {
 	showModal: boolean
 	setShowModal: Dispatch<SetStateAction<boolean>>
+	isCheckoutPage?: boolean
 }) {
-	const pathname = usePathname()
+	const router = useRouter()
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
@@ -30,32 +31,37 @@ export function LoginRegisterModal({
 					<DialogFooter className='mx-auto mt-2 w-[320px] min-w-fit  flex-col gap-4 px-1.5 pb-3 pt-2.5'>
 						<div className='flex flex-col gap-[2px]'>
 							<h3>Already have an account?</h3>
-							<Link href={`/login?callback-url=${pathname}checkout`}>
-								<Button
-									type='submit'
-									className=' w-full rounded-full'
-									variant='default'
-									size='lg'
-									// onClick={() => {
-									// 	router.push(`/takeaway-location/${params.location}/checkout`)
-									// }}
-								>
-									Log In
-								</Button>
-							</Link>
+							<Button
+								type='submit'
+								className=' w-full rounded-full'
+								variant='default'
+								size='lg'
+								onClick={() => {
+									if (isCheckoutPage) {
+										router.push(
+											`/login?callback-url=${window.location.href}checkout`
+										)
+									} else {
+										router.push(`/login?callback-url=${window.location.href}`)
+									}
+								}}
+							>
+								Log In
+							</Button>
 						</div>
 						<div className='flex flex-col gap-[2px]'>
 							<h3>Don’t have an account?</h3>
-							<Link href={`/register`}>
-								<Button
-									type='submit'
-									className=' w-full rounded-full'
-									variant='default'
-									size='lg'
-								>
-									Sign Up
-								</Button>
-							</Link>
+							<Button
+								type='submit'
+								className=' w-full rounded-full'
+								variant='default'
+								size='lg'
+								onClick={() => {
+									router.push('/register')
+								}}
+							>
+								Sign Up
+							</Button>
 						</div>
 						<div className='flex flex-col gap-[2px]'>
 							<div className='relative py-2'>

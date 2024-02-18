@@ -9,9 +9,16 @@ import { Separator } from '@/components/ui/separator'
 type Props = {
 	selectedTab: OrderTabType
 	setSelectedTab: React.Dispatch<React.SetStateAction<OrderTabType>>
+	searchText: string
+	setSearchText: React.Dispatch<React.SetStateAction<string>>
 }
 
-export default function OrderTab({ selectedTab, setSelectedTab }: Props) {
+export default function OrderTab({
+	selectedTab,
+	setSelectedTab,
+	searchText,
+	setSearchText,
+}: Props) {
 	return (
 		<div className='flex items-center justify-between space-x-4 rounded-lg border border-[#D1D5DB] bg-white px-3 py-1 shadow-sm'>
 			{/* tab sections */}
@@ -41,6 +48,8 @@ export default function OrderTab({ selectedTab, setSelectedTab }: Props) {
 					<CommandInput
 						className='border-none  text-base'
 						placeholder='Search by order number'
+						value={searchText}
+						onValueChange={setSearchText}
 					/>
 				</Command>
 			</div>

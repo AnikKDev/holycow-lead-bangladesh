@@ -158,7 +158,7 @@ const RegisterVerifyPage = ({
 									onClick={handleResendOtp}
 									disabled={resendOtpLoading}
 									variant='outline'
-									className='h-fit cursor-pointer border-none px-0 py-0 text-sm font-medium text-primary hover:bg-transparent'
+									className='text-primary-dark h-fit cursor-pointer border-none px-0 py-0 text-sm font-medium hover:bg-transparent'
 								>
 									Resend
 								</Button>
