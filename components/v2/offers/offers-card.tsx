@@ -8,7 +8,7 @@ type Props = {
 export default function OffersCard({ backgroundImage, offerImage }: Props) {
 	return (
 		<section>
-			<div className='flex items-center justify-center gap-[78px]'>
+			<div className='flex items-center justify-center gap-[78px] mobile-sm:flex-col-reverse mobile-md:flex-col-reverse _desktop-sm:flex-row _desktop-md:flex-row'>
 				<div className='flex  gap-4'>
 					<div className='max-w-[489px]'>
 						{/* spoon and the sub-title */}
@@ -42,7 +42,7 @@ export default function OffersCard({ backgroundImage, offerImage }: Props) {
 							</h3>
 						</div>
 						<h4
-							className='text-primary-dark text-2xl font-medium tracking-[0.04em]'
+							className='text-2xl font-medium tracking-[0.04em] text-primary-dark'
 							style={{ lineHeight: 1.3 }}
 						>
 							Ring In The New Year With Culinary Delights!
