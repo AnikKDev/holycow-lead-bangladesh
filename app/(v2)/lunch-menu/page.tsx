@@ -19,7 +19,7 @@ const Page = () => {
 				<div className='px-2 md:px-4 _desktop-md:px-8'>
 					<BannerContents text='Lunch Menu' image={bg.src} />
 				</div>
-				<div className='container flex flex-col gap-24'>
+				<div className='!m-0 !mt-8 flex flex-col gap-12'>
 					<SectionHeader
 						subTitle='Grab-N-Taste'
 						title='We are pleased to inform you that Holy Cow – Fine Indian Food will serve a fresh lunch menu at all our takeaway locations! Starting from the 5th of December 2022.'
@@ -29,8 +29,8 @@ const Page = () => {
 				</div>
 			</GradientWrapper>
 
-			<div className='container flex flex-col items-center pb-[144px] font-lora tracking-[0.03em] text-foreground'>
-				<h3 className='py-8 text-center text-4xl font-medium leading-[1.3] md:py-24 md:text-[56px] md:leading-[1.3]'>
+			<div className='container flex flex-col items-center font-lora tracking-[0.03em] text-foreground'>
+				<h3 className='py-8 text-center text-4xl font-medium leading-[1.3] md:py-16 md:text-[56px] md:leading-[1.3]'>
 					Lunch Menu
 				</h3>
 				<div className='columns-1 gap-[54px] pb-16 md:columns-2'>
