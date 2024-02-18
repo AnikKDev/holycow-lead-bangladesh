@@ -60,7 +60,7 @@ export const NAVBAR_ITEMS: NavItemType[] = [
 	{ title: 'Private Event', path: '/private-event' },
 	{ title: 'Career', path: '/career' },
 	{ title: 'Offers', path: '/whats-on' },
-	{ title: 'Contact Us', path: '/Contact' },
+	{ title: 'Contact Us', path: '/contact' },
 	{
 		title: 'Holy Cow',
 		path: '/about-us',
