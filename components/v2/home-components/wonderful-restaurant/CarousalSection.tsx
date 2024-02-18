@@ -19,11 +19,12 @@ const CarousalSection = ({ restaurantImages }: Props) => {
 			opts={{
 				align: 'start',
 			}}
-			className='max-w-full'
 		>
-			<CarouselPrevious className='-top-8 left-0 border-[#905A09] text-[#905A09]' />
-			<CarouselNext className='-top-8 left-12 border-[#905A09] text-[#905A09]' />
-			<CarouselContent>
+			<div className='relative left-1/2 w-fit'>
+				<CarouselPrevious className='relative -left-8 bottom-0 right-0 top-6  hidden h-6 w-6 border-[#905A09] text-[#905A09] md:block' />
+				<CarouselNext className='relative bottom-0 left-8 right-0 top-0 hidden h-6 w-6 border-[#905A09] text-[#905A09] md:block' />
+			</div>
+			<CarouselContent className='py-4 md:py-10'>
 				{restaurantImages.map((restaurantImage, index) => (
 					<CarouselItem key={index} className='basis-1/2  md:basis-1/3'>
 						<Image

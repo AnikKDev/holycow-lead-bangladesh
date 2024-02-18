@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import DoubleQuotation from '@/assets/v2/home-page/double-quotation.svg'
+import reviewerImage from '@/assets/v2/home-page/reviewer.png'
 import { Review } from '@/types'
 import { Rating as ReactRating, ThinStar } from '@smastrom/react-rating'
 
@@ -52,7 +53,7 @@ const TestimonialCard = ({ review, reviewer, rating, image }: Review) => {
 						className='rounded-full'
 						width={125}
 						height={125}
-						src={image ? image : 'http://via.placeholder.com/125'}
+						src={image ? image : reviewerImage}
 						alt='user name'
 						style={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}
 					/>

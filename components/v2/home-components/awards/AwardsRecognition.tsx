@@ -9,17 +9,17 @@ type Props = {}
 
 const AwardsRecognition = (props: Props) => {
 	return (
-		<section className='container my-14 md:my-[144px]'>
+		<section className='mx-auto my-24 flex max-w-5xl flex-col gap-4 px-4'>
 			<SectionHeader title='Accolades Earned' subTitle='Awards & recognition' />
-			<div className='mt-8  flex flex-col items-center gap-8 md:mt-[98px] md:flex-row'>
-				<div className='flex flex-col items-center gap-2 md:items-start md:gap-4 _desktop-md:flex-row'>
+			<div className='flex flex-col items-center gap-4 md:gap-8 _desktop-sm:flex-row _desktop-md:flex-row'>
+				<div className='flex flex-col items-center gap-2 md:gap-4 _desktop-sm:flex-row _desktop-sm:items-start _desktop-md:flex-row _desktop-md:items-start'>
 					<Image src={awardIcon} alt='award icon' width={97} height={82.93} />
 
-					<div className=''>
-						<h4 className='text-center text-2xl font-medium leading-[1.3] tracking-[0.04em] text-[#905A09] md:text-left _desktop-sm:text-5xl _desktop-sm:leading-[1.3] _desktop-md:text-5xl _desktop-md:leading-[1.3]'>
+					<div className=' flex flex-col gap-4'>
+						<h4 className='text-center text-2xl font-medium leading-[1.3] tracking-[0.04em] text-[#905A09] _desktop-sm:text-left _desktop-sm:text-4xl _desktop-sm:leading-[1.3] _desktop-md:text-left _desktop-md:text-4xl _desktop-md:leading-[1.3]'>
 							Best Indian Restaurant
 						</h4>
-						<p className='flex flex-col gap-1 text-sm leading-[1.7] tracking-[0.04em] text-[#414141] mobile-md:w-full md:max-w-[489px] md:text-lg md:leading-[1.7]'>
+						<p className='flex flex-col gap-1 text-sm leading-[1.7] tracking-[0.04em] text-[#414141] mobile-md:w-full md:text-lg md:leading-[1.7] _desktop-sm:max-w-[489px] _desktop-md:max-w-[489px]'>
 							<span>
 								What makes Holy Cow Fine Indian Food so special? Style, Quality,
 								Creativity, Refinement, but above all Taste!
@@ -38,7 +38,7 @@ const AwardsRecognition = (props: Props) => {
 						</p>
 					</div>
 				</div>
-				<div className='relative flex-grow mobile-md:w-full md:min-w-fit'>
+				<div className='relative w-full flex-grow _desktop-sm:w-fit _desktop-md:w-fit'>
 					<Image
 						src={awardImage}
 						width={648}
@@ -49,7 +49,7 @@ const AwardsRecognition = (props: Props) => {
 					<Image
 						src={awardBackground}
 						alt='background'
-						className='absolute left-[-145px] top-[205px]'
+						className='absolute left-[-145px] top-[205px] hidden md:block'
 					/>
 				</div>
 			</div>

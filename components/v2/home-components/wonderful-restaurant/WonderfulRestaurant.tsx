@@ -18,11 +18,10 @@ const restaurantImages = [
 ]
 const WonderfulRestaurant = (props: Props) => {
 	return (
-		<div className='container my-14 space-y-10 p-10 mobile-md:space-x-5 md:my-[144px]'>
+		<div className='relative mx-auto my-24 max-w-5xl px-4'>
 			<SectionHeader
 				title='Come for our fresh, delicious fare, and stay for a dining experience you won’t forget.'
 				subTitle='Wonderful Restaurant'
-				containsAlign='left'
 				subTitleSize='medium'
 			/>
 			<CarousalSection restaurantImages={restaurantImages} />

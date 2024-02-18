@@ -9,15 +9,14 @@ type Props = {}
 
 const HollyChef = (props: Props) => {
 	return (
-		<section className='container mt-[192px] flex flex-col justify-center gap-16'>
+		<section className='mx-auto my-24 flex max-w-5xl flex-col justify-center gap-4 px-4 md:gap-16'>
 			<SectionHeader
 				title='What makes Holy Cow Fine Indian Food so special?'
 				subTitle='Holy Chef'
-				containsAlign='left'
 			/>
 			<div className='flex justify-between'>
-				<div className='flex flex-col gap-8 overflow-hidden md:max-w-[460px] md:gap-24'>
-					<div className='flex flex-col gap-8 md:max-w-[360px] md:gap-16'>
+				<div className='flex flex-col gap-4 overflow-hidden md:max-w-[460px] md:gap-24 md:gap-8'>
+					<div className='flex flex-col gap-4 md:max-w-[360px] md:gap-16 md:gap-8'>
 						<p className='font-open_sans text-base leading-7 tracking-[0.04em] text-[#414141]'>
 							It’s because we take the finest quality, authentic, fresh
 							ingredients. Our qualified, experienced chefs then creatively
@@ -51,13 +50,14 @@ const HollyChef = (props: Props) => {
 						</p>
 					</div>
 				</div>
-				<div className='relative flex hidden w-full justify-end md:block'>
+				<div className='relative mt-32 hidden justify-end md:block'>
 					<Image
 						src={img1}
 						alt='restaurant'
 						width={767}
 						height={975}
-						style={{ boxShadow: '178px 2px 0px 48px rgba(232,211,162,1)' }}
+						style={{ boxShadow: '96px 2px 0px 48px rgba(232,211,162,1)' }}
+						className='relative'
 					/>
 				</div>
 			</div>
