@@ -74,7 +74,7 @@ const FastDelivery = (props: Props) => {
 					{/* <Button className='rounded-none bg-primary font-lora text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-foreground'>
 					Takeaway / Order Online
 				</Button> */}
-					<HeaderTakeawayBtn />
+					<HeaderTakeawayBtn>Takeaway / Order Online</HeaderTakeawayBtn>
 				</div>
 			</div>
 		</>

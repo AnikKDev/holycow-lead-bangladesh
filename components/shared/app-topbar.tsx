@@ -16,13 +16,19 @@ const AppTopBar = () => {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			if (window.scrollY > 0 && !isNoRequiredOfGradientPage) {
+			if (
+				navbarRef?.current &&
+				window.scrollY > 0 &&
+				!isNoRequiredOfGradientPage
+			) {
 				// Change the threshold as needed
 				navbarRef.current.classList.add('bg-primary')
 				navbarRef.current.classList.add('shadow-sm')
 			} else {
-				navbarRef.current.classList.remove('bg-primary')
-				navbarRef.current.classList.remove('shadow-sm')
+				if (navbarRef?.current) {
+					navbarRef.current.classList.remove('bg-primary')
+					navbarRef.current.classList.remove('shadow-sm')
+				}
 			}
 		}
 

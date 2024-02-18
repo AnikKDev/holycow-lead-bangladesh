@@ -7,6 +7,7 @@ import { ChevronDown } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 
+import { Button } from '../ui/button'
 import { NAVBAR_ITEMS, NavItemType } from './data'
 
 type MenuItemWithSubMenuProps = {
@@ -17,14 +18,16 @@ type MenuItemWithSubMenuProps = {
 const MobileNavbar = ({
 	isOpen,
 	toggleOpen,
+	toggleLocationModal,
 }: {
 	isOpen: boolean
 	toggleOpen: () => void
+	toggleLocationModal?: () => void
 }) => {
 	const pathname = usePathname()
 
 	return (
-		<div className='grid w-full gap-2 pt-4'>
+		<div className='grid w-full gap-2 pt-4 font-lora'>
 			{NAVBAR_ITEMS.map((item, idx) => {
 				const isLastItem = idx === NAVBAR_ITEMS.length - 1 // Check if it's the last item
 
@@ -34,15 +37,31 @@ const MobileNavbar = ({
 							<MenuItemWithSubMenu item={item} toggleOpen={toggleOpen} />
 						) : (
 							<MenuItem className='px-2.5'>
-								<Link
-									href={item.path}
-									onClick={() => toggleOpen()}
-									className={`flex w-full text-base ${
-										item.path === pathname ? 'font-bold' : ''
-									}`}
-								>
-									{item.title}
-								</Link>
+								{!item.path ? (
+									item?.noPathIdentifier === 'online-order' ? (
+										<Button
+											className='m-0 h-auto w-full justify-start bg-transparent p-0 text-base font-normal hover:bg-transparent'
+											onClick={() => {
+												toggleOpen()
+												if (toggleLocationModal) {
+													toggleLocationModal()
+												}
+											}}
+										>
+											{item.title}
+										</Button>
+									) : null
+								) : (
+									<Link
+										href={item.path}
+										onClick={() => toggleOpen()}
+										className={`flex w-full text-base ${
+											item.path === pathname ? 'font-bold' : ''
+										}`}
+									>
+										{item.title}
+									</Link>
+								)}
 							</MenuItem>
 						)}
 

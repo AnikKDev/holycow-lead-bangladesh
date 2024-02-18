@@ -166,6 +166,7 @@ export default TopNavigationSidebarModal
 export function ResponsiveTopNavigation({
 	setShowNavResSidebar,
 	showNavResSidebar,
+	toggleLocationModal,
 }) {
 	const [showTakeawayLocations, setShowTakeawayLocations] = useState(false)
 	return (
@@ -194,6 +195,7 @@ export function ResponsiveTopNavigation({
 						<MobileNavbar
 							isOpen={showNavResSidebar}
 							toggleOpen={setShowNavResSidebar}
+							toggleLocationModal={toggleLocationModal}
 						/>
 					</div>
 					<SheetFooter className='shrink-0 flex-col space-y-2  px-3 pb-7 pt-3'>
