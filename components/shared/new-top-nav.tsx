@@ -58,7 +58,7 @@ const NewTopNav = () => {
 							onClick={() => {
 								setShowTakeawayLocations(true)
 							}}
-							className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent  focus:text-[#905A09] md:block'
+							className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent  focus:text-[#905A09] _desktop-sm:block _desktop-md:block'
 						>
 							Online Order
 						</li>
@@ -71,16 +71,16 @@ const NewTopNav = () => {
 								/>
 							</Link>
 						</li>
-						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
+						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] _desktop-sm:block _desktop-md:block'>
 							<Link href={'/private-event'}>Private Event</Link>
 						</li>
-						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
+						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] _desktop-sm:block _desktop-md:block'>
 							<Link href={'/career'}>Career</Link>
 						</li>
-						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
+						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] _desktop-sm:block _desktop-md:block'>
 							<Link href={'/whats-on'}>Offers</Link>
 						</li>
-						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
+						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] _desktop-sm:block _desktop-md:block'>
 							<Link href={'/contact'}>Contact Us</Link>
 						</li>
 					</ul>
