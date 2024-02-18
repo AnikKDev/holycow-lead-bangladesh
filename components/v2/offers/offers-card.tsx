@@ -10,9 +10,9 @@ export default function OffersCard({ backgroundImage, offerImage }: Props) {
 		<section>
 			<div className='flex items-center justify-center gap-[78px] mobile-sm:flex-col-reverse mobile-md:flex-col-reverse _desktop-sm:flex-row _desktop-md:flex-row'>
 				<div className='flex  gap-4'>
-					<div className='max-w-[489px]'>
+					<div className='flex max-w-[489px] flex-col gap-4'>
 						{/* spoon and the sub-title */}
-						<div>
+						<div className='flex w-full flex-col items-center gap-4 md:items-start'>
 							<svg
 								width='40'
 								height='9'
@@ -37,23 +37,23 @@ export default function OffersCard({ backgroundImage, offerImage }: Props) {
 									</clipPath>
 								</defs>
 							</svg>
-							<h3 className='text-lg font-medium capitalize leading-snug tracking-[0.04em] text-foreground text-opacity-70'>
+							<h3 className='text-center text-lg font-medium capitalize leading-snug tracking-[0.04em] text-foreground text-opacity-70 md:text-left'>
 								Latest Offers
 							</h3>
 						</div>
 						<h4
-							className='text-2xl font-medium tracking-[0.04em] text-primary-dark'
+							className='text-center text-2xl font-medium tracking-[0.04em] text-primary-dark md:text-left'
 							style={{ lineHeight: 1.3 }}
 						>
 							Ring In The New Year With Culinary Delights!
 						</h4>
 						<p
-							className='font-medium tracking-[0.04em] text-foreground'
+							className='text-left text-center font-medium tracking-[0.04em] text-foreground'
 							style={{ lineHeight: 1.75 }}
 						>
 							3-course meal + welcome drink, all for just $30 per person
 						</p>
-						<div className='mt-6'>
+						<div className='mt-4'>
 							<p className='leading-[31.5px] text-[#727272]'>
 								Monday to Thursday till 31st January 2024! Offer available at
 								Putney and Canary Wharf restaurant via online booking only.
