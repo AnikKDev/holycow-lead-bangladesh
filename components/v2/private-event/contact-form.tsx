@@ -24,28 +24,13 @@ const formSchema = z.object({
 		.email({
 			message: 'Invalid email address',
 		}),
-	contact_number: z
-		.string({
-			required_error: 'Contact number is required.',
-		})
-		.describe('Contact Number'),
-	subject: z
-		.string({
-			required_error: 'Please provide a subject.',
-		})
-		.describe('Subject'),
-	location: z
-		.string({
-			required_error: 'Select a location.',
-		})
-		.describe('Select Location'),
 	leave_a_note: z.string().describe('Leave A Note'),
 })
 
 export default function ContactForm({}: Props) {
 	const handleFormSubmit = (data: Partial<z.infer<typeof formSchema>>) => {}
 	return (
-		<section className='container mb-12'>
+		<section className='container mb-12 '>
 			<SectionHeader
 				subTitle='Contact'
 				title='Message To Us'
@@ -56,7 +41,7 @@ export default function ContactForm({}: Props) {
 				<AutoForm
 					onSubmit={handleFormSubmit}
 					formSchema={formSchema}
-					containerClassName='grid  md:grid-cols-3 gap-x-4 text-primary &:'
+					containerClassName='grid md:grid-cols-1  gap-x-4 text-primary'
 					// className='space-y-0 gap-x-4 gap-y-3'
 					fieldConfig={{
 						name: {
@@ -64,14 +49,7 @@ export default function ContactForm({}: Props) {
 								showLabel: false,
 								type: 'text',
 								placeholder: 'Your Name*',
-								className: 'mt-5',
-							},
-						},
-						contact_number: {
-							inputProps: {
-								type: 'number',
-								showLabel: false,
-								placeholder: 'Contact Number*',
+								className: 'mt-5 focus-visible:right-0',
 							},
 						},
 						email: {
@@ -79,28 +57,16 @@ export default function ContactForm({}: Props) {
 								type: 'email',
 								showLabel: false,
 								placeholder: 'Email*',
-							},
-						},
-
-						subject: {
-							inputProps: {
-								type: 'text',
-								showLabel: false,
-								placeholder: 'Subject*',
-							},
-						},
-						location: {
-							inputProps: {
-								type: 'text',
-								showLabel: false,
-								placeholder: 'Your Location*',
+								className: 'focus-visible:right-0',
 							},
 						},
 						leave_a_note: {
+							fieldType: 'textarea',
 							inputProps: {
 								type: 'text',
 								showLabel: false,
 								placeholder: 'Leave A Note',
+								className: 'focus-visible:right-0',
 							},
 						},
 					}}

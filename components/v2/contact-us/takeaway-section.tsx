@@ -19,10 +19,10 @@ export default function TakeawaySection({}: Props) {
 			<h3 className='mb-4 mt-10 text-2xl font-[500] text-foreground'>
 				Opening Hours
 			</h3>
-			<div className='text-sm font-[400] leading-[31.5px] text-[#727272]'>
-				<p className=''>5:30pm to 11:00pm Monday – Thursday</p>
-				<p className=''>5:00pm to 11:00pm Friday – Saturday</p>
-				<p className=''>5:30pm to 10:30pm Sunday</p>
+			<div className='text-left text-sm font-[400] leading-[31.5px] text-[#727272]'>
+				<p>5:30pm to 11:00pm Monday – Thursday</p>
+				<p>5:00pm to 11:00pm Friday – Saturday</p>
+				<p>5:30pm to 10:30pm Sunday</p>
 			</div>
 			<Button className='mt-6 bg-[#d4a373] text-white hover:bg-[#b37659]'>
 				View Takeaway Location
