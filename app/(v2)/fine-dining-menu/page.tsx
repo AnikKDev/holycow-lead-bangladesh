@@ -15,7 +15,7 @@ const Page = () => {
 		<>
 			<GradientWrapper>
 				<BannerContents text='Limehouse' image={bg.src} />
-				<div className='container flex flex-col gap-12'>
+				<div className='!m-0 !mt-8 flex flex-col gap-12'>
 					<SectionHeader
 						subTitle='Grab-N-Taste'
 						title='Come for our fresh, delicious fare, and stay for a dining experience you won’t forget.'

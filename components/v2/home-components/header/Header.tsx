@@ -9,9 +9,8 @@ const Header = (props: Props) => {
 	return (
 		<div className='bg-gradient-to-b from-primary to-background'>
 			<Hero />
-			<div className='mx-auto max-w-5xl'>
-				<DeliveryAndDine />
-			</div>
+
+			<DeliveryAndDine />
 		</div>
 	)
 }

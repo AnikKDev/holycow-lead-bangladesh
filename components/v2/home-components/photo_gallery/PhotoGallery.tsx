@@ -13,9 +13,16 @@ import SectionHeader from '../../shared/SectionHeader'
 
 const PhotoGallery = () => {
 	return (
-		<div className='container my-14 flex flex-col md:my-[144px] md:flex-row'>
-			<LeftDiv />
-			<CarousalDiv />
+		<div className='mx-auto my-14 flex max-w-5xl flex-col gap-4 px-4 md:gap-16'>
+			<SectionHeader
+				title='Photo Gallery'
+				subTitle='Instagram'
+				subTitleSize='medium'
+			/>
+			<div className='flex flex-col gap-4 md:flex-row _desktop-sm:gap-16 _desktop-md:gap-16'>
+				<LeftDiv />
+				<CarousalDiv />
+			</div>
 		</div>
 	)
 }
@@ -24,18 +31,12 @@ export default PhotoGallery
 
 const LeftDiv = () => {
 	return (
-		<div className='max-w-[700px] space-y-6 mobile-md:py-8 md:ml-28 md:mr-10'>
-			<SectionHeader
-				title='Photo Gallery'
-				subTitle='Instagram'
-				containsAlign='left'
-				subTitleSize='medium'
-			/>
+		<div className='flex flex-col items-center gap-4 md:items-start _desktop-sm:gap-8 _desktop-md:gap-8'>
 			<p className='text-[#414141]'>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur
+				Lorem ipsum dolor sit amet, consec adipiscing elit. consectetur
 				adipiscing elit.
 			</p>
-			<Button className='rounded-none'>View More</Button>
+			<Button className='w-fit rounded-none'>View More</Button>
 		</div>
 	)
 }

@@ -37,7 +37,7 @@ const menuItems = [
 		url: '/takeaway-menu/lamb',
 	},
 	{
-		title: 'Side Dishes (Vegetable)',
+		title: 'Side Dishes',
 		img: '/takeaway/takeaway-menu-items/8-side-dishes.png',
 		url: '/takeaway-menu/side-dishes-vegetable',
 	},

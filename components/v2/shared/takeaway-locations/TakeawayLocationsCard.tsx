@@ -16,36 +16,35 @@ const TakeawayLocationsCard = ({
 	storeLocation,
 }: Props) => {
 	return (
-		<article className='relative text-foreground'>
-			{/* note: added fixed height to maintain consistent height. may remove this */}
+		<article className='relative flex w-full text-foreground'>
 			<div
-				className='relative z-20 mx-4 my-[22px] mt-4 flex h-[385px] flex-col items-center justify-between gap-8 rounded-3xl border-t border-[#905A09] bg-background p-5'
+				className='relative z-20 mx-2 mb-4 flex w-full flex-col items-center justify-between gap-4 rounded-3xl border-t border-[#905A09] bg-background p-4 md:mx-4'
 				style={{
 					boxShadow:
 						'0px 39px 16px rgba(144, 90, 9, 0.01), 0px 22px 13px rgba(144, 90, 9, 0.05), 0px 10px 10px rgba(144, 90, 9, 0.09), 0px 2px 5px rgba(144, 90, 9, 0.1)',
 				}}
 			>
-				<div className='flex flex-col items-center gap-5'>
+				<div className='flex h-full flex-col items-center gap-2'>
 					<Image
 						src={Logo}
 						alt='Description of the image'
 						width={80}
 						height={37}
 					/>
-					<hr className='my-5 w-full border-t border-dotted border-foreground' />
+					<hr className='my-1 w-full border-t border-dotted border-foreground' />
 					<h4
-						className='text-center text-lg font-semibold capitalize tracking-[0.04em]'
+						className='text-center text-base font-semibold capitalize tracking-[0.04em] md:text-lg'
 						style={{ lineHeight: 1.3 }}
 					>
 						{storeName}
 					</h4>
-					<div className='flex flex-col items-center gap-[6px] text-center text-base text-[#414141]'>
+					<div className='flex flex-col items-center text-center text-sm text-[#414141] md:text-base'>
 						<p className='text-center tracking-[0.04em]'>
 							{storeAddress[0]}
 							<br /> {storeAddress[1]}
 						</p>
 						<p
-							className='flex items-center gap-1 text-sm font-semibold '
+							className='flex items-center gap-1 text-sm font-semibold'
 							style={{ lineHeight: 1.75 }}
 						>
 							<svg
@@ -75,7 +74,7 @@ const TakeawayLocationsCard = ({
 					className='v2-custom-button bg-primary px-8 py-2 text-xs font-medium capitalize leading-[1.7] tracking-[0.04em]'
 					href={storeLocation}
 				>
-					View Location
+					View <span className='hidden md:inline'>Location</span>
 				</Link>
 			</div>
 			<span className='absolute bottom-0 z-10 h-1/2 w-full bg-primary'></span>
