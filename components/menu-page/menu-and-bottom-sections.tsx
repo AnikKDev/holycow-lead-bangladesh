@@ -1,11 +1,11 @@
 'use client'
 
-import { useCallback, useEffect, useRef } from 'react'
-import { useParams } from 'next/navigation'
 import { useAppDispatch } from '@/redux/hooks'
 import { useGetFullMenuQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
 import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import { setVisitedLocationSlug } from '@/redux/slices/orderSlice/orderSlice'
+import { useParams } from 'next/navigation'
+import { useCallback, useEffect, useRef } from 'react'
 
 import useIntersectionObserver from '@/hooks/useIntersectionObserer'
 
@@ -77,6 +77,15 @@ const MenuAndAllBottomSections = ({
 	useEffect(() => {
 		console.log('information entry', informationEntry)
 	}, [informationRef, informationEntry])
+
+	useEffect(() => {
+		if(!isLoading) {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			})
+		}
+	}, [isLoading])
 
 	const isTargetItemVisible = !!targetItemEntry?.isIntersecting
 	const isInformationVisible = !!informationEntry?.isIntersecting
