@@ -136,6 +136,9 @@ const NewTopNav = () => {
 			<ResponsiveTopNavigation
 				setShowNavResSidebar={setShowResponsiveNavigation}
 				showNavResSidebar={showResponsiveNavigation}
+				toggleLocationModal={() => {
+					setShowTakeawayLocations(!showTakeawayLocations)
+				}}
 			/>
 
 			{/* online order popup */}
