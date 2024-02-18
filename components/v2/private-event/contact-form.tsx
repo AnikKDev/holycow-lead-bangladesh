@@ -56,7 +56,7 @@ export default function ContactForm({}: Props) {
 				<AutoForm
 					onSubmit={handleFormSubmit}
 					formSchema={formSchema}
-					containerClassName='grid grid-cols-3 gap-x-4 gap-y-3 text-primary'
+					containerClassName='grid  md:grid-cols-3 gap-x-4 text-primary &:'
 					// className='space-y-0 gap-x-4 gap-y-3'
 					fieldConfig={{
 						name: {

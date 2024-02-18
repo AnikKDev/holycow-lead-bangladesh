@@ -6,7 +6,6 @@ import TakeawaySection from '@/components/v2/contact-us/takeaway-section'
 import DeliveryAndDine from '@/components/v2/home-components/header/DeliveryAndDine'
 import ContactForm from '@/components/v2/private-event/contact-form'
 import BannerContents from '@/components/v2/shared/banner-contents'
-import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
 
 type Props = {}
 
@@ -17,14 +16,14 @@ const ContactUs = (props: Props) => {
 			<div className='container'>
 				<BannerContents text='Contact Us' image={bg.src} />
 			</div>
-			<div className='mx-auto max-w-5xl'>
+			<div className='mx-auto max-w-5xl px-4'>
 				<DeliveryAndDine />
 				{/* branches */}
 				<div>
 					<Branches
 						branchOpeningHours={
 							<>
-								<ul className='font-open_sans text-sm font-[400] leading-[31.5px] tracking-[4%] text-[#727272]'>
+								<ul className='w-full font-open_sans text-sm font-[400] leading-[31.5px] tracking-[4%] text-[#727272]'>
 									<li className=''>Monday: 5:00 pm - 11:00 pm</li>
 									<li className=''>Tuesday: 5:00 pm - 11:00 pm</li>
 									<li className=''>Wednesday: 5:00 pm - 11:00 pm</li>
@@ -44,7 +43,7 @@ const ContactUs = (props: Props) => {
 					<Branches
 						branchOpeningHours={
 							<>
-								<ul className='font-open_sans font-[400] leading-[31.5px] tracking-[4%] text-[#727272]'>
+								<ul className='w-full font-open_sans font-[400] leading-[31.5px] tracking-[4%] text-[#727272]'>
 									<li className='mb-1'>Monday: 2:00 pm – 11:00 pm</li>
 									<li className='mb-1'>Tuesday: 2:00 pm – 11:00 pm</li>
 									<li className='mb-1'>Wednesday: 2:00 pm – 11:00 pm</li>

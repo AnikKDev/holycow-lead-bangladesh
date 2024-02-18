@@ -6,7 +6,7 @@ type Props = {}
 
 export default function TakeawaySection({}: Props) {
 	return (
-		<div className='my-20 p-10 text-center'>
+		<div className='my-16 px-10 text-center'>
 			<h2 className='text-lg font-[500] tracking-widest text-[#905A09]'>
 				Takeaway
 			</h2>
