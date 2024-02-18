@@ -1,4 +1,25 @@
 import React from 'react'
+import cashew from '@/assets/allergy-advice/table_icons/cashew.png'
+// images
+import cellery from '@/assets/allergy-advice/table_icons/cellery.png'
+import cereals from '@/assets/allergy-advice/table_icons/cereals.png'
+import crust from '@/assets/allergy-advice/table_icons/crust_creams.png'
+import dairy from '@/assets/allergy-advice/table_icons/dairy.png'
+import dshes from '@/assets/allergy-advice/table_icons/dshes.png'
+import eggs from '@/assets/allergy-advice/table_icons/eggs.png'
+import fish from '@/assets/allergy-advice/table_icons/fsh.png'
+import glutten from '@/assets/allergy-advice/table_icons/glttn.png'
+import lupin from '@/assets/allergy-advice/table_icons/lupin.png'
+import milk from '@/assets/allergy-advice/table_icons/mlk.png'
+import mollusc from '@/assets/allergy-advice/table_icons/mollusc.png'
+import mstrd from '@/assets/allergy-advice/table_icons/mstrd.png'
+import nuts from '@/assets/allergy-advice/table_icons/nuts.png'
+import nuts2 from '@/assets/allergy-advice/table_icons/nuts2.png'
+import prwn from '@/assets/allergy-advice/table_icons/prwn.png'
+import seeds from '@/assets/allergy-advice/table_icons/seeds.png'
+import sesame from '@/assets/allergy-advice/table_icons/sesame.png'
+import so2 from '@/assets/allergy-advice/table_icons/so2.png'
+import soya from '@/assets/allergy-advice/table_icons/soya.png'
 
 type Props = {}
 
@@ -18,16 +39,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-2.png'
+							data-src={cellery.src}
 							className='alignnone size-full wp-image-3556 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-2.png'
+							src={cellery.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-2.png'
+								src={cellery.src}
 								alt=''
 								className='alignnone size-full wp-image-3556'
 							/>
@@ -41,20 +62,10 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-3.png'
+							data-src={cereals.src}
 							className='alignnone size-full wp-image-3557 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-3.png'
+							src={cereals.src}
 						/>
-						{/* <noscript>
-							<img
-								decoding='async'
-								width='100'
-								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-3.png'
-								alt=''
-								className='alignnone size-full wp-image-3557'
-							/>
-						</noscript> */}
 						<br />
 						CEREALS
 					</th>
@@ -65,16 +76,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-4.png'
+							data-src={crust.src}
 							className='alignnone size-full wp-image-3558 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-4.png'
+							src={crust.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-4.png'
+								src={crust.src}
 								alt=''
 								className='alignnone size-full wp-image-3558'
 							/>
@@ -89,16 +100,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-8.png'
+							data-src={lupin.src}
 							className='alignnone size-full wp-image-3562 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-8.png'
+							src={lupin.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-8.png'
+								src={lupin.src}
 								alt=''
 								className='alignnone size-full wp-image-3562'
 							/>
@@ -111,16 +122,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-9.png'
+							data-src={dairy.src}
 							className='alignnone size-full wp-image-3563 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-9.png'
+							src={dairy.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-9.png'
+								src={dairy.src}
 								alt=''
 								className='alignnone size-full wp-image-3563'
 							/>
@@ -133,16 +144,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-10.png'
+							data-src={mollusc.src}
 							className='alignnone size-full wp-image-3564 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-10.png'
+							src={mollusc.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-10.png'
+								src={mollusc.src}
 								alt=''
 								className='alignnone size-full wp-image-3564'
 							/>
@@ -155,16 +166,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-11.png'
+							data-src={mstrd.src}
 							className='alignnone size-full wp-image-3565 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-11.png'
+							src={mstrd.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-11.png'
+								src={mstrd.src}
 								alt=''
 								className='alignnone size-full wp-image-3565'
 							/>
@@ -178,16 +189,16 @@ export default function AllergyAdviceTable({}: Props) {
 								width='100'
 								height='100'
 								alt=''
-								data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-12.png'
+								data-src={cashew.src}
 								className='alignnone size-full wp-image-3566 lazyloaded'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-12.png'
+								src={cashew.src}
 							/>
 							<noscript>
 								<img
 									decoding='async'
 									width='100'
 									height='100'
-									src='https://holycowonline.com/wp-content/uploads/2021/10/HC-12.png'
+									src={cashew.src}
 									alt=''
 									className='alignnone size-full wp-image-3566'
 								/>
@@ -201,16 +212,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-13.png'
+							data-src={nuts.src}
 							className='alignnone size-full wp-image-3567 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-13.png'
+							src={nuts.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-13.png'
+								src={nuts.src}
 								alt=''
 								className='alignnone size-full wp-image-3567'
 							/>
@@ -223,16 +234,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-14.png'
+							data-src={sesame.src}
 							className='alignnone size-full wp-image-3568 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-14.png'
+							src={sesame.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-14.png'
+								src={sesame.src}
 								alt=''
 								className='alignnone size-full wp-image-3568'
 							/>
@@ -245,16 +256,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-20.png'
+							data-src={soya.src}
 							className='alignnone size-full wp-image-3574 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-20.png'
+							src={soya.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-20.png'
+								src={soya.src}
 								alt=''
 								className='alignnone size-full wp-image-3574'
 							/>
@@ -267,16 +278,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-21.png'
+							data-src={so2.src}
 							className='alignnone size-full wp-image-3575 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-21.png'
+							src={so2.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-21.png'
+								src={so2.src}
 								alt=''
 								className='alignnone size-full wp-image-3575'
 							/>
@@ -293,16 +304,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-1.png'
+							data-src={dshes.src}
 							className='alignnone size-full wp-image-3555 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-1.png'
+							src={dshes.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-1.png'
+								src={dshes.src}
 								alt=''
 								className='alignnone size-full wp-image-3555'
 							/>
@@ -317,18 +328,18 @@ export default function AllergyAdviceTable({}: Props) {
 								width='100'
 								height='100'
 								alt=''
-								data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-7.png'
+								data-src={glutten.src}
 								className='alignnone size-full wp-image-3561 lazyloaded'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-7.png'
+								src={glutten.src}
 							/>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
 								alt=''
-								data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-6.png'
+								data-src={glutten.src}
 								className='alignnone size-full wp-image-3560 lazyloaded'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-6.png'
+								src={glutten.src}
 							/>
 						</div>
 						GLUTEN/WHEAT
@@ -340,16 +351,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-5.png'
+							data-src={prwn.src}
 							className='alignnone size-full wp-image-3559 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-5.png'
+							src={prwn.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-5.png'
+								src={prwn.src}
 								alt=''
 								className='alignnone size-full wp-image-3559'
 							/>
@@ -363,16 +374,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-15.png'
+							data-src={eggs.src}
 							className='alignnone size-full wp-image-3569 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-15.png'
+							src={eggs.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-15.png'
+								src={eggs.src}
 								alt=''
 								className='alignnone size-full wp-image-3569'
 							/>
@@ -385,16 +396,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-16.png'
+							data-src={fish.src}
 							className='alignnone size-full wp-image-3570 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-16.png'
+							src={fish.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-16.png'
+								src={fish.src}
 								alt=''
 								className='alignnone size-full wp-image-3570'
 							/>
@@ -408,16 +419,16 @@ export default function AllergyAdviceTable({}: Props) {
 							width='100'
 							height='100'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-17.png'
+							data-src={milk.src}
 							className='alignnone size-full wp-image-3571 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/10/HC-17.png'
+							src={milk.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
 								width='100'
 								height='100'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-17.png'
+								src={milk.src}
 								alt=''
 								className='alignnone size-full wp-image-3571'
 							/>
@@ -433,16 +444,16 @@ export default function AllergyAdviceTable({}: Props) {
 								width='100'
 								height='100'
 								alt=''
-								data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-18.png'
+								data-src={nuts2.src}
 								className='alignnone size-full wp-image-3572 lazyloaded'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-18.png'
+								src={nuts2.src}
 							/>
 							<noscript>
 								<img
 									decoding='async'
 									width='100'
 									height='100'
-									src='https://holycowonline.com/wp-content/uploads/2021/10/HC-18.png'
+									src={nuts2.src}
 									alt=''
 									className='alignnone size-full wp-image-3572'
 								/>
@@ -452,16 +463,16 @@ export default function AllergyAdviceTable({}: Props) {
 								width='100'
 								height='100'
 								alt=''
-								data-src='https://holycowonline.com/wp-content/uploads/2021/10/HC-19.png'
+								data-src={nuts2.src}
 								className='alignnone size-full wp-image-3573 lazyloaded'
-								src='https://holycowonline.com/wp-content/uploads/2021/10/HC-19.png'
+								src={nuts2.src}
 							/>
 							<noscript>
 								<img
 									decoding='async'
 									width='100'
 									height='100'
-									src='https://holycowonline.com/wp-content/uploads/2021/10/HC-19.png'
+									src={nuts2.src}
 									alt=''
 									className='alignnone size-full wp-image-3573'
 								/>
@@ -474,14 +485,14 @@ export default function AllergyAdviceTable({}: Props) {
 						<img
 							decoding='async'
 							alt=''
-							data-src='https://holycowonline.com/wp-content/uploads/2021/12/HC-chart-seeds.png'
+							data-src={seeds.src}
 							className='alignnone size-full wp-image-3568 lazyloaded'
-							src='https://holycowonline.com/wp-content/uploads/2021/12/HC-chart-seeds.png'
+							src={seeds.src}
 						/>
 						<noscript>
 							<img
 								decoding='async'
-								src='https://holycowonline.com/wp-content/uploads/2021/12/HC-chart-seeds.png'
+								src={seeds.src}
 								alt=''
 								className='alignnone size-full wp-image-3568'
 							/>
