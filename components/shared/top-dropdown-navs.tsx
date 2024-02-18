@@ -14,7 +14,7 @@ import {
 
 export function TopDropdownNavItesm() {
 	return (
-		<NavigationMenu className='hidden _desktop-sm:block'>
+		<NavigationMenu className='hidden md:block'>
 			<NavigationMenuList className='gap-2 space-x-2.5'>
 				<NavigationMenuItem>
 					<NavigationMenuTrigger className='h-auto bg-transparent px-0 py-0 text-base font-medium transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] data-[active]:bg-transparent data-[state=open]:bg-transparent'>
