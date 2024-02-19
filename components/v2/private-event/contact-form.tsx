@@ -52,7 +52,7 @@ export default function ContactForm({}: Props) {
 								showLabel: false,
 								type: 'text',
 								placeholder: 'Your Name*',
-								className: 'mt-5 focus-visible:right-0 ',
+								className: 'mt-5 focus-visible:right-0 text-foreground',
 							},
 						},
 						contact_number: {
@@ -60,7 +60,7 @@ export default function ContactForm({}: Props) {
 								type: 'number',
 								showLabel: false,
 								placeholder: 'Contact Number*',
-								className: 'focus-visible:right-0',
+								className: 'focus-visible:right-0 text-foreground',
 							},
 						},
 						email: {
@@ -68,7 +68,7 @@ export default function ContactForm({}: Props) {
 								type: 'email',
 								showLabel: false,
 								placeholder: 'Email*',
-								className: 'focus-visible:right-0',
+								className: 'focus-visible:right-0 text-foreground',
 							},
 						},
 						leave_a_note: {
@@ -77,7 +77,7 @@ export default function ContactForm({}: Props) {
 								type: 'text',
 								showLabel: false,
 								placeholder: 'Leave A Note',
-								className: 'focus-visible:right-0',
+								className: 'focus-visible:right-0 text-foreground',
 							},
 						},
 					}}
