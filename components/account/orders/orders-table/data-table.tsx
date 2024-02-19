@@ -20,14 +20,12 @@ type Props = {
 	data: OrderDetailType[]
 	itemsPerPage?: number
 	searchText?: string
-	selectedTab?: OrderTabType
 }
 
 export default function OrderDataTable({
 	data: orders,
 	itemsPerPage = 5,
 	searchText,
-	selectedTab,
 }: Props) {
 	const ref = useRef<HTMLDivElement>(null)
 	const [itemOffset, setItemOffset] = useState(0)
@@ -36,19 +34,6 @@ export default function OrderDataTable({
 	// (This could be items from props; or items loaded in a local state
 	// from an API endpoint with useEffect and useState)
 	const endOffset = itemOffset + itemsPerPage
-
-	function filterOrdersByTabSelect(orderItem: OrderDetailType) {
-		if (selectedTab === 'current orders' && orderItem.status !== 'DELIVERED') {
-			return true
-		} else if (
-			selectedTab === 'order history' &&
-			orderItem.status === 'DELIVERED'
-		) {
-			return true
-		} else {
-			return false
-		}
-	}
 
 	function filterOrdersBySearchInput(orderItem: OrderDetailType) {
 		if (searchText.trim()) {
@@ -60,9 +45,7 @@ export default function OrderDataTable({
 		}
 	}
 
-	const filteredOrders = orders
-		.filter(filterOrdersByTabSelect)
-		.filter(filterOrdersBySearchInput)
+	const filteredOrders = orders.filter(filterOrdersBySearchInput)
 
 	const currentItems = filteredOrders.slice(itemOffset, endOffset)
 	const pageCount = Math.ceil(filteredOrders.length / itemsPerPage)
