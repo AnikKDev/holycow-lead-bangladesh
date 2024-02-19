@@ -1,14 +1,37 @@
 import Image, { StaticImageData } from 'next/image'
 
+import { apiUrl } from '@/lib/constatns'
+
 type Props = {
 	offerImage?: StaticImageData
 	backgroundImage?: StaticImageData
+	title: string
+	subtitle: string
+	thumbnail: string
+	description: string
+	offerType: string
+	idx: number
 }
 
-export default function OffersCard({ backgroundImage, offerImage }: Props) {
+export default function OffersCard({
+	backgroundImage,
+	offerImage,
+	description,
+	offerType,
+	subtitle,
+	thumbnail,
+	title,
+	idx,
+}: Props) {
 	return (
-		<section>
-			<div className='flex items-center justify-center gap-[78px] mobile-sm:flex-col-reverse mobile-md:flex-col-reverse _desktop-sm:flex-row _desktop-md:flex-row'>
+		<section className='mb-12'>
+			<div
+				className={`flex items-center justify-center gap-[78px] mobile-sm:flex-col-reverse mobile-md:flex-col-reverse   ${
+					idx % 2 === 0
+						? '_desktop-sm:flex-row-revers _desktop-md:flex-row-reverse'
+						: '_desktop-sm:flex-row _desktop-md:flex-row'
+				}`}
+			>
 				<div className='flex  gap-4'>
 					<div className='flex max-w-[489px] flex-col gap-4'>
 						{/* spoon and the sub-title */}
@@ -45,28 +68,25 @@ export default function OffersCard({ backgroundImage, offerImage }: Props) {
 							className='text-center text-2xl font-medium tracking-[0.04em] text-primary-dark md:text-left'
 							style={{ lineHeight: 1.3 }}
 						>
-							Ring In The New Year With Culinary Delights!
+							{title}
 						</h4>
 						<p
 							className='text-left text-center font-medium tracking-[0.04em] text-foreground'
 							style={{ lineHeight: 1.75 }}
 						>
-							3-course meal + welcome drink, all for just $30 per person
+							{subtitle}
 						</p>
 						<div className='mt-4'>
-							<p className='leading-[31.5px] text-[#727272]'>
-								Monday to Thursday till 31st January 2024! Offer available at
-								Putney and Canary Wharf restaurant via online booking only.
-							</p>
+							<p className='leading-[31.5px] text-[#727272]'>{description}</p>
 						</div>
 					</div>
 				</div>
 				<div className='relative'>
 					<Image
-						src={offerImage}
+						src={apiUrl + thumbnail}
 						width={335}
 						height={349}
-						alt='shortlisted for best indian restaurant in the deliveroo restaurant award 2021 '
+						alt='shortlisted for best indian restaurant in the deliveroo restaurant  2021 '
 					/>
 					<Image
 						src={backgroundImage}
