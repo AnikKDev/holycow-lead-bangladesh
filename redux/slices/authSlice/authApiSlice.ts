@@ -105,7 +105,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 			query: (data: { full_name: string }) => ({
 				url: '/user/update_name/',
 				method: 'PATCH',
-				body: { full_name: data.full_name },
+				body: { fullname: data.full_name },
 			}),
 			invalidatesTags: ['UserAccount'],
 		}),

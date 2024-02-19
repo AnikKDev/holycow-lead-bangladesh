@@ -10,6 +10,10 @@ type Props = {
 	id: string
 	name: string
 	setEditingSection: React.Dispatch<SetStateAction<string | null>>
+	emailLoading?: boolean
+	emailError?: boolean
+	emailSuccess?: boolean
+	updateUserEmail?: any
 }
 
 export default function EmailInput({

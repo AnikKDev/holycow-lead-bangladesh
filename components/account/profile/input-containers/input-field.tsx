@@ -7,11 +7,20 @@ import TextInput from '../../account-components/input-fields/text-input'
 type Props = {
 	setEditingSection: React.Dispatch<SetStateAction<string | null>>
 	editingSection: string | null
+	emailLoading?: boolean
+	emailError?: boolean
+	emailSuccess?: boolean
+	updateUserEmail?: any
 }
 
 export default function InputField({
 	setEditingSection,
 	editingSection,
+	emailError,
+	emailLoading,
+	emailSuccess,
+
+	updateUserEmail,
 }: Props) {
 	let displayContent
 	if (editingSection.toLowerCase() === 'name') {
@@ -34,6 +43,10 @@ export default function InputField({
 				key={'email'}
 				name='email'
 				setEditingSection={setEditingSection}
+				emailLoading={emailLoading}
+				emailError={emailError}
+				emailSuccess={emailSuccess}
+				updateUserEmail={updateUserEmail}
 			/>
 		)
 	} else if (editingSection.toLowerCase() === 'password') {

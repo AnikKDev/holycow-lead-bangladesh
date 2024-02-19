@@ -1,7 +1,11 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useGetUserAccountDateQuery } from '@/redux/slices/authSlice/authApiSlice'
+import {
+	useGetUserAccountDateQuery,
+	useUpdateUserEmailMutation,
+	useUpdateUserFullNameMutation,
+} from '@/redux/slices/authSlice/authApiSlice'
 import { HiOutlinePencil } from 'react-icons/hi'
 
 import InputField from './input-containers/input-field'
@@ -16,7 +20,16 @@ export default function ProfileContainer({}: Props) {
 		isLoading: accountDataLoading,
 		isError: accountDataError,
 	} = useGetUserAccountDateQuery(undefined)
-	console.log(`accountDate`, accountDate)
+
+	// email update
+	const [
+		updateUserEmail,
+		{
+			isLoading: emailUpdateLoading,
+			isError: emailUpdateError,
+			isSuccess: emailUpdateSuccess,
+		},
+	] = useUpdateUserEmailMutation()
 	return (
 		<div className='rounded-lg border border-[#D1D5DB] bg-white'>
 			{/* seactions */}
@@ -54,6 +67,10 @@ export default function ProfileContainer({}: Props) {
 					<InputField
 						setEditingSection={setEditingSection}
 						editingSection={editingSection}
+						emailLoading={emailUpdateLoading}
+						emailError={emailUpdateError}
+						emailSuccess={emailUpdateSuccess}
+						updateUserEmail={updateUserEmail}
 					/>
 				) : (
 					<div className='flex items-center justify-between px-5 py-3.5'>
