@@ -14,14 +14,14 @@ type Props = {}
 
 export default function Offers({}: Props) {
 	return (
-		<div className='mb-32'>
+		<div className='mb-16'>
 			{/* banner here */}
 			<div className='container'>
 				<BannerContents text='Offers' image={bg.src} />
 			</div>
-			<div className='mx-auto max-w-5xl'>
+			<div className='mx-auto w-full max-w-5xl px-4'>
 				{/* page info */}
-				<div className='my-20'>
+				<div className='my-16'>
 					<SectionHeader title='Whats On' showSpoon={false} />
 				</div>
 				{/* offer cards */}
