@@ -21,15 +21,6 @@ export default function ProfileContainer({}: Props) {
 		isError: accountDataError,
 	} = useGetUserAccountDateQuery(undefined)
 
-	// email update
-	const [
-		updateUserEmail,
-		{
-			isLoading: emailUpdateLoading,
-			isError: emailUpdateError,
-			isSuccess: emailUpdateSuccess,
-		},
-	] = useUpdateUserEmailMutation()
 	return (
 		<div className='rounded-lg border border-[#D1D5DB] bg-white'>
 			{/* seactions */}
@@ -67,10 +58,6 @@ export default function ProfileContainer({}: Props) {
 					<InputField
 						setEditingSection={setEditingSection}
 						editingSection={editingSection}
-						emailLoading={emailUpdateLoading}
-						emailError={emailUpdateError}
-						emailSuccess={emailUpdateSuccess}
-						updateUserEmail={updateUserEmail}
 					/>
 				) : (
 					<div className='flex items-center justify-between px-5 py-3.5'>

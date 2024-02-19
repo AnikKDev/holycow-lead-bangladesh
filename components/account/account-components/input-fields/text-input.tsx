@@ -28,7 +28,9 @@ export default function TextInput({
 		updateUserFullName,
 		{
 			isLoading: fullNameUpdateLoading,
-			isError: fullNameUpdateError,
+			isError: isFullNameUpdateError,
+			error: fullNameUpdateError,
+
 			isSuccess: fullNameUpdateSuccess,
 		},
 	] = useUpdateUserFullNameMutation()
@@ -38,6 +40,11 @@ export default function TextInput({
 			toast.success('Name updated successfully')
 		}
 	}, [fullNameUpdateSuccess])
+	useEffect(() => {
+		if (isFullNameUpdateError) {
+			toast.error(fullNameUpdateError?.data?.message)
+		}
+	}, [isFullNameUpdateError])
 	return (
 		<>
 			<div className='grid w-full max-w-sm items-center gap-1.5'>
@@ -47,6 +54,7 @@ export default function TextInput({
 				<Input
 					onChange={(e) => setFullName(e.target.value)}
 					type={type}
+					value={fullName}
 					id={id}
 					placeholder={label}
 				/>
