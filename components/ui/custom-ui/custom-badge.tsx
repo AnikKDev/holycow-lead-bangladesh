@@ -9,7 +9,7 @@ type Props = {
 export default function CustomBadge({ status }: Props) {
 	return (
 		<Badge
-			className='whitespace-nowrap text-[13px]'
+			className='whitespace-nowrap border-primary bg-transparent text-[13px] font-medium text-foreground'
 			variant={
 				status === 'PENDING' || status === 'PREPARING'
 					? 'inProgress'
