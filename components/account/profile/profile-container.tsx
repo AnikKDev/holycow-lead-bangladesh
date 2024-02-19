@@ -31,7 +31,11 @@ export default function ProfileContainer({}: Props) {
 						{/* name */}
 						<div className='leading-9'>
 							<h5 className='text-base'>Name</h5>
-							<span className='text-sm text-[#6B6B83]'>John Doe</span>
+							<span className='text-sm text-[#6B6B83]'>
+								{!accountDataError && !accountDataLoading
+									? accountDate?.user?.fullname
+									: 'Loading...'}
+							</span>
 						</div>
 						{/* icon */}
 						<div
@@ -56,7 +60,11 @@ export default function ProfileContainer({}: Props) {
 						{/* name */}
 						<div className='leading-9'>
 							<h5 className='text-base'>Email</h5>
-							<span className='text-sm text-[#6B6B83]'>johndoe@email.com</span>
+							<span className='text-sm text-[#6B6B83]'>
+								{!accountDataError && !accountDataLoading
+									? accountDate?.user?.email
+									: 'Loading...'}
+							</span>
 						</div>
 						{/* icon */}
 						<div
