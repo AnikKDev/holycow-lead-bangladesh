@@ -74,6 +74,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 		}),
 
 		// user/profile apis
+		/* note: not using this */
 		getUserProfileData: builder.query({
 			query: (id) => ({
 				url: `/profiles/view-profile/${id}/`,
@@ -92,6 +93,30 @@ export const authApiSlice = apiSlice.injectEndpoints({
 				{ type: 'Post', id: 'LIST' },
 			],
 		}),
+		/* ============================= */
+		getUserAccountDate: builder.query({
+			query: () => ({
+				url: '/user/profile/',
+				method: 'GET',
+			}),
+			providesTags: ['UserAccount'],
+		}),
+		updateUserFullName: builder.mutation({
+			query: (data: { full_name: string }) => ({
+				url: '/user/update_name/',
+				method: 'PATCH',
+				body: { full_name: data.full_name },
+			}),
+			invalidatesTags: ['UserAccount'],
+		}),
+		updateUserEmail: builder.mutation({
+			query: (data: { email: string }) => ({
+				url: '/user/update_email/',
+				method: 'PATCH',
+				body: { email: data.email },
+			}),
+			invalidatesTags: ['UserAccount'],
+		}),
 	}),
 })
 
@@ -109,4 +134,7 @@ export const {
 	useVerifyTokenMutation,
 	useGetUserProfileDataQuery,
 	useEditUserProfileMutation,
+	useGetUserAccountDateQuery,
+	useUpdateUserEmailMutation,
+	useUpdateUserFullNameMutation,
 } = authApiSlice

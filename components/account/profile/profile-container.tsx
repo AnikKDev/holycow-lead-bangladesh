@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useGetUserAccountDateQuery } from '@/redux/slices/authSlice/authApiSlice'
 import { HiOutlinePencil } from 'react-icons/hi'
 
 import InputField from './input-containers/input-field'
@@ -9,6 +10,13 @@ type Props = {}
 
 export default function ProfileContainer({}: Props) {
 	const [editingSection, setEditingSection] = useState<string | null>(null)
+	// api for get request
+	const {
+		data: accountDate,
+		isLoading: accountDataLoading,
+		isError: accountDataError,
+	} = useGetUserAccountDateQuery(undefined)
+	console.log(`accountDate`, accountDate)
 	return (
 		<div className='rounded-lg border border-[#D1D5DB] bg-white'>
 			{/* seactions */}
