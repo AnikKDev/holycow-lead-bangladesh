@@ -108,6 +108,7 @@ const CheckoutButton = () => {
 					  : orderState?.collection_time, // both for delivery_time and collection_time
 			address: orderState.delivery_address.id,
 			promo_code: orderState?.promo_code_id,
+			takeaway: 'putney',
 			// takeaway: 'Putney',
 			// subtotal: subtotal,
 			// discount: discount,

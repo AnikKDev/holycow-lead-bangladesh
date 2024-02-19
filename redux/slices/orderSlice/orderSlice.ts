@@ -43,7 +43,9 @@ export type OrderDetailType = Extend<
 		delivery_fee: number | string
 		discount: number | string
 		total: number | string
-		address: AccountAddress
+		address: string | AccountAddress
+		order_type: 'DELIVERY' | 'COLLECTION'
+		collection_address: 'string'
 	}>
 >
 

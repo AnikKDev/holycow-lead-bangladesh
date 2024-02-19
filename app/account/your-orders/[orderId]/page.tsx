@@ -50,7 +50,7 @@ export default function OrderDetails({ params }: Props) {
 			window.localStorage.setItem('is_order_succeed', JSON.stringify(false))
 		}
 	}, [isOrderSuccess])
-
+	console.log('order detail', data)
 	return (
 		<div className='flex flex-col gap-4'>
 			<div>
