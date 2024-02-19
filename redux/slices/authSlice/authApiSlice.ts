@@ -117,6 +117,17 @@ export const authApiSlice = apiSlice.injectEndpoints({
 			}),
 			invalidatesTags: ['UserAccount'],
 		}),
+
+		updateUserPassword: builder.mutation({
+			query: (data: { current_password: string; new_password: string }) => ({
+				url: '/user/update_password/',
+				method: 'POST',
+				body: {
+					current_password: data.current_password,
+					new_password: data.new_password,
+				},
+			}),
+		}),
 	}),
 })
 
@@ -137,4 +148,5 @@ export const {
 	useGetUserAccountDateQuery,
 	useUpdateUserEmailMutation,
 	useUpdateUserFullNameMutation,
+	useUpdateUserPasswordMutation,
 } = authApiSlice

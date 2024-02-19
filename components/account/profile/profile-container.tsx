@@ -16,7 +16,7 @@ export default function ProfileContainer({}: Props) {
 	const [editingSection, setEditingSection] = useState<string | null>(null)
 	// api for get request
 	const {
-		data: accountDate,
+		data: accountData,
 		isLoading: accountDataLoading,
 		isError: accountDataError,
 	} = useGetUserAccountDateQuery(undefined)
@@ -27,6 +27,7 @@ export default function ProfileContainer({}: Props) {
 			<div className='border-b border-[#D1D5DB]'>
 				{editingSection === 'name' ? (
 					<InputField
+						userFullName={accountData?.user?.fullname}
 						setEditingSection={setEditingSection}
 						editingSection={editingSection}
 					/>
@@ -37,7 +38,7 @@ export default function ProfileContainer({}: Props) {
 							<h5 className='text-base'>Name</h5>
 							<span className='text-sm text-[#6B6B83]'>
 								{!accountDataError && !accountDataLoading
-									? accountDate?.user?.fullname
+									? accountData?.user?.fullname
 									: 'Loading...'}
 							</span>
 						</div>
@@ -56,6 +57,7 @@ export default function ProfileContainer({}: Props) {
 			<div className='border-b border-[#D1D5DB]'>
 				{editingSection === 'email' ? (
 					<InputField
+						userEmail={accountData?.user?.email}
 						setEditingSection={setEditingSection}
 						editingSection={editingSection}
 					/>
@@ -66,7 +68,7 @@ export default function ProfileContainer({}: Props) {
 							<h5 className='text-base'>Email</h5>
 							<span className='text-sm text-[#6B6B83]'>
 								{!accountDataError && !accountDataLoading
-									? accountDate?.user?.email
+									? accountData?.user?.email
 									: 'Loading...'}
 							</span>
 						</div>
