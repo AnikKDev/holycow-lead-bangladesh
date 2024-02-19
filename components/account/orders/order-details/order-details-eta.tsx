@@ -2,29 +2,37 @@ import { OrderDetailType } from '@/redux/slices/orderSlice/orderSlice'
 import { format } from 'date-fns'
 import { BsArrowRepeat } from 'react-icons/bs'
 import { HiOutlineTruck } from 'react-icons/hi2'
-import { TbFileInvoice } from 'react-icons/tb'
 
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 
-type Props = { order: OrderDetailType }
+type Props = { order: OrderDetailType; refetch: any }
 
-export default function OrderDetailsEstimation({ order }: Props) {
-	console.log('order from order details eta component')
+export default function OrderDetailsEstimation({ order, refetch }: Props) {
 	return (
 		<div className='flex flex-col gap-2.5'>
 			<div className='flex items-center justify-between'>
 				<h2 className='text-xl font-bold'>Order ID: {order?.tracking_id}</h2>
 				{/* btns */}
 				<div className='flex items-center space-x-3'>
-					<Button variant='outline' className='flex items-center'>
+					<Button
+						variant='default'
+						className='flex items-center'
+						onClick={() => {
+							refetch()
+						}}
+					>
+						<BsArrowRepeat className='me-1' />{' '}
+						<span className='text-base'>Refresh</span>
+					</Button>
+					{/* <Button variant='outline' className='flex items-center'>
 						<TbFileInvoice className='me-1 text-xl' />{' '}
 						<span className='text-base'>Invoice</span>
 					</Button>
 					<Button variant='default' className='flex items-center'>
 						<BsArrowRepeat className='me-1 text-xl' />{' '}
 						<span className='text-base'>Reorder</span>
-					</Button>
+					</Button> */}
 				</div>
 			</div>
 			<div className='flex items-center space-x-4 text-base'>

@@ -4,7 +4,6 @@ import { useRef, useState } from 'react'
 import { OrderDetailType } from '@/redux/slices/orderSlice/orderSlice'
 import ReactPaginate from 'react-paginate'
 
-import { OrderTabType } from '@/types/account/account.types'
 import { Separator } from '@/components/ui/separator'
 import {
 	Table,
@@ -72,7 +71,7 @@ export default function OrderDataTable({
 							<TableHead className='whitespace-nowrap'>Order Date</TableHead>
 							<TableHead className='whitespace-nowrap'>Status</TableHead>
 							<TableHead className='whitespace-nowrap'>total</TableHead>
-							<TableHead className='whitespace-nowrap'></TableHead>
+							{/* <TableHead className='whitespace-nowrap'></TableHead> */}
 						</TableRow>
 					</TableHeader>
 					<TableBody className='text-muted-foreground'>

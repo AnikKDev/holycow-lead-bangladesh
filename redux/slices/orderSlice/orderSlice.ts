@@ -44,10 +44,12 @@ export type OrderDetailType = Extend<
 		discount: number | string
 		total: number | string
 		address: AccountAddress
+		order_type: 'DELIVERY' | 'COLLECTION'
+		collection_address: 'string'
 	}>
 >
 
-const initialState: OrderInitialState = {
+export const orderInitialState: OrderInitialState = {
 	cartItems: [],
 	discount: null,
 	promo_code: '',
@@ -63,7 +65,7 @@ const initialState: OrderInitialState = {
 
 const orderSlice = createSlice({
 	name: 'order',
-	initialState,
+	initialState: orderInitialState,
 	reducers: {
 		setOrderState: (state, action: PayloadAction<OrderInitialState>) =>
 			action.payload,

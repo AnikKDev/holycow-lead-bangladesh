@@ -15,7 +15,7 @@ export default function OrderDetailsPricing({ order }: Props) {
 						{formatPrice(order.subtotal)}
 					</span>
 				</div>
-				{order?.delivery_fee && (
+				{!!order?.delivery_fee && (
 					<div className='flex items-center justify-between'>
 						<h3 className='text-base font-medium text-gray-500'>
 							Delivery Fee

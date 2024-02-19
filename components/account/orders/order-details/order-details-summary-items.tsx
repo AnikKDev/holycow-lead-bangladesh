@@ -1,6 +1,6 @@
+import Image from 'next/image'
 import itemImg from '@/public/menu-item.jpg'
 import { MenuItemType } from '@/redux/slices/menuPageSlice/menuPageSlice'
-import Image from 'next/image'
 
 import { formatPrice } from '@/lib/utils'
 
@@ -26,7 +26,6 @@ export default function OrderDetailsSummaryItems({ orderItem }: Props) {
 			<div className='flex items-center justify-between'>
 				<span className='text-base font-medium'>
 					{formatPrice(orderItem?.unit_price)}
-					£10.69
 				</span>
 			</div>
 		</div>
