@@ -9,9 +9,9 @@ import {
 import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-import { useAuthState } from '@/hooks/useAuthState'
 import { ASAP } from '@/lib/constatns'
 import { formatPrice } from '@/lib/utils'
+import { useAuthState } from '@/hooks/useAuthState'
 
 import { Button } from '../ui/button'
 
@@ -67,7 +67,7 @@ const CheckoutButton = () => {
 			const { url } = res
 
 			console.log(res)
-
+			window.localStorage.setItem('is_order_succeed', JSON.stringify(true))
 			window.location.href = url
 		} catch (error) {
 			console.error('Error fetching client secret:', error)
