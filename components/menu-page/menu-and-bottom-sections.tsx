@@ -1,5 +1,10 @@
 'use client'
 
+import { useAppDispatch } from '@/redux/hooks'
+import { useGetFullMenuQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
+import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
+import { setVisitedLocationSlug } from '@/redux/slices/orderSlice/orderSlice'
+import { useParams } from 'next/navigation'
 import { useCallback, useEffect, useRef } from 'react'
 
 import useIntersectionObserver from '@/hooks/useIntersectionObserer'
@@ -8,12 +13,6 @@ import InformationSection from './location-detail/information-section'
 import MenuContainer from './main-menu/menu-container'
 
 import './main-menu/menu.css'
-
-import { useParams } from 'next/navigation'
-import { useAppDispatch } from '@/redux/hooks'
-import { useGetFullMenuQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
-import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
-import { setVisitedLocationSlug } from '@/redux/slices/orderSlice/orderSlice'
 
 import { cn } from '@/lib/utils'
 
@@ -63,14 +62,14 @@ const MenuAndAllBottomSections = ({
 			// menuRef.current.style.zIndex = '1038'
 			// menuRef.current.style.top = '64px'
 			// menuRef.current.style.opacity = '1'
-			menuRef.current.style.backgroundColor = 'white'
+			menuRef.current.style.backgroundColor = '#F4F3EC'
 		} else {
 			if (targetItemEntry?.isIntersecting && menuRef?.current) {
 				// menuRef.current.style.position = 'relative'
 				// menuRef.current.style.zIndex = '10'
 				// menuRef.current.style.top = '-65'
 				// menuRef.current.style.opacity = '0'
-				menuRef.current.style.backgroundColor = '#FDFCF7'
+				menuRef.current.style.backgroundColor = 'transparent'
 			}
 		}
 	}, [targetRef, menuRef, targetItemEntry])
@@ -78,6 +77,15 @@ const MenuAndAllBottomSections = ({
 	useEffect(() => {
 		console.log('information entry', informationEntry)
 	}, [informationRef, informationEntry])
+
+	useEffect(() => {
+		if(!isLoading) {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			})
+		}
+	}, [isLoading])
 
 	const isTargetItemVisible = !!targetItemEntry?.isIntersecting
 	const isInformationVisible = !!informationEntry?.isIntersecting
@@ -97,7 +105,7 @@ const MenuAndAllBottomSections = ({
 			<div
 				ref={menuRef}
 				className={cn(
-					'translateZ-class  sticky top-[75px] z-[1035] w-full  bg-background transition mobile-md:top-16'
+					'translateZ-class  sticky top-[80px] z-[1035] w-full  bg-background transition mobile-md:top-16'
 				)}
 			>
 				<div>

@@ -1,7 +1,7 @@
 'use client'
 
-import { Dispatch, SetStateAction } from 'react'
-import { useRouter } from 'next/navigation'
+import { Dispatch, SetStateAction, useEffect } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 
 import {
 	Dialog,
@@ -30,6 +30,10 @@ export function HomeShowLocationsModal({
 	setShowModal: Dispatch<SetStateAction<boolean>>
 }) {
 	const router = useRouter()
+	const pathname = usePathname()
+	useEffect(() => {
+		setShowModal(false)
+	}, [pathname])
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>

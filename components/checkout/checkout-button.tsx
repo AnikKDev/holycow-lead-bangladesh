@@ -1,13 +1,16 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
+import { useCheckoutOrderMutation } from '@/redux/slices/orderSlice/orderApislice'
 import {
 	getCartTotals,
 	selectOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
+import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 
+import { useAuthState } from '@/hooks/useAuthState'
+import { ASAP } from '@/lib/constatns'
 import { formatPrice } from '@/lib/utils'
 
 import { Button } from '../ui/button'
@@ -15,7 +18,9 @@ import { Button } from '../ui/button'
 const CheckoutButton = () => {
 	const cartTotals = useAppSelector(getCartTotals)
 	const orderState = useAppSelector(selectOrderState)
-	const router = useRouter()
+	const { auth } = useAuthState()
+	const [handleCheckoutOrder, { isLoading, isError }] =
+		useCheckoutOrderMutation()
 	const canPlaceOrder = () => {
 		if (!orderState.cartItems.length) {
 			toast.error('Please add item to your cart')
@@ -38,10 +43,78 @@ const CheckoutButton = () => {
 		return true
 	}
 
+	// generate checkout layout
+	const orderItems = (cartItems) => {
+		return cartItems.map((item) => ({
+			menu_item: item.id,
+			// price: parseFloat(item.price),
+			quantity: parseFloat(item.quantity),
+		}))
+	}
+	const makePayment = async (body) => {
+		try {
+			const res = await handleCheckoutOrder(body).unwrap()
+			// const headers = {
+			// 	'Content-Type': 'application/json',
+			// 	Authorization: `Bearer ${auth.access}`,
+			// }
+			// const response = await fetch(`${apiUrl}/order/checkout/`, {
+			// 	method: 'POST',
+			// 	headers: headers,
+			// 	body: JSON.stringify(body),
+			// })
+
+			const { url } = res
+
+			console.log(res)
+
+			window.location.href = url
+		} catch (error) {
+			console.error('Error fetching client secret:', error)
+			toast.error('Something went wrong!')
+		}
+	}
+
 	const handlePlaceOrder = () => {
 		if (!canPlaceOrder()) {
 			return
 		}
+		const cartItems = orderItems(orderState.cartItems)
+		const subtotal = cartItems
+			.reduce((total, item) => total + item.price * item.quantity, 0)
+			.toFixed(2)
+		const deliveryFee = orderState.delivery_charge
+			? orderState.delivery_charge.toFixed(2)
+			: '0'
+
+		const tax = 15.0
+		const discount = orderState.discount || 0.0
+		const total = (
+			parseFloat(subtotal) +
+			parseFloat(deliveryFee) -
+			discount +
+			tax
+		).toFixed(2)
+		makePayment({
+			order_items: cartItems,
+			order_type: orderState.fulfillment_type.toUpperCase(),
+			collection_time:
+				orderState.fulfillment_type === 'Delivery'
+					? orderState?.delivery_time === ASAP
+						? null
+						: orderState?.delivery_time
+					: orderState?.collection_time === ASAP
+					  ? null
+					  : orderState?.collection_time, // both for delivery_time and collection_time
+			address: orderState.delivery_address.id,
+			promo_code: orderState?.promo_code_id,
+			// takeaway: 'Putney',
+			// subtotal: subtotal,
+			// discount: discount,
+			// delivery_fee: deliveryFee,
+			// tax: tax,
+			// total: total,
+		})
 	}
 	return (
 		<div className='flex shrink-0 flex-col gap-2.5 border-t border-border pt-3 mobile-md:container mobile-md:pb-2.5'>
@@ -55,14 +128,15 @@ const CheckoutButton = () => {
 			</div>
 			<div className='w-full'>
 				<Button
+					disabled={isLoading}
 					size='lg'
 					type='button'
 					className=' w-full font-semibold uppercase'
 					onClick={() => {
 						handlePlaceOrder()
-						// router.push('/account/your-profile')
 					}}
 				>
+					{isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
 					Place Order
 				</Button>
 			</div>
