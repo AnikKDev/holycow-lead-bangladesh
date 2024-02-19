@@ -1,7 +1,16 @@
 import { OrderDetailType } from '@/redux/slices/orderSlice/orderSlice'
 
 type Props = { order: OrderDetailType }
+/*
+if (typeof order?.address === 'object' && order.address !== null) {
+		const address = order.address.address
+		console.log(address)
+	} else if (typeof order?.address === 'string') {
+		const address = order.address
+		console.log(address)
+	}
 
+*/
 export default function OrderDetailsAddress({ order }: Props) {
 	return (
 		<div>
@@ -21,7 +30,7 @@ export default function OrderDetailsAddress({ order }: Props) {
 					</h4>
 				</>
 			) : (
-				<h4>{order?.address}</h4>
+				<h4>{typeof order?.address === 'string' && order.address}</h4>
 			)}
 		</div>
 	)

@@ -26,7 +26,7 @@ export default function OrderDetails({ params }: Props) {
 	const searchParams = useSearchParams()
 	const dispatch = useAppDispatch()
 	const orderState = useAppSelector(selectOrderState)
-	const { data, isLoading, isError } = useGetOrderDetailByIdQuery(
+	const { data, isLoading, isError, refetch } = useGetOrderDetailByIdQuery(
 		params.orderId,
 		{
 			refetchOnFocus: true,
@@ -50,7 +50,6 @@ export default function OrderDetails({ params }: Props) {
 			window.localStorage.setItem('is_order_succeed', JSON.stringify(false))
 		}
 	}, [isOrderSuccess])
-	console.log('order detail', data)
 	return (
 		<div className='flex flex-col gap-4'>
 			<div>
@@ -64,7 +63,7 @@ export default function OrderDetails({ params }: Props) {
 				) : (
 					data && (
 						<>
-							<OrderDetailsEstimation order={data} />
+							<OrderDetailsEstimation order={data} refetch={refetch} />
 							<OrderDetailsStatus order={data} />
 							<OrderDetailsSummary order={data} />
 							<Separator orientation='horizontal' className='my-5' />
