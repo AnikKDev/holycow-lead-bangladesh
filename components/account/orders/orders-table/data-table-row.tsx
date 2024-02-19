@@ -5,7 +5,6 @@ import { OrderDetailType } from '@/redux/slices/orderSlice/orderSlice'
 import { format } from 'date-fns'
 
 import { formatPrice } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
 import CustomBadge from '@/components/ui/custom-ui/custom-badge'
 import { TableCell, TableRow } from '@/components/ui/table'
 
@@ -49,11 +48,11 @@ export default function DataTableRow({
 				{formatPrice(total)}
 			</TableCell>
 			{/* actions */}
-			<TableCell className='whitespace-nowrap border-r-0 px-4 py-3'>
+			{/* <TableCell className='whitespace-nowrap border-r-0 px-4 py-3'>
 				<Button className='rounded-full px-4' variant='default' size='sm'>
 					Reorder
 				</Button>
-			</TableCell>
+			</TableCell> */}
 		</TableRow>
 	)
 }
