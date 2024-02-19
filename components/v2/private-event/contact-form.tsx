@@ -15,7 +15,11 @@ const formSchema = z.object({
 			required_error: 'Name can not be empty.',
 		})
 		.describe('Your Name'),
-
+	contact_number: z
+		.string({
+			required_error: 'Contact number is required.',
+		})
+		.describe('Contact Number'),
 	email: z
 		.string({
 			required_error: 'Email is required.',
@@ -30,26 +34,33 @@ const formSchema = z.object({
 export default function ContactForm({}: Props) {
 	const handleFormSubmit = (data: Partial<z.infer<typeof formSchema>>) => {}
 	return (
-		<section className='container mb-12 '>
+		<section className='mb-12 flex w-full flex-col items-center justify-center '>
 			<SectionHeader
 				subTitle='Contact'
 				title='Message To Us'
 				subTitleSize='large'
 			/>
 			{/* inputs */}
-			<div>
+			<div className='w-full max-w-[600px]'>
 				<AutoForm
 					onSubmit={handleFormSubmit}
 					formSchema={formSchema}
-					containerClassName='grid md:grid-cols-1  gap-x-4 text-primary'
-					// className='space-y-0 gap-x-4 gap-y-3'
+					containerClassName='text-primary items-center [&>*]:w-full'
 					fieldConfig={{
 						name: {
 							inputProps: {
 								showLabel: false,
 								type: 'text',
 								placeholder: 'Your Name*',
-								className: 'mt-5 focus-visible:right-0',
+								className: 'mt-5 focus-visible:right-0 text-foreground',
+							},
+						},
+						contact_number: {
+							inputProps: {
+								type: 'number',
+								showLabel: false,
+								placeholder: 'Contact Number*',
+								className: 'focus-visible:right-0 text-foreground',
 							},
 						},
 						email: {
@@ -57,7 +68,7 @@ export default function ContactForm({}: Props) {
 								type: 'email',
 								showLabel: false,
 								placeholder: 'Email*',
-								className: 'focus-visible:right-0',
+								className: 'focus-visible:right-0 text-foreground',
 							},
 						},
 						leave_a_note: {
@@ -66,7 +77,7 @@ export default function ContactForm({}: Props) {
 								type: 'text',
 								showLabel: false,
 								placeholder: 'Leave A Note',
-								className: 'focus-visible:right-0',
+								className: 'focus-visible:right-0 text-foreground',
 							},
 						},
 					}}
