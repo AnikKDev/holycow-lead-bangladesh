@@ -1,16 +1,15 @@
 'use client'
 
-import { useGetAllOrderQuery } from '@/redux/slices/orderSlice/orderApislice'
 import { useState } from 'react'
+import { useGetAllOrderQuery } from '@/redux/slices/orderSlice/orderApislice'
 
+import { OrderTabType } from '@/types/account/account.types'
 import OrderTab from '@/components/account/orders/order-tab'
 import OrderDataTable from '@/components/account/orders/orders-table/data-table'
-import { OrderTabType } from '@/types/account/account.types'
 
 type Props = {}
 
 export default function Orders({}: Props) {
-	const [selectedTab, setSelectedTab] = useState<OrderTabType>('current orders')
 	const [searchText, setSearchText] = useState('')
 	const { data, isLoading, isError } = useGetAllOrderQuery(undefined, {
 		refetchOnFocus: true,
@@ -23,16 +22,16 @@ export default function Orders({}: Props) {
 			<h2 className='text-lg font-medium'>Your Orders</h2>
 			{/* tab section */}
 			<div className=''>
-				<OrderTab searchText={searchText} setSearchText={setSearchText} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+				<OrderTab searchText={searchText} setSearchText={setSearchText} />
 				{isLoading ? (
 					<p className='mt-5'>Loading orders...</p>
 				) : isError ? (
 					<p className='mt-5'>Error loading orders</p>
+				) : data && data?.length > 0 ? (
+					<OrderDataTable searchText={searchText} data={data} />
 				) : (
-					data && data?.length > 0 ? (
-						<OrderDataTable searchText={searchText} selectedTab={selectedTab} data={data} />
-					): 'No order found!'
-				) }
+					'No order found!'
+				)}
 			</div>
 		</div>
 	)
