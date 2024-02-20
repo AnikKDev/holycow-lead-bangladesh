@@ -4,10 +4,12 @@ import Link from 'next/link'
 import bg from '@/assets/v2/secondary-bg.png'
 
 import { lunchMenu } from '@/lib/restaurantData'
+import { HomeShowLocationsModal } from '@/components/home-components/home-modal'
 import BannerContents from '@/components/v2/shared/banner-contents'
 import FoodCard from '@/components/v2/shared/card/FoodCard'
 import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
 import SectionHeader from '@/components/v2/shared/SectionHeader'
+import LunchMenuPopUp from '@/components/v2/takeaway-components/LunchMenuPopUp'
 
 export const metadata: Metadata = {
 	title: 'Lunch Menu',
@@ -45,12 +47,7 @@ const Page = () => {
 					))}
 				</div>
 
-				<Link
-					className='v2-custom-button bg-primary px-8 py-2 text-sm font-medium capitalize leading-[1.7] tracking-[0.04em] text-foreground'
-					href={'/'}
-				>
-					Order Online
-				</Link>
+				<LunchMenuPopUp />
 			</div>
 		</>
 	)
