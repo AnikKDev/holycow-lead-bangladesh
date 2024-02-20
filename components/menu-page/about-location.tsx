@@ -5,6 +5,9 @@ import {
 	MdOutlineStar,
 } from 'react-icons/md'
 
+import { cn } from '@/lib/utils'
+
+import DownloadMenuBtn from '../v2/takeaway-components/takeaway-menu/download-menu-btn'
 import BookATableBtn from './reservation/book-table-btn'
 import ReviewTotalCount from './review-total-count'
 
@@ -17,7 +20,7 @@ const AboutLocation = ({
 }) => {
 	return (
 		<>
-			<div className='container mb-1.5 mt-4 grid grid-cols-[1fr_auto] gap-3 text-foreground mobile-sm:grid-cols-1'>
+			<div className='container mb-1.5 mt-4 grid grid-cols-[1fr_auto] gap-3 text-foreground mobile-md:grid-cols-1'>
 				<div className='flex flex-col gap-2'>
 					<h1 className='text-2xl font-bold'>
 						Holycow - {locationInformation.name}
@@ -60,7 +63,21 @@ const AboutLocation = ({
 						</div>
 					</div>
 				</div>
-				{isRestaurant && <BookATableBtn />}
+				<div className='flex flex-wrap gap-2'>
+					<div className='mobile-md:w-full'>
+						<DownloadMenuBtn
+							variant={isRestaurant ? 'outline' : 'default'}
+							size='lg'
+							className={cn('px-14 text-base mobile-md:w-full', {
+								'bg-transparent': isRestaurant,
+							})}
+						>
+							Download menu
+						</DownloadMenuBtn>
+					</div>
+
+					{isRestaurant && <BookATableBtn />}
+				</div>
 			</div>
 		</>
 	)

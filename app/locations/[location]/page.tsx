@@ -11,20 +11,19 @@ type ParamsType = {
 }
 
 const getLocationInfo = async (location: string): Promise<LocationInfoType> => {
-	const res = await fetch(`${apiUrl}/restaurant/info?restaurant=${location}`, {
+	const res = await fetch(`${apiUrl}/takeaway/info?takeaway=${location}`, {
 		method: 'GET',
 		headers: {
 			'Content-type': 'application/json',
 		},
 	})
 
-	const data = await res.json()
-	// console.log(data)
+	const data = await res?.json()
 	if (!res.ok) {
 		// This will activate the closest `error.js` Error Boundary
-		throw new Error('Restaurant information not found')
+		throw new Error('Takeaway information not found')
 	}
-	return data?.restaurant_info
+	return data?.takeaway_info
 }
 
 export const generateMetadata = async ({
@@ -36,23 +35,19 @@ export const generateMetadata = async ({
 	}
 }
 
-const RestaurantHomePage = async ({ params }: ParamsType) => {
+const TakeawayLocationMenuPage = async ({ params }: ParamsType) => {
 	const locationInformation = await getLocationInfo(params.location)
-
 	return (
-		<div>
+		<div className='font-lora'>
 			<div className='mx-auto max-w-[1200px]'>
 				<CoverPhoto locationInformation={locationInformation} />
 			</div>
 			<div className='mx-auto max-w-[1200px]'>
-				<AboutLocation isRestaurant locationInformation={locationInformation} />
+				<AboutLocation locationInformation={locationInformation} />
 			</div>
-			<MenuAndAllBottomSections
-				isRestaurant
-				locationInformation={locationInformation}
-			/>
+			<MenuAndAllBottomSections locationInformation={locationInformation} />
 		</div>
 	)
 }
 
-export default RestaurantHomePage
+export default TakeawayLocationMenuPage
