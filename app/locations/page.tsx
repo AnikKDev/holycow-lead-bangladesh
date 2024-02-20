@@ -1,9 +1,11 @@
-import bg from '@/assets/v2/takeaway/location-bg.png'
 import { Metadata } from 'next'
+import bg from '@/assets/v2/takeaway/location-bg.png'
 
+import TakeawayLocationFilter from '@/components/v2/locations/TakeawayLocationFilter'
 import BannerContents from '@/components/v2/shared/banner-contents'
 import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
 import SectionHeader from '@/components/v2/shared/SectionHeader'
+import TakeawayLocationInput from '@/components/v2/shared/takeaway-locations/TakeawayLocationInput'
 import TakeawayLocationsList from '@/components/v2/shared/takeaway-locations/TakeawayLocationsList'
 
 export const metadata: Metadata = {
@@ -29,7 +31,7 @@ const Page = () => {
 				<h2 className='text-center font-lora text-3xl font-medium capitalize leading-[1.3] tracking-[0.04em] text-foreground'>
 					Takeaway Locations
 				</h2>
-				<TakeawayLocationsList />
+				<TakeawayLocationFilter />
 			</section>
 		</>
 	)

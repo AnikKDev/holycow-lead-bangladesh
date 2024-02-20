@@ -1,6 +1,7 @@
 import React from 'react'
 
 import SectionHeader from '../../shared/SectionHeader'
+import TakeawayLocationInput from './TakeawayLocationInput'
 import TakeawayLocationsList from './TakeawayLocationsList'
 
 const TakeawayLocations = () => {

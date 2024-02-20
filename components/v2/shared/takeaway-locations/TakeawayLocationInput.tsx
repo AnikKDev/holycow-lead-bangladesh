@@ -18,13 +18,17 @@ const TakeawayLocationInput = ({
 }: TakeawayLocationInputProps) => {
 	const inputRef = React.useRef<HTMLInputElement>(null)
 	const [open, setOpen] = React.useState(false)
+	const handleInputChange = (e) => {
+		setSearchInput(e)
+		setOpen(true)
+	}
 	return (
 		<Command className='z-50 max-w-xl overflow-visible bg-transparent'>
 			<div className='group !w-full rounded-md border border-input px-3 py-2 text-sm ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2'>
 				<CommandPrimitive.Input
 					ref={inputRef}
 					value={searchInput}
-					onValueChange={setSearchInput}
+					onValueChange={handleInputChange}
 					onBlur={() => setOpen(false)}
 					onFocus={() => setOpen(true)}
 					placeholder='Search by postal code...'
