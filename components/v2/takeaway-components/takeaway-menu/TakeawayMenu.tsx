@@ -1,3 +1,4 @@
+import DownloadMenuBtn from './download-menu-btn'
 import TakeawayMenuList from './TakeawayMenuList'
 
 const menuItems = [
@@ -66,10 +67,13 @@ const menuItems = [
 const TakeawayMenu = () => {
 	return (
 		<section className='flex flex-col items-center justify-center gap-10'>
-			<h2 className='mt-10 text-center font-lora text-3xl font-medium capitalize leading-[1.3] tracking-[0.03em] text-foreground'>
-				Takeaway Menu
-			</h2>
+			<div className='flex flex-col items-center gap-2'>
+				<h2 className='mt-10 text-center font-lora text-3xl font-medium capitalize leading-[1.3] tracking-[0.03em] text-foreground'>
+					Takeaway Menu
+				</h2>
+			</div>
 			<TakeawayMenuList takeawayMenuItems={menuItems} />
+			<DownloadMenuBtn>Download full menu</DownloadMenuBtn>
 		</section>
 	)
 }
