@@ -48,13 +48,12 @@ export const NAVBAR_ITEMS: NavItemType[] = [
 	{ title: 'Contact Us', path: '/contact' },
 ]
 
-
 export const takeawayLocationsListData = [
 	{
 		name: 'Angel',
 		address: ['98 Chapel Market,', 'London N1 9EY'],
 		phone: '0203 995 6000',
-		location: '/takeaway-location/angel/',
+		location: '/locations/angel/',
 		postcode: [
 			'N1',
 			'EC1',
@@ -75,21 +74,21 @@ export const takeawayLocationsListData = [
 		name: 'Archway',
 		address: ['87 Junction Road, ', 'Archway, London N19 5QU'],
 		phone: '0207 263 7007',
-		location: '/takeaway-location/archway',
+		location: '/locations/archway',
 		postcode: ['NW5', 'NW1', 'N7', 'N8', 'N19', 'N4', 'N5', 'N6'],
 	},
 	{
 		name: 'Balham',
 		address: ['27 Balham High Road, ', 'Balham, London SW12 9AL'],
 		phone: '020 8673 8000',
-		location: '/takeaway-location/balham',
+		location: '/locations/balham',
 		postcode: ['SW12', 'SW4', 'SW2', 'SW16', 'SW17', 'SW18'],
 	},
 	{
 		name: 'Battersea',
 		address: ['152 Battersea Bridge Road, ', 'Battersea, London SW11 3AW'],
 		phone: '020 7498 2000',
-		location: '/takeaway-location/battersea',
+		location: '/locations/battersea',
 		postcode: [
 			'SW3',
 			'SW4',
@@ -109,14 +108,14 @@ export const takeawayLocationsListData = [
 		name: 'Hammersmith',
 		address: ['354 King Street, ', 'Hammersmith, London W6 0RX'],
 		phone: '020 8748 8989',
-		location: '/takeaway-location/hammersmith',
+		location: '/locations/hammersmith',
 		postcode: ['W3', 'W4', 'W6', 'W8', 'W11', 'W12', 'W14', 'TW8'],
 	},
 	{
 		name: 'Kilburn',
 		address: ['2F Dyne Road, ', 'Kilburn, London NW6 7XB'],
 		phone: '020 7372 3123',
-		location: '/takeaway-location/kilburn',
+		location: '/locations/kilburn',
 		postcode: [
 			'NW6',
 			'NW10',
@@ -142,7 +141,7 @@ export const takeawayLocationsListData = [
 		name: 'Limehouse - Canary Wharf',
 		address: ['51 Narrow Street, ', 'London E14 8DN'],
 		phone: '0207 790 7688',
-		location: '/locations/limehouse-canary-wharf',
+		location: '/locations/limehouse-canary-wharf-indian-restaurant',
 		postcode: ['TBC'],
 	},
 ]
@@ -214,4 +213,3 @@ export const takeawayLocationsListData = [
 // 		],
 // 	},
 // ]
-
