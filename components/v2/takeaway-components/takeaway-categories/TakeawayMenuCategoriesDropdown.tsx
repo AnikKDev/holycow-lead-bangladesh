@@ -35,7 +35,7 @@ const TakeawayMenuCategoriesDropdown = ({
 		: 'Select a Menu'
 	return (
 		<Select onValueChange={onSelectedValueChange}>
-			<SelectTrigger className='w-full bg-[#905A09] text-white'>
+			<SelectTrigger className='w-full bg-primary font-bold capitalize text-primary-foreground'>
 				<SelectValue placeholder={placeholderText} />
 			</SelectTrigger>
 			<SelectContent>
@@ -44,7 +44,9 @@ const TakeawayMenuCategoriesDropdown = ({
 						value={category.slug}
 						className={cn(
 							'w-full px-4 font-lora text-base font-bold capitalize leading-[1.75] tracking-[0.04em]',
-							lastPartPath == category.slug ? 'bg-[#905A09] text-white' : ''
+							lastPartPath == category.slug
+								? 'bg-primary text-primary-foreground'
+								: ''
 						)}
 					>
 						{category.name}
