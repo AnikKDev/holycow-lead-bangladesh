@@ -9,6 +9,7 @@ import { TakeawayMenuItem } from '@/types'
 import { cn } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
 
+import TakeawayMenuCategoriesDropdown from './TakeawayMenuCategoriesDropdown'
 import TakeawayMenuItemsList from './TakeawayMenuItemsList'
 
 type Props = {}
@@ -27,7 +28,6 @@ const TakeawayMenuWithSidebar = (props: Props) => {
 	>([])
 
 	const lastPartPath = getLastPartFromUrl(pathname)
-	console.log(data)
 
 	useEffect(() => {
 		if (data && lastPartPath) {
@@ -50,6 +50,7 @@ const TakeawayMenuWithSidebar = (props: Props) => {
 						<div className='space-y-2'>
 							<Skeleton className='h-4 w-[250px]' />
 							<Skeleton className='h-4 w-[200px]' />
+							<Skeleton className='h-4 w-[200px]' />
 						</div>
 					</ul>
 				</div>
@@ -57,10 +58,11 @@ const TakeawayMenuWithSidebar = (props: Props) => {
 		)
 	}
 
+	console.log('data.menu: ', data.menu)
 	return (
 		<section className='grid grid-cols-12 gap-8'>
 			<div className='col-span-12 _desktop-sm:col-span-3 _desktop-md:col-span-3'>
-				<ul className='flex gap-2 overflow-x-scroll py-3 _desktop-sm:flex-col _desktop-sm:gap-8 _desktop-md:flex-col _desktop-md:gap-8'>
+				<ul className='hidden gap-2 overflow-x-scroll py-3 _desktop-sm:flex  _desktop-sm:flex-col _desktop-sm:gap-8 _desktop-md:flex _desktop-md:flex-col _desktop-md:gap-8'>
 					{data?.menu.map((item) => (
 						<li key={item.id}>
 							<Link
@@ -78,6 +80,12 @@ const TakeawayMenuWithSidebar = (props: Props) => {
 				</ul>
 			</div>
 			<TakeawayMenuItemsList items={activeMenuItems} />
+			<div className='sticky bottom-2 col-span-12 mt-16 flex items-center  justify-center  _desktop-sm:hidden _desktop-md:hidden'>
+				<TakeawayMenuCategoriesDropdown
+					categories={data.menu}
+					lastPartPath={lastPartPath}
+				/>
+			</div>
 		</section>
 	)
 }

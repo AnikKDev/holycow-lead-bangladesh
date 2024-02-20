@@ -25,6 +25,7 @@ const fontLora = Lora({
 })
 
 export const metadata = {
+	metadataBase: new URL('http://localhost:3000'),
 	title: {
 		default: siteConfig.name,
 		template: `%s | ${siteConfig.name}`,
