@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import bg from '@/assets/v2/secondary-bg.png'
 
+import PhotoGallery from '@/components/v2/home-components/photo_gallery/PhotoGallery'
 import BannerContents from '@/components/v2/shared/banner-contents'
 import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
 import SectionHeader from '@/components/v2/shared/SectionHeader'
@@ -25,6 +26,7 @@ const Page = () => {
 			<div className='container mx-auto max-w-[1200px]'>
 				<TakeawayMenu />
 			</div>
+			<PhotoGallery />
 		</>
 	)
 }
