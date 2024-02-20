@@ -1,46 +1,42 @@
 export const allTakeawayLocations = [
 	{
 		name: 'Angel',
-		slug: '/takeaway-location/angel',
+		slug: '/locations/angel',
 	},
 	{
 		name: 'Archway',
-		slug: '/takeaway-location/archway',
+		slug: '/locations/archway',
 	},
 	{
 		name: 'Balham',
-		slug: '/takeaway-location/balham',
+		slug: '/locations/balham',
 	},
 	{
 		name: 'Battersea',
-		slug: '/takeaway-location/battersea',
+		slug: '/locations/battersea',
 	},
 	{
 		name: 'Hammersmith',
-		slug: '/takeaway-location/hammersmith',
+		slug: '/locations/hammersmith',
 	},
 	{
 		name: 'Kilburn',
-		slug: '/takeaway-location/kilburn',
+		slug: '/locations/kilburn',
 	},
-	{
-		name: 'Putney',
-		slug: '/takeaway-location/putney',
-	},
-	{
-		name: 'Limehouse - Canary Wharf',
-		slug: '/takeaway-location/limehouse-canary-wharf',
-	},
-]
-
-export const allRestaurantLocations = [
 	{
 		name: 'Putney',
 		slug: '/locations/putney',
 	},
 	{
 		name: 'Limehouse - Canary Wharf',
-		slug: '/locations/limehouse-canary-wharf',
+		slug: '/locations/limehouse-canary-wharf-indian-restaurant',
+	},
+]
+
+export const allRestaurantLocations = [
+	{
+		name: 'Limehouse - Canary Wharf',
+		slug: '/locations/limehouse-canary-wharf-indian-restaurant',
 	},
 ]
 

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import bg from '@/assets/career/career-and-offer-bg.png'
 
 import { Button } from '@/components/ui/button'
@@ -25,7 +26,9 @@ export default function Reservation({}: Props) {
 						title='Come for our fresh, delicious fare, and stay for a dining experience you won’t forget. '
 						subTitleSize='medium'
 					/>
-					<Button className='mx-auto my-5 block'>Book A Table</Button>
+					<Link href={'/locations/limehouse-canary-wharf-indian-restaurant'}>
+						<Button className='mx-auto my-5 block'>Book A Table</Button>
+					</Link>
 				</div>
 				{/* separator */}
 				<Separator className='container my-10 max-w-7xl' />
