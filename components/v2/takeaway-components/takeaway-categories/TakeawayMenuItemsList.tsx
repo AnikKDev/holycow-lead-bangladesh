@@ -9,6 +9,7 @@ const TakeawayMenuItemsList = ({ items }: TakeawayMenuList) => {
 			{items.map((item) => (
 				<MenuFoodCard
 					id={item.id}
+					key={item.id}
 					item_name={item.item_name}
 					description={item.description}
 					image={item.image}
