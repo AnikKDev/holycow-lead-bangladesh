@@ -31,7 +31,7 @@ export const menuItemsArrUpdated = [
 ]
 
 export const footerServices = [
-	{ text: 'Takeaway Locations', navigateTo: '/takeaway-locations' },
+	{ text: 'Takeaway Locations', navigateTo: '/locations' },
 	{ text: 'Takeaway Menu', navigateTo: '/takeaway-menu' },
 	{ text: 'Lunch Menu', navigateTo: '/lunch-menu' },
 	{ text: 'Fine Dining Menu', navigateTo: '/fine-dining-menu' },

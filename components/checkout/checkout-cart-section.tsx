@@ -28,7 +28,7 @@ const CheckoutCartSection = () => {
 						variant='link'
 						className='m-0 h-auto  p-0'
 						onClick={() => {
-							router.push(`/takeaway-location/${params.location}/`)
+							router.push(`/locations/${params.location}/`)
 						}}
 					>
 						Edit order
@@ -48,7 +48,7 @@ const CheckoutCartSection = () => {
 			<div className='mobile-md:hidden'>
 				<Button
 					onClick={() => {
-						router.push(`/takeaway-location/${params.location}/`)
+						router.push(`/locations/${params.location}/`)
 					}}
 					variant='outline'
 					className=' m-0 mt-2 h-5 gap-1 border-none p-0 hover:bg-transparent'

@@ -59,7 +59,7 @@ const CartSidebar = ({
 											params?.location !== locationSlug ||
 											pathname.includes('checkout')
 										) {
-											router.push(`/takeaway-location/${locationSlug}/`)
+											router.push(`/locations/${locationSlug}/`)
 										}
 										setShowCartSidebar(false)
 									}}
@@ -82,7 +82,7 @@ const CartSidebar = ({
 											params?.location !== locationSlug ||
 											pathname.includes('checkout')
 										) {
-											router.push(`/takeaway-location/${locationSlug}/`)
+											router.push(`/locations/${locationSlug}/`)
 										}
 										setShowCartSidebar(false)
 									}}
@@ -113,7 +113,7 @@ const CartSidebar = ({
 								onClick={() => {
 									setShowCartSidebar(false)
 									if (auth.access) {
-										router.push(`/takeaway-location/${locationSlug}/checkout`)
+										router.push(`/locations/${locationSlug}/checkout`)
 									} else {
 										setShowModal(true)
 									}
