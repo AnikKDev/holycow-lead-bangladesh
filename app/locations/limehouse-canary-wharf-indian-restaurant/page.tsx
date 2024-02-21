@@ -18,6 +18,7 @@ export const getLocationInfo = async (
 		headers: {
 			'Content-type': 'application/json',
 		},
+		cache: 'no-store',
 	})
 
 	const data = await res.json()

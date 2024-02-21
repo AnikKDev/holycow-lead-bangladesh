@@ -138,10 +138,10 @@ export const takeawayLocationsListData = [
 		postcode: ['SW15', 'SW14', 'SW13', 'SW6', 'SW18', 'SW19'],
 	},
 	{
-		name: 'Limehouse - Canary Wharf',
+		name: 'Limehouse – Canary Wharf',
 		address: ['51 Narrow Street, ', 'London E14 8DN'],
 		phone: '0207 790 7688',
-		location: '/locations/limehouse-canary-wharf-indian-restaurant',
+		location: '/locations/Limehouse - Canary Wharf',
 		postcode: ['TBC'],
 	},
 ]
