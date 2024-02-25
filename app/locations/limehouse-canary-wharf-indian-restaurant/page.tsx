@@ -33,7 +33,7 @@ export const getLocationInfo = async (
 export const generateMetadata = async (): Promise<Metadata> => {
 	const locationInformation = await getLocationInfo('limehouse')
 	return {
-		title: locationInformation.name,
+		title: locationInformation?.takeaway_info?.name,
 	}
 }
 
