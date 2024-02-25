@@ -1,6 +1,8 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import { useCreateAContactMailMutation } from '@/redux/slices/contact/contactSlice'
+import toast from 'react-hot-toast'
 import { z } from 'zod'
 
 import AutoForm from '@/components/ui/auto-form'
@@ -18,9 +20,8 @@ import {
 import SectionHeader from '../shared/SectionHeader'
 
 type Props = {}
-// Define your form schema using zod
 export const formSchema = z.object({
-	name: z
+	contact_name: z
 		.string({
 			required_error: 'Name can not be empty.',
 		})
@@ -34,22 +35,16 @@ export const formSchema = z.object({
 		.email({
 			message: 'Invalid email address',
 		}),
-	branch_email: z
-		.enum([
-			'angel@holycowonline.com',
-			'archway@holycowonline.com',
-			'balham@holycowonline.com',
-			'battersea@holycowonline.com',
-			'hammersmith@holycowonline.com',
-			'kilburn@holycowonline.com',
-			'putney@holycowonline.com',
-			'canarywharf@holycowonline.com',
-		])
+	branch: z
+		.string({
+			required_error: 'branch is required.',
+		})
 		.describe('Branch Name'),
-	leave_a_note: z.string().describe('Leave A Note'),
+	message: z.string().describe('Leave A Note'),
 })
 
 export default function ContactForm({}: Props) {
+	const [formValues, setFormValues] = useState<z.infer<typeof formSchema>>({})
 	const [
 		createAContactMail,
 		{
@@ -65,13 +60,22 @@ export default function ContactForm({}: Props) {
 	) => {
 		try {
 			const result = await createAContactMail(data)
-
-			console.log('Mutation Result:', result)
+			setFormValues({
+				contact_name: '',
+				contact_number: '',
+				email: '',
+				branch: '',
+				message: '',
+			})
 		} catch (error) {
 			console.error('Error submitting form:', error)
 		}
 	}
-
+	useEffect(() => {
+		if (createContactFormSuccess) {
+			toast('Email was successfully sent!')
+		}
+	}, [createContactFormSuccess])
 	return (
 		<section className='mb-12 flex w-full flex-col items-center justify-center '>
 			<SectionHeader
@@ -82,11 +86,13 @@ export default function ContactForm({}: Props) {
 			{/* inputs */}
 			<div className='w-full max-w-[600px]'>
 				<AutoForm
+					values={formValues}
+					onParsedValuesChange={setFormValues}
 					onSubmit={handleFormSubmit}
 					formSchema={formSchema}
 					containerClassName='text-primary items-center [&>*]:w-full'
 					fieldConfig={{
-						name: {
+						contact_name: {
 							inputProps: {
 								showLabel: false,
 								type: 'text',
@@ -110,7 +116,7 @@ export default function ContactForm({}: Props) {
 								className: 'focus-visible:right-0 text-foreground',
 							},
 						},
-						branch_email: {
+						branch: {
 							fieldType: ({ field }: AutoFormInputComponentProps) => (
 								<FormItem className='text-foreground'>
 									<Select
@@ -123,29 +129,15 @@ export default function ContactForm({}: Props) {
 											</SelectTrigger>
 										</FormControl>
 										<SelectContent>
-											<SelectItem value='angel@holycowonline.com'>
-												Angel
-											</SelectItem>
-											<SelectItem value='archway@holycowonline.com'>
-												Archway
-											</SelectItem>
-											<SelectItem value='balham@holycowonline.com'>
-												Balham
-											</SelectItem>
-											<SelectItem value='battersea@holycowonline.com'>
-												Battersea
-											</SelectItem>
-											<SelectItem value='hammersmith@holycowonline.com'>
-												Hammersmith
-											</SelectItem>
-											<SelectItem value='kilburn@holycowonline.com'>
-												Kilburn
-											</SelectItem>
-											<SelectItem value='putney@holycowonline.com'>
-												Putney
-											</SelectItem>
-											<SelectItem value='canarywharf@holycowonline.com'>
-												Restaurant (Canary Wharf)
+											<SelectItem value='angle'>Angel</SelectItem>
+											<SelectItem value='archway'>Archway</SelectItem>
+											<SelectItem value='balham'>Balham</SelectItem>
+											<SelectItem value='battersea'>Battersea</SelectItem>
+											<SelectItem value='hammersmith'>Hammersmith</SelectItem>
+											<SelectItem value='kilburn'>Kilburn</SelectItem>
+											<SelectItem value='putney'>Putney</SelectItem>
+											<SelectItem value='limehouse'>
+												Lime House Canary Wharf
 											</SelectItem>
 										</SelectContent>
 									</Select>
@@ -158,7 +150,7 @@ export default function ContactForm({}: Props) {
 								className: 'focus-visible:right-0 text-foreground',
 							},
 						},
-						leave_a_note: {
+						message: {
 							fieldType: 'textarea',
 							inputProps: {
 								type: 'text',

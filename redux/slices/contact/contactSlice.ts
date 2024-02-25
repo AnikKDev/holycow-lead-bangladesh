@@ -22,7 +22,7 @@ export const contactApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		createAContactMail: builder.mutation({
 			query: (data) => ({
-				url: `/send_email`,
+				url: `/send_email/`,
 				method: 'POST',
 				body: data,
 			}),
