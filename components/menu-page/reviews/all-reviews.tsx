@@ -1,20 +1,19 @@
-import { useRef, useState } from 'react'
-import {
-	useGetRestaurantReviewsQuery,
-	useGetTakeawayReviewsQuery,
-} from '@/redux/slices/menuPageSlice/menuPageApiSlice'
-import {
-	LocationInfoType,
-	LocationReviewItemType,
-} from '@/redux/slices/menuPageSlice/menuPageSlice'
+import { useGetRestaurantReviewsQuery, useGetTakeawayReviewsQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice';
+import { LocationInfoType, LocationReviewItemType } from '@/redux/slices/menuPageSlice/menuPageSlice';
+import { useRef, useState } from 'react';
 // import ReactPaginate from 'react-paginate'
-import ReactPaginate from 'react-paginate'
+import ReactPaginate from 'react-paginate';
 
-import { calculateAverageRating } from '@/lib/utils'
-import { Skeleton } from '@/components/ui/skeleton'
 
-import ReviewItem from './review-item'
-import ReviewStars from './review-stars'
+
+import { Skeleton } from '@/components/ui/skeleton';
+import { calculateAverageRating } from '@/lib/utils';
+
+
+
+import ReviewItem from './review-item';
+import ReviewStars from './review-stars';
+
 
 const AllReviews = ({
 	locationInformation,
@@ -34,9 +33,14 @@ const AllReviews = ({
 		data: restaurantReviews,
 		isLoading: isRestaurantReviewLoading,
 		isError: isRestaurantReviewError,
-	} = useGetRestaurantReviewsQuery(locationInformation?.name.toLowerCase(), {
-		skip: !isRestaurant,
-	})
+	} = useGetRestaurantReviewsQuery(
+		locationInformation?.name.toLowerCase().includes('limehouse')
+			? 'limehouse'
+			: locationInformation?.name.toLowerCase(),
+		{
+			skip: !isRestaurant,
+		}
+	)
 
 	const averageRating = !isRestaurant
 		? data?.length
