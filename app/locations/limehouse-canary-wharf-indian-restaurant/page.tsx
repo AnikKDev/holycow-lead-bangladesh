@@ -13,7 +13,7 @@ type ParamsType = {
 export const getLocationInfo = async (
 	location: string
 ): Promise<LocationInfoType> => {
-	const res = await fetch(`${apiUrl}/restaurant/info?restaurant=${location}`, {
+	const res = await fetch(`${apiUrl}/takeaway/info?takeaway=${location}`, {
 		method: 'GET',
 		headers: {
 			'Content-type': 'application/json',
@@ -31,18 +31,14 @@ export const getLocationInfo = async (
 }
 
 export const generateMetadata = async (): Promise<Metadata> => {
-	const locationInformation = await getLocationInfo(
-		'limehouse canary wharf indian restaurant'
-	)
+	const locationInformation = await getLocationInfo('limehouse')
 	return {
 		title: locationInformation.name,
 	}
 }
 
 const RestaurantHomePage = async () => {
-	const locationInformation = await getLocationInfo(
-		'limehouse canary wharf indian restaurant'
-	)
+	const locationInformation = await getLocationInfo('limehouse')
 
 	return (
 		<div>

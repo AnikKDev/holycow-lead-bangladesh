@@ -40,6 +40,10 @@ module.exports = withBundleAnalyzer({
 				hostname: 'hc-api.alexpy.com',
 			},
 			{
+				protocol: 'https', //'https',
+				hostname: 'theme-utah-brown-picked.trycloudflare.com',
+			},
+			{
 				// protocol: 'http',
 				// hostname: 'ec2-15-168-142-203.ap-northeast-3.compute.amazonaws.com',
 				// port: '', http:/13.43.227.150:8000

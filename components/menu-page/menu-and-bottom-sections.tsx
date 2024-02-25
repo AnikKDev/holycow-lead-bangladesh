@@ -1,11 +1,11 @@
 'use client'
 
+import { useCallback, useEffect, useRef } from 'react'
+import { useParams } from 'next/navigation'
 import { useAppDispatch } from '@/redux/hooks'
 import { useGetFullMenuQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
 import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import { setVisitedLocationSlug } from '@/redux/slices/orderSlice/orderSlice'
-import { useParams } from 'next/navigation'
-import { useCallback, useEffect, useRef } from 'react'
 
 import useIntersectionObserver from '@/hooks/useIntersectionObserer'
 
@@ -79,10 +79,10 @@ const MenuAndAllBottomSections = ({
 	}, [informationRef, informationEntry])
 
 	useEffect(() => {
-		if(!isLoading) {
+		if (!isLoading) {
 			window.scrollTo({
 				top: 0,
-				behavior: 'smooth'
+				behavior: 'smooth',
 			})
 		}
 	}, [isLoading])
@@ -168,7 +168,7 @@ const MenuAndAllBottomSections = ({
 				>
 					<AllReviews
 						locationInformation={locationInformation}
-						isRestaurant={isRestaurant}
+						isRestaurant={false} // value changed from isRestaurant to false
 					/>
 				</div>
 			</div>
