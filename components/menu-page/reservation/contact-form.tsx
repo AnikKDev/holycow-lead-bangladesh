@@ -1,5 +1,11 @@
 'use client'
 
+import { useAppSelector } from '@/redux/hooks'
+import {
+	selectBookingState,
+	setBookingState,
+} from '@/redux/slices/bookingSlice/bookingSlice'
+import { useDispatch } from 'react-redux'
 import * as z from 'zod'
 
 import { ukPhoneRegex } from '@/lib/validations/string'
@@ -10,7 +16,7 @@ import { ReservationTab } from './reservation-modal'
 
 // Define your form schema using zod
 const formSchema = z.object({
-	firstName: z
+	first_name: z
 		.string({
 			required_error: 'First name is required.',
 		})
@@ -19,7 +25,7 @@ const formSchema = z.object({
 		.min(2, {
 			message: 'First name must be at least 2 characters.',
 		}),
-	lastName: z
+	last_name: z
 		.string({
 			required_error: 'Last name is required.',
 		})
@@ -60,10 +66,7 @@ const formSchema = z.object({
 		.describe('Select an occasion (optional)')
 		.optional(),
 
-	special_request_message: z
-		.string()
-		.describe('Add a special request (optional)')
-		.optional(),
+	notes: z.string().describe('Add a special request (optional)').optional(),
 })
 
 const BookingContactForm = ({
@@ -71,7 +74,15 @@ const BookingContactForm = ({
 }: {
 	setTab: React.Dispatch<React.SetStateAction<ReservationTab>>
 }) => {
-	const handleFormSubmit = () => {
+	const dispatch = useDispatch()
+	const bookingState = useAppSelector(selectBookingState)
+	const handleFormSubmit = (data: Partial<z.infer<typeof formSchema>>) => {
+		dispatch(
+			setBookingState({
+				...bookingState,
+				...data,
+			})
+		)
 		setTab('payment')
 	}
 	return (
@@ -82,10 +93,36 @@ const BookingContactForm = ({
 				containerClassName='grid grid-cols-2 mobile-sm:grid-cols-1 items-baseline space-y-0 gap-x-4 gap-y-3'
 				className='gap-x-4 gap-y-3'
 				fieldConfig={{
+					first_name: {
+						inputProps: {
+							defaultValue: bookingState?.first_name,
+						},
+					},
+					last_name: {
+						inputProps: {
+							defaultValue: bookingState?.last_name,
+						},
+					},
+					email: {
+						inputProps: {
+							defaultValue: bookingState?.email,
+						},
+					},
+					phone_number: {
+						inputProps: {
+							defaultValue: bookingState?.phone_number,
+						},
+					},
+					notes: {
+						inputProps: {
+							defaultValue: bookingState?.notes,
+						},
+					},
 					occasion: {
 						inputProps: {
 							className: 'h-10',
 							placeholder: 'Select  occasion',
+							defaultValue: bookingState?.occasion,
 						},
 					},
 				}}
