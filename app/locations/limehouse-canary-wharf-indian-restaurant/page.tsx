@@ -1,4 +1,3 @@
-import { Metadata } from 'next'
 import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 
 import { apiUrl } from '@/lib/constatns'
@@ -22,18 +21,16 @@ export const getLocationInfo = async (
 	})
 
 	const data = await res.json()
-	// console.log(data)
 	if (!res.ok) {
 		// This will activate the closest `error.js` Error Boundary
 		throw new Error('Restaurant information not found')
 	}
-	return data?.restaurant_info
+	return data?.takeaway_info
 }
 
-export const generateMetadata = async (): Promise<Metadata> => {
-	const locationInformation = await getLocationInfo('limehouse')
+export const generateMetadata = () => {
 	return {
-		title: locationInformation?.takeaway_info?.name,
+		title: 'Limehouse - Canary Wharf',
 	}
 }
 

@@ -6,6 +6,7 @@ import { Separator } from '@/components/ui/separator'
 import Branches from '@/components/v2/contact-us/branches'
 import PhotoGallery from '@/components/v2/home-components/photo_gallery/PhotoGallery'
 import HappyHours from '@/components/v2/reservation/happy-hours'
+import ReservationSuccessOrFailure from '@/components/v2/reservation/reservation-success'
 import BannerContents from '@/components/v2/shared/banner-contents'
 import SectionHeader from '@/components/v2/shared/SectionHeader'
 import VideoPlayer from '@/components/v2/shared/VideoPlayer'
@@ -15,6 +16,8 @@ type Props = {}
 export default function Reservation({}: Props) {
 	return (
 		<>
+			{/* success or failure popup */}
+			<ReservationSuccessOrFailure />
 			{/* banner here */}
 			<div className='container'>
 				<BannerContents text='Reservation' image={bg.src} />

@@ -41,7 +41,7 @@ module.exports = withBundleAnalyzer({
 			},
 			{
 				protocol: 'https', //'https',
-				hostname: 'theme-utah-brown-picked.trycloudflare.com',
+				hostname: 'davidson-syndrome-girl-coordinates.trycloudflare.com',
 			},
 			{
 				// protocol: 'http',

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { useGetOrderDetailByIdQuery } from '@/redux/slices/orderSlice/orderApislice'
@@ -17,12 +17,14 @@ import OrderDetailsEstimation from '@/components/account/orders/order-details/or
 import OrderDetailsPricing from '@/components/account/orders/order-details/order-details-pricing'
 import OrderDetailsStatus from '@/components/account/orders/order-details/order-details-status'
 import OrderDetailsSummary from '@/components/account/orders/order-details/order-details-summary'
+import { PaymentSuccessModal } from '@/components/v2/reservation/reservation-success'
 
 type Props = {
 	params: { orderId: string }
 }
 
 export default function OrderDetails({ params }: Props) {
+	const [showSuccessModal, setShowSuccessModal] = useState(false)
 	const searchParams = useSearchParams()
 	const dispatch = useAppDispatch()
 	const orderState = useAppSelector(selectOrderState)
@@ -41,6 +43,7 @@ export default function OrderDetails({ params }: Props) {
 
 	useEffect(() => {
 		if (isOrderSuccess && localStorage_is_order_succeed) {
+			setShowSuccessModal(true)
 			dispatch(
 				setOrderState({
 					...orderInitialState,
@@ -51,29 +54,35 @@ export default function OrderDetails({ params }: Props) {
 		}
 	}, [isOrderSuccess])
 	return (
-		<div className='flex flex-col gap-4'>
-			<div>
-				<OrderBackButton />
+		<>
+			<div className='flex flex-col gap-4'>
+				<div>
+					<OrderBackButton />
+				</div>
+				<section className='rounded-2xl bg-white px-4 py-4'>
+					{isLoading ? (
+						<p className=''>Loading orders detail..</p>
+					) : isError ? (
+						<p className=''>Error loading order detail</p>
+					) : (
+						data && (
+							<>
+								<OrderDetailsEstimation order={data} refetch={refetch} />
+								<OrderDetailsStatus order={data} />
+								<OrderDetailsSummary order={data} />
+								<Separator orientation='horizontal' className='my-5' />
+								<OrderDetailsPricing order={data} />
+								<Separator orientation='horizontal' className='my-5' />
+								<OrderDetailsAddress order={data} />
+							</>
+						)
+					)}
+				</section>
 			</div>
-			<section className='rounded-2xl bg-white px-4 py-4'>
-				{isLoading ? (
-					<p className=''>Loading orders detail..</p>
-				) : isError ? (
-					<p className=''>Error loading order detail</p>
-				) : (
-					data && (
-						<>
-							<OrderDetailsEstimation order={data} refetch={refetch} />
-							<OrderDetailsStatus order={data} />
-							<OrderDetailsSummary order={data} />
-							<Separator orientation='horizontal' className='my-5' />
-							<OrderDetailsPricing order={data} />
-							<Separator orientation='horizontal' className='my-5' />
-							<OrderDetailsAddress order={data} />
-						</>
-					)
-				)}
-			</section>
-		</div>
+			<PaymentSuccessModal
+				showModal={showSuccessModal}
+				setShowModal={setShowSuccessModal}
+			/>
+		</>
 	)
 }

@@ -7,7 +7,7 @@ export const ScrollSpy = ({
 }) => {
 	const isInViewPort = (entry, offset = 0) => {
 		const rect = entry.boundingClientRect
-		console.log({ rect })
+		// console.log({ rect })
 		return rect.top - 1 <= 124 + offset && rect.bottom >= 0 + offset
 	}
 
