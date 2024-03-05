@@ -3,23 +3,35 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { Extend } from '@/lib/utils'
 
-export const bookingInitialState = {
+export type BookingStateType = Extend<
+	Partial<{
+		people_count: number
+		first_name: string
+		last_name: string
+		email: string
+		phone_number: string
+		notes: string
+		date: string
+		time: string
+		selected_time: string
+	}>
+>
+
+export const bookingInitialState: BookingStateType = {
 	people_count: 1,
 	first_name: '',
 	last_name: '',
 	email: '',
 	phone_number: '',
 	notes: '',
-	date: new Date(),
+	date: new Date().toISOString(),
 	time: '7:00 pm',
 	selected_time: '',
 }
 
-export type BookingStateType = Extend<Partial<typeof bookingInitialState>>
-
 const bookingSlice = createSlice({
 	name: 'booking',
-	initialState: <BookingStateType>bookingInitialState,
+	initialState: bookingInitialState,
 	reducers: {
 		setBookingState: (state, action: PayloadAction<BookingStateType>) =>
 			action.payload,

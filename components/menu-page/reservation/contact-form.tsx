@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useAppSelector } from '@/redux/hooks'
 import {
 	selectBookingState,
@@ -55,16 +56,16 @@ const formSchema = z.object({
 		}),
 
 	// Enum will show a select
-	occasion: z
-		.enum([
-			'Birthday',
-			'Anniversary',
-			'Date',
-			'Special Occasion',
-			'Business Meal',
-		])
-		.describe('Select an occasion (optional)')
-		.optional(),
+	// occasion: z
+	// 	.enum([
+	// 		'Birthday',
+	// 		'Anniversary',
+	// 		'Date',
+	// 		'Special Occasion',
+	// 		'Business Meal',
+	// 	])
+	// 	.describe('Select an occasion (optional)')
+	// 	.optional(),
 
 	notes: z.string().describe('Add a special request (optional)').optional(),
 })
@@ -76,6 +77,7 @@ const BookingContactForm = ({
 }) => {
 	const dispatch = useDispatch()
 	const bookingState = useAppSelector(selectBookingState)
+	const [values, setValues] = useState<z.infer<typeof formSchema>>(bookingState)
 	const handleFormSubmit = (data: Partial<z.infer<typeof formSchema>>) => {
 		dispatch(
 			setBookingState({
@@ -90,41 +92,50 @@ const BookingContactForm = ({
 			<AutoForm
 				onSubmit={handleFormSubmit}
 				formSchema={formSchema}
-				containerClassName='grid grid-cols-2 mobile-sm:grid-cols-1 items-baseline space-y-0 gap-x-4 gap-y-3'
-				className='gap-x-4 gap-y-3'
+				values={values}
+				onParsedValuesChange={setValues}
+				containerClassName='grid grid-cols-2 mobile-sm:grid-cols-1 items-baseline space-y-0 gap-x-4 gap-y-3  last:col-span-2'
+				className='gap-x-4 gap-y-3  last:col-span-2'
 				fieldConfig={{
 					first_name: {
 						inputProps: {
-							defaultValue: bookingState?.first_name,
+							// defaultValue: bookingState?.first_name,
+							// value: bookingState?.first_name,
 						},
 					},
 					last_name: {
 						inputProps: {
-							defaultValue: bookingState?.last_name,
+							// defaultValue: bookingState?.last_name,
+							// value: bookingState?.last_name,
 						},
 					},
 					email: {
 						inputProps: {
-							defaultValue: bookingState?.email,
+							// defaultValue: bookingState?.email,
+							// value: bookingState?.email,
 						},
 					},
 					phone_number: {
 						inputProps: {
-							defaultValue: bookingState?.phone_number,
+							// defaultValue: bookingState?.phone_number,
+							// value: bookingState?.phone_number,
 						},
 					},
 					notes: {
 						inputProps: {
-							defaultValue: bookingState?.notes,
+							// defaultValue: bookingState?.notes,
+							// value: bookingState?.notes,
+							className: 'col-span-2',
 						},
 					},
-					occasion: {
-						inputProps: {
-							className: 'h-10',
-							placeholder: 'Select  occasion',
-							defaultValue: bookingState?.occasion,
-						},
-					},
+					// occasion: {
+					// 	inputProps: {
+					// 		className: 'h-10',
+					// 		placeholder: 'Select  occasion',
+					// defaultValue: bookingState?.occasion,
+					// value: bookingState?.occasion,
+					// 	},
+					// },
 				}}
 			>
 				<Button type='submit' className='w-full' size='lg'>

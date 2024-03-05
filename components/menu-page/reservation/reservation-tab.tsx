@@ -18,9 +18,9 @@ const ReservationTabContainer = ({
 			<div className='flex w-full items-center space-x-7 shadow-[rgb(204,204,204)_0px_-1px_0px_inset] mobile-sm:space-x-4'>
 				<button
 					className={cn(
-						'cursor-auto whitespace-nowrap border-b-2 border-b-transparent pb-3 text-sm font-medium uppercase tracking-[1px] transition',
+						'cursor-pointer whitespace-nowrap border-b-2 border-b-transparent pb-3 text-sm font-medium uppercase tracking-[1px] transition',
 						{
-							'border-primary text-primary': tab === 'find_table',
+							'border-primary-dark text-primary-dark': tab === 'find_table',
 						}
 					)}
 					onClick={() => {
@@ -31,9 +31,9 @@ const ReservationTabContainer = ({
 				</button>
 				<button
 					className={cn(
-						'cursor-auto whitespace-nowrap border-b-2 border-b-transparent pb-3 text-sm font-medium uppercase tracking-[1px] transition',
+						' cursor-pointer whitespace-nowrap border-b-2 border-b-transparent pb-3 text-sm font-medium uppercase tracking-[1px] transition',
 						{
-							'border-primary text-primary': tab === 'contact_info',
+							'border-primary-dark text-primary-dark': tab === 'contact_info',
 						}
 					)}
 					onClick={() => {
@@ -51,9 +51,9 @@ const ReservationTabContainer = ({
 				</button>
 				<button
 					className={cn(
-						'cursor-auto whitespace-nowrap border-b-2 border-b-transparent pb-3 text-sm font-medium uppercase tracking-[1px] transition',
+						'cursor-pointer whitespace-nowrap border-b-2 border-b-transparent pb-3 text-sm font-medium uppercase tracking-[1px] transition',
 						{
-							'border-primary text-primary': tab === 'payment',
+							'border-primary-dark text-primary-dark': tab === 'payment',
 						}
 					)}
 					onClick={() => {

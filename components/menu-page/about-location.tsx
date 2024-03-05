@@ -23,16 +23,21 @@ const AboutLocation = ({
 			<div className='container mb-1.5 mt-4 grid grid-cols-[1fr_auto] gap-3 text-foreground mobile-md:grid-cols-1'>
 				<div className='flex flex-col gap-2'>
 					<h1 className='text-2xl font-bold'>
-						Holycow - {locationInformation.name}
+						Holycow - {locationInformation?.name}
 					</h1>
 					<div className='flex flex-col justify-center gap-1'>
 						<div className='flex items-center gap-1'>
 							<MdOutlineStar size={18} />
 							<h2 className='flex items-center gap-[2px] font-medium'>
-								{Number(locationInformation.rating).toFixed(1)} (
+								{Number(locationInformation?.rating).toFixed(1)} (
 								<ReviewTotalCount
-									isRestaurant={isRestaurant}
-									locationInfo={locationInformation}
+									isRestaurant={false}
+									locationInfo={{
+										...locationInformation,
+										name: isRestaurant
+											? 'limehouse'
+											: locationInformation?.name,
+									}}
 								/>
 								+ ratings) • {isRestaurant ? 'Restaurant' : 'Takeaway'}
 							</h2>
@@ -40,7 +45,7 @@ const AboutLocation = ({
 						<div className='flex items-center gap-1 mobile-sm:hidden'>
 							<MdOutlineLocationOn size={18} />
 							<h2 className='font-medium'>
-								{locationInformation.address} •{' '}
+								{locationInformation?.address} •{' '}
 								<a href={`tel:${locationInformation?.phone_number}`}>
 									{locationInformation?.phone_number}
 								</a>
@@ -48,7 +53,7 @@ const AboutLocation = ({
 						</div>
 						<div className='hidden items-center gap-1 mobile-sm:flex'>
 							<MdOutlineLocationOn size={18} />
-							<h2 className='font-medium'>{locationInformation.address}</h2>
+							<h2 className='font-medium'>{locationInformation?.address}</h2>
 						</div>
 						<div className='hidden items-center gap-1 mobile-sm:flex'>
 							<a

@@ -1,8 +1,11 @@
 import { useAppSelector } from '@/redux/hooks'
 import { useMakeReservationMutation } from '@/redux/slices/bookingSlice/bookingApiSlice'
 import { selectBookingState } from '@/redux/slices/bookingSlice/bookingSlice'
+import { format } from 'date-fns'
+import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 
+import { formatTimeTo24h } from '@/lib/date'
 import { formatPrice } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 
@@ -16,12 +19,14 @@ const PaymentTab = () => {
 	const handleConfirmBooking = async () => {
 		try {
 			const bookingData = { ...bookingState }
-			bookingData.time = bookingData.selected_time
+			bookingData.time = formatTimeTo24h(bookingData.selected_time)
+			bookingData.date = format(new Date(bookingData.date), 'yyyy-MM-dd')
 			delete bookingData.selected_time
 
 			const res = await makeReservation(bookingData).unwrap()
 
 			const { url } = res
+			window.localStorage.setItem('is_booking_success', JSON.stringify(true))
 			window.location.href = url
 		} catch (e) {
 			console.log(e)
@@ -37,7 +42,8 @@ const PaymentTab = () => {
 				<div className='h-11 text-left text-sm font-medium text-foreground'>
 					Deposit Amount: {formatPrice(10)}
 				</div>
-				<Button onClick={handleConfirmBooking} size='lg'>
+				<Button disabled={isLoading} onClick={handleConfirmBooking} size='lg'>
+					{isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
 					Pay & Confirm Booking
 				</Button>
 			</div>

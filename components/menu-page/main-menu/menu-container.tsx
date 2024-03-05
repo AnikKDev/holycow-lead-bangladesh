@@ -88,7 +88,7 @@ const MenuContainer = ({
 	// 		sidebarRef.current.classList.add('fixed__sidebar')
 	// 	}
 	// }, [isInformationVisible, sidebarRef])
-	console.log('menu-container', document.getElementById('category-container'))
+	// console.log('menu-container', document.getElementById('category-container'))
 
 	return (
 		<div className='md:container'>

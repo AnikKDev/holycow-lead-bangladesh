@@ -1,9 +1,7 @@
 'use client'
 
 import { Dispatch, SetStateAction, useState } from 'react'
-import { useParams } from 'next/navigation'
 
-import { capitalizeFirstLetter } from '@/lib/utils'
 import {
 	Dialog,
 	DialogContent,
@@ -24,15 +22,13 @@ export function ReservationModal({
 	setShowModal: Dispatch<SetStateAction<boolean>>
 }) {
 	const [tab, setTab] = useState<ReservationTab>('find_table')
-	const params = useParams()
-	const location = params.location as string
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
 				<DialogContent className='min-w-0 max-w-2xl p-0 mobile-sm:w-full'>
 					<DialogHeader className='px-5 pt-5 text-left'>
 						<DialogTitle className='pt-4 text-2xl'>
-							Booking at Holycow - {capitalizeFirstLetter(location)}
+							Booking at Holycow - Limehouse - Canary Wharf
 						</DialogTitle>
 					</DialogHeader>
 

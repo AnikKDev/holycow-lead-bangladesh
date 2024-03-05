@@ -167,7 +167,10 @@ const MenuAndAllBottomSections = ({
 					ref={refCallback}
 				>
 					<AllReviews
-						locationInformation={locationInformation}
+						locationInformation={{
+							...locationInformation,
+							name: isRestaurant ? 'limehoue' : locationInformation.name,
+						}}
 						isRestaurant={false} // value changed from isRestaurant to false
 					/>
 				</div>

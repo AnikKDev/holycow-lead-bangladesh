@@ -1,4 +1,4 @@
-import { FormEvent } from 'react'
+import { FormEvent, useEffect, useRef } from 'react'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { useLazyGetReservationAvailabilityQuery } from '@/redux/slices/bookingSlice/bookingApiSlice'
 import {
@@ -33,21 +33,31 @@ const FindATableTab = ({
 }: {
 	setTab: React.Dispatch<React.SetStateAction<ReservationTab>>
 }) => {
+	const ref = useRef<HTMLButtonElement>(null)
 	const dispatch = useAppDispatch()
 	const bookingState = useAppSelector(selectBookingState)
 	const [
 		getReservationAvailableTime,
-		{ data: availableTimes, isLoading, isError },
+		{ data: availableTimes, isLoading, isError, isFetching },
 	] = useLazyGetReservationAvailabilityQuery()
+
+	useEffect(() => {
+		if (ref?.current) {
+			ref.current?.click()
+		}
+	}, [])
+
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-
+		console.log('inside')
 		try {
-			await getReservationAvailableTime({
+			console.log('res')
+			const res = await getReservationAvailableTime({
 				recommended_time: formatTimeTo24h(bookingState.time),
-				recommended_date: format(bookingState.date, 'YYYY-MM-DD'),
+				recommended_date: format(new Date(bookingState.date), 'yyyy-MM-dd'),
 			}).unwrap()
-		} catch {
+		} catch (error) {
+			console.error(error)
 			toast.error("Couldn't get available time")
 		}
 	}
@@ -87,12 +97,12 @@ const FindATableTab = ({
 
 				<div className='mobile-sm:flex-[1_1_33.3333%]'>
 					<DatePicker
-						date={bookingState.date}
+						date={new Date(bookingState.date || new Date())}
 						setDate={(selectedDate) => {
 							dispatch(
 								setBookingState({
 									...bookingState,
-									date: selectedDate,
+									date: selectedDate.toISOString(),
 								})
 							)
 						}}
@@ -130,20 +140,25 @@ const FindATableTab = ({
 					</Select>
 				</div>
 
-				<Button className='col-start-4 col-end-13 h-12 w-full rounded-none rounded-br-sm rounded-tr-sm p-4 mobile-sm:col-start-1 mobile-sm:row-start-2 mobile-sm:flex-[0_1_100%] mobile-sm:rounded-[0px_0px_0.25rem_0.25rem]'>
+				<Button
+					ref={ref}
+					disabled={isLoading}
+					className='col-start-4 col-end-13 h-12 w-full rounded-none rounded-br-sm rounded-tr-sm p-4 mobile-sm:col-start-1 mobile-sm:row-start-2 mobile-sm:flex-[0_1_100%] mobile-sm:rounded-[0px_0px_0.25rem_0.25rem]'
+				>
 					Find a Table
 				</Button>
 			</form>
 
 			<div className='flex w-full items-center justify-start  gap-2 pt-6 mobile-sm:flex-wrap mobile-sm:space-x-0 mobile-sm:pt-4'>
-				{isLoading ? (
+				{isLoading || isFetching ? (
 					<Loader2 className='h-4 w-4 animate-spin' />
 				) : isError ? (
 					<p>Error getting available times</p>
 				) : availableTimes && availableTimes?.length > 0 ? (
-					availableTimes.map((time) => {
+					availableTimes.map((time, idx) => {
 						return (
 							<Button
+								key={idx}
 								onClick={() => {
 									dispatch(
 										setBookingState({
@@ -154,26 +169,13 @@ const FindATableTab = ({
 									setTab('contact_info')
 								}}
 								className='w-full mobile-sm:h-9 mobile-sm:w-auto  mobile-sm:px-5'
-								disabled={time.is_available}
+								disabled={time.count >= 10}
 							>
 								{time.time}
 							</Button>
 						)
 					})
 				) : null}
-				{/* {availableTime.map((time) => {
-					return (
-						<Button
-							onClick={() => {
-								setTab('contact_info')
-							}}
-							className='w-full mobile-sm:h-9 mobile-sm:w-auto  mobile-sm:px-5'
-							disabled={!time.available}
-						>
-							{time.time}
-						</Button>
-					)
-				})} */}
 			</div>
 		</div>
 	)

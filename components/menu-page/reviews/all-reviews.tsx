@@ -1,19 +1,20 @@
-import { useGetRestaurantReviewsQuery, useGetTakeawayReviewsQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice';
-import { LocationInfoType, LocationReviewItemType } from '@/redux/slices/menuPageSlice/menuPageSlice';
-import { useRef, useState } from 'react';
+import { useRef, useState } from 'react'
+import {
+	useGetRestaurantReviewsQuery,
+	useGetTakeawayReviewsQuery,
+} from '@/redux/slices/menuPageSlice/menuPageApiSlice'
+import {
+	LocationInfoType,
+	LocationReviewItemType,
+} from '@/redux/slices/menuPageSlice/menuPageSlice'
 // import ReactPaginate from 'react-paginate'
-import ReactPaginate from 'react-paginate';
+import ReactPaginate from 'react-paginate'
 
+import { calculateAverageRating } from '@/lib/utils'
+import { Skeleton } from '@/components/ui/skeleton'
 
-
-import { Skeleton } from '@/components/ui/skeleton';
-import { calculateAverageRating } from '@/lib/utils';
-
-
-
-import ReviewItem from './review-item';
-import ReviewStars from './review-stars';
-
+import ReviewItem from './review-item'
+import ReviewStars from './review-stars'
 
 const AllReviews = ({
 	locationInformation,

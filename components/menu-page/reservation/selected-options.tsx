@@ -11,12 +11,14 @@ const TableSelectedOptions = () => {
 				<div className='flex items-center gap-1.5'>
 					<Calendar className='h-5 w-5 text-foreground' />
 					<span className='text-base text-foreground'>
-						{format(bookingState.date, 'EEEE, d MMMM')}
+						{format(new Date(bookingState.date), 'EEEE, d MMMM')}
 					</span>
 				</div>
 				<div className='flex items-center gap-1.5'>
 					<Clock3 className='h-5 w-5 text-foreground' />
-					<span className='text-base text-foreground'>{bookingState.time}</span>
+					<span className='text-base text-foreground'>
+						{bookingState.selected_time}
+					</span>
 				</div>
 				<div className='flex items-center gap-1.5'>
 					<User className='h-5 w-5 text-foreground' />

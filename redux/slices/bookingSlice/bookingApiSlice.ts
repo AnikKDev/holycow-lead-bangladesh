@@ -1,13 +1,12 @@
 import { apiSlice } from '@/redux/services/apiSlice'
 
-import { formatTimeTo12h } from '@/lib/date'
+import { formatTimeTo12h, generateTimes } from '@/lib/date'
 
 import { BookingStateType } from './bookingSlice'
 
 export type AvailableTimeType = {
-	time: string | number
-	reservedCount: string | number
-	is_available: boolean
+	time: string
+	count: number
 }
 
 export const bookingApiSlice = apiSlice.injectEndpoints({
@@ -20,22 +19,38 @@ export const bookingApiSlice = apiSlice.injectEndpoints({
 				url: '/reservation_availability/',
 				params: queryParams,
 			}),
-			transformResponse: (result: {
-				data: (string | number)[][]
-			}): AvailableTimeType[] => {
-				if (result?.data.length) {
-					return result.data.reduce((acc: AvailableTimeType[], currentVal) => {
-						return [
-							...acc,
-							{
-								time: formatTimeTo12h(String(currentVal[0])),
-								reservedCount: currentVal[1],
-								is_available: currentVal[1] !== 10,
-							},
-						]
-					}, [])
+			transformResponse: (result: { data: AvailableTimeType[] }, meta, arg) => {
+				const parsedTime = formatTimeTo12h(arg.recommended_time)
+				const generatedTimes = generateTimes(parsedTime)
+
+				if (!result?.data?.length) {
+					return generatedTimes.map((item) => ({
+						time: item,
+						count: 0,
+					}))
 				}
-				return []
+
+				const transformedTimes = result?.data.map((item) => ({
+					...item,
+					time: formatTimeTo12h(item.time),
+				}))
+				const allAvailableTimes = generatedTimes.map((item) => {
+					const matchingItem = transformedTimes.find(
+						(tItem) => tItem.time === item
+					)
+					if (matchingItem) {
+						return {
+							time: item,
+							count: matchingItem.count,
+						}
+					}
+					return {
+						time: item,
+						count: 0,
+					}
+				})
+
+				return allAvailableTimes
 			},
 		}),
 		makeReservation: builder.mutation<{ url: string }, BookingStateType>({
@@ -49,7 +64,6 @@ export const bookingApiSlice = apiSlice.injectEndpoints({
 })
 
 export const {
-	useGetReservationAvailabilityQuery,
 	useLazyGetReservationAvailabilityQuery,
 	useMakeReservationMutation,
 } = bookingApiSlice
