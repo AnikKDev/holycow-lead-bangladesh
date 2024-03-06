@@ -130,7 +130,7 @@ const CollectionTimeSection = () => {
 										/>
 									}
 									placeholderText='Choose a time'
-									className='whitespace-nowrap text-sm'
+									className='whitespace-nowrap bg-inherit text-sm'
 								/>
 							</div>
 						</fieldset>

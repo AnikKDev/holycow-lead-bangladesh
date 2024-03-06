@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { useApplyPromoCodeMutation } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
 import {
@@ -15,6 +16,7 @@ import { z } from 'zod'
 import AutoForm from '../ui/auto-form'
 import { Badge } from '../ui/badge'
 import { Button } from '../ui/button'
+import { LoginRegisterModal } from './login-register-modal'
 
 // Define your form schema using zod
 const formSchema = z.object({
@@ -25,7 +27,12 @@ const formSchema = z.object({
 		.describe('Promo Code'),
 })
 
-const PromoCodeApply = () => {
+const PromoCodeApply = ({
+	isGuestCheckout = false,
+}: {
+	isGuestCheckout: boolean
+}) => {
+	const [showLoginRegModal, setShowLoginRegModal] = useState(false)
 	const orderState = useAppSelector(selectOrderState)
 	const cartTotals = useAppSelector(getCartTotals)
 	const dispatch = useAppDispatch()
@@ -87,8 +94,12 @@ const PromoCodeApply = () => {
 						<div className='flex w-full items-center'>
 							<AutoForm
 								containerClassName='w-full'
-								className='flex w-full items-center gap-2  '
+								className='flex w-full items-baseline gap-2  '
 								onSubmit={(data) => {
+									if (isGuestCheckout) {
+										setShowLoginRegModal(true)
+										return
+									}
 									handleSubmit(data)
 								}}
 								formSchema={formSchema}
@@ -100,11 +111,23 @@ const PromoCodeApply = () => {
 											type: 'text',
 											className: 'bg-white uppercase placeholder:capitalize',
 											autoCapitalize: 'on',
+											required: !isGuestCheckout,
 										},
 									},
 								}}
 							>
-								<Button type='submit' className='!m-0' disabled={isLoading}>
+								<Button
+									onClick={() => {
+										console.log({ isGuestCheckout })
+										if (isGuestCheckout) {
+											setShowLoginRegModal(true)
+											return
+										}
+									}}
+									type='submit'
+									className='!m-0'
+									disabled={isLoading}
+								>
 									{isLoading && (
 										<Loader2 className='mr-1.5 h-4 w-4 animate-spin' />
 									)}
@@ -121,6 +144,13 @@ const PromoCodeApply = () => {
 					)}
 				</div>
 			</div>
+
+			<LoginRegisterModal
+				isGuestCheckout={isGuestCheckout}
+				headerText='Login or create an account to apply promo code'
+				showModal={showLoginRegModal}
+				setShowModal={setShowLoginRegModal}
+			/>
 		</>
 	)
 }

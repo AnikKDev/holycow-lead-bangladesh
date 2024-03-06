@@ -9,6 +9,14 @@ import { Extend } from '@/lib/utils'
 import { MenuItemType } from '../menuPageSlice/menuPageSlice'
 
 export type FulfillmentType = 'Delivery' | 'Collection'
+
+export const guestInfoInitialState = {
+	name: '',
+	email: '',
+	phone_number: '',
+	address: '',
+}
+export type GuestInfo = Extend<Partial<typeof guestInfoInitialState>>
 export type OrderInitialState = Extend<
 	Partial<{
 		cartItems: MenuItemType[]
@@ -22,6 +30,8 @@ export type OrderInitialState = Extend<
 		collection_address: string
 		collection_time: string
 		visited_location_slug: string
+		// guest
+		guest_info: GuestInfo
 	}>
 >
 
@@ -61,6 +71,7 @@ export const orderInitialState: OrderInitialState = {
 	collection_address: '',
 	collection_time: ASAP,
 	visited_location_slug: '',
+	guest_info: guestInfoInitialState,
 }
 
 const orderSlice = createSlice({
