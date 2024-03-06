@@ -35,6 +35,15 @@ export const orderApiSlice = apiSlice.injectEndpoints({
 				method: 'POST',
 			}),
 		}),
+		getGuestOrderDetailById: builder.query<OrderDetailType, string>({
+			query: (id) => ({
+				url: '/order/track_guest_order/',
+				params: {
+					tracking_id: id,
+				},
+			}),
+			transformResponse: (response: { data: OrderDetailType }) => response.data,
+		}),
 	}),
 })
 
@@ -43,4 +52,5 @@ export const {
 	useGetOrderDetailByIdQuery,
 	useCheckoutOrderMutation,
 	usePerformGuestCheckoutMutation,
+	useGetGuestOrderDetailByIdQuery,
 } = orderApiSlice

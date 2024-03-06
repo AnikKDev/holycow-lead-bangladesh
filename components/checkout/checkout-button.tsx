@@ -85,7 +85,7 @@ const CheckoutButton = ({
 			const res = await handleGuestCheckout(body).unwrap()
 			const { url } = res
 
-			// window.localStorage.setItem('is_order_succeed', JSON.stringify(true))
+			window.localStorage.setItem('is_order_succeed', JSON.stringify(true))
 			window.location.href = url
 		} catch (error) {
 			console.error('Error fetching client secret:', error)

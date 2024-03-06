@@ -1,6 +1,6 @@
 import { OrderDetailType } from '@/redux/slices/orderSlice/orderSlice'
 
-type Props = { order: OrderDetailType }
+type Props = { order: OrderDetailType; isPublicTracking?: boolean }
 /*
 if (typeof order?.address === 'object' && order.address !== null) {
 		const address = order.address.address
@@ -11,7 +11,10 @@ if (typeof order?.address === 'object' && order.address !== null) {
 	}
 
 */
-export default function OrderDetailsAddress({ order }: Props) {
+export default function OrderDetailsAddress({
+	order,
+	isPublicTracking = false,
+}: Props) {
 	return (
 		<div>
 			<h3 className='mb-3 mt-8 text-lg font-medium capitalize'>
@@ -20,7 +23,7 @@ export default function OrderDetailsAddress({ order }: Props) {
 					? 'Delivery Address'
 					: order?.order_type === 'COLLECTION' && 'Collection Address'}
 			</h3>
-			{order?.order_type === 'DELIVERY' ? (
+			{order?.order_type === 'DELIVERY' && !isPublicTracking ? (
 				<>
 					<h4 className='mb-3 text-base font-medium capitalize text-gray-500'>
 						{order?.address?.address}
