@@ -1,7 +1,8 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
+import { useLazyGetTakeawayInformationQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
 import {
 	useCheckoutOrderMutation,
 	usePerformGuestCheckoutMutation,
@@ -27,11 +28,15 @@ const CheckoutButton = ({
 	const pathname = usePathname()
 	const cartTotals = useAppSelector(getCartTotals)
 	const orderState = useAppSelector(selectOrderState)
+	const params = useParams()
+	const location = params.location as string
 	const { auth } = useAuthState()
 	const [handleCheckoutOrder, { isLoading, isError }] =
 		useCheckoutOrderMutation()
 	const [handleGuestCheckout, { isLoading: guestIsLoading }] =
 		usePerformGuestCheckoutMutation()
+	const [getTakeawayInfo, { isLoading: takeawayIsLoading }] =
+		useLazyGetTakeawayInformationQuery()
 
 	const canPlaceOrder = () => {
 		if (!orderState.cartItems.length) {
@@ -93,11 +98,21 @@ const CheckoutButton = ({
 		}
 	}
 
-	const handlePlaceOrder = () => {
+	const getTakeawayLocationInfo = async () => {
+		try {
+			const data = await getTakeawayInfo(location).unwrap()
+			return data.name
+		} catch (e) {
+			console.error(e)
+		}
+	}
+
+	const handlePlaceOrder = async () => {
 		if (!canPlaceOrder()) {
 			return
 		}
 		const cartItems = orderItems(orderState.cartItems)
+		const takeawayName = await getTakeawayLocationInfo()
 
 		if (isGuestCheckout && pathname.includes('/guest-checkout')) {
 			makeGuestCheckoutPayment({
@@ -112,8 +127,7 @@ const CheckoutButton = ({
 							: orderState?.collection_time === ASAP
 							  ? null
 							  : orderState?.collection_time, // both for delivery_time and collection_time
-					takeaway:
-						orderState?.collection_address?.toLocaleLowerCase() || 'Putney',
+					takeaway: takeawayName.toLowerCase() || 'putney',
 				},
 				guest_info: orderState.guest_info,
 			})
@@ -131,8 +145,7 @@ const CheckoutButton = ({
 						  : orderState?.collection_time, // both for delivery_time and collection_time
 				address: orderState.delivery_address.id,
 				promo_code: orderState?.promo_code_id,
-				takeaway:
-					orderState?.collection_address?.toLocaleLowerCase() || 'Putney',
+				takeaway: takeawayName?.toLocaleLowerCase() || 'putney',
 			})
 		}
 	}
@@ -149,7 +162,7 @@ const CheckoutButton = ({
 			</div>
 			<div className='w-full'>
 				<Button
-					disabled={isLoading}
+					disabled={isLoading || guestIsLoading || takeawayIsLoading}
 					size='lg'
 					type='button'
 					className=' w-full font-semibold uppercase'

@@ -66,6 +66,7 @@ export const menuPageApiSlice = apiSlice.injectEndpoints({
 
 export const {
 	useGetTakeawayInformationQuery,
+	useLazyGetTakeawayInformationQuery,
 	useGetTakeawayReviewsQuery,
 	useGetRestaurantInformationQuery,
 	useGetRestaurantReviewsQuery,
