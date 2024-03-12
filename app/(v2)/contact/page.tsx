@@ -1,50 +1,29 @@
 import React from 'react'
 import bg from '@/assets/career/career-and-offer-bg.png'
 
-import Branches from '@/components/v2/contact-us/branches'
-import TakeawaySection from '@/components/v2/contact-us/takeaway-section'
+import { takeawayLocationsListData } from '@/components/shared/data'
 import DeliveryAndDine from '@/components/v2/home-components/header/DeliveryAndDine'
 import ContactForm from '@/components/v2/private-event/contact-form'
 import BannerContents from '@/components/v2/shared/banner-contents'
+import TakeawayLocationsList from '@/components/v2/shared/takeaway-locations/TakeawayLocationsList'
 
 type Props = {}
 
 const ContactUs = (props: Props) => {
 	return (
 		<>
-			{/* banner here */}
-			<div className='container'>
+			<div className='container space-y-16'>
 				<BannerContents text='Contact Us' image={bg.src} />
-			</div>
-			<div className='mx-auto max-w-5xl px-4'>
 				<DeliveryAndDine />
-				{/* branches */}
-				<div>
-					<Branches
-						branchOpeningHours={
-							<>
-								<ul className='w-full font-open_sans font-[400] leading-[31.5px] tracking-[4%] text-[#727272]'>
-									<li className='mb-1'>Monday: 2:00 pm – 11:00 pm</li>
-									<li className='mb-1'>Tuesday: 2:00 pm – 11:00 pm</li>
-									<li className='mb-1'>Wednesday: 2:00 pm – 11:00 pm</li>
-									<li className='mb-1'>Thursday: 2:00 pm – 11:00 pm</li>
-									<li className='mb-1'>Friday: 2:00 pm – 11:00 pm</li>
-									<li className='mb-1'>Saturday: 2:00 pm – 11:00 pm</li>
-									<li className='mb-1'>Sunday: 2:00 pm – 11:00 pm</li>
-								</ul>
-							</>
-						}
-						branchEmail='canarywharf@holycowonline.com'
-						branchLocation='In canary Wharf, London'
-						branchName='Holy Cow Indian Restaurant & Bar'
-						branchNum='Branch'
-						classes='flex-row-reverse'
+				<section className='my-10 space-y-8'>
+					<h2 className='text-center font-lora text-3xl font-medium capitalize leading-[1.3] tracking-[0.04em] text-foreground'>
+						Takeaway Locations
+					</h2>
+					<TakeawayLocationsList
+						takeawayLocationsList={takeawayLocationsListData}
 					/>
-					<TakeawaySection />
-					<div className='mx-auto max-w-7xl'>
-						<ContactForm />
-					</div>
-				</div>
+				</section>
+				<ContactForm />
 			</div>
 		</>
 	)
