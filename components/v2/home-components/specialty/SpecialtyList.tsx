@@ -1,12 +1,10 @@
 'use client'
 
-import React from 'react'
 import { useGetSpecialityMenuQuery } from '@/redux/slices/takeawayMenuSlice/takeawayMenuSlice'
 
 import { Skeleton } from '@/components/ui/skeleton'
 
-import MenuFoodCard from '../../shared/card/MenuFoodCard'
-import SpecialtyItem from './SpecialtyItem'
+import SpecialtyListCarousel from './speciality-list-carousel'
 
 type Props = {}
 
@@ -88,17 +86,20 @@ const SpecialtyList = (props: Props) => {
 	}
 
 	return (
-		<div className='grid grid-cols-1 gap-x-8  gap-y-12 md:grid-cols-2 _desktop-sm:grid-cols-3 _desktop-md:grid-cols-4'>
-			{data?.data.map((item) => (
-				<MenuFoodCard
-					id={item.id}
-					description={item.description}
-					image={item.image}
-					item_name={item.item_name}
-					price={item.price}
-				/>
-			))}
-		</div>
+		<>
+			{/* <div className='grid grid-cols-1 gap-x-8  gap-y-12 md:grid-cols-2 _desktop-sm:grid-cols-3 _desktop-md:grid-cols-4'>
+				{data?.data.map((item) => (
+					<MenuFoodCard
+						id={item.id}
+						description={item.description}
+						image={item.image}
+						item_name={item.item_name}
+						price={item.price}
+					/>
+				))}
+			</div> */}
+			<SpecialtyListCarousel allData={data?.data} />
+		</>
 	)
 }
 
