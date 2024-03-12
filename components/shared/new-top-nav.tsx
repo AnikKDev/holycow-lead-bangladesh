@@ -52,7 +52,7 @@ const NewTopNav = () => {
 					</div>
 
 					{/* middle nav-items */}
-					<ul className='flex items-center gap-2 space-x-2.5'>
+					<ul className='flex items-center gap-2 space-x-4'>
 						<TopDropdownNavItesm />
 						<li
 							onClick={() => {
@@ -62,7 +62,7 @@ const NewTopNav = () => {
 						>
 							Online Order
 						</li>
-						<li className='cursor-pointer px-4 text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
+						<li className='cursor-pointer px-5 text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
 							<Link href={'/'} className=''>
 								<Image
 									src={nav_logo}
@@ -71,9 +71,9 @@ const NewTopNav = () => {
 								/>
 							</Link>
 						</li>
-						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
+						{/* <li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
 							<Link href={'/private-event'}>Private Event</Link>
-						</li>
+						</li> */}
 						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
 							<Link href={'/career'}>Career</Link>
 						</li>

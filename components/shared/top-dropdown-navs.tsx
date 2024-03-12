@@ -24,6 +24,7 @@ export function TopDropdownNavItesm() {
 						<ul className='grid w-[250px]  gap-1.5 border-none bg-primary px-4 py-5'>
 							<ListItem href='/fine-dining-menu/'>Fine Dining Menu</ListItem>
 							<ListItem href='/reservations'>Reservation</ListItem>
+							<ListItem href='/private-event'>Private Event</ListItem>
 							<ListItem href='/locations/limehouse-canary-wharf-indian-restaurant/'>
 								Limehouse - Canary Wharf Restaurant
 							</ListItem>
