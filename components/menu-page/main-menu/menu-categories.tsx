@@ -66,7 +66,7 @@ const CategoryItem = ({
 					data-scrollspy-id={category.split(' ').join('-')}
 					onClick={handleClick}
 					className={cn(
-						'block w-full items-center justify-center truncate  whitespace-nowrap rounded-md px-1 py-1.5 pl-2  text-left text-base text-[#6b6b83] ring-offset-background transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 mobile-md:text-sm mobile-md:font-medium'
+						'block w-full items-center justify-center truncate  whitespace-nowrap rounded-md px-1 py-1.5 pl-2  text-left text-base uppercase text-[#6b6b83] ring-offset-background transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 mobile-md:text-sm mobile-md:font-medium'
 					)}
 				>
 					{category}
