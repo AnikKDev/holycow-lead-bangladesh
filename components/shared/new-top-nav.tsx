@@ -98,13 +98,25 @@ const NewTopNav = () => {
 							size={22}
 							className='cursor-pointer text-primary-foreground'
 						/>
-						<ShoppingCart
-							size={22}
-							className='cursor-pointer text-primary-foreground'
+						<button
+							className='relative rounded-full border-2 border-transparent text-gray-800 transition duration-150 ease-in-out hover:text-gray-400 focus:text-gray-500 focus:outline-none'
+							aria-label='Cart'
 							onClick={() => {
 								setShowCartSidebar(true)
 							}}
-						/>
+						>
+							<ShoppingCart
+								size={22}
+								className='cursor-pointer text-primary-foreground'
+							/>
+							{totalCartItems > 0 && (
+								<span className='absolute inset-0 -top-[15px] -mr-6 object-right-top font-lora'>
+									<div className='inline-flex items-center rounded-full border-2 border-primary bg-red-500 p-0.5 px-2 text-xs font-semibold leading-4 text-white'>
+										{totalCartItems}
+									</div>
+								</span>
+							)}
+						</button>
 					</div>
 				</div>
 			</nav>
