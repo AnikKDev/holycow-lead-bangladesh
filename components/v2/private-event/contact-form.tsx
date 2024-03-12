@@ -125,7 +125,7 @@ export default function ContactForm({}: Props) {
 									>
 										<FormControl>
 											<SelectTrigger>
-												<SelectValue placeholder='Select a branch' />
+												<SelectValue placeholder='Select a branch *' />
 											</SelectTrigger>
 										</FormControl>
 										<SelectContent>
