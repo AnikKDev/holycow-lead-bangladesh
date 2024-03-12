@@ -12,10 +12,15 @@ import CollectionTimeSection from './collection/collection-time'
 import DeliveryAddressArea from './delivery/delivery-address'
 import DeliveryTab from './delivery/delivery-tab'
 import DeliveryTimeArea from './delivery/delivery-time'
+import GuestCheckoutInfoForm from './guest-checkout/guest-checkout-form'
 import OrderCalculations from './order-calculations'
 import PromoCodeApply from './promo-code'
 
-const CheckoutRightSide = () => {
+const CheckoutRightSide = ({
+	isGuestCheckout = false,
+}: {
+	isGuestCheckout?: boolean
+}) => {
 	const orderState = useAppSelector(selectOrderState)
 	const isMobileMd = useMediaQuery({ maxWidth: 768 })
 	const footerElm = document.getElementById('footer-container')
@@ -36,7 +41,13 @@ const CheckoutRightSide = () => {
 				<DeliveryTab />
 				{orderState.fulfillment_type === 'Delivery' ? (
 					<>
-						<DeliveryAddressArea />
+						{!isGuestCheckout ? (
+							<>
+								<DeliveryAddressArea />
+							</>
+						) : (
+							<GuestCheckoutInfoForm />
+						)}
 						<div className='border-b border-border'></div>
 						<DeliveryTimeArea />
 						<div className='border-b border-border'></div>
@@ -44,7 +55,14 @@ const CheckoutRightSide = () => {
 				) : (
 					orderState.fulfillment_type === 'Collection' && (
 						<>
-							<CollectionAddressSection />
+							<GuestCheckoutInfoForm />
+
+							{isGuestCheckout && (
+								<>
+									<div className='border-b border-border'></div>
+									<CollectionAddressSection />
+								</>
+							)}
 							<div className='border-b border-border'></div>
 
 							<CollectionTimeSection />
@@ -52,7 +70,7 @@ const CheckoutRightSide = () => {
 						</>
 					)
 				)}
-				<PromoCodeApply />
+				<PromoCodeApply isGuestCheckout={isGuestCheckout} />
 				<div className='border-b border-border'></div>
 				{isMobileMd && (
 					<>
@@ -64,7 +82,7 @@ const CheckoutRightSide = () => {
 				<OrderCalculations />
 			</div>
 
-			{!isMobileMd && <CheckoutButton />}
+			{!isMobileMd && <CheckoutButton isGuestCheckout={isGuestCheckout} />}
 		</div>
 	)
 }

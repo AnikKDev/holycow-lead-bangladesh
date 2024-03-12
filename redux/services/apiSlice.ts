@@ -10,6 +10,9 @@ const noNeedTokenEndpoint = [
 	'getTakeawayInformation',
 	'getRestaurantInformation',
 	'getRestaurantReviews',
+	'getReservationAvailability',
+	'makeReservation',
+	'performGuestCheckout',
 ]
 
 export const apiSlice = createApi({

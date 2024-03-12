@@ -1,6 +1,5 @@
 'use client'
 
-import { Dispatch, FormEvent, SetStateAction } from 'react'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import {
 	useCreateAddressMutation,
@@ -11,9 +10,9 @@ import {
 	setOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
 import { Loader2 } from 'lucide-react'
+import { Dispatch, FormEvent, SetStateAction } from 'react'
 import toast from 'react-hot-toast'
 
-import { AccountAddress } from '@/types/account/account.types'
 import { Button } from '@/components/ui/button'
 import {
 	Dialog,
@@ -22,6 +21,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from '@/components/ui/dialog'
+import { AccountAddress } from '@/types/account/account.types'
 
 import { addressInitialState } from '../checkout/delivery/delivery-address'
 import { Input } from '../ui/input'

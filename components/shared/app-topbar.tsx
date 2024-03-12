@@ -12,7 +12,9 @@ const AppTopBar = () => {
 	const pathname = usePathname()
 
 	const isNoRequiredOfGradientPage =
-		pathname.includes('/checkout') || pathname.includes('/account')
+		pathname.includes('/checkout') ||
+		pathname.includes('/account') ||
+		pathname.includes('/guest-checkout')
 
 	useEffect(() => {
 		const handleScroll = () => {
