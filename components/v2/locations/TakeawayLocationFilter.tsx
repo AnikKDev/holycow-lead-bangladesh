@@ -13,6 +13,12 @@ const TakeawayLocationFilter = (props: Props) => {
 	const [searchInput, setSearchInput] = useState('')
 
 	const filteredLocations = takeawayLocationsListData.filter((location) =>
+		location.postcode.some(
+			(postcode) => postcode.toLowerCase() === searchInput.toLowerCase()
+		)
+	)
+
+	const filteredItemsLocation = takeawayLocationsListData.filter((location) =>
 		location.postcode.some((postcode) =>
 			postcode.toLowerCase().includes(searchInput.toLowerCase())
 		)
@@ -21,7 +27,7 @@ const TakeawayLocationFilter = (props: Props) => {
 	const uniquePostcodes = (): string[] => {
 		const uniquePostcodeSet = new Set<string>()
 
-		filteredLocations.forEach(({ postcode }) => {
+		filteredItemsLocation.forEach(({ postcode }) => {
 			postcode.forEach((code) => {
 				uniquePostcodeSet.add(code)
 			})
@@ -38,7 +44,11 @@ const TakeawayLocationFilter = (props: Props) => {
 				setSearchInput={setSearchInput}
 				uniquePostcodes={uniquePostcodes()}
 			/>
-			<TakeawayLocationsList takeawayLocationsList={filteredLocations} />
+			<TakeawayLocationsList
+				takeawayLocationsList={
+					searchInput === '' ? takeawayLocationsListData : filteredLocations
+				}
+			/>
 		</div>
 	)
 }
