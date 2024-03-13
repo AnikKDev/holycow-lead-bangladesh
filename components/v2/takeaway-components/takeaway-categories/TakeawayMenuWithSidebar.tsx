@@ -1,13 +1,13 @@
 'use client'
 
-import { useGetTakeawayMenuQuery } from '@/redux/slices/takeawayMenuSlice/takeawayMenuSlice'
-import { TakeawayMenuItem } from '@/types'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useGetTakeawayMenuQuery } from '@/redux/slices/takeawayMenuSlice/takeawayMenuSlice'
+import { TakeawayMenuItem } from '@/types'
 
-import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
+import { Skeleton } from '@/components/ui/skeleton'
 
 import TakeawayMenuCategoriesDropdown from './TakeawayMenuCategoriesDropdown'
 import TakeawayMenuItemsList from './TakeawayMenuItemsList'
@@ -73,7 +73,7 @@ const TakeawayMenuWithSidebar = (props: Props) => {
 								href={`/takeaway-menu/${item.slug}`}
 								scroll={false}
 							>
-								{item.name}
+								{item.name.toLowerCase()}
 							</Link>
 						</li>
 					))}

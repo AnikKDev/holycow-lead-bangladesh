@@ -76,7 +76,7 @@ export function MenuItemModal({
 						</div>
 						<div className='flex flex-col justify-center gap-2.5 px-3 py-2.5 text-foreground'>
 							<DialogTitle className='capitalize'>
-								{item?.item_name}
+								{item?.item_name.toLowerCase()}
 							</DialogTitle>
 							<DialogTitle className='text-base'>
 								{formatPrice(item?.price)}

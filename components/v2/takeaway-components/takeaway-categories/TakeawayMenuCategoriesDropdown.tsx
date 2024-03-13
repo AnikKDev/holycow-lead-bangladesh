@@ -48,7 +48,7 @@ const TakeawayMenuCategoriesDropdown = ({
 								: ''
 						)}
 					>
-						{category.name}
+						{category.name.toLowerCase()}
 					</SelectItem>
 				))}
 			</SelectContent>
