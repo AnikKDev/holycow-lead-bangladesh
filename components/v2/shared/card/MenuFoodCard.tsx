@@ -21,7 +21,7 @@ const MenuFoodCard = ({
 				className='border border-[#e8d3a233]'
 			/>
 			<div className='mt-[29px] flex items-center justify-between font-lora text-xl font-medium leading-[1.3] tracking-[0.04em] text-foreground'>
-				<h3 className='uppercase'>{item_name}</h3>
+				<h3 className='capitalize'>{item_name}</h3>
 				<p className='flex items-center font-semibold'>£{price}</p>
 			</div>
 			<hr className='mb-[10px] mt-[6px] border-t border-dotted' />
