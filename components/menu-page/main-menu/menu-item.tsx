@@ -35,8 +35,8 @@ const MenuItem = ({ item, isRestaurant }: IMenuItem) => {
 			>
 				<div className='grid grid-cols-16 justify-between gap-2'>
 					<div className='col-start-1 col-end-12 flex flex-col gap-2 py-3 pl-2'>
-						<h2 className='line-clamp-1 text-base font-medium uppercase text-foreground'>
-							{item?.item_name}
+						<h2 className='line-clamp-1 text-base font-medium capitalize text-foreground'>
+							{item?.item_name.toLowerCase()}
 						</h2>
 						<p className='line-clamp-2 text-sm font-normal text-[#767676] text-foreground'>
 							{item?.description}

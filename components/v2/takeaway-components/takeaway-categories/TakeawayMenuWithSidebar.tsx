@@ -67,13 +67,13 @@ const TakeawayMenuWithSidebar = (props: Props) => {
 						<li key={item.id}>
 							<Link
 								className={cn(
-									'whitespace-nowrap rounded-full border border-secondary-foreground px-3 py-1 font-lora  text-base font-bold uppercase  leading-[1.75] tracking-[0.04em] text-primary-foreground hover:text-[#905A09] hover:underline _desktop-sm:border-none _desktop-sm:text-lg _desktop-md:border-none _desktop-md:text-lg',
+									'whitespace-nowrap rounded-full border border-secondary-foreground px-3 py-1 font-lora  text-base font-bold capitalize  leading-[1.75] tracking-[0.04em] text-primary-foreground hover:text-[#905A09] hover:underline _desktop-sm:border-none _desktop-sm:text-lg _desktop-md:border-none _desktop-md:text-lg',
 									lastPartPath == item.slug ? 'text-[#905A09] underline ' : ''
 								)}
 								href={`/takeaway-menu/${item.slug}`}
 								scroll={false}
 							>
-								{item.name}
+								{item.name.toLowerCase()}
 							</Link>
 						</li>
 					))}
