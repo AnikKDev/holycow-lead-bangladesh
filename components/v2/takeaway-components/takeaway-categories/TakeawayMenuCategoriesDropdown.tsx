@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import { useRouter } from 'next/navigation'
 
 import { cn } from '@/lib/utils'
@@ -43,7 +42,7 @@ const TakeawayMenuCategoriesDropdown = ({
 					<SelectItem
 						value={category.slug}
 						className={cn(
-							'w-full px-4 font-lora text-base font-bold capitalize leading-[1.75] tracking-[0.04em]',
+							'w-full px-4 font-lora text-base font-bold uppercase leading-[1.75] tracking-[0.04em]',
 							lastPartPath == category.slug
 								? 'bg-primary text-primary-foreground'
 								: ''

@@ -52,7 +52,7 @@ const NewTopNav = () => {
 					</div>
 
 					{/* middle nav-items */}
-					<ul className='flex items-center gap-2 space-x-2.5'>
+					<ul className='flex items-center gap-2 space-x-4'>
 						<TopDropdownNavItesm />
 						<li
 							onClick={() => {
@@ -62,7 +62,7 @@ const NewTopNav = () => {
 						>
 							Online Order
 						</li>
-						<li className='cursor-pointer px-4 text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
+						<li className='cursor-pointer px-5 text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09]'>
 							<Link href={'/'} className=''>
 								<Image
 									src={nav_logo}
@@ -71,9 +71,9 @@ const NewTopNav = () => {
 								/>
 							</Link>
 						</li>
-						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
+						{/* <li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
 							<Link href={'/private-event'}>Private Event</Link>
-						</li>
+						</li> */}
 						<li className='hidden cursor-pointer text-base font-medium text-primary-foreground transition-colors hover:bg-transparent hover:text-[#905A09] focus:bg-transparent focus:text-[#905A09] md:block'>
 							<Link href={'/career'}>Career</Link>
 						</li>
@@ -98,13 +98,25 @@ const NewTopNav = () => {
 							size={22}
 							className='cursor-pointer text-primary-foreground'
 						/>
-						<ShoppingCart
-							size={22}
-							className='cursor-pointer text-primary-foreground'
+						<button
+							className='relative rounded-full border-2 border-transparent text-gray-800 transition duration-150 ease-in-out hover:text-gray-400 focus:text-gray-500 focus:outline-none'
+							aria-label='Cart'
 							onClick={() => {
 								setShowCartSidebar(true)
 							}}
-						/>
+						>
+							<ShoppingCart
+								size={22}
+								className='cursor-pointer text-primary-foreground'
+							/>
+							{totalCartItems > 0 && (
+								<span className='absolute inset-0 -top-[15px] -mr-6 object-right-top font-lora'>
+									<div className='inline-flex items-center rounded-full border-2 border-primary bg-red-500 p-0.5 px-2 text-xs font-semibold leading-4 text-white'>
+										{totalCartItems}
+									</div>
+								</span>
+							)}
+						</button>
 					</div>
 				</div>
 			</nav>

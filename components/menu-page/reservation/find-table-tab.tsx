@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useRef } from 'react'
+import { FormEvent } from 'react'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { useLazyGetReservationAvailabilityQuery } from '@/redux/slices/bookingSlice/bookingApiSlice'
 import {
@@ -33,19 +33,12 @@ const FindATableTab = ({
 }: {
 	setTab: React.Dispatch<React.SetStateAction<ReservationTab>>
 }) => {
-	const ref = useRef<HTMLButtonElement>(null)
 	const dispatch = useAppDispatch()
 	const bookingState = useAppSelector(selectBookingState)
 	const [
 		getReservationAvailableTime,
 		{ data: availableTimes, isLoading, isError, isFetching },
 	] = useLazyGetReservationAvailabilityQuery()
-
-	useEffect(() => {
-		if (ref?.current) {
-			ref.current?.click()
-		}
-	}, [])
 
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
@@ -56,8 +49,32 @@ const FindATableTab = ({
 				recommended_time: formatTimeTo24h(bookingState.time),
 				recommended_date: format(new Date(bookingState.date), 'yyyy-MM-dd'),
 			}).unwrap()
+			console.log('real res', res)
+			if (!res.is_available) {
+				dispatch(
+					setBookingState({
+						...bookingState,
+						selected_time: null,
+					})
+				)
+				toast.error('The selected time is not available at this moment')
+				return
+			}
+			dispatch(
+				setBookingState({
+					...bookingState,
+					selected_time: res.time,
+				})
+			)
+			setTab('contact_info')
 		} catch (error) {
 			console.error(error)
+			dispatch(
+				setBookingState({
+					...bookingState,
+					selected_time: null,
+				})
+			)
 			toast.error("Couldn't get available time")
 		}
 	}
@@ -66,9 +83,9 @@ const FindATableTab = ({
 		<div className='pb-8 pt-1'>
 			<form
 				onSubmit={(e) => handleSubmit(e)}
-				className='grid grid-cols-[repeat(12,1fr)] items-center mobile-sm:flex mobile-sm:grid-cols-3 mobile-sm:flex-wrap'
+				className='grid grid-cols-3 items-center mobile-sm:flex mobile-sm:flex-wrap'
 			>
-				<div className='mobile-sm:flex-[1_1_33.3333%]'>
+				<div className='flex-[1_1_33.3333%]'>
 					<Select
 						value={`${bookingState.people_count}`}
 						onValueChange={(value) => {
@@ -80,7 +97,7 @@ const FindATableTab = ({
 							)
 						}}
 					>
-						<SelectTrigger className='w-[135px] rounded-none rounded-bl-sm rounded-tl-sm p-4 mobile-sm:w-full mobile-sm:min-w-0 mobile-sm:rounded-bl-none'>
+						<SelectTrigger className='w-full min-w-0 rounded-none rounded-bl-none rounded-tl-sm p-4'>
 							<SelectValue />
 						</SelectTrigger>
 						<SelectContent>
@@ -95,7 +112,7 @@ const FindATableTab = ({
 					</Select>
 				</div>
 
-				<div className='mobile-sm:flex-[1_1_33.3333%]'>
+				<div className='flex-[1_1_33.3333%]'>
 					<DatePicker
 						date={new Date(bookingState.date || new Date())}
 						setDate={(selectedDate) => {
@@ -109,11 +126,11 @@ const FindATableTab = ({
 						showIcon={false}
 						formatOption='d MMM'
 						showDropDownArrow
-						className='w-[135px] rounded-none border-l-transparent p-4 mobile-sm:w-full mobile-sm:min-w-0'
+						className='w-full min-w-0 rounded-none border-l-transparent p-4'
 					/>
 				</div>
 
-				<div className='mobile-sm:flex-[1_1_33.3333%]'>
+				<div className='flex-[1_1_33.3333%]'>
 					<Select
 						value={bookingState.time}
 						onValueChange={(value) => {
@@ -125,7 +142,7 @@ const FindATableTab = ({
 							)
 						}}
 					>
-						<SelectTrigger className='w-[135px] rounded-none border-l-transparent p-4 mobile-sm:w-full mobile-sm:min-w-0'>
+						<SelectTrigger className=' w-full min-w-0 rounded-none border-l-transparent p-4'>
 							<SelectValue />
 						</SelectTrigger>
 						<SelectContent>
@@ -141,15 +158,15 @@ const FindATableTab = ({
 				</div>
 
 				<Button
-					ref={ref}
 					disabled={isLoading}
-					className='col-start-4 col-end-13 h-12 w-full rounded-none rounded-br-sm rounded-tr-sm p-4 mobile-sm:col-start-1 mobile-sm:row-start-2 mobile-sm:flex-[0_1_100%] mobile-sm:rounded-[0px_0px_0.25rem_0.25rem]'
+					className='col-start-1 col-end-13 row-start-2 h-12 w-full flex-[0_1_100%] rounded-[0px_0px_0.25rem_0.25rem] rounded-br-sm rounded-tr-none p-4'
 				>
-					Find a Table
+					{isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
+					Book a Table
 				</Button>
 			</form>
 
-			<div className='flex w-full items-center justify-start  gap-2 pt-6 mobile-sm:flex-wrap mobile-sm:space-x-0 mobile-sm:pt-4'>
+			{/* <div className='flex w-full items-center justify-start  gap-2 pt-6 mobile-sm:flex-wrap mobile-sm:space-x-0 mobile-sm:pt-4'>
 				{isLoading || isFetching ? (
 					<Loader2 className='h-4 w-4 animate-spin' />
 				) : isError ? (
@@ -176,7 +193,7 @@ const FindATableTab = ({
 						)
 					})
 				) : null}
-			</div>
+			</div> */}
 		</div>
 	)
 }

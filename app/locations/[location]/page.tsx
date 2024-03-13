@@ -19,7 +19,7 @@ const getLocationInfo = async (location: string): Promise<LocationInfoType> => {
 	})
 
 	const data = await res?.json()
-	// console.log(data)
+	// console.log({data})
 	if (!res.ok) {
 		// This will activate the closest `error.js` Error Boundary
 		throw new Error('Takeaway information not found')
@@ -30,14 +30,18 @@ const getLocationInfo = async (location: string): Promise<LocationInfoType> => {
 export const generateMetadata = async ({
 	params,
 }: ParamsType): Promise<Metadata> => {
-	const locationInformation = await getLocationInfo(params.location)
+	const locationInformation = await getLocationInfo(
+		params.location?.includes('limehouse') ? 'limehouse' : params.location
+	)
 	return {
 		title: locationInformation.name,
 	}
 }
 
 const TakeawayLocationMenuPage = async ({ params }: ParamsType) => {
-	const locationInformation = await getLocationInfo(params.location)
+	const locationInformation = await getLocationInfo(
+		params.location?.includes('limehouse') ? 'limehouse' : params.location
+	)
 	return (
 		<div className='font-lora'>
 			<div className='mx-auto max-w-[1200px]'>
