@@ -43,7 +43,7 @@ export const NAVBAR_ITEMS: NavItemType[] = [
 	},
 	{ title: 'Allergy Advice', path: '/allergy-advice' },
 	{ title: 'Offers', path: '/whats-on' },
-	{ title: 'Private Event', path: '/private-event' },
+	// { title: 'Private Event', path: '/private-event' },
 	{ title: 'Career', path: '/career' },
 	{ title: 'About Us', path: '/about-us' },
 	{ title: 'Contact Us', path: '/contact' },
