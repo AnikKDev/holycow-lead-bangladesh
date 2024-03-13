@@ -29,7 +29,7 @@ export const allTakeawayLocations = [
 	},
 	{
 		name: 'Limehouse - Canary Wharf',
-		slug: '/locations/Limehouse - Canary Wharf',
+		slug: '/locations/limehouse-canary-wharf',
 	},
 ]
 
