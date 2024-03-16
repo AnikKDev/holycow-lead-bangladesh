@@ -16,8 +16,6 @@ import './main-menu/menu.css'
 
 import { cn } from '@/lib/utils'
 
-import { Badge } from '../ui/badge'
-import { Separator } from '../ui/separator'
 import { Skeleton } from '../ui/skeleton'
 import LightboxComp from './gallery-lightbox/lightbox'
 import MenuNavbar from './menu-navbar'
@@ -51,16 +49,12 @@ const MenuAndAllBottomSections = ({
 		}
 	}, [])
 
-	console.log('from ', locationInformation.delivery_areas)
-
 	useEffect(() => {
 		if (
 			!targetItemEntry?.isIntersecting &&
 			targetRef?.current &&
 			menuRef?.current
 		) {
-			console.log('intersection false', targetItemEntry)
-
 			// menuRef.current.style.position = 'fixed'
 			// menuRef.current.style.zIndex = '1038'
 			// menuRef.current.style.top = '64px'
@@ -76,10 +70,6 @@ const MenuAndAllBottomSections = ({
 			}
 		}
 	}, [targetRef, menuRef, targetItemEntry])
-
-	useEffect(() => {
-		console.log('information entry', informationEntry)
-	}, [informationRef, informationEntry])
 
 	useEffect(() => {
 		if (!isLoading) {
