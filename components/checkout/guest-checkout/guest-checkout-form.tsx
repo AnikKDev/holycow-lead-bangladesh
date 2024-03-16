@@ -36,7 +36,8 @@ const GuestCheckoutInfoForm = () => {
 									<br />
 
 									<span className='text-sm text-[#494949]'>
-										{orderState.guest_info.address}
+										{orderState.guest_info.address},{' '}
+										{orderState.guest_info.post_code}
 									</span>
 								</h3>
 							</div>

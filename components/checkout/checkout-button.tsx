@@ -100,6 +100,9 @@ const CheckoutButton = ({
 		const cartItems = orderItems(orderState.cartItems)
 
 		if (isGuestCheckout && pathname.includes('/guest-checkout')) {
+			const guestInfo = { ...orderState.guest_info }
+			guestInfo.address = `${guestInfo.address}, ${guestInfo.post_code}`
+			delete guestInfo.post_code
 			makeGuestCheckoutPayment({
 				order_info: {
 					order_items: cartItems,
@@ -112,10 +115,9 @@ const CheckoutButton = ({
 							: orderState?.collection_time === ASAP
 							  ? null
 							  : orderState?.collection_time, // both for delivery_time and collection_time
-					takeaway:
-						orderState?.collection_address?.toLocaleLowerCase() || 'Putney',
+					takeaway: orderState?.collection_address?.toLowerCase() || 'Putney',
 				},
-				guest_info: orderState.guest_info,
+				guest_info: guestInfo,
 			})
 		} else {
 			makePayment({
@@ -131,8 +133,7 @@ const CheckoutButton = ({
 						  : orderState?.collection_time, // both for delivery_time and collection_time
 				address: orderState.delivery_address.id,
 				promo_code: orderState?.promo_code_id,
-				takeaway:
-					orderState?.collection_address?.toLocaleLowerCase() || 'Putney',
+				takeaway: orderState?.collection_address?.toLowerCase() || 'Putney',
 			})
 		}
 	}

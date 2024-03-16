@@ -1,5 +1,7 @@
 import { Dispatch, SetStateAction, useState } from 'react'
+import { useParams } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { useGetTakeawayInformationQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
 import {
 	selectOrderState,
 	setOrderState,
@@ -47,6 +49,11 @@ const formSchema = z.object({
 		.regex(ukPhoneRegex, {
 			message: 'Invalid phone number.',
 		}),
+	post_code: z
+		.string({
+			required_error: 'Phone number is required.',
+		})
+		.describe('Post code'),
 	address: z
 		.string({
 			required_error: 'Address is required',
@@ -69,6 +76,9 @@ export function GuestInfoFormModal({
 	const dispatch = useAppDispatch()
 	const orderState = useAppSelector(selectOrderState)
 	console.log(orderState)
+	const params = useParams()
+	const location = params.location as string
+	const { data, isLoading, isError } = useGetTakeawayInformationQuery(location)
 	const [values, setValues] = useState<z.infer<typeof formSchema>>(
 		orderState.guest_info
 	)
@@ -81,6 +91,7 @@ export function GuestInfoFormModal({
 		)
 		setShowModal(false)
 	}
+
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
