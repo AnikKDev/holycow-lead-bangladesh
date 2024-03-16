@@ -16,6 +16,8 @@ import './main-menu/menu.css'
 
 import { cn } from '@/lib/utils'
 
+import { Badge } from '../ui/badge'
+import { Separator } from '../ui/separator'
 import { Skeleton } from '../ui/skeleton'
 import LightboxComp from './gallery-lightbox/lightbox'
 import MenuNavbar from './menu-navbar'
@@ -34,7 +36,6 @@ const MenuAndAllBottomSections = ({
 	const menuRef = useRef<HTMLDivElement>(null)
 	const dispatch = useAppDispatch()
 	const { data, isLoading, isError } = useGetFullMenuQuery()
-
 	const targetItemEntry = useIntersectionObserver(targetRef, {
 		threshold: 0,
 		rootMargin: '-75px 0px 0px 0px',
@@ -49,6 +50,8 @@ const MenuAndAllBottomSections = ({
 			dispatch(setVisitedLocationSlug(location as string))
 		}
 	}, [])
+
+	console.log('from ', locationInformation.delivery_areas)
 
 	useEffect(() => {
 		if (
