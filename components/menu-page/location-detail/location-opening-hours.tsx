@@ -11,7 +11,7 @@ const LocationOpeningHours = ({
 			<h2 className='pb-2 text-lg font-semibold '>Opening Hours</h2>
 
 			<div className='flex flex-col border-t border-border'>
-				{locationInformation.opening_hours.map((oh) => (
+				{locationInformation?.opening_hours?.map((oh) => (
 					<div className='w-full border-b border-border py-4'>
 						<div className='flex w-full items-center justify-between px-4 text-base mobile-sm:px-3'>
 							<p>{oh.week_day}</p>
