@@ -41,14 +41,14 @@ export function PostcodeCombobox({
 				>
 					{value
 						? options.find((option) => option.value === value)?.label
-						: 'Select option...'}
+						: 'Select postcode...'}
 					<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className='max-h-56 w-full overflow-x-auto p-0'>
 				<Command>
-					<CommandInput required placeholder='Search option...' />
-					<CommandEmpty>No option found.</CommandEmpty>
+					<CommandInput required placeholder='Search your postcode...' />
+					<CommandEmpty>No postcode found.</CommandEmpty>
 					<CommandGroup>
 						{options.map((option) => (
 							<CommandItem
