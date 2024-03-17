@@ -34,7 +34,6 @@ const MenuAndAllBottomSections = ({
 	const menuRef = useRef<HTMLDivElement>(null)
 	const dispatch = useAppDispatch()
 	const { data, isLoading, isError } = useGetFullMenuQuery()
-
 	const targetItemEntry = useIntersectionObserver(targetRef, {
 		threshold: 0,
 		rootMargin: '-75px 0px 0px 0px',
@@ -56,8 +55,6 @@ const MenuAndAllBottomSections = ({
 			targetRef?.current &&
 			menuRef?.current
 		) {
-			console.log('intersection false', targetItemEntry)
-
 			// menuRef.current.style.position = 'fixed'
 			// menuRef.current.style.zIndex = '1038'
 			// menuRef.current.style.top = '64px'
@@ -73,10 +70,6 @@ const MenuAndAllBottomSections = ({
 			}
 		}
 	}, [targetRef, menuRef, targetItemEntry])
-
-	useEffect(() => {
-		console.log('information entry', informationEntry)
-	}, [informationRef, informationEntry])
 
 	useEffect(() => {
 		if (!isLoading) {

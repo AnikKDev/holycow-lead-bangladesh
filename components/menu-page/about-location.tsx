@@ -66,6 +66,17 @@ const AboutLocation = ({
 								</h2>
 							</a>
 						</div>
+						<div className='flex flex-wrap items-center gap-1 font-medium'>
+							<p className='font-bold'>Delivery Areas:</p>
+							{locationInformation.delivery_areas.map((area, index) => (
+								<span key={index}>
+									{area}
+									{index === locationInformation.delivery_areas.length - 1
+										? ''
+										: ','}
+								</span>
+							))}
+						</div>
 					</div>
 				</div>
 				<div className='flex flex-wrap gap-2'>
