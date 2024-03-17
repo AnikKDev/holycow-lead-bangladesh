@@ -21,6 +21,7 @@ export type LocationInfoType = Extend<
 		email: string
 		rating: string
 		opening_hours: OpeningHoursType[]
+		delivery_areas: string[]
 	}>
 >
 export type MenuItemType = Extend<
