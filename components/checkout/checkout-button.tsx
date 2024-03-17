@@ -115,6 +115,9 @@ const CheckoutButton = ({
 		const takeawayName = await getTakeawayLocationInfo()
 
 		if (isGuestCheckout && pathname.includes('/guest-checkout')) {
+			const guestInfo = { ...orderState.guest_info }
+			guestInfo.address = `${guestInfo.address}, ${guestInfo.post_code}`
+			delete guestInfo.post_code
 			makeGuestCheckoutPayment({
 				order_info: {
 					order_items: cartItems,
@@ -129,7 +132,7 @@ const CheckoutButton = ({
 							  : orderState?.collection_time, // both for delivery_time and collection_time
 					takeaway: takeawayName.toLowerCase() || 'putney',
 				},
-				guest_info: orderState.guest_info,
+				guest_info: guestInfo,
 			})
 		} else {
 			makePayment({
@@ -145,7 +148,7 @@ const CheckoutButton = ({
 						  : orderState?.collection_time, // both for delivery_time and collection_time
 				address: orderState.delivery_address.id,
 				promo_code: orderState?.promo_code_id,
-				takeaway: takeawayName?.toLocaleLowerCase() || 'putney',
+				takeaway: takeawayName?.toLowerCase() || 'putney',
 			})
 		}
 	}

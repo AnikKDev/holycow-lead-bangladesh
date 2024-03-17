@@ -15,6 +15,7 @@ export const guestInfoInitialState = {
 	email: '',
 	phone_number: '',
 	address: '',
+	post_code: '',
 }
 export type GuestInfo = Extend<Partial<typeof guestInfoInitialState>>
 export type OrderInitialState = Extend<
