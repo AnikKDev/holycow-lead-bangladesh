@@ -18,16 +18,21 @@ export const getMenuItems = (isRestaurant = false) => {
 			},
 			{
 				id: 2,
-				name: 'Information',
+				name: 'Opening Hours',
 				tab: 'information',
 			},
 			{
 				id: 3,
+				name: 'About',
+				tab: 'information',
+			},
+			{
+				id: 4,
 				name: 'Gallery',
 				tab: 'gallery',
 			},
 			{
-				id: 4,
+				id: 5,
 				name: 'Reviews',
 				tab: 'reviews',
 			},
@@ -41,11 +46,16 @@ export const getMenuItems = (isRestaurant = false) => {
 			},
 			{
 				id: 2,
-				name: 'Information',
-				tab: 'information',
+				name: 'Opening Hours',
+				tab: 'opening-hours',
 			},
 			{
 				id: 3,
+				name: 'About',
+				tab: 'about',
+			},
+			{
+				id: 4,
 				name: 'Reviews',
 				tab: 'reviews',
 			},
