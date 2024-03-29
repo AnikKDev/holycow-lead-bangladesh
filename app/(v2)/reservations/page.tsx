@@ -41,20 +41,20 @@ export default function Reservation({}: Props) {
 						branchOpeningHours={
 							<>
 								<ul className='font-open_sans text-sm font-[400] leading-[31.5px] tracking-[4%] text-[#727272]'>
-									<li className=''>Monday: 5:00 pm - 11:00 pm</li>
-									<li className=''>Tuesday: 5:00 pm - 11:00 pm</li>
-									<li className=''>Wednesday: 5:00 pm - 11:00 pm</li>
-									<li className=''>Thursday: 5:00 pm - 11:00 pm</li>
-									<li className=''>Friday: 5:00 pm - 11:00 pm</li>
-									<li className=''>Saturday: 5:00 pm - 11:00 pm</li>
-									<li className=''>Sunday: 5:00 pm - 11:00 pm</li>
+									<li>Monday: 2:00 pm - 11:00 pm</li>
+									<li>Tuesday: 2:00 pm - 11:00 pm</li>
+									<li>Wednesday: 2:00 pm - 11:00 pm</li>
+									<li>Thursday: 2:00 pm - 11:00 pm</li>
+									<li>Friday: 2:00 pm - 11:00 pm</li>
+									<li>Saturday: 2:00 pm - 11:00 pm</li>
+									<li>Sunday: 2:00 pm - 11:00 pm</li>
 								</ul>
 							</>
 						}
-						branchEmail='restaurant@holycowonline.com'
-						branchLocation='In Putney, London'
-						branchName='Holy Cow Indian Restaurant & Bar'
-						branchNum='Putney'
+						branchEmail='canarywharf@holycowonline.com'
+						branchLocation='Unit 2, Adriatic Building 45/51 narrow street E14 8DN'
+						branchName='Holy Cow (Canary Wharf) Limited.'
+						branchNum='Limehouse – Canary Wharf'
 					/>
 					{/* happy section */}
 					<div className='mt-4'>
