@@ -5,7 +5,7 @@ import { AccountAddress } from '@/types/account/account.types'
 export const addressApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		// user/profile apis
-		getAllAddresses: builder.query({
+		getAllAddresses: builder.query<{ addresses: AccountAddress[] }, any>({
 			query: () => ({
 				url: `/user/all_addresses/`,
 				method: 'GET',

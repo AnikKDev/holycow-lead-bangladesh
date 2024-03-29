@@ -1,11 +1,13 @@
 'use client'
 
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import {
 	useDeleteAddressMutation,
 	useGetAllAddressesQuery,
 } from '@/redux/slices/accountSlice/addressSlice/addressApiSlice'
+import { useGetTakeawayInformationQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
 import {
 	selectOrderState,
 	setOrderState,
@@ -14,6 +16,7 @@ import { Loader2, Pencil, X } from 'lucide-react'
 import toast from 'react-hot-toast'
 
 import { AccountAddress } from '@/types/account/account.types'
+import { getActualFetchedLocationName } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
 	Dialog,
@@ -36,6 +39,10 @@ export function ShowAddressesModal({
 	setShowModal: Dispatch<SetStateAction<boolean>>
 }) {
 	const [showCreateAddressModal, setShowCreateAddressModal] = useState(false)
+	const [defaultAddress, setDefaultAddress] =
+		useState<AccountAddress>(addressInitialState)
+	const params = useParams()
+	const location = params.location as string
 	const {
 		data: allAddresses,
 		isLoading: allAddressesLoading,
@@ -43,8 +50,32 @@ export function ShowAddressesModal({
 		isError: isAllAddressesError,
 		error: allAddressesError,
 	} = useGetAllAddressesQuery(null)
-	const [defaultAddress, setDefaultAddress] =
-		useState<AccountAddress>(addressInitialState)
+	const {
+		data: takeawayData,
+		isLoading: isTakeawayDataLoading,
+		isError: isTakeawayDataError,
+	} = useGetTakeawayInformationQuery(getActualFetchedLocationName(location))
+
+	const [relevantAddresses, setRelevantAddresses] = useState<AccountAddress[]>()
+	useEffect(() => {
+		if (
+			!allAddressesLoading &&
+			!isTakeawayDataLoading &&
+			allAddresses &&
+			takeawayData
+		) {
+			const result = allAddresses.addresses.filter((address) => {
+				console.log({
+					postcode: address.postal_code,
+					dAreas: takeawayData.delivery_areas,
+				})
+				return takeawayData.delivery_areas.includes(address.postal_code)
+			})
+			setRelevantAddresses(result)
+		}
+	}, [allAddressesLoading, isTakeawayDataLoading, allAddresses, takeawayData])
+
+	console.log({ relevantAddresses })
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
@@ -53,13 +84,14 @@ export function ShowAddressesModal({
 						<DialogTitle>Edit Addresses</DialogTitle>
 					</DialogHeader>
 
-					{allAddressesLoading ? (
+					{allAddressesLoading || isTakeawayDataLoading ? (
 						<p>Getting all address...</p>
-					) : isAllAddressesError ? (
+					) : isAllAddressesError || isTakeawayDataError ? (
 						<p>Error getting address</p>
 					) : (
-						allAddresses?.addresses?.length > 0 && (
-							<ViewAddressSection allAddress={allAddresses?.addresses} />
+						allAddresses?.addresses?.length > 0 &&
+						takeawayData && (
+							<ViewAddressSection allAddress={relevantAddresses} />
 						)
 					)}
 
@@ -112,9 +144,13 @@ export function ViewAddressSection({ allAddress }) {
 			}}
 			value={`${orderState?.delivery_address?.id || ''}`}
 		>
-			{allAddress.map((address: AccountAddress) => {
-				return <AddressSectionItem key={address.id} address={address} />
-			})}
+			{allAddress?.length > 0 ? (
+				allAddress?.map((address: AccountAddress) => {
+					return <AddressSectionItem key={address.id} address={address} />
+				})
+			) : (
+				<>No relevant address for this takeaway</>
+			)}
 		</RadioGroup>
 	)
 }
@@ -186,6 +222,7 @@ const AddressSectionItem = ({ address }: { address: AccountAddress }) => {
 			<div className='border-b border-border'></div>
 
 			<CreateAddressModal
+				isFormCheckout
 				isEditingAddress={true}
 				setDefaultAddress={setDefaultAddress}
 				setIsEditingAddress={() => {}}

@@ -1,21 +1,27 @@
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { useGetTakeawayInformationQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice';
-import { GuestInfo, selectOrderState, setOrderState } from '@/redux/slices/orderSlice/orderSlice';
-import { useParams } from 'next/navigation';
-import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { useGetTakeawayInformationQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
+import {
+	GuestInfo,
+	guestInfoInitialState,
+	selectOrderState,
+	setOrderState,
+} from '@/redux/slices/orderSlice/orderSlice'
 
+import { getActualFetchedLocationName } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
+import {
+	Dialog,
+	DialogContent,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+} from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
-
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-
-
-
-import { getActualFetchedLocationName } from '@/lib/utils';
-import { PostcodeCombobox } from './postcode-combobox';
-
+import { PostcodeCombobox } from './postcode-combobox'
 
 export const GuestInfoFormModal = ({
 	showModal,
@@ -34,7 +40,9 @@ export const GuestInfoFormModal = ({
 	const { data, isLoading, isError } = useGetTakeawayInformationQuery(
 		getActualFetchedLocationName(location)
 	)
-	const [values, setValues] = useState<GuestInfo>(orderState.guest_info)
+	const [values, setValues] = useState<GuestInfo>(
+		isEditInfo ? orderState.guest_info : guestInfoInitialState
+	)
 	const handleInputChange = (e) => {
 		const { id, value } = e.target
 		console.log({ id, value })
