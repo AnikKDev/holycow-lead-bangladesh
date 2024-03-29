@@ -126,7 +126,7 @@ const CollectionTimeSection = () => {
 									dateFormat='Pp'
 									timeFormat='p'
 									minDate={new Date()}
-									// filterTime={filterPassedAndNoNeedTime}
+									filterTime={filterPassedAndNoNeedTime}
 									minTime={setHours(setMinutes(new Date(), 0), 14)}
 									maxTime={setHours(setMinutes(new Date(), 30), 22)}
 									customInput={
