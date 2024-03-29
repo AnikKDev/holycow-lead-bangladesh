@@ -1,5 +1,7 @@
 import { apiSlice } from '@/redux/services/apiSlice'
 
+import { AccountAddress } from '@/types/account/account.types'
+
 export const addressApiSlice = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		// user/profile apis
@@ -21,9 +23,9 @@ export const addressApiSlice = apiSlice.injectEndpoints({
 			}),
 			invalidatesTags: ['Address'],
 		}),
-		updateAddress: builder.mutation({
+		updateAddress: builder.mutation<{ address: AccountAddress }, any>({
 			query: ({ address, addressId }) => ({
-				url: `/user/address/${addressId}`,
+				url: `/user/address/${addressId}/`,
 				method: 'PATCH',
 				body: address,
 			}),
@@ -34,7 +36,7 @@ export const addressApiSlice = apiSlice.injectEndpoints({
 		}),
 		deleteAddress: builder.mutation({
 			query: (addressId) => ({
-				url: `/user/address/${addressId}`,
+				url: `/user/address/${addressId}/`,
 				method: 'DELETE',
 			}),
 			invalidatesTags: (result, error, arg) => ['Address'],

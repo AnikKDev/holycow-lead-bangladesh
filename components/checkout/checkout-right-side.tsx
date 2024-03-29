@@ -1,15 +1,21 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useAppSelector } from '@/redux/hooks'
-import { selectOrderState } from '@/redux/slices/orderSlice/orderSlice'
+import { useParams } from 'next/navigation'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import {
+	selectOrderState,
+	setOrderState,
+} from '@/redux/slices/orderSlice/orderSlice'
 import { useMediaQuery } from 'react-responsive'
 
 import CheckoutButton from './checkout-button'
 import CheckoutCartSection from './checkout-cart-section'
 import CollectionAddressSection from './collection/collection-address'
 import CollectionTimeSection from './collection/collection-time'
-import DeliveryAddressArea from './delivery/delivery-address'
+import DeliveryAddressArea, {
+	addressInitialState,
+} from './delivery/delivery-address'
 import DeliveryTab from './delivery/delivery-tab'
 import DeliveryTimeArea from './delivery/delivery-time'
 import GuestCheckoutInfoForm from './guest-checkout/guest-checkout-form'
@@ -35,6 +41,17 @@ const CheckoutRightSide = ({
 			}
 		}
 	}, [footerElm])
+	const params = useParams()
+	const dispatch = useAppDispatch()
+	useEffect(() => {
+		dispatch(
+			setOrderState({
+				...orderState,
+				delivery_address: addressInitialState,
+			})
+		)
+	}, [params.location])
+
 	return (
 		<div className='flex h-full flex-col flex-nowrap pb-3 pt-6'>
 			<div className='flex min-h-fit grow-[1] flex-col space-y-[14px]'>

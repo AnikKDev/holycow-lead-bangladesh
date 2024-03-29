@@ -82,6 +82,7 @@ export function ShowAddressesModal({
 				</DialogContent>
 			</Dialog>
 			<CreateAddressModal
+				isFormCheckout
 				defaultAddress={defaultAddress}
 				isEditingAddress={false}
 				setDefaultAddress={setDefaultAddress}
@@ -153,7 +154,9 @@ const AddressSectionItem = ({ address }: { address: AccountAddress }) => {
 					/>
 					<Label htmlFor={`${address.address_name}`} className='flex flex-col'>
 						<h3 className='text-base font-medium'>{address?.address_name}</h3>
-						<span className='text-sm font-medium'>{address?.address}</span>
+						<span className='text-sm font-medium'>
+							{address?.address},&nbsp;{address?.postal_code}
+						</span>
 					</Label>
 				</div>
 				<div className='flex items-center gap-4'>

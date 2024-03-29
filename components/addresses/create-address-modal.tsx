@@ -95,12 +95,20 @@ export function CreateAddressModal({
 		}
 		if (isEditingAddress) {
 			try {
-				await updateAddress({
+				const res = await updateAddress({
 					address: defaultAddress,
 					addressId: defaultAddress.id,
 				}).unwrap()
 				toast.success('Successfully address updated!')
-				setDefaultAddress(addressInitialState)
+				if (res.address.id === defaultAddress.id) {
+					dispatch(
+						setOrderState({
+							...orderState,
+							delivery_address: res.address,
+						})
+					)
+				}
+				// setDefaultAddress(addressInitialState)
 			} catch (e) {
 				console.log(e)
 				toast.error('Error updating address')
