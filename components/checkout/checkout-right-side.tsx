@@ -55,14 +55,13 @@ const CheckoutRightSide = ({
 				) : (
 					orderState.fulfillment_type === 'Collection' && (
 						<>
-							<GuestCheckoutInfoForm />
-
 							{isGuestCheckout && (
 								<>
+									<GuestCheckoutInfoForm />
 									<div className='border-b border-border'></div>
-									<CollectionAddressSection />
 								</>
 							)}
+							<CollectionAddressSection />
 							<div className='border-b border-border'></div>
 
 							<CollectionTimeSection />

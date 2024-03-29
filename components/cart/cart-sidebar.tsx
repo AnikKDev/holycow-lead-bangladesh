@@ -43,11 +43,20 @@ const CartSidebar = ({
 			<Sheet open={showCartSidebar} onOpenChange={setShowCartSidebar}>
 				<SheetContent className='flex h-full w-[420px] flex-col flex-nowrap gap-0 px-0 py-4 mobile-sm:w-full'>
 					<SheetHeader className='shrink-0 border-b border-border px-4 pb-4'>
-						<SheetTitle>Cart Items({cartItems?.length})</SheetTitle>
+						<SheetTitle className='flex flex-col items-start gap-4'>
+							Cart Items({cartItems?.length})
+						</SheetTitle>
 					</SheetHeader>
-					<div className=' min-h-fit grow-[1] overflow-y-auto px-4 py-4'>
+					<div className=' min-h-fit grow-[1] overflow-y-auto px-4'>
+						<Button
+							variant='link'
+							size='lg'
+							className='mb-1.5 mt-1.5 h-auto w-auto p-0 text-base font-medium capitalize text-primary-dark	'
+						>
+							Holycow - {locationSlug}
+						</Button>
 						{cartItems.length > 0 ? (
-							<div>
+							<div className='py-4'>
 								<div className='grid  gap-7 '>
 									{cartItems.map((item) => (
 										<CartItem item={item} key={item.id} />
