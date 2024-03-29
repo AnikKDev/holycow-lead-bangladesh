@@ -840,7 +840,7 @@ export const spiritsSection = {
 --------------------
 */
 export const redWines = {
-	name: 'Red Wines',
+	food_list_name: 'Red Wines',
 	items: [
 		{
 			food_name: 'Merlot Cabernet, Reserve de Rafègue',
@@ -899,7 +899,7 @@ export const redWines = {
 }
 
 export const whiteWines = {
-	name: 'White Wines',
+	food_list_name: 'White Wines',
 	items: [
 		{
 			wine_name: 'Sauvignon Blanc, Reserve de Rafègue',
