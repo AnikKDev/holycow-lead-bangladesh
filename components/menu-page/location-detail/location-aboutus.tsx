@@ -1,7 +1,7 @@
-const LocationAboutUs = () => {
+const LocationAboutUs = ({ ...props }) => {
 	return (
 		<>
-			<div className='flex flex-col gap-2.5'>
+			<div {...props} className='flex scroll-m-32 flex-col gap-2.5'>
 				<h1 className='pb-2 text-lg font-semibold'>About us</h1>
 				<h2 className='text-base font-medium'>
 					Holy Cow – Fine Indian Food – Indian Takeaway in Archway, London

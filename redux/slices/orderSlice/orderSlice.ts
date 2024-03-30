@@ -72,7 +72,7 @@ export const orderInitialState: OrderInitialState = {
 	collection_address: '',
 	collection_time: ASAP,
 	visited_location_slug: '',
-	guest_info: guestInfoInitialState,
+	guest_info: { ...guestInfoInitialState },
 }
 
 const orderSlice = createSlice({

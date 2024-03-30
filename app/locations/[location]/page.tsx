@@ -1,10 +1,11 @@
-import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import { Metadata } from 'next'
+import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 
+import { apiUrl } from '@/lib/constatns'
+import { getActualFetchedLocationName } from '@/lib/utils'
 import AboutLocation from '@/components/menu-page/about-location'
 import CoverPhoto from '@/components/menu-page/cover-photo'
 import MenuAndAllBottomSections from '@/components/menu-page/menu-and-bottom-sections'
-import { apiUrl } from '@/lib/constatns'
 
 type ParamsType = {
 	params: { location: string }
@@ -31,7 +32,7 @@ export const generateMetadata = async ({
 	params,
 }: ParamsType): Promise<Metadata> => {
 	const locationInformation = await getLocationInfo(
-		params.location?.includes('limehouse') ? 'limehouse' : params.location
+		getActualFetchedLocationName(params.location)
 	)
 	return {
 		title: locationInformation.name,
@@ -40,7 +41,7 @@ export const generateMetadata = async ({
 
 const TakeawayLocationMenuPage = async ({ params }: ParamsType) => {
 	const locationInformation = await getLocationInfo(
-		params.location?.includes('limehouse') ? 'limehouse' : params.location
+		getActualFetchedLocationName(params.location)
 	)
 	return (
 		<div className='font-lora'>
