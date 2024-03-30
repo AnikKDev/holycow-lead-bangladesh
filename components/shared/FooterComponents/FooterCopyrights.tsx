@@ -1,12 +1,6 @@
 'use client'
 
 import React from 'react'
-import { CiPhone } from 'react-icons/ci'
-import { IoIosArrowRoundUp } from 'react-icons/io'
-import { MdOutlineEmail } from 'react-icons/md'
-
-import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
 
 type Props = {}
 

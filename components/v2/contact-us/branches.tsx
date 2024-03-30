@@ -69,8 +69,17 @@ export default function Branches({
 					</h3>
 					{branchOpeningHours}
 				</div>
-				<div className='max-w-[450px] mobile-sm:max-w-full'>
-					<img alt='Map' className='h-auto w-full' src={branchImg.src} />
+				<div className='w-full max-w-[450px] mobile-sm:max-w-full'>
+					<iframe
+						className='w-full'
+						title='Google Map'
+						src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d793.524271043807!2d-0.037518289573799685!3d51.510207406295436!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876035c9d47dac9%3A0xd7305bea4136e0a9!2sHoly%20Cow%20-%20Fine%20Indian%20Dining%20-%20Indian%20Restaurant%20%26%20Takeaway%20in%20Limehouse%20-%20Canary%20Wharf!5e0!3m2!1sen!2sus!4v1711744855008!5m2!1sen!2sus'
+						width='600'
+						height='450'
+						style={{ border: '0' }}
+						loading='lazy'
+						referrerPolicy='no-referrer-when-downgrade'
+					></iframe>
 				</div>
 			</div>
 		</div>

@@ -9,7 +9,7 @@ const FoodCard = ({
 }: FoodItemProps) => {
 	return (
 		<article className='flex flex-col gap-5 font-lora tracking-[0.04em] text-foreground'>
-			<div className='flex justify-between text-[22px] font-semibold leading-[1.3]'>
+			<div className='flex justify-between text-lg font-semibold leading-[1.3] md:text-[22px]'>
 				{food_name && (
 					<>
 						<h5 className='mt-4 flex items-center gap-2'>

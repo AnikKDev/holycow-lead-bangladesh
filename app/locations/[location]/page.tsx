@@ -20,9 +20,7 @@ const getLocationInfo = async (location: string): Promise<LocationInfoType> => {
 	})
 
 	const data = await res?.json()
-	// console.log({ data, location })
 	if (!res.ok) {
-		// This will activate the closest `error.js` Error Boundary
 		throw new Error('Takeaway information not found')
 	}
 	return data?.takeaway_info
