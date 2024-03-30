@@ -29,11 +29,19 @@ const TakeawayLocationFilter = (props: Props) => {
 
 		filteredItemsLocation.forEach(({ postcode }) => {
 			postcode.forEach((code) => {
-				uniquePostcodeSet.add(code)
+				uniquePostcodeSet.add(code.toUpperCase())
 			})
 		})
 
 		const uniquePostcodeList = Array.from(uniquePostcodeSet)
+
+		uniquePostcodeList.sort((a, b) => {
+			if (a.length !== b.length) {
+				return a.length - b.length
+			}
+			return a.localeCompare(b)
+		})
+
 		return uniquePostcodeList
 	}
 
