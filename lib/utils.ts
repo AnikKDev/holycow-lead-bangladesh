@@ -92,3 +92,8 @@ export function hasAllValues(
 	// If no missing or falsy values found, return true
 	return true
 }
+
+// location?.includes('limehouse') ? 'limehouse' : params.location
+export function getActualFetchedLocationName(location: string) {
+	return location?.includes('limehouse') ? 'limehouse' : location
+}
