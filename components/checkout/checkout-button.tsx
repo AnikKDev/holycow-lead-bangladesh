@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useParams, usePathname } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
 import { useLazyGetTakeawayInformationQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
@@ -19,6 +20,7 @@ import { formatPrice, hasAllValues } from '@/lib/utils'
 import { useAuthState } from '@/hooks/useAuthState'
 
 import { Button } from '../ui/button'
+import { GuestInfoFormModal } from './guest-checkout/GuestInfoModal'
 
 const CheckoutButton = ({
 	isGuestCheckout = false,
@@ -26,6 +28,9 @@ const CheckoutButton = ({
 	isGuestCheckout?: boolean
 }) => {
 	const pathname = usePathname()
+	const [showCreateGuestInfoModal, setShowCreateGuestInfoModal] =
+		useState(false)
+
 	const cartTotals = useAppSelector(getCartTotals)
 	const orderState = useAppSelector(selectOrderState)
 	const params = useParams()
@@ -53,6 +58,7 @@ const CheckoutButton = ({
 		} else if (isGuestCheckout && !hasAllValues(orderState.guest_info)) {
 			console.log(orderState)
 			toast.error('Please add your information and address')
+			setShowCreateGuestInfoModal(true)
 			return false
 		} else if (
 			orderState.fulfillment_type === 'Collection' &&
@@ -154,30 +160,38 @@ const CheckoutButton = ({
 	}
 
 	return (
-		<div className='flex shrink-0 flex-col gap-2.5 border-t border-border pt-3 mobile-md:container mobile-md:pb-2.5'>
-			<div className='flex items-center justify-between '>
-				<h3 className='text-base font-semibold'>
-					Total <span className='text-sm font-medium'>(tax incl.)</span>
-				</h3>
-				<h3 className='text-base font-bold'>
-					{formatPrice(cartTotals.totalPrice)}
-				</h3>
+		<>
+			<div className='flex shrink-0 flex-col gap-2.5 border-t border-border pt-3 mobile-md:container mobile-md:pb-2.5'>
+				<div className='flex items-center justify-between '>
+					<h3 className='text-base font-semibold'>
+						Total <span className='text-sm font-medium'>(tax incl.)</span>
+					</h3>
+					<h3 className='text-base font-bold'>
+						{formatPrice(cartTotals.totalPrice)}
+					</h3>
+				</div>
+				<div className='w-full'>
+					<Button
+						disabled={isLoading || guestIsLoading || takeawayIsLoading}
+						size='lg'
+						type='button'
+						className=' w-full font-semibold uppercase'
+						onClick={() => {
+							handlePlaceOrder()
+						}}
+					>
+						{isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
+						Place Order {isGuestCheckout && 'as Guest'}
+					</Button>
+				</div>
 			</div>
-			<div className='w-full'>
-				<Button
-					disabled={isLoading || guestIsLoading || takeawayIsLoading}
-					size='lg'
-					type='button'
-					className=' w-full font-semibold uppercase'
-					onClick={() => {
-						handlePlaceOrder()
-					}}
-				>
-					{isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
-					Place Order {isGuestCheckout && 'as Guest'}
-				</Button>
-			</div>
-		</div>
+
+			<GuestInfoFormModal
+				showModal={showCreateGuestInfoModal}
+				setShowModal={setShowCreateGuestInfoModal}
+				isEditInfo={false}
+			/>
+		</>
 	)
 }
 

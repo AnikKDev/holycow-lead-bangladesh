@@ -4,10 +4,12 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { useGetTakeawayInformationQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
 import {
 	GuestInfo,
+	guestInfoInitialState,
 	selectOrderState,
 	setOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
 
+import { getActualFetchedLocationName } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
 	Dialog,
@@ -35,8 +37,12 @@ export const GuestInfoFormModal = ({
 	const dispatch = useAppDispatch()
 	const orderState = useAppSelector(selectOrderState)
 	console.log(orderState)
-	const { data, isLoading, isError } = useGetTakeawayInformationQuery(location)
-	const [values, setValues] = useState<GuestInfo>(orderState.guest_info)
+	const { data, isLoading, isError } = useGetTakeawayInformationQuery(
+		getActualFetchedLocationName(location)
+	)
+	const [values, setValues] = useState<GuestInfo>(
+		isEditInfo ? orderState.guest_info : guestInfoInitialState
+	)
 	const handleInputChange = (e) => {
 		const { id, value } = e.target
 		console.log({ id, value })
