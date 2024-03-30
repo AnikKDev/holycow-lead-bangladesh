@@ -24,19 +24,25 @@ export const menuItemsArr = [
 export const menuItemsArrUpdated = [
 	{ text: 'About us', navigateTo: '/about-us' },
 	{ text: 'Allergy Advice', navigateTo: '/allergy-advice' },
-	{ text: 'Career', navigateTo: '/career' },
-	{ text: 'Covid-19', navigateTo: '/covid-19' },
 	{ text: 'Privacy and Cookies Policy', navigateTo: '/privacy-policy' },
-	{ text: 'Feedback', navigateTo: '/feedback' },
+	{ text: 'Terms & Conditions', navigateTo: '/privacy-policy' },
+	{ text: 'Career', navigateTo: '/career' },
+	{ name: 'Contact', navigateTo: '/contact' },
+]
+export const footerRestaurantServicesMenu = [
+	{ text: 'Fine Dining Menu', navigateTo: '/fine-dining-menu' },
+	{ text: 'Book A Table', navigateTo: '/reservations' },
+	{ text: 'Private Event', navigateTo: '/private-event' },
+	{ text: 'Check Offers', navigateTo: '/whats-on' },
+	{ text: 'Allergy Advice', navigateTo: '/allergy-advice' },
 ]
 
 export const footerServices = [
 	{ text: 'Takeaway Locations', navigateTo: '/locations' },
 	{ text: 'Takeaway Menu', navigateTo: '/takeaway-menu' },
 	{ text: 'Lunch Menu', navigateTo: '/lunch-menu' },
-	{ text: 'Fine Dining Menu', navigateTo: '/fine-dining-menu' },
-	{ text: 'Book A Table', navigateTo: '/book-a-table' },
-	{ text: 'Check Offers', navigateTo: '/offers' },
+	{ text: 'Check Offers', navigateTo: '/whats-on' },
+	{ text: 'Allergy Advice', navigateTo: '/allergy-advice' },
 ]
 export const footerExtraLinksArr = [
 	{ name: 'Allergy Advice', navigateTo: '/allergy-advice' },

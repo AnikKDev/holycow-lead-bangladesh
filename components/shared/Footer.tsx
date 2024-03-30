@@ -1,3 +1,4 @@
+import RestaurantServices from '../v2/shared/footer/RestaurantServices'
 import FooterContact from './FooterComponents/footer-contact'
 import FooterServices from './FooterComponents/footer-services'
 import FooterAbout from './FooterComponents/FooterAbout'
@@ -16,7 +17,7 @@ export default function Footer({}: Props) {
 				<FooterLogoSection />
 				<FooterAbout />
 				<FooterServices />
-				<FooterContact />
+				<RestaurantServices />
 			</div>
 			{/* copyrights */}
 
