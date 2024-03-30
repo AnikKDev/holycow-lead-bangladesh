@@ -8,10 +8,14 @@ import {
 } from '@/redux/slices/orderSlice/orderSlice'
 import { AiOutlineShop } from 'react-icons/ai'
 
+import { getActualFetchedLocationName } from '@/lib/utils'
+
 const CollectionAddressSection = () => {
 	const params = useParams()
 	const location = params.location as string
-	const { data, isLoading, isError } = useGetTakeawayInformationQuery(location)
+	const { data, isLoading, isError } = useGetTakeawayInformationQuery(
+		getActualFetchedLocationName(location)
+	)
 	const orderState = useAppSelector(selectOrderState)
 	const dispatch = useAppDispatch()
 

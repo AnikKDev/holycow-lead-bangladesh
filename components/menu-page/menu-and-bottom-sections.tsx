@@ -139,11 +139,14 @@ const MenuAndAllBottomSections = ({
 
 			<div ref={informationRef}>
 				<div
-					className='mx-auto max-w-[1200px] scroll-m-32 '
-					id='information'
-					ref={refCallback}
+					className='mx-auto max-w-[1200px] '
+					// id='information'
+					// ref={refCallback}
 				>
-					<InformationSection locationInformation={locationInformation} />
+					<InformationSection
+						refCallback={refCallback}
+						locationInformation={locationInformation}
+					/>
 				</div>
 				{isRestaurant && (
 					<div

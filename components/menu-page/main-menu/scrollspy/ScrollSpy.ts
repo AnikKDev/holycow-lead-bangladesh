@@ -5,10 +5,15 @@ export const ScrollSpy = ({
 	hasTopMenuClicked,
 	setHasTopMenuClicked,
 }) => {
-	const isInViewPort = (entry, offset = 0) => {
+	const isInViewPort = (entry, offset = 124) => {
 		const rect = entry.boundingClientRect
 		// console.log({ rect })
-		return rect.top - 1 <= 124 + offset && rect.bottom >= 0 + offset
+		return rect.top - 1 <= 0 + offset && rect.bottom >= 0 + offset
+		// return (
+		// 	rect.top <= window.innerHeight / 2 &&
+		// 	rect.bottom >= window.innerHeight / 2
+		// )
+		// return rect.top + offset < 0
 	}
 
 	useLayoutEffect(() => {
