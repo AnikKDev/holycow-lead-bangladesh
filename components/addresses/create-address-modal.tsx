@@ -1,18 +1,22 @@
 'use client'
 
+import { Dispatch, FormEvent, SetStateAction } from 'react'
+import { useParams } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import {
 	useCreateAddressMutation,
 	useUpdateAddressMutation,
 } from '@/redux/slices/accountSlice/addressSlice/addressApiSlice'
+import { useGetTakeawayInformationQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
 import {
 	selectOrderState,
 	setOrderState,
 } from '@/redux/slices/orderSlice/orderSlice'
 import { Loader2 } from 'lucide-react'
-import { Dispatch, FormEvent, SetStateAction } from 'react'
 import toast from 'react-hot-toast'
 
+import { AccountAddress } from '@/types/account/account.types'
+import { getActualFetchedLocationName } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
 	Dialog,
@@ -21,9 +25,9 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from '@/components/ui/dialog'
-import { AccountAddress } from '@/types/account/account.types'
 
 import { addressInitialState } from '../checkout/delivery/delivery-address'
+import { PostcodeCombobox } from '../checkout/guest-checkout/postcode-combobox'
 import { Input } from '../ui/input'
 import { Label } from '../ui/label'
 
@@ -44,6 +48,8 @@ export function CreateAddressModal({
 	defaultAddress: AccountAddress
 	isFormCheckout?: boolean
 }) {
+	const params = useParams()
+	const location = params.location as string
 	const orderState = useAppSelector(selectOrderState)
 	const dispatch = useAppDispatch()
 	// const [editedAddress, setEditedAddress] = useState({ ...defaultAddress });
@@ -65,6 +71,15 @@ export function CreateAddressModal({
 			error: updateAddressError,
 		},
 	] = useUpdateAddressMutation()
+
+	const {
+		data: takeawayData,
+		isLoading: isTakeawayDataLoading,
+		isError: isTakeawayDataError,
+	} = useGetTakeawayInformationQuery(getActualFetchedLocationName(location), {
+		skip: !isFormCheckout,
+	})
+
 	const handleInputChange = (e) => {
 		const { id, value } = e.target
 		setDefaultAddress({
@@ -74,14 +89,26 @@ export function CreateAddressModal({
 	}
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+		if (!defaultAddress.postal_code) {
+			toast.error('Please as your post code')
+			return
+		}
 		if (isEditingAddress) {
 			try {
-				await updateAddress({
+				const res = await updateAddress({
 					address: defaultAddress,
 					addressId: defaultAddress.id,
 				}).unwrap()
 				toast.success('Successfully address updated!')
-				setDefaultAddress(addressInitialState)
+				if (res.address.id === defaultAddress.id) {
+					dispatch(
+						setOrderState({
+							...orderState,
+							delivery_address: res.address,
+						})
+					)
+				}
+				// setDefaultAddress(addressInitialState)
 			} catch (e) {
 				console.log(e)
 				toast.error('Error updating address')
@@ -125,15 +152,42 @@ export function CreateAddressModal({
 
 						<div className='flex flex-col space-y-4 px-5 py-4'>
 							<div className='grid w-full items-center gap-1.5'>
-								<Label htmlFor='postcode'>Postcode *</Label>
-								<Input
-									required
-									value={defaultAddress.postal_code}
-									type='string'
-									id='postal_code'
-									placeholder='e.g. N9'
-									onChange={handleInputChange}
-								/>
+								<Label htmlFor='postal_code'>Postcode *</Label>
+								{!isFormCheckout ? (
+									<>
+										<Input
+											required
+											value={defaultAddress.postal_code}
+											type='string'
+											id='postal_code'
+											placeholder='e.g. N9'
+											onChange={handleInputChange}
+										/>
+									</>
+								) : (
+									<>
+										{isTakeawayDataLoading ? (
+											'Getting postcodes'
+										) : takeawayData &&
+										  takeawayData?.delivery_areas.length > 0 ? (
+											<PostcodeCombobox
+												options={takeawayData.delivery_areas.map((item) => ({
+													value: item.toLowerCase(),
+													label: item,
+												}))}
+												selectedValue={defaultAddress?.postal_code?.toLowerCase()}
+												onChange={(value) => {
+													setDefaultAddress({
+														...defaultAddress,
+														postal_code: value.toUpperCase(),
+													})
+												}}
+											/>
+										) : (
+											'No postcode found'
+										)}
+									</>
+								)}
 							</div>
 							<div className='grid w-full items-center gap-1.5'>
 								<Label htmlFor='address'>Address *</Label>
@@ -147,7 +201,7 @@ export function CreateAddressModal({
 								/>
 							</div>
 							<div className='grid w-full items-center gap-1.5'>
-								<Label htmlFor='apt'>Apt, suite, floor</Label>
+								<Label htmlFor='apartment_number'>Apt, suite, floor</Label>
 								<Input
 									value={defaultAddress.apartment_number}
 									type='string'

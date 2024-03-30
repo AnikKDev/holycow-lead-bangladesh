@@ -1,6 +1,6 @@
+import DividerLine from '@/assets/homepage/divider_line.svg'
 import Image from 'next/image'
 import Link from 'next/link'
-import DividerLine from '@/assets/homepage/divider_line.svg'
 
 import { Button } from '@/components/ui/button'
 
@@ -125,7 +125,7 @@ const FineDine = (props: Props) => {
 					ingredients to the best Indian chefs.
 				</p>
 				<Button className='rounded-none bg-primary font-lora text-[16px]  font-[500px] leading-[28px] tracking-[0.04em] text-foreground'>
-					<Link href={'/locations/limehouse-canary-wharf/'}>Book a table</Link>
+					<Link href={'/locations/limehouse-canary-wharf-indian-restaurant'}>Book a table</Link>
 				</Button>
 			</div>
 		</div>

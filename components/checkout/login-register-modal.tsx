@@ -1,5 +1,7 @@
-import { Dispatch, SetStateAction } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import { Dispatch, SetStateAction, useEffect } from 'react'
+import { useParams, usePathname, useRouter } from 'next/navigation'
+import { useAppSelector } from '@/redux/hooks'
+import { selectVisitedLocationSlug } from '@/redux/slices/orderSlice/orderSlice'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -25,7 +27,13 @@ export function LoginRegisterModal({
 }) {
 	const router = useRouter()
 	const params = useParams()
+	const pathname = usePathname()
 	const location = params.location as string
+	const locationSlug = useAppSelector(selectVisitedLocationSlug)
+	useEffect(() => {
+		setShowModal(false)
+	}, [pathname])
+
 	return (
 		<>
 			<Dialog open={showModal} onOpenChange={setShowModal}>
@@ -93,7 +101,9 @@ export function LoginRegisterModal({
 									variant='outline'
 									size='lg'
 									onClick={() => {
-										router.push(`/locations/${location}/guest-checkout`)
+										router.push(
+											`/locations/${location || locationSlug}/guest-checkout`
+										)
 									}}
 								>
 									Checkout as Guest
