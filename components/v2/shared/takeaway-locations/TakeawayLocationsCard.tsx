@@ -1,11 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Logo from '@/assets/nav_logo.png'
+import { FaEnvelope } from 'react-icons/fa6'
 
 type Props = {
 	storeName: string
 	storeAddress: string[]
 	storePhone: string
+	storeEmail: string
 	storeLocation: string
 }
 
@@ -14,11 +16,12 @@ const TakeawayLocationsCard = ({
 	storeAddress,
 	storePhone,
 	storeLocation,
+	storeEmail,
 }: Props) => {
 	return (
-		<article className='relative flex w-full text-foreground'>
+		<article className='group relative flex w-full cursor-default text-foreground'>
 			<div
-				className='relative z-20 mx-2 mb-4 flex w-full flex-col items-center justify-between gap-4 rounded-3xl border-t border-[#905A09] bg-background p-4 md:mx-4'
+				className='relative z-20 mx-2 mb-4 box-border flex w-full flex-col items-center justify-between gap-4 rounded-3xl border-t border-[#905A09] bg-background p-4 transition-colors group-hover:bg-primary md:mx-4'
 				style={{
 					boxShadow:
 						'0px 39px 16px rgba(144, 90, 9, 0.01), 0px 22px 13px rgba(144, 90, 9, 0.05), 0px 10px 10px rgba(144, 90, 9, 0.09), 0px 2px 5px rgba(144, 90, 9, 0.1)',
@@ -33,7 +36,7 @@ const TakeawayLocationsCard = ({
 					/>
 					<hr className='my-1 w-full border-t border-dotted border-foreground' />
 					<h4
-						className='text-center text-base font-semibold capitalize tracking-[0.04em] md:text-lg'
+						className='text-center text-base font-semibold capitalize tracking-[0.04em] duration-300 group-hover:scale-105 md:text-lg'
 						style={{ lineHeight: 1.3 }}
 					>
 						{storeName}
@@ -68,10 +71,19 @@ const TakeawayLocationsCard = ({
 							</svg>
 							<span>{storePhone}</span>
 						</p>
+						<p
+							className='flex flex-col items-center gap-1 text-sm font-semibold _desktop-sm:flex-row _desktop-md:flex-row'
+							style={{ lineHeight: 1.75 }}
+						>
+							<span>
+								<FaEnvelope />
+							</span>
+							<span className='break-all'>{storeEmail}</span>
+						</p>
 					</div>
 				</div>
 				<Link
-					className='v2-custom-button bg-primary px-8 py-2 text-xs font-medium capitalize leading-[1.7] tracking-[0.04em]'
+					className='v2-custom-button border border-background bg-primary px-8 py-2 text-xs font-medium capitalize leading-[1.7] tracking-[0.04em]'
 					href={storeLocation}
 				>
 					View <span className='hidden md:inline'>Location</span>
