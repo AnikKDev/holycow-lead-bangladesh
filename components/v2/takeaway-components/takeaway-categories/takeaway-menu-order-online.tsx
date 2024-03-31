@@ -17,7 +17,7 @@ const TakeawayMenuOrderOnlineBtn = () => {
 				}}
 				variant='default'
 				size='lg'
-				className='rounded-none'
+				className='min-w-[236px] px-14 text-base mobile-md:w-full'
 			>
 				Order Online
 			</Button>

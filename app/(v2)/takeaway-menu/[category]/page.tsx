@@ -1,11 +1,14 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import bg from '@/assets/v2/secondary-bg.png'
 
 import { apiUrl } from '@/lib/constatns'
+import { cn } from '@/lib/utils'
 import BannerContents from '@/components/v2/shared/banner-contents'
 import GradientWrapper from '@/components/v2/shared/gradient-wrapper'
 import TakeawayMenuOrderOnlineBtn from '@/components/v2/takeaway-components/takeaway-categories/takeaway-menu-order-online'
 import TakeawayMenuWithSidebar from '@/components/v2/takeaway-components/takeaway-categories/TakeawayMenuWithSidebar'
+import DownloadMenuBtn from '@/components/v2/takeaway-components/takeaway-menu/download-menu-btn'
 
 type ParamsType = {
 	params: { category: string }
@@ -47,7 +50,22 @@ const TakeawayMenuItemPage = () => {
 					Food Menu
 				</h2>
 				<TakeawayMenuWithSidebar />
-				<TakeawayMenuOrderOnlineBtn />
+				<div className='flex flex-col items-center gap-4 _desktop-sm:flex-row _desktop-md:flex-row'>
+					<TakeawayMenuOrderOnlineBtn />
+					<Link
+						href={'/allergy-advice'}
+						className='w-full rounded-sm border-2 border-primary px-14 py-2 text-center'
+					>
+						Allergy Advice
+					</Link>
+					<DownloadMenuBtn
+						variant={'default'}
+						size='lg'
+						className={cn('min-w-[236px] px-14 text-base mobile-md:w-full')}
+					>
+						Download menu
+					</DownloadMenuBtn>
+				</div>
 			</div>
 		</>
 	)
