@@ -13,6 +13,7 @@ const TakeawayLocationsList = ({
 					storeName={store.name}
 					storeAddress={store.address}
 					storePhone={store.phone}
+					storeEmail={store.email}
 					storeLocation={store.location}
 				/>
 			))}
