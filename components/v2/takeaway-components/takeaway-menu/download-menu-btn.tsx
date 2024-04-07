@@ -13,12 +13,7 @@ const DownloadMenuBtn = ({
 	...rest
 }: PropsWithChildren<ButtonProps>) => {
 	return (
-		<Link
-			href={
-				'https://drive.google.com/file/d/1MZXG32-Rt7F7fJCEM0MJQPV8l9rN4OqV/view'
-			}
-			target='_blank'
-		>
+		<Link href={'https://hc-api.alexpy.com/download-menu'} target='_blank'>
 			<Button variant={variant} className={cn('', className)} {...rest}>
 				{children}
 			</Button>
