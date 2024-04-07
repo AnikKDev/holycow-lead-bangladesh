@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 import {
 	MdOutlineCall,
@@ -50,7 +51,15 @@ const AboutLocation = ({
 						<div className='flex flex-col justify-center gap-1'>
 							<div className='flex items-center gap-1'>
 								<MdOutlineStar size={18} />
-								<h2 className='flex items-center gap-[2px] font-medium'>
+								<Link
+									className='flex items-center gap-[2px] font-medium'
+									href={
+										locationInformation.google_review_link
+											? locationInformation.google_review_link
+											: '/'
+									}
+									target='_blank'
+								>
 									{Number(locationInformation?.rating).toFixed(1)} (
 									<ReviewTotalCount
 										isRestaurant={false}
@@ -62,7 +71,7 @@ const AboutLocation = ({
 										}}
 									/>
 									+ ratings) • {isRestaurant ? 'Restaurant' : 'Takeaway'}
-								</h2>
+								</Link>
 							</div>
 							<div className='flex items-center gap-1 mobile-sm:hidden'>
 								<MdOutlineLocationOn size={18} />

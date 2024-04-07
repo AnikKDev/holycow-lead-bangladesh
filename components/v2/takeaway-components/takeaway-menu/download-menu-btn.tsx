@@ -3,6 +3,7 @@
 import { PropsWithChildren } from 'react'
 import Link from 'next/link'
 
+import { apiUrl } from '@/lib/constatns'
 import { cn } from '@/lib/utils'
 import { Button, ButtonProps } from '@/components/ui/button'
 
@@ -13,12 +14,7 @@ const DownloadMenuBtn = ({
 	...rest
 }: PropsWithChildren<ButtonProps>) => {
 	return (
-		<Link
-			href={
-				'https://drive.google.com/file/d/1MZXG32-Rt7F7fJCEM0MJQPV8l9rN4OqV/view'
-			}
-			target='_blank'
-		>
+		<Link href={`${apiUrl}/download-menu`} download={`${apiUrl}/download-menu`}>
 			<Button variant={variant} className={cn('', className)} {...rest}>
 				{children}
 			</Button>

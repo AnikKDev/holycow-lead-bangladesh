@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import nav_logo from '@/assets/nav_logo.png'
 import { FaTiktok, FaTwitter } from 'react-icons/fa'
 import { FaFacebookF } from 'react-icons/fa6'
@@ -66,16 +67,15 @@ export default function FooterLogoSection({}: Props) {
 					</svg>
 				</div>
 				{/* socila links icons here */}
-				<div className=''>
+				<div className='flex'>
 					{getSocialIcons().map((icon) => (
-						<Button
-							size='icon'
+						<Link
 							className='me-2 bg-[#F9F9F71F] p-3'
-							variant='ghost'
+							href={icon.navigateTo}
+							target='_blank'
 						>
-							{/* <FaInstagram className={cn('text-xl', className)} /> */}
 							{icon.icon}
-						</Button>
+						</Link>
 					))}
 				</div>
 			</div>

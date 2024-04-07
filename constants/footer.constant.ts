@@ -23,7 +23,7 @@ export const menuItemsArr = [
 
 export const menuItemsArrUpdated = [
 	{ text: 'About us', navigateTo: '/about-us' },
-	{ text: 'Allergy Advice', navigateTo: '/allergy-advice' },
+	{ text: 'Contact us', navigateTo: '/contact' },
 	{ text: 'Privacy and Cookies Policy', navigateTo: '/privacy-policy' },
 	{ text: 'Terms & Conditions', navigateTo: '/privacy-policy' },
 	{ text: 'Career', navigateTo: '/career' },
