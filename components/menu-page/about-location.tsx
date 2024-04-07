@@ -53,7 +53,11 @@ const AboutLocation = ({
 								<MdOutlineStar size={18} />
 								<Link
 									className='flex items-center gap-[2px] font-medium'
-									href={locationInformation.google_review_link}
+									href={
+										locationInformation.google_review_link
+											? locationInformation.google_review_link
+											: '/'
+									}
 									target='_blank'
 								>
 									{Number(locationInformation?.rating).toFixed(1)} (
