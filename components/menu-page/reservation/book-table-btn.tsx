@@ -11,11 +11,11 @@ const BookATableBtn = () => {
 
 	return (
 		<>
-			<div className='mobile-sm:w-full'>
+			<div className='mobile-md:w-full'>
 				<Button
 					variant='default'
 					size='lg'
-					className='px-14 text-base mobile-sm:w-full'
+					className='px-14 text-base mobile-md:w-full min-w-[236px]'
 					onClick={() => {
 						setShowModal(true)
 					}}

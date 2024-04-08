@@ -23,14 +23,27 @@ export const menuItemsArr = [
 
 export const menuItemsArrUpdated = [
 	{ text: 'About us', navigateTo: '/about-us' },
-	{ text: 'Takeaway Locations', navigateTo: '/locations' },
-	{ text: 'Takeaway Menu', navigateTo: '/menu' },
-	{ text: 'Putney Restaurant', navigateTo: '/putney' },
-	{ text: 'Fine Dining Menu – Putney', navigateTo: '/fine-dining' },
-	{ text: 'Book a Table', navigateTo: '/book-table' },
-	{ text: 'Gallery', navigateTo: '/gallery' },
+	{ text: 'Contact us', navigateTo: '/contact' },
+	{ text: 'Privacy and Cookies Policy', navigateTo: '/privacy-policy' },
+	{ text: 'Terms & Conditions', navigateTo: '/privacy-policy' },
+	{ text: 'Career', navigateTo: '/career' },
+	{ name: 'Contact', navigateTo: '/contact' },
+]
+export const footerRestaurantServicesMenu = [
+	{ text: 'Fine Dining Menu', navigateTo: '/fine-dining-menu' },
+	{ text: 'Book A Table', navigateTo: '/reservations' },
+	{ text: 'Private Event', navigateTo: '/private-event' },
+	{ text: 'Check Offers', navigateTo: '/whats-on' },
+	{ text: 'Allergy Advice', navigateTo: '/allergy-advice' },
 ]
 
+export const footerServices = [
+	{ text: 'Takeaway Locations', navigateTo: '/locations' },
+	{ text: 'Takeaway Menu', navigateTo: '/takeaway-menu' },
+	{ text: 'Lunch Menu', navigateTo: '/lunch-menu' },
+	{ text: 'Check Offers', navigateTo: '/whats-on' },
+	{ text: 'Allergy Advice', navigateTo: '/allergy-advice' },
+]
 export const footerExtraLinksArr = [
 	{ name: 'Allergy Advice', navigateTo: '/allergy-advice' },
 	{ name: 'Privacy & Cookies Policy', navigateTo: '/privacy-policy' },

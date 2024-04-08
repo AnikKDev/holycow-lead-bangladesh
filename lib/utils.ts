@@ -69,3 +69,31 @@ export function calculateAverageRating(ratings: number[]): number {
 	const averageRating = totalRatings / ratings.length
 	return averageRating
 }
+
+export function hasAllValues(
+	obj: object,
+	notRequiredProperties: Array<string> = []
+) {
+	// Loop through each property of the object
+	for (const key in obj) {
+		// Check if the property is not required
+		const isNotRequired = notRequiredProperties.includes(key)
+
+		// Skip non-required properties without a value
+		if (isNotRequired && !obj[key]) {
+			continue
+		}
+
+		// Check if a required property has a falsy value
+		if (!isNotRequired && !obj[key]) {
+			return false
+		}
+	}
+	// If no missing or falsy values found, return true
+	return true
+}
+
+// location?.includes('limehouse') ? 'limehouse' : params.location
+export function getActualFetchedLocationName(location: string) {
+	return location?.includes('limehouse') ? 'limehouse' : location
+}

@@ -18,20 +18,21 @@ import { ScrollSpy } from './scrollspy/ScrollSpy'
 // Abstracted from ScrollSpy to allow for easier customizations
 const onScrollUpdate = (entry, isInVewPort, hasTopMenuClicked, callback) => {
 	const { target, boundingClientRect } = entry
+	console.log(entry)
 	const menuItem: HTMLElement = document.querySelector(
 		`[data-scrollspy-id="${target.id}"]`
 	)
 	const categoryContainer = document.getElementById('category-container')
 	if (boundingClientRect.y <= 0 && isInVewPort) {
 		menuItem?.classList?.add('active-scrollspy')
-		if (categoryContainer && hasTopMenuClicked) {
-			const containerLeft = categoryContainer.scrollLeft
-			const containerWidth = categoryContainer.clientWidth
-			const itemOffsetLeft = menuItem.offsetLeft
-			const itemWidth = menuItem.clientWidth
-			const scrollTo = itemOffsetLeft - (containerWidth - itemWidth) / 2
-			categoryContainer.scrollTo({ left: scrollTo, behavior: 'smooth' })
-		}
+		// if (categoryContainer) {
+		// 	const containerLeft = categoryContainer.scrollLeft
+		// 	const containerWidth = categoryContainer.clientWidth
+		// 	const itemOffsetLeft = menuItem.offsetLeft
+		// 	const itemWidth = menuItem.clientWidth
+		// 	const scrollTo = itemOffsetLeft - (containerWidth - itemWidth) / 2
+		// 	categoryContainer.scrollTo({ left: scrollTo, behavior: 'smooth' })
+		// }
 	} else {
 		if (menuItem?.classList?.contains('active-scrollspy')) {
 			menuItem?.classList?.remove('active-scrollspy')
@@ -88,7 +89,7 @@ const MenuContainer = ({
 	// 		sidebarRef.current.classList.add('fixed__sidebar')
 	// 	}
 	// }, [isInformationVisible, sidebarRef])
-	console.log('menu-container', document.getElementById('category-container'))
+	// console.log('menu-container', document.getElementById('category-container'))
 
 	return (
 		<div className='md:container'>

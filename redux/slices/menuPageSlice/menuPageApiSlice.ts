@@ -48,7 +48,11 @@ export const menuPageApiSlice = apiSlice.injectEndpoints({
 			transformResponse: (response: { menu: AllMenuType[] }) => response?.menu,
 		}),
 		applyPromoCode: builder.mutation<
-			{ discounted_subtotal: number; discounted_amount: number },
+			{
+				discounted_subtotal: number
+				discounted_amount: number
+				promo_code: number
+			},
 			{ coupon_code: string; subtotal: number }
 		>({
 			query: (data) => ({
@@ -62,6 +66,7 @@ export const menuPageApiSlice = apiSlice.injectEndpoints({
 
 export const {
 	useGetTakeawayInformationQuery,
+	useLazyGetTakeawayInformationQuery,
 	useGetTakeawayReviewsQuery,
 	useGetRestaurantInformationQuery,
 	useGetRestaurantReviewsQuery,

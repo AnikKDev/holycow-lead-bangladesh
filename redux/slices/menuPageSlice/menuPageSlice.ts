@@ -21,6 +21,7 @@ export type LocationInfoType = Extend<
 		email: string
 		rating: string
 		opening_hours: OpeningHoursType[]
+		delivery_areas: string[]
 	}>
 >
 export type MenuItemType = Extend<
@@ -32,6 +33,8 @@ export type MenuItemType = Extend<
 		image: string
 		// for cart
 		quantity: number
+		// for order detail
+		unit_price: number
 	}>
 >
 export type AllMenuType = Extend<

@@ -2,18 +2,28 @@ import { RootState } from '@/redux/store'
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { AccountAddress } from '@/types/account/account.types'
-import { ASAP, DELIVERY_CHARGE } from '@/lib/constatns'
+import { ASAP, DELIVERY_CHARGE, TAX_RATE } from '@/lib/constatns'
 import { decimalFormatter } from '@/lib/formatter'
 import { Extend } from '@/lib/utils'
 
 import { MenuItemType } from '../menuPageSlice/menuPageSlice'
 
 export type FulfillmentType = 'Delivery' | 'Collection'
+
+export const guestInfoInitialState = {
+	name: '',
+	email: '',
+	phone_number: '',
+	address: '',
+	post_code: '',
+}
+export type GuestInfo = Extend<Partial<typeof guestInfoInitialState>>
 export type OrderInitialState = Extend<
 	Partial<{
 		cartItems: MenuItemType[]
 		discount: number
 		promo_code: string
+		promo_code_id: null | number
 		delivery_charge: number
 		fulfillment_type: FulfillmentType
 		delivery_address: AccountAddress
@@ -21,13 +31,40 @@ export type OrderInitialState = Extend<
 		collection_address: string
 		collection_time: string
 		visited_location_slug: string
+		// guest
+		guest_info: GuestInfo
 	}>
 >
 
-const initialState: OrderInitialState = {
+export type ORDER_STATUS =
+	| 'PENDING'
+	| 'ACCEPTED'
+	| 'PREPARING'
+	| 'DISPATCHED'
+	| 'DELIVERED'
+
+export type OrderDetailType = Extend<
+	Partial<{
+		id: number
+		tracking_id: string
+		order_date: string
+		status: ORDER_STATUS
+		order_items: MenuItemType[]
+		subtotal: number | string
+		delivery_fee: number | string
+		discount: number | string
+		total: number | string
+		address: AccountAddress
+		order_type: 'DELIVERY' | 'COLLECTION'
+		collection_address: 'string'
+	}>
+>
+
+export const orderInitialState: OrderInitialState = {
 	cartItems: [],
 	discount: null,
 	promo_code: '',
+	promo_code_id: null,
 	delivery_charge: DELIVERY_CHARGE,
 	fulfillment_type: 'Delivery',
 	delivery_address: {},
@@ -35,11 +72,12 @@ const initialState: OrderInitialState = {
 	collection_address: '',
 	collection_time: ASAP,
 	visited_location_slug: '',
+	guest_info: { ...guestInfoInitialState },
 }
 
 const orderSlice = createSlice({
 	name: 'order',
-	initialState,
+	initialState: orderInitialState,
 	reducers: {
 		setOrderState: (state, action: PayloadAction<OrderInitialState>) =>
 			action.payload,
@@ -163,17 +201,19 @@ export const getCartTotals = createSelector(
 				return sum
 			}, 0)
 
-			const discount = Number(orderState?.discount) || 0
-
 			delivery_charge =
 				orderState.fulfillment_type === 'Delivery'
-					? subtotal >= 15
+					? subtotal >= 20
 						? 0
 						: DELIVERY_CHARGE
 					: 0
 
+			const tax_amount = subtotal > 20 ? 0 : subtotal * TAX_RATE
+
+			const discount = Number(orderState?.discount) || 0
+
 			console.log({ subtotal, delivery_charge })
-			totalPrice = subtotal + delivery_charge - discount
+			totalPrice = subtotal - discount + tax_amount + delivery_charge
 
 			totalPrice = decimalFormatter(totalPrice)
 

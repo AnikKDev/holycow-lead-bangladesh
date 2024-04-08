@@ -1,14 +1,11 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useGetAllAddressesQuery } from '@/redux/slices/accountSlice/addressSlice/addressApiSlice'
-import { HiOutlinePencil } from 'react-icons/hi'
-import { RiDeleteBinLine } from 'react-icons/ri'
 
 import { AccountAddress } from '@/types/account/account.types'
 import AddressSkeleton from '@/components/ui/custom-ui/skeletons/address-skeleton'
 import { CreateAddressModal } from '@/components/addresses/create-address-modal'
-import { ShowAddressesModal } from '@/components/checkout/delivery/show-addresses-modal'
 
 import AddressRow from './address-row'
 
@@ -25,16 +22,11 @@ export default function AddressContainer({}: Props) {
 		isError: isAllAddressesError,
 		error: allAddressesError,
 	} = useGetAllAddressesQuery(null)
-	// console.log(allAddresses)
-	// default and empty address
-	// todo: need to get the user id from the token
 	const [defaultAddress, setDefaultAddress] = useState<AccountAddress>({
 		address: '',
 		address_name: '',
 		apartment_number: '',
 		city: 'london',
-		customer: '',
-		// id: 0,
 		postal_code: '',
 	})
 	const [isEditingAddress, setIsEditingAddress] = useState<boolean>(false)
@@ -52,7 +44,6 @@ export default function AddressContainer({}: Props) {
 		}
 	}, [isEditingAddress])
 	let displayableAddress
-	// todo: beautify the address skeleton
 	if (allAddressesLoading && !allAddressesError) {
 		displayableAddress = <AddressSkeleton />
 	} else if (

@@ -1,6 +1,6 @@
 type Props = {
 	title: string
-	description: string
+	description?: string
 	completed: boolean
 }
 
@@ -16,9 +16,9 @@ export default function OrderDetailsStatusSteps({
 			}`}
 		>
 			<h3 className='font-medium capitalize'>{title}</h3>
-			<p className='c-stepper__desc text-base uppercase text-[#6F6F6F]'>
+			{/* <p className='c-stepper__desc text-base uppercase text-[#6F6F6F]'>
 				{description}
-			</p>
+			</p> */}
 		</li>
 	)
 }

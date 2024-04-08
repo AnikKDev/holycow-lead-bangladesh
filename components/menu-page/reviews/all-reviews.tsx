@@ -34,9 +34,14 @@ const AllReviews = ({
 		data: restaurantReviews,
 		isLoading: isRestaurantReviewLoading,
 		isError: isRestaurantReviewError,
-	} = useGetRestaurantReviewsQuery(locationInformation?.name.toLowerCase(), {
-		skip: !isRestaurant,
-	})
+	} = useGetRestaurantReviewsQuery(
+		locationInformation?.name.toLowerCase().includes('limehouse')
+			? 'limehouse'
+			: locationInformation?.name.toLowerCase(),
+		{
+			skip: !isRestaurant,
+		}
+	)
 
 	const averageRating = !isRestaurant
 		? data?.length

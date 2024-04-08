@@ -1,8 +1,6 @@
 'use client'
 
-import React from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { CgProfile } from 'react-icons/cg'
 
 import { AccountTab } from '@/types/account/account.types'
 
@@ -28,7 +26,7 @@ export default function AccountSidebarTab({
 			<div
 				className={`flex h-12 w-12 items-center justify-center rounded-md border ${
 					pathname.includes(navigateTo)
-						? 'border-primary bg-primary text-white'
+						? 'border-primary bg-primary text-black'
 						: 'color-[#83859C] border-gray-400 bg-[#D9D9D9]'
 				}`}
 			>

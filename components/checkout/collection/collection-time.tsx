@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
-import { format } from 'date-fns'
+import { format, setHours, setMinutes } from 'date-fns'
 import { GoClock } from 'react-icons/go'
 
 import '../checkout.css'
@@ -23,6 +23,14 @@ const CollectionTimeSection = () => {
 	const pickerRef = useRef<HTMLInputElement>(null)
 	const orderState = useAppSelector(selectOrderState)
 	const dispatch = useAppDispatch()
+
+	const filterPassedAndNoNeedTime = (time) => {
+		const currentDate = new Date()
+		const selectedDate = new Date(time)
+
+		return currentDate.getTime() < selectedDate.getTime()
+	}
+
 	return (
 		<div className=''>
 			<div className='grid grid-cols-[auto,1fr] gap-2.5'>
@@ -118,6 +126,9 @@ const CollectionTimeSection = () => {
 									dateFormat='Pp'
 									timeFormat='p'
 									minDate={new Date()}
+									filterTime={filterPassedAndNoNeedTime}
+									minTime={setHours(setMinutes(new Date(), 0), 14)}
+									maxTime={setHours(setMinutes(new Date(), 30), 22)}
 									customInput={
 										<CustomDatePicker
 											value={
@@ -130,7 +141,7 @@ const CollectionTimeSection = () => {
 										/>
 									}
 									placeholderText='Choose a time'
-									className='whitespace-nowrap text-sm'
+									className='whitespace-nowrap bg-inherit text-sm'
 								/>
 							</div>
 						</fieldset>

@@ -34,6 +34,9 @@ const DeliveryAddressArea = () => {
 	} = useGetAllAddressesQuery(null)
 	// console.log(allAddresses)
 
+	const [defaultAddress, setDefaultAddress] =
+		useState<AccountAddress>(addressInitialState)
+
 	const btnText =
 		!allAddressesLoading && allAddresses?.addresses?.length > 0
 			? orderState.delivery_address?.id
@@ -41,8 +44,6 @@ const DeliveryAddressArea = () => {
 				: 'Select'
 			: 'Add'
 
-	const [defaultAddress, setDefaultAddress] =
-		useState<AccountAddress>(addressInitialState)
 	return (
 		<>
 			<div className='flex items-center justify-between'>
@@ -55,7 +56,8 @@ const DeliveryAddressArea = () => {
 									{orderState.delivery_address?.address_name}
 									<br />
 									<span className='text-sm text-[#494949]'>
-										{orderState.delivery_address?.address}
+										{orderState.delivery_address?.address},&nbsp;
+										{orderState.delivery_address?.postal_code}
 									</span>
 								</h3>
 							</div>

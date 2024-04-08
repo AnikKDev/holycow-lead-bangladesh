@@ -1,35 +1,34 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { OrderDetailType } from '@/redux/slices/orderSlice/orderSlice'
 import { format } from 'date-fns'
 
-import { OrderTableColumns } from '@/types/account/account.types'
 import { formatPrice } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
 import CustomBadge from '@/components/ui/custom-ui/custom-badge'
 import { TableCell, TableRow } from '@/components/ui/table'
 
-type Props = OrderTableColumns
+type Props = OrderDetailType
 
 export default function DataTableRow({
-	items,
-	orderDate,
-	orderNumber,
+	order_items,
+	order_date,
+	tracking_id,
 	status,
 	total,
 }: Props) {
 	const router = useRouter()
 	return (
 		<TableRow
-			key={orderNumber}
+			key={tracking_id}
 			className='cursor-pointer text-sm duration-150'
-			onClick={() => router.push(`/account/your-orders/1`)}
+			onClick={() => router.push(`/account/your-orders/${tracking_id}`)}
 		>
 			<TableCell className='whitespace-nowrap border-r-0 px-4 py-3 font-medium'>
-				{orderNumber}
+				{tracking_id}
 			</TableCell>
 			<TableCell className='min-w-[180px] max-w-[200px] whitespace-pre-line border-r-0 px-4 py-3'>
-				{items.map((item) => (
+				{order_items.map((item) => (
 					<p className='flex items-baseline gap-1'>
 						<span>{item.quantity}x</span>
 						<span className='line-clamp-2 '>{item.item_name}</span>
@@ -38,8 +37,8 @@ export default function DataTableRow({
 			</TableCell>
 			<TableCell className='whitespace-nowrap border-r-0 px-4 py-3'>
 				<p className='flex flex-col gap-[2px]'>
-					<span>{format(new Date(orderDate), 'MMM d, yyyy')}</span>
-					{format(new Date(orderDate), 'h:mm a')}
+					<span>{format(new Date(order_date), 'MMM d, yyyy')}</span>
+					{format(new Date(order_date), 'h:mm a')}
 				</p>
 			</TableCell>
 			<TableCell className='whitespace-nowrap border-r-0 px-4 py-3'>
@@ -49,11 +48,11 @@ export default function DataTableRow({
 				{formatPrice(total)}
 			</TableCell>
 			{/* actions */}
-			<TableCell className='whitespace-nowrap border-r-0 px-4 py-3'>
+			{/* <TableCell className='whitespace-nowrap border-r-0 px-4 py-3'>
 				<Button className='rounded-full px-4' variant='default' size='sm'>
 					Reorder
 				</Button>
-			</TableCell>
+			</TableCell> */}
 		</TableRow>
 	)
 }

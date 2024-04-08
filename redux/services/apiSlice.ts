@@ -10,6 +10,9 @@ const noNeedTokenEndpoint = [
 	'getTakeawayInformation',
 	'getRestaurantInformation',
 	'getRestaurantReviews',
+	'getReservationAvailability',
+	'makeReservation',
+	'performGuestCheckout',
 ]
 
 export const apiSlice = createApi({
@@ -30,7 +33,7 @@ export const apiSlice = createApi({
 			return headers
 		},
 	}),
-	tagTypes: ['Address', 'Profile', 'Post'],
+	tagTypes: ['Address', 'Profile', 'Post', 'UserAccount'],
 	// This setting allows you to control whether RTK Query will try to refetch all subscribed queries after regaining a network connection.
 	refetchOnReconnect: true,
 	// This is how long RTK Query will keep the data cached for after the last component unsubscribes.(seconds)

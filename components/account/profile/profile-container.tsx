@@ -1,6 +1,11 @@
 'use client'
 
 import React, { useState } from 'react'
+import {
+	useGetUserAccountDateQuery,
+	useUpdateUserEmailMutation,
+	useUpdateUserFullNameMutation,
+} from '@/redux/slices/authSlice/authApiSlice'
 import { HiOutlinePencil } from 'react-icons/hi'
 
 import InputField from './input-containers/input-field'
@@ -9,12 +14,20 @@ type Props = {}
 
 export default function ProfileContainer({}: Props) {
 	const [editingSection, setEditingSection] = useState<string | null>(null)
+	// api for get request
+	const {
+		data: accountData,
+		isLoading: accountDataLoading,
+		isError: accountDataError,
+	} = useGetUserAccountDateQuery(undefined)
+
 	return (
 		<div className='rounded-lg border border-[#D1D5DB] bg-white'>
 			{/* seactions */}
 			<div className='border-b border-[#D1D5DB]'>
 				{editingSection === 'name' ? (
 					<InputField
+						userFullName={accountData?.user?.fullname}
 						setEditingSection={setEditingSection}
 						editingSection={editingSection}
 					/>
@@ -23,7 +36,11 @@ export default function ProfileContainer({}: Props) {
 						{/* name */}
 						<div className='leading-9'>
 							<h5 className='text-base'>Name</h5>
-							<span className='text-sm text-[#6B6B83]'>John Doe</span>
+							<span className='text-sm text-[#6B6B83]'>
+								{!accountDataError && !accountDataLoading
+									? accountData?.user?.fullname
+									: 'Loading...'}
+							</span>
 						</div>
 						{/* icon */}
 						<div
@@ -40,6 +57,7 @@ export default function ProfileContainer({}: Props) {
 			<div className='border-b border-[#D1D5DB]'>
 				{editingSection === 'email' ? (
 					<InputField
+						userEmail={accountData?.user?.email}
 						setEditingSection={setEditingSection}
 						editingSection={editingSection}
 					/>
@@ -48,7 +66,11 @@ export default function ProfileContainer({}: Props) {
 						{/* name */}
 						<div className='leading-9'>
 							<h5 className='text-base'>Email</h5>
-							<span className='text-sm text-[#6B6B83]'>johndoe@email.com</span>
+							<span className='text-sm text-[#6B6B83]'>
+								{!accountDataError && !accountDataLoading
+									? accountData?.user?.email
+									: 'Loading...'}
+							</span>
 						</div>
 						{/* icon */}
 						<div

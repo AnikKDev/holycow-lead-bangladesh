@@ -1,6 +1,11 @@
 'use client'
 
 import { useCallback, useEffect, useRef } from 'react'
+import { useParams } from 'next/navigation'
+import { useAppDispatch } from '@/redux/hooks'
+import { useGetFullMenuQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
+import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
+import { setVisitedLocationSlug } from '@/redux/slices/orderSlice/orderSlice'
 
 import useIntersectionObserver from '@/hooks/useIntersectionObserer'
 
@@ -8,12 +13,6 @@ import InformationSection from './location-detail/information-section'
 import MenuContainer from './main-menu/menu-container'
 
 import './main-menu/menu.css'
-
-import { useParams } from 'next/navigation'
-import { useAppDispatch } from '@/redux/hooks'
-import { useGetFullMenuQuery } from '@/redux/slices/menuPageSlice/menuPageApiSlice'
-import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
-import { setVisitedLocationSlug } from '@/redux/slices/orderSlice/orderSlice'
 
 import { cn } from '@/lib/utils'
 
@@ -35,7 +34,6 @@ const MenuAndAllBottomSections = ({
 	const menuRef = useRef<HTMLDivElement>(null)
 	const dispatch = useAppDispatch()
 	const { data, isLoading, isError } = useGetFullMenuQuery()
-
 	const targetItemEntry = useIntersectionObserver(targetRef, {
 		threshold: 0,
 		rootMargin: '-75px 0px 0px 0px',
@@ -57,27 +55,30 @@ const MenuAndAllBottomSections = ({
 			targetRef?.current &&
 			menuRef?.current
 		) {
-			console.log('intersection false', targetItemEntry)
-
 			// menuRef.current.style.position = 'fixed'
 			// menuRef.current.style.zIndex = '1038'
 			// menuRef.current.style.top = '64px'
 			// menuRef.current.style.opacity = '1'
-			menuRef.current.style.backgroundColor = 'white'
+			menuRef.current.style.backgroundColor = '#F4F3EC'
 		} else {
 			if (targetItemEntry?.isIntersecting && menuRef?.current) {
 				// menuRef.current.style.position = 'relative'
 				// menuRef.current.style.zIndex = '10'
 				// menuRef.current.style.top = '-65'
 				// menuRef.current.style.opacity = '0'
-				menuRef.current.style.backgroundColor = '#FDFCF7'
+				menuRef.current.style.backgroundColor = 'transparent'
 			}
 		}
 	}, [targetRef, menuRef, targetItemEntry])
 
 	useEffect(() => {
-		console.log('information entry', informationEntry)
-	}, [informationRef, informationEntry])
+		if (!isLoading) {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			})
+		}
+	}, [isLoading])
 
 	const isTargetItemVisible = !!targetItemEntry?.isIntersecting
 	const isInformationVisible = !!informationEntry?.isIntersecting
@@ -97,7 +98,7 @@ const MenuAndAllBottomSections = ({
 			<div
 				ref={menuRef}
 				className={cn(
-					'translateZ-class  sticky top-[75px] z-[1035] w-full  bg-background transition mobile-md:top-16'
+					'translateZ-class  sticky top-[80px] z-[1035] w-full  bg-background transition mobile-md:top-16'
 				)}
 			>
 				<div>
@@ -138,11 +139,14 @@ const MenuAndAllBottomSections = ({
 
 			<div ref={informationRef}>
 				<div
-					className='mx-auto max-w-[1200px] scroll-m-32 '
-					id='information'
-					ref={refCallback}
+					className='mx-auto max-w-[1200px] '
+					// id='information'
+					// ref={refCallback}
 				>
-					<InformationSection locationInformation={locationInformation} />
+					<InformationSection
+						refCallback={refCallback}
+						locationInformation={locationInformation}
+					/>
 				</div>
 				{isRestaurant && (
 					<div
@@ -159,8 +163,11 @@ const MenuAndAllBottomSections = ({
 					ref={refCallback}
 				>
 					<AllReviews
-						locationInformation={locationInformation}
-						isRestaurant={isRestaurant}
+						locationInformation={{
+							...locationInformation,
+							name: isRestaurant ? 'limehoue' : locationInformation.name,
+						}}
+						isRestaurant={false} // value changed from isRestaurant to false
 					/>
 				</div>
 			</div>

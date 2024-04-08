@@ -1,4 +1,3 @@
-import { Metadata } from 'next'
 import { LocationInfoType } from '@/redux/slices/menuPageSlice/menuPageSlice'
 
 import { apiUrl } from '@/lib/constatns'
@@ -10,45 +9,48 @@ type ParamsType = {
 	params: { location: string }
 }
 
-const getLocationInfo = async (location: string): Promise<LocationInfoType> => {
+export const getLocationInfo = async (
+	location: string
+): Promise<LocationInfoType> => {
 	const res = await fetch(`${apiUrl}/takeaway/info?takeaway=${location}`, {
 		method: 'GET',
 		headers: {
 			'Content-type': 'application/json',
 		},
+		cache: 'no-store',
 	})
 
 	const data = await res.json()
-	// console.log(data)
 	if (!res.ok) {
 		// This will activate the closest `error.js` Error Boundary
-		throw new Error('Takeaway information not found')
+		throw new Error('Restaurant information not found')
 	}
 	return data?.takeaway_info
 }
 
-export const generateMetadata = async ({
-	params,
-}: ParamsType): Promise<Metadata> => {
-	const locationInformation = await getLocationInfo(params.location)
+export const generateMetadata = () => {
 	return {
-		title: locationInformation.name,
+		title: 'Limehouse - Canary Wharf',
 	}
 }
 
-const TakeawayLocationMenuPage = async ({ params }: ParamsType) => {
-	const locationInformation = await getLocationInfo(params.location)
+const RestaurantHomePage = async () => {
+	const locationInformation = await getLocationInfo('limehouse')
+
 	return (
 		<div>
 			<div className='mx-auto max-w-[1200px]'>
 				<CoverPhoto locationInformation={locationInformation} />
 			</div>
 			<div className='mx-auto max-w-[1200px]'>
-				<AboutLocation locationInformation={locationInformation} />
+				<AboutLocation isRestaurant locationInformation={locationInformation} />
 			</div>
-			<MenuAndAllBottomSections locationInformation={locationInformation} />
+			<MenuAndAllBottomSections
+				isRestaurant
+				locationInformation={locationInformation}
+			/>
 		</div>
 	)
 }
 
-export default TakeawayLocationMenuPage
+export default RestaurantHomePage
